@@ -10,6 +10,14 @@
 *.dll
 *.dylib
 
+# BOUML
+
+*.lock
+idl_includes
+*.d
+*.b
+*.session
+
 # Qt-es
 object_script.*.Release
 object_script.*.Debug
