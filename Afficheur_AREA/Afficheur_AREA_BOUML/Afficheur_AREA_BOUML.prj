@@ -1,6 +1,6 @@
 format 224
-"AERAPI"
-  revision 6
+"Afficheur_AREA_BOUML"
+  revision 10
   modified_by 2 "ladriere"
 
 
@@ -271,6 +271,62 @@ format 224
       classrelation 149122 // <composition>
 	relation_ref 148482 // <composition>
       end
+
+      classrelation 155778 // <composition>
+	relation_ref 155010 // <composition>
+      end
+
+      classrelation 156034 // <composition>
+	relation_ref 155138 // <composition>
+      end
+
+      classrelation 156802 // <composition>
+	relation_ref 155522 // <composition>
+      end
+
+      attribute 128002 "nom"
+	private explicit_type "string"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 128130 "prenom"
+	private explicit_type "string"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 128258 "classement"
+	private explicit_type "int"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 128386 "lettre"
+	private explicit_type "string"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
     end
 
     class 134786 "Equipe"
@@ -317,6 +373,16 @@ format 224
 	relation_ref 141186 // <composition>
       end
 
+      attribute 128514 "nombreSet"
+	private explicit_type "int"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
     end
 
     class 135042 "Donnee_Arbitrage"
@@ -390,12 +456,36 @@ format 224
 	relation_ref 141570 // <aggregation>
       end
 
-      classrelation 142338 // 2 (<composition>)
+      classrelation 142338 // equipes (<composition>)
 	relation 141954 *---
-	  a role_name "2" private
-	    classrelation_ref 142338 // 2 (<composition>)
+	  a role_name "equipes" multiplicity "2" private
+	    classrelation_ref 142338 // equipes (<composition>)
 	  b role_name "" private
 	    classrelation_ref 142466 // <composition>
+      end
+
+      classrelation 156162 // parties (<composition>)
+	relation 155266 *---
+	  a role_name "parties" multiplicity "12" private
+	    classrelation_ref 156162 // parties (<composition>)
+	  b role_name "" private
+	    classrelation_ref 156290 // <composition>
+      end
+
+      classrelation 156418 // partiesDouble (<composition>)
+	relation 155394 *---
+	  a role_name "partiesDouble" multiplicity "2" private
+	    classrelation_ref 156418 // partiesDouble (<composition>)
+	  b role_name "" private
+	    classrelation_ref 156546 // <composition>
+      end
+
+      classrelation 156674 // joueurs (<composition>)
+	relation 155522 *---
+	  a role_name "joueurs" multiplicity "8" private
+	    classrelation_ref 156674 // joueurs (<composition>)
+	  b role_name "" private
+	    classrelation_ref 156802 // <composition>
       end
     end
 
@@ -415,6 +505,18 @@ format 224
 	    classrelation_ref 141442 // <generalisation>
 	  b parent class_ref 134914 // Partie
       end
+
+      classrelation 155906 // Joueurs (<composition>)
+	relation 155138 *---
+	  a role_name "Joueurs" multiplicity "4" private
+	    classrelation_ref 155906 // Joueurs (<composition>)
+	  b role_name "" private
+	    classrelation_ref 156034 // <composition>
+      end
+
+      classrelation 156290 // <composition>
+	relation_ref 155266 // <composition>
+      end
     end
 
     class 141954 "Partie_Double"
@@ -433,7 +535,69 @@ format 224
 	    classrelation_ref 141570 // <generalisation>
 	  b parent class_ref 134914 // Partie
       end
+
+      classrelation 155650 // Joueurs (<composition>)
+	relation 155010 *---
+	  a role_name "Joueurs" multiplicity "2" private
+	    classrelation_ref 155650 // Joueurs (<composition>)
+	  b role_name "" private
+	    classrelation_ref 155778 // <composition>
+      end
+
+      classrelation 156546 // <composition>
+	relation_ref 155394 // <composition>
+      end
+    end
+  end
+
+  usecaseview 134530 "Vue de sequence systeme"
+    
+    usecasediagramsettings end
+    
+    sequencediagramsettings end
+    
+    collaborationdiagramsettings end
+    
+    classdiagramsettings member_max_width 0 end
+    
+    classcompositediagramsettings end
+    
+    objectdiagramsettings end
+    
+    objectcompositediagramsettings end
+    
+    statediagramsettings
+     end
+    
+    activitydiagramsettings
+     end
+    sequencediagram 141314 "Diagramme de séquence systeme"
+      sequencediagramsettings end
+      overlapping_bars size A0
     end
 
+    class 148610 "Arbitre"
+      visibility package stereotype "actor"
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 148738 "Systeme"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
   end
 end
