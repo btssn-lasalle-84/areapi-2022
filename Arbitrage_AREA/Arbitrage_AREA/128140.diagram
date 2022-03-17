@@ -1,0 +1,64 @@
+format 224
+
+classcanvas 128012 class_ref 128012 // Arbitre
+  simpleclassdiagramsettings end
+  xyz 362.456 652.766 2000
+end
+usecasecanvas 128140 usecase_ref 128012 // Démarrer une rencontre
+  xyzwh 648 655 3005 64 32 label_xy 604 604
+end
+usecasecanvas 128396 usecase_ref 128140 // Dialoger entre les modules
+  xyzwh 471 575 3005 64 32 label_xy 415 547
+end
+usecasecanvas 128652 usecase_ref 128396 // Planifier une rencontre
+  xyzwh 561 808 3005 64 32 label_xy 395 809
+end
+usecasecanvas 128780 usecase_ref 128524 // Donner le nom des équipes 
+  xyzwh 331 896 3005 64 32 label_xy 272 930
+end
+usecasecanvas 128908 usecase_ref 128652 // Mettre fin à la partie
+  xyzwh 893 804 3005 64 32 label_xy 862 839
+end
+usecasecanvas 129036 usecase_ref 128780 // Ajouter les points
+  xyzwh 880 565 3005 64 32 label_xy 858 598
+end
+usecasecanvas 129164 usecase_ref 128908 // Paramétrer le lieu de rencontre
+  xyzwh 436 988 3005 64 32 label_xy 367 1018
+end
+usecasecanvas 129292 usecase_ref 129036 // Paramétrer date et heure
+  xyzwh 734 901 3005 64 32 label_xy 685 935
+end
+usecasecanvas 129420 usecase_ref 129164 // Paramétrer la ligue / la division / la poule
+  xyzwh 639 1030 3005 64 32 label_xy 540 1061
+end
+usecasecanvas 134028 usecase_ref 135692 // Lancer un temps mort
+  xyzwh 891 692 3005 64 32 label_xy 852 724
+end
+line 129804 ----
+  from ref 128012 z 3006 to ref 128140
+line 129932 ---- decenter_end 131
+  from ref 128012 z 3006 to ref 128652
+line 132364 --->
+  from ref 128780 z 3006 to ref 128652
+line 132492 --->
+  from ref 129164 z 3006 to ref 128652
+line 132620 --->
+  from ref 129420 z 3006 to ref 128652
+line 132748 --->
+  from ref 129292 z 3006 to ref 128652
+simplerelationcanvas 133004 simplerelation_ref 128908
+  from ref 128140 z 3006 stereotype "<<include>>" xyz 527 640 3000 to ref 128396
+end
+simplerelationcanvas 133772 simplerelation_ref 135692
+  from ref 128908 z 3006 stereotype "<<extend>>" xyz 768 772 3000 to ref 128140
+end
+simplerelationcanvas 133900 simplerelation_ref 135820
+  from ref 129036 z 3006 stereotype "<<extend>>" xyz 792 629 3000 to ref 128140
+end
+simplerelationcanvas 134156 simplerelation_ref 135948
+  from ref 134028 z 3006 stereotype "<<extend>>" xyz 794 668 3000 to ref 128140
+end
+simplerelationcanvas 134412 simplerelation_ref 136076
+  from ref 128652 z 3006 stereotype "<<include>>" xyz 630 763 3000 to ref 128140
+end
+end
