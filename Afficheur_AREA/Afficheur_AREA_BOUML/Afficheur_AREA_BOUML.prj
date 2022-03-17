@@ -1,6 +1,6 @@
 format 224
 "Afficheur_AREA_BOUML"
-  revision 10
+  revision 11
   modified_by 2 "ladriere"
 
 
@@ -41,6 +41,8 @@ format 224
 
   image_root_dir ""
 
+  customclassdiagramsettings "Class"
+    classdiagramsettings show_members_full_definition yes show_members_visibility yes member_max_width 0 end
 
   mark_for_import
   
@@ -327,6 +329,18 @@ format 224
 	mysql_decl ""
 	MysqlColumn
       end
+
+      classrelation 163586 // <composition>
+	relation_ref 162178 // <composition>
+      end
+
+      classrelation 163842 // <composition>
+	relation_ref 162306 // <composition>
+      end
+
+      classrelation 164098 // <composition>
+	relation_ref 162434 // <composition>
+      end
     end
 
     class 134786 "Equipe"
@@ -357,6 +371,25 @@ format 224
 	  b role_name "" private
 	    classrelation_ref 149122 // <composition>
       end
+
+      classrelation 163970 // 4 (<composition>)
+	relation 162434 *---
+	  a role_name "4" multiplicity "joueurs" private
+	    classrelation_ref 163970 // 4 (<composition>)
+	  b role_name "" private
+	    classrelation_ref 164098 // <composition>
+      end
+
+      attribute 135042 "nom"
+	private explicit_type "string"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
     end
 
     class 134914 "Partie"
@@ -375,6 +408,109 @@ format 224
 
       attribute 128514 "nombreSet"
 	private explicit_type "int"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      classrelation 163330 // <directional composition>
+	relation 162050 *-->
+	  a role_name "" private
+	    classrelation_ref 163330 // <directional composition>
+	  b parent class_ref 134658 // Joueur
+      end
+
+      classrelation 163714 // joueurs (<composition>)
+	relation 162306 *---
+	  a role_name "joueurs" multiplicity "2..4" private
+	    classrelation_ref 163714 // joueurs (<composition>)
+	  b role_name "" private
+	    classrelation_ref 163842 // <composition>
+      end
+
+      attribute 135170 "scoreJoueurG"
+	private explicit_type "unsgined int"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 135298 "scoreJoueurD"
+	private explicit_type "unsgined int"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 135426 "temps"
+	private explicit_type "temps"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 135554 "setJoueurG"
+	private explicit_type "unsigned int"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 135682 "setJoueurD"
+	private explicit_type "unsigned int"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 135810 "nombreNET"
+	private explicit_type "unsigned int"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 135938 "pointConsecutif"
+	private explicit_type "unsigned int"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 136066 "joueurPointConsecutif"
+	private explicit_type "string"
 	cpp_decl ""
 	java_decl ""
 	php_decl ""
@@ -516,6 +652,14 @@ format 224
 
       classrelation 156290 // <composition>
 	relation_ref 155266 // <composition>
+      end
+
+      classrelation 163458 // <composition>
+	relation 162178 *---
+	  a role_name "" private
+	    classrelation_ref 163458 // <composition>
+	  b role_name "" private
+	    classrelation_ref 163586 // <composition>
       end
     end
 
