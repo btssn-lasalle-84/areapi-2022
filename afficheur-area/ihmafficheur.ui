@@ -47,14 +47,17 @@
       <item>
        <layout class="QVBoxLayout" name="layoutCadreGauche">
         <property name="rightMargin">
-         <number>20</number>
+         <number>0</number>
         </property>
         <item>
          <layout class="QHBoxLayout" name="layoutHautCadreGauche">
           <item>
-           <layout class="QVBoxLayout" name="layoutCadreGaucheJoueurA">
+           <layout class="QVBoxLayout" name="layoutCadreGaucheJoueurG">
             <item>
-             <widget class="QLabel" name="nomJoueurA">
+             <widget class="QLabel" name="nomJoueurGPartieG">
+              <property name="frameShape">
+               <enum>QFrame::Box</enum>
+              </property>
               <property name="text">
                <string>BEAUMONT Jérôme</string>
               </property>
@@ -64,7 +67,10 @@
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="classementJoueurA">
+             <widget class="QLabel" name="classementJoueurGPartieG">
+              <property name="frameShape">
+               <enum>QFrame::Box</enum>
+              </property>
               <property name="text">
                <string>1682 pts</string>
               </property>
@@ -74,7 +80,10 @@
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="affichageSetJoueurA">
+             <widget class="QLabel" name="affichageSetJoueurGPartieG">
+              <property name="frameShape">
+               <enum>QFrame::Box</enum>
+              </property>
               <property name="text">
                <string>affichageSetJoueurA</string>
               </property>
@@ -84,6 +93,9 @@
           </item>
           <item>
            <widget class="QLabel" name="tempsPartieGauche">
+            <property name="frameShape">
+             <enum>QFrame::Box</enum>
+            </property>
             <property name="text">
              <string> Durée du set en cours : 8:34</string>
             </property>
@@ -93,9 +105,12 @@
            </widget>
           </item>
           <item>
-           <layout class="QVBoxLayout" name="layoutCadreGaucheJoueurW">
+           <layout class="QVBoxLayout" name="layoutCadreGaucheJoueurD">
             <item>
-             <widget class="QLabel" name="nomJoueurW">
+             <widget class="QLabel" name="nomJoueurDPartieG">
+              <property name="frameShape">
+               <enum>QFrame::Box</enum>
+              </property>
               <property name="text">
                <string>LEVRARD Mickael</string>
               </property>
@@ -105,7 +120,10 @@
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="classementJoueurW">
+             <widget class="QLabel" name="classementJoueurDPartieG">
+              <property name="frameShape">
+               <enum>QFrame::Box</enum>
+              </property>
               <property name="text">
                <string>1522 pts</string>
               </property>
@@ -115,7 +133,10 @@
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="affichageSetJoueurW">
+             <widget class="QLabel" name="affichageSetJoueurDPartieG">
+              <property name="frameShape">
+               <enum>QFrame::Box</enum>
+              </property>
               <property name="text">
                <string>affichageSetJoueurW</string>
               </property>
@@ -128,9 +149,25 @@
         <item>
          <layout class="QVBoxLayout" name="layoutMilieuCadreGauche">
           <item>
-           <layout class="QHBoxLayout" name="layoutSet1">
+           <spacer name="verticalSpacer_20">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="layoutSet1PartieG">
             <item>
-             <widget class="QLabel" name="scoreSet1JoueurA">
+             <widget class="QLabel" name="scoreSet1JoueurGPartieG">
+              <property name="frameShape">
+               <enum>QFrame::Box</enum>
+              </property>
               <property name="text">
                <string>12</string>
               </property>
@@ -150,7 +187,16 @@
              </spacer>
             </item>
             <item>
-             <widget class="QLabel" name="statistiquesSet1">
+             <widget class="QLabel" name="statistiquesSet1PartieG">
+              <property name="minimumSize">
+               <size>
+                <width>340</width>
+                <height>34</height>
+               </size>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::Box</enum>
+              </property>
               <property name="text">
                <string>4 Points d'affilés par BEAUMONT Jérôme / NET = 3</string>
               </property>
@@ -170,7 +216,10 @@
              </spacer>
             </item>
             <item>
-             <widget class="QLabel" name="scoreSet1JoueurW">
+             <widget class="QLabel" name="scoreSet1JoueurDPartieG">
+              <property name="frameShape">
+               <enum>QFrame::Box</enum>
+              </property>
               <property name="text">
                <string>-10</string>
               </property>
@@ -179,9 +228,25 @@
            </layout>
           </item>
           <item>
-           <layout class="QHBoxLayout" name="layoutSet2">
+           <spacer name="verticalSpacer">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="layoutSet2PartieG">
             <item>
-             <widget class="QLabel" name="scoreSet2JoueurA">
+             <widget class="QLabel" name="scoreSet2JoueurGPartieG">
+              <property name="frameShape">
+               <enum>QFrame::Box</enum>
+              </property>
               <property name="text">
                <string>-8</string>
               </property>
@@ -201,7 +266,10 @@
              </spacer>
             </item>
             <item>
-             <widget class="QLabel" name="statistiquesSet2">
+             <widget class="QLabel" name="statistiquesSet2PartieG">
+              <property name="frameShape">
+               <enum>QFrame::Box</enum>
+              </property>
               <property name="text">
                <string>7 Points d'affilés par LEVRARD Mickael / NET = 0</string>
               </property>
@@ -221,7 +289,10 @@
              </spacer>
             </item>
             <item>
-             <widget class="QLabel" name="scoreSet2JoueurW">
+             <widget class="QLabel" name="scoreSet2JoueurDPartieG">
+              <property name="frameShape">
+               <enum>QFrame::Box</enum>
+              </property>
               <property name="text">
                <string>11</string>
               </property>
@@ -230,9 +301,25 @@
            </layout>
           </item>
           <item>
-           <layout class="QHBoxLayout" name="layoutSet3">
+           <spacer name="verticalSpacer_16">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="layoutSet3PartieG">
             <item>
-             <widget class="QLabel" name="scoreSet3JoueurA">
+             <widget class="QLabel" name="scoreSet3JoueurGPartieG">
+              <property name="frameShape">
+               <enum>QFrame::Box</enum>
+              </property>
               <property name="text">
                <string>11</string>
               </property>
@@ -252,7 +339,10 @@
              </spacer>
             </item>
             <item>
-             <widget class="QLabel" name="statistiquesSet3">
+             <widget class="QLabel" name="statistiquesSet3PartieG">
+              <property name="frameShape">
+               <enum>QFrame::Box</enum>
+              </property>
               <property name="text">
                <string>11 Points d'affilés par BEAUMONT Jérôme / NET = 1</string>
               </property>
@@ -272,7 +362,10 @@
              </spacer>
             </item>
             <item>
-             <widget class="QLabel" name="scoreSet3JoueurW">
+             <widget class="QLabel" name="scoreSet3JoueurDPartieG">
+              <property name="frameShape">
+               <enum>QFrame::Box</enum>
+              </property>
               <property name="text">
                <string>-4</string>
               </property>
@@ -281,9 +374,25 @@
            </layout>
           </item>
           <item>
-           <layout class="QHBoxLayout" name="layoutSet4">
+           <spacer name="verticalSpacer_17">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="layoutSet4PartieG">
             <item>
-             <widget class="QLabel" name="scoreSet4JoueurA">
+             <widget class="QLabel" name="scoreSet4JoueurGPartieG">
+              <property name="frameShape">
+               <enum>QFrame::Box</enum>
+              </property>
               <property name="text">
                <string>-4</string>
               </property>
@@ -303,7 +412,10 @@
              </spacer>
             </item>
             <item>
-             <widget class="QLabel" name="statistiquesSet4">
+             <widget class="QLabel" name="statistiquesSet4PartieG">
+              <property name="frameShape">
+               <enum>QFrame::Box</enum>
+              </property>
               <property name="text">
                <string>3 Points d'affilés par LEVRARD Mickael / NET = 0</string>
               </property>
@@ -323,7 +435,10 @@
              </spacer>
             </item>
             <item>
-             <widget class="QLabel" name="scoreSet4JoueurW">
+             <widget class="QLabel" name="scoreSet4JoueurDPartieG">
+              <property name="frameShape">
+               <enum>QFrame::Box</enum>
+              </property>
               <property name="text">
                <string>11</string>
               </property>
@@ -332,9 +447,25 @@
            </layout>
           </item>
           <item>
-           <layout class="QHBoxLayout" name="layoutSet5">
+           <spacer name="verticalSpacer_19">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="layoutSet5PartieG">
             <item>
-             <widget class="QLabel" name="scoreSet5JoueurA">
+             <widget class="QLabel" name="scoreSet5JoueurGPartieG">
+              <property name="frameShape">
+               <enum>QFrame::Box</enum>
+              </property>
               <property name="text">
                <string>14</string>
               </property>
@@ -354,7 +485,10 @@
              </spacer>
             </item>
             <item>
-             <widget class="QLabel" name="statistiquesSet5">
+             <widget class="QLabel" name="statistiquesSet5PartieG">
+              <property name="frameShape">
+               <enum>QFrame::Box</enum>
+              </property>
               <property name="text">
                <string>4 Points d'affilés par BEAUMONT Jérôme / NET = 2</string>
               </property>
@@ -374,13 +508,29 @@
              </spacer>
             </item>
             <item>
-             <widget class="QLabel" name="scoreSet5JoueurW">
+             <widget class="QLabel" name="scoreSet5JoueurDPartieG">
+              <property name="frameShape">
+               <enum>QFrame::Box</enum>
+              </property>
               <property name="text">
                <string>-12</string>
               </property>
              </widget>
             </item>
            </layout>
+          </item>
+          <item>
+           <spacer name="verticalSpacer_18">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
           </item>
          </layout>
         </item>
@@ -400,9 +550,25 @@
        </layout>
       </item>
       <item>
+       <spacer name="horizontalSpacer_64">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
        <layout class="QVBoxLayout" name="layoutCentral">
+        <property name="spacing">
+         <number>0</number>
+        </property>
         <property name="rightMargin">
-         <number>20</number>
+         <number>0</number>
         </property>
         <item>
          <layout class="QHBoxLayout" name="layoutHautCentral">
@@ -436,6 +602,19 @@ p, li { white-space: pre-wrap; }
         <item>
          <layout class="QVBoxLayout" name="layoutMilieuCentral">
           <item>
+           <spacer name="verticalSpacer_4">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
            <layout class="QHBoxLayout" name="layoutPartie1">
             <item>
              <widget class="QLabel" name="joueurPartie1coteG">
@@ -443,6 +622,19 @@ p, li { white-space: pre-wrap; }
                <string>BEAUMONT Jérôme</string>
               </property>
              </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_25">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
             </item>
             <item>
              <widget class="QLabel" name="setGagnePartie1JoueurG">
@@ -472,6 +664,19 @@ p, li { white-space: pre-wrap; }
              </widget>
             </item>
             <item>
+             <spacer name="horizontalSpacer_26">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
              <widget class="QLabel" name="joueurPartie1coteD">
               <property name="text">
                <string>LEVRARD Mickael</string>
@@ -481,6 +686,19 @@ p, li { white-space: pre-wrap; }
            </layout>
           </item>
           <item>
+           <spacer name="verticalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
            <layout class="QHBoxLayout" name="layoutPartie2">
             <item>
              <widget class="QLabel" name="joueurPartie2coteG">
@@ -488,6 +706,19 @@ p, li { white-space: pre-wrap; }
                <string>BENZONANA Marc</string>
               </property>
              </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_27">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
             </item>
             <item>
              <widget class="QLabel" name="setGagnePartie2JoueurG">
@@ -517,6 +748,19 @@ p, li { white-space: pre-wrap; }
              </widget>
             </item>
             <item>
+             <spacer name="horizontalSpacer_28">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
              <widget class="QLabel" name="joueurPartie2coteD">
               <property name="text">
                <string>TEYSSIER Michel</string>
@@ -526,6 +770,19 @@ p, li { white-space: pre-wrap; }
            </layout>
           </item>
           <item>
+           <spacer name="verticalSpacer_3">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
            <layout class="QHBoxLayout" name="layoutPartie3">
             <item>
              <widget class="QLabel" name="joueurPartie3coteG">
@@ -533,6 +790,19 @@ p, li { white-space: pre-wrap; }
                <string>BIANCHERI Lorik</string>
               </property>
              </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_29">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
             </item>
             <item>
              <widget class="QLabel" name="setGagnePartie3JoueurG">
@@ -562,6 +832,19 @@ p, li { white-space: pre-wrap; }
              </widget>
             </item>
             <item>
+             <spacer name="horizontalSpacer_30">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
              <widget class="QLabel" name="joueurPartie3coteD">
               <property name="text">
                <string>COMTE Emmanuel</string>
@@ -571,6 +854,19 @@ p, li { white-space: pre-wrap; }
            </layout>
           </item>
           <item>
+           <spacer name="verticalSpacer_5">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
            <layout class="QHBoxLayout" name="layoutPartie4">
             <item>
              <widget class="QLabel" name="joueurPartie4coteG">
@@ -578,6 +874,19 @@ p, li { white-space: pre-wrap; }
                <string>FILAFERRO Thomas</string>
               </property>
              </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_31">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
             </item>
             <item>
              <widget class="QLabel" name="setGagnePartie4JoueurG">
@@ -607,6 +916,19 @@ p, li { white-space: pre-wrap; }
              </widget>
             </item>
             <item>
+             <spacer name="horizontalSpacer_32">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
              <widget class="QLabel" name="joueurPartie4coteD">
               <property name="text">
                <string>Saumien Christian</string>
@@ -616,6 +938,19 @@ p, li { white-space: pre-wrap; }
            </layout>
           </item>
           <item>
+           <spacer name="verticalSpacer_6">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
            <layout class="QHBoxLayout" name="layoutPartie5">
             <item>
              <widget class="QLabel" name="joueurPartie5coteG">
@@ -623,6 +958,19 @@ p, li { white-space: pre-wrap; }
                <string>BEAUMONT Jérôme</string>
               </property>
              </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_33">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
             </item>
             <item>
              <widget class="QLabel" name="setGagnePartie5JoueurG">
@@ -652,6 +1000,19 @@ p, li { white-space: pre-wrap; }
              </widget>
             </item>
             <item>
+             <spacer name="horizontalSpacer_34">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
              <widget class="QLabel" name="joueurPartie5coteD">
               <property name="text">
                <string>TEYSSIER Michel</string>
@@ -661,6 +1022,19 @@ p, li { white-space: pre-wrap; }
            </layout>
           </item>
           <item>
+           <spacer name="verticalSpacer_7">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
            <layout class="QHBoxLayout" name="layoutPartie6">
             <item>
              <widget class="QLabel" name="joueurPartie6coteG">
@@ -668,6 +1042,19 @@ p, li { white-space: pre-wrap; }
                <string>BENZONANA Marc</string>
               </property>
              </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_35">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
             </item>
             <item>
              <widget class="QLabel" name="setGagnePartie6JoueurG">
@@ -697,6 +1084,19 @@ p, li { white-space: pre-wrap; }
              </widget>
             </item>
             <item>
+             <spacer name="horizontalSpacer_36">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
              <widget class="QLabel" name="joueurPartie6coteD">
               <property name="text">
                <string>LEVRARD Mickael</string>
@@ -706,6 +1106,19 @@ p, li { white-space: pre-wrap; }
            </layout>
           </item>
           <item>
+           <spacer name="verticalSpacer_8">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
            <layout class="QHBoxLayout" name="layoutPartie7">
             <item>
              <widget class="QLabel" name="joueurPartie7coteG">
@@ -713,6 +1126,19 @@ p, li { white-space: pre-wrap; }
                <string>BIANCHERI Lorik</string>
               </property>
              </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_37">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
             </item>
             <item>
              <widget class="QLabel" name="setGagnePartie7JoueurG">
@@ -742,6 +1168,19 @@ p, li { white-space: pre-wrap; }
              </widget>
             </item>
             <item>
+             <spacer name="horizontalSpacer_38">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
              <widget class="QLabel" name="joueurPartie7coteD">
               <property name="text">
                <string>COMTE Emmanuel</string>
@@ -751,6 +1190,19 @@ p, li { white-space: pre-wrap; }
            </layout>
           </item>
           <item>
+           <spacer name="verticalSpacer_9">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
            <layout class="QHBoxLayout" name="layoutPartie8">
             <item>
              <widget class="QLabel" name="joueurPartie8coteG">
@@ -758,6 +1210,19 @@ p, li { white-space: pre-wrap; }
                <string>FILAFERRO Thomas</string>
               </property>
              </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_39">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
             </item>
             <item>
              <widget class="QLabel" name="setGagnePartie8JoueurG">
@@ -787,6 +1252,19 @@ p, li { white-space: pre-wrap; }
              </widget>
             </item>
             <item>
+             <spacer name="horizontalSpacer_40">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
              <widget class="QLabel" name="joueurPartie8coteD">
               <property name="text">
                <string>Saumien Christian</string>
@@ -796,6 +1274,19 @@ p, li { white-space: pre-wrap; }
            </layout>
           </item>
           <item>
+           <spacer name="verticalSpacer_10">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
            <layout class="QHBoxLayout" name="layoutPartieDouble1">
             <item>
              <widget class="QLabel" name="joueursPartieDouble1coteG">
@@ -803,6 +1294,19 @@ p, li { white-space: pre-wrap; }
                <string>Double 1</string>
               </property>
              </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_41">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
             </item>
             <item>
              <widget class="QLabel" name="setGagnePartieDouble1JoueurG">
@@ -832,6 +1336,19 @@ p, li { white-space: pre-wrap; }
              </widget>
             </item>
             <item>
+             <spacer name="horizontalSpacer_43">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
              <widget class="QLabel" name="joueursPartieDouble1coteG_2">
               <property name="text">
                <string>Double 1</string>
@@ -841,6 +1358,19 @@ p, li { white-space: pre-wrap; }
            </layout>
           </item>
           <item>
+           <spacer name="verticalSpacer_11">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
            <layout class="QHBoxLayout" name="layoutPartieDouble2">
             <item>
              <widget class="QLabel" name="joueursPartieDouble2coteG">
@@ -848,6 +1378,19 @@ p, li { white-space: pre-wrap; }
                <string>Double 2</string>
               </property>
              </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_42">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
             </item>
             <item>
              <widget class="QLabel" name="setGagnePartieDouble2JoueurG">
@@ -877,6 +1420,19 @@ p, li { white-space: pre-wrap; }
              </widget>
             </item>
             <item>
+             <spacer name="horizontalSpacer_44">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
              <widget class="QLabel" name="joueursPartieDouble1coteD">
               <property name="text">
                <string>Double 2</string>
@@ -893,6 +1449,19 @@ p, li { white-space: pre-wrap; }
                <string>BEAUMONT Jérôme</string>
               </property>
              </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_45">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
             </item>
             <item>
              <widget class="QLabel" name="setGagnePartie11JoueurG">
@@ -922,6 +1491,19 @@ p, li { white-space: pre-wrap; }
              </widget>
             </item>
             <item>
+             <spacer name="horizontalSpacer_46">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
              <widget class="QLabel" name="joueurPartie11coteD">
               <property name="text">
                <string>COMTE Emmanuel</string>
@@ -931,6 +1513,19 @@ p, li { white-space: pre-wrap; }
            </layout>
           </item>
           <item>
+           <spacer name="verticalSpacer_12">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
            <layout class="QHBoxLayout" name="layoutPartie12">
             <item>
              <widget class="QLabel" name="joueurPartie12coteG">
@@ -938,6 +1533,19 @@ p, li { white-space: pre-wrap; }
                <string>BIANCHERI Lorik</string>
               </property>
              </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_47">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
             </item>
             <item>
              <widget class="QLabel" name="setGagnePartie12JoueurG">
@@ -967,6 +1575,19 @@ p, li { white-space: pre-wrap; }
              </widget>
             </item>
             <item>
+             <spacer name="horizontalSpacer_48">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
              <widget class="QLabel" name="joueurPartie12coteD">
               <property name="text">
                <string>LEVRARD Mickael</string>
@@ -976,6 +1597,19 @@ p, li { white-space: pre-wrap; }
            </layout>
           </item>
           <item>
+           <spacer name="verticalSpacer_13">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
            <layout class="QHBoxLayout" name="layoutPartie13">
             <item>
              <widget class="QLabel" name="joueurPartie13coteG">
@@ -983,6 +1617,19 @@ p, li { white-space: pre-wrap; }
                <string>FILAFERRO Thomas</string>
               </property>
              </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_49">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
             </item>
             <item>
              <widget class="QLabel" name="setGagnePartie13JoueurG">
@@ -1012,6 +1659,19 @@ p, li { white-space: pre-wrap; }
              </widget>
             </item>
             <item>
+             <spacer name="horizontalSpacer_50">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
              <widget class="QLabel" name="joueurPartie13coteD">
               <property name="text">
                <string>TEYSSIER Michel</string>
@@ -1021,6 +1681,19 @@ p, li { white-space: pre-wrap; }
            </layout>
           </item>
           <item>
+           <spacer name="verticalSpacer_14">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
            <layout class="QHBoxLayout" name="layoutPartie14">
             <item>
              <widget class="QLabel" name="joueurPartie14coteG">
@@ -1028,6 +1701,19 @@ p, li { white-space: pre-wrap; }
                <string>BENZONANA Marc</string>
               </property>
              </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_51">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
             </item>
             <item>
              <widget class="QLabel" name="setGagnePartie14JoueurG">
@@ -1057,6 +1743,19 @@ p, li { white-space: pre-wrap; }
              </widget>
             </item>
             <item>
+             <spacer name="horizontalSpacer_52">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
              <widget class="QLabel" name="joueurPartie14coteD">
               <property name="text">
                <string>Saumien Christian</string>
@@ -1067,13 +1766,448 @@ p, li { white-space: pre-wrap; }
           </item>
          </layout>
         </item>
+        <item>
+         <spacer name="verticalSpacer_15">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="layoutBasCentral">
+          <item>
+           <widget class="QLabel" name="pointsTotalEquipeA">
+            <property name="text">
+             <string>1</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_53">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QLabel" name="pointsTotalEquipeW">
+            <property name="text">
+             <string>0</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
        </layout>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_65">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
       </item>
       <item>
        <layout class="QVBoxLayout" name="layoutCadreDroit">
         <property name="rightMargin">
          <number>0</number>
         </property>
+        <item>
+         <layout class="QHBoxLayout" name="layoutHautCadreDroit">
+          <item>
+           <layout class="QVBoxLayout" name="layoutCadreDroitJoueurG">
+            <item>
+             <widget class="QLabel" name="nomJoueurGPartieD">
+              <property name="frameShape">
+               <enum>QFrame::Box</enum>
+              </property>
+              <property name="text">
+               <string>N/A</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="classementJoueurGPartieD">
+              <property name="frameShape">
+               <enum>QFrame::Box</enum>
+              </property>
+              <property name="text">
+               <string>N/A</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="affichageSetJoueurGPartieD">
+              <property name="frameShape">
+               <enum>QFrame::Box</enum>
+              </property>
+              <property name="text">
+               <string>N/A</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QLabel" name="tempsPartieDroit">
+            <property name="frameShape">
+             <enum>QFrame::Box</enum>
+            </property>
+            <property name="text">
+             <string>Durée du set en cours : 0:00</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="layoutCadreDroitJoueurD">
+            <item>
+             <widget class="QLabel" name="nomJoueurDPartieD">
+              <property name="frameShape">
+               <enum>QFrame::Box</enum>
+              </property>
+              <property name="text">
+               <string>N/A</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="classementJoueurDPartieD">
+              <property name="frameShape">
+               <enum>QFrame::Box</enum>
+              </property>
+              <property name="text">
+               <string>N/A</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="affichageSetJoueurDPartieD">
+              <property name="frameShape">
+               <enum>QFrame::Box</enum>
+              </property>
+              <property name="text">
+               <string>N/A</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="layoutMilieuCadreDroit">
+          <item>
+           <layout class="QHBoxLayout" name="layoutSet1PartieD" stretch="0,0,0,0,0">
+            <property name="sizeConstraint">
+             <enum>QLayout::SetDefaultConstraint</enum>
+            </property>
+            <item>
+             <widget class="QLabel" name="scoreSet1JoueurGPartieD">
+              <property name="frameShape">
+               <enum>QFrame::Box</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Plain</enum>
+              </property>
+              <property name="text">
+               <string>N/A</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_54">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Expanding</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QLabel" name="statistiquesSet1PartieD">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::Box</enum>
+              </property>
+              <property name="text">
+               <string>N/A</string>
+              </property>
+              <property name="textFormat">
+               <enum>Qt::AutoText</enum>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_55">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QLabel" name="scoreSet1JoueurDPartieD">
+              <property name="frameShape">
+               <enum>QFrame::Box</enum>
+              </property>
+              <property name="text">
+               <string>N/A</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="layoutSet2PartieD">
+            <item>
+             <widget class="QLabel" name="scoreSet2JoueurGPartieD">
+              <property name="text">
+               <string>N/A</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_56">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QLabel" name="statistiquesSet2PartieD">
+              <property name="text">
+               <string>N/A</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_57">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QLabel" name="scoreSet2JoueurDPartieD">
+              <property name="text">
+               <string>N/A</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="layoutSet3PartieD">
+            <item>
+             <widget class="QLabel" name="scoreSet3JoueurGPartieD">
+              <property name="text">
+               <string>N/A</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_58">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QLabel" name="statistiquesSet3PartieD">
+              <property name="text">
+               <string>N/A</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_59">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QLabel" name="scoreSet3JoueurDPartieD">
+              <property name="text">
+               <string>N/A</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="layoutSet4PartieD">
+            <item>
+             <widget class="QLabel" name="scoreSet4JoueurGPartieD">
+              <property name="text">
+               <string>N/A</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_60">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QLabel" name="statistiquesSet4PartieD">
+              <property name="text">
+               <string>N/A</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_61">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QLabel" name="scoreSet4JoueurDPartieD">
+              <property name="text">
+               <string>N/A</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="layoutSet5PartieD">
+            <item>
+             <widget class="QLabel" name="scoreSet5JoueurGPartieD">
+              <property name="text">
+               <string>N/A</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_62">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QLabel" name="statistiquesSet5PartieD">
+              <property name="text">
+               <string>N/A</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_63">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QLabel" name="scoreSet5JoueurDPartieD">
+              <property name="text">
+               <string>N/A</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QLabel" name="iconeArea2">
+          <property name="text">
+           <string/>
+          </property>
+          <property name="pixmap">
+           <pixmap resource="ressources.qrc">:/icone-area.png</pixmap>
+          </property>
+         </widget>
+        </item>
        </layout>
       </item>
      </layout>
