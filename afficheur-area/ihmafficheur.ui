@@ -574,6 +574,9 @@
          <layout class="QHBoxLayout" name="layoutHautCentral">
           <item>
            <widget class="QLabel" name="clubA">
+            <property name="frameShape">
+             <enum>QFrame::Box</enum>
+            </property>
             <property name="text">
              <string>PPC Sorguais 1</string>
             </property>
@@ -581,6 +584,21 @@
           </item>
           <item>
            <widget class="QTextBrowser" name="versus">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::NoFrame</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Plain</enum>
+            </property>
+            <property name="lineWidth">
+             <number>0</number>
+            </property>
             <property name="html">
              <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -592,6 +610,9 @@ p, li { white-space: pre-wrap; }
           </item>
           <item>
            <widget class="QLabel" name="clubW">
+            <property name="frameShape">
+             <enum>QFrame::Box</enum>
+            </property>
             <property name="text">
              <string>PPC Sorguais 2</string>
             </property>
@@ -1915,6 +1936,19 @@ p, li { white-space: pre-wrap; }
         <item>
          <layout class="QVBoxLayout" name="layoutMilieuCadreDroit">
           <item>
+           <spacer name="verticalSpacer_26">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
            <layout class="QHBoxLayout" name="layoutSet1PartieD" stretch="0,0,0,0,0">
             <property name="sizeConstraint">
              <enum>QLayout::SetDefaultConstraint</enum>
@@ -1993,6 +2027,19 @@ p, li { white-space: pre-wrap; }
            </layout>
           </item>
           <item>
+           <spacer name="verticalSpacer_21">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
            <layout class="QHBoxLayout" name="layoutSet2PartieD">
             <item>
              <widget class="QLabel" name="scoreSet2JoueurGPartieD">
@@ -2042,6 +2089,19 @@ p, li { white-space: pre-wrap; }
              </widget>
             </item>
            </layout>
+          </item>
+          <item>
+           <spacer name="verticalSpacer_22">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
           </item>
           <item>
            <layout class="QHBoxLayout" name="layoutSet3PartieD">
@@ -2095,6 +2155,19 @@ p, li { white-space: pre-wrap; }
            </layout>
           </item>
           <item>
+           <spacer name="verticalSpacer_23">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
            <layout class="QHBoxLayout" name="layoutSet4PartieD">
             <item>
              <widget class="QLabel" name="scoreSet4JoueurGPartieD">
@@ -2144,6 +2217,19 @@ p, li { white-space: pre-wrap; }
              </widget>
             </item>
            </layout>
+          </item>
+          <item>
+           <spacer name="verticalSpacer_24">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
           </item>
           <item>
            <layout class="QHBoxLayout" name="layoutSet5PartieD">
@@ -2197,6 +2283,19 @@ p, li { white-space: pre-wrap; }
            </layout>
           </item>
          </layout>
+        </item>
+        <item>
+         <spacer name="verticalSpacer_25">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
         </item>
         <item>
          <widget class="QLabel" name="iconeArea2">
