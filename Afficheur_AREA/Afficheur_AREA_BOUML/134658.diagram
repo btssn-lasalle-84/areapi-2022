@@ -1,0 +1,88 @@
+format 224
+
+classcanvas 128002 class_ref 134658 // Joueur
+  classdiagramsettings show_members_full_definition yes show_members_visibility yes member_max_width 0 end
+  xyz 684 484 2000
+end
+classcanvas 128130 class_ref 134786 // Equipe
+  classdiagramsettings show_members_full_definition yes show_members_visibility yes member_max_width 0 end
+  xyz 328 668 2000
+end
+classcanvas 128258 class_ref 134914 // Partie
+  classdiagramsettings show_members_full_definition yes show_members_visibility yes member_max_width 0 end
+  xyzwh 276 133 2000 221 187
+end
+classcanvas 128386 class_ref 135042 // Donnee_Arbitrage
+  classdiagramsettings member_max_width 0 end
+  xyzwh 73 449 2000 147 43
+end
+classcanvas 128514 class_ref 135170 // IHM_Afficheur_AREA
+  classdiagramsettings member_max_width 0 end
+  xyz 67 570 2000
+end
+classcanvas 128770 class_ref 141698 // Tournoi
+  classdiagramsettings member_max_width 0 end
+  xyzwh 325 573 2005 95 39
+end
+classcanvas 129666 class_ref 141826 // Partie_Simple
+  classdiagramsettings member_max_width 0 end
+  xyz 226 387 2000
+end
+classcanvas 129794 class_ref 141954 // Partie_Double
+  classdiagramsettings member_max_width 0 end
+  xyz 437 390 2000
+end
+relationcanvas 129922 relation_ref 141314 // <generalisation>
+  decenter_begin 486
+  decenter_end 94
+  from ref 129666 z 2001 to ref 128258
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 130050 relation_ref 141442 // <generalisation>
+  decenter_begin 477
+  decenter_end 811
+  from ref 129794 z 2001 to ref 128258
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 130178 relation_ref 141570 // <aggregation>
+  from ref 128514 z 2006 to ref 128770
+  role_a_pos 265 570 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 130306 relation_ref 141698 // <association>
+  from ref 128386 z 2001 to ref 128514
+  no_role_a role_b_pos 156 498 3000
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 130818 relation_ref 141954 // <composition>
+  decenter_end 410
+  from ref 128770 z 2006 to ref 128130
+  role_a_pos 381 647 3000 no_role_b
+  multiplicity_a_pos 353 647 3000 no_multiplicity_b
+end
+relationcanvas 131842 relation_ref 155266 // <composition>
+  decenter_begin 94
+  from ref 128770 z 2006 to ref 129666
+  role_a_pos 297 432 3000 no_role_b
+  multiplicity_a_pos 261 432 3000 no_multiplicity_b
+end
+relationcanvas 131970 relation_ref 155394 // <composition>
+  decenter_begin 905
+  from ref 128770 z 2006 to ref 129794
+  role_a_pos 488 435 3000 no_role_b
+  multiplicity_a_pos 460 435 3000 no_multiplicity_b
+end
+relationcanvas 132610 relation_ref 162306 // <composition>
+  decenter_begin 957
+  from ref 128258 z 2001 to ref 128002
+  role_a_pos 630 471 3000 no_role_b
+  multiplicity_a_pos 654 498 3000 no_multiplicity_b
+end
+relationcanvas 132738 relation_ref 162434 // <composition>
+  from ref 128130 z 2001 to ref 128002
+  role_a_pos 665 536 3000 no_role_b
+  multiplicity_a_pos 625 563 3000 no_multiplicity_b
+end
+end
