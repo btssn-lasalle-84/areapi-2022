@@ -1,0 +1,71 @@
+format 224
+
+classcanvas 128002 class_ref 134658 // Joueur
+  classdiagramsettings member_max_width 0 end
+  xyz 671 266 2000
+end
+classcanvas 128130 class_ref 134786 // Equipe
+  classdiagramsettings member_max_width 0 end
+  xyz 509 266 2000
+end
+classcanvas 128258 class_ref 134914 // Partie
+  classdiagramsettings member_max_width 0 end
+  xyzwh 322 369 2000 95 39
+end
+classcanvas 128386 class_ref 135042 // Donnee_Arbitrage
+  classdiagramsettings member_max_width 0 end
+  xyzwh 72 137 2000 147 43
+end
+classcanvas 128514 class_ref 135170 // IHM_Afficheur_AREA
+  classdiagramsettings member_max_width 0 end
+  xyz 66 258 2000
+end
+classcanvas 128770 class_ref 141698 // Tournoi
+  classdiagramsettings member_max_width 0 end
+  xyzwh 324 261 2005 95 39
+end
+classcanvas 129666 class_ref 141826 // Partie_Simple
+  classdiagramsettings member_max_width 0 end
+  xyz 250 469 2000
+end
+classcanvas 129794 class_ref 141954 // Partie_Double
+  classdiagramsettings member_max_width 0 end
+  xyz 387 470 2000
+end
+relationcanvas 129538 relation_ref 141186 // <composition>
+  from ref 128770 z 2006 to ref 128258
+  role_a_pos 379 348 3000 no_role_b
+  multiplicity_a_pos 343 348 3000 no_multiplicity_b
+end
+relationcanvas 129922 relation_ref 141314 // <generalisation>
+  from ref 129666 z 2001 to ref 128258
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 130050 relation_ref 141442 // <generalisation>
+  from ref 129794 z 2001 to ref 128258
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 130178 relation_ref 141570 // <aggregation>
+  from ref 128514 z 2006 to ref 128770
+  role_a_pos 264 258 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 130306 relation_ref 141698 // <association>
+  from ref 128386 z 2001 to ref 128514
+  no_role_a role_b_pos 155 186 3000
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 130818 relation_ref 141954 // <composition>
+  decenter_end 410
+  from ref 128770 z 2006 to ref 128130
+  role_a_pos 490 261 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 130946 relation_ref 148482 // <composition>
+  from ref 128130 z 2001 to ref 128002
+  role_a_pos 608 265 3000 no_role_b
+  multiplicity_a_pos 652 292 3000 no_multiplicity_b
+end
+end

@@ -26,7 +26,7 @@ IHMAfficheur::IHMAfficheur(QWidget* parent) :
 
 #ifdef PLEIN_ECRAN
     showFullScreen();
-// showMaximized();
+  //showMaximized();
 #endif
 }
 
