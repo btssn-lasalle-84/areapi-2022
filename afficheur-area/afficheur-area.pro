@@ -7,10 +7,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     main.cpp \
-    ihmafficheur.cpp
+    ihmafficheur.cpp \
+    partie.cpp
 
 HEADERS += \
-    ihmafficheur.h
+    ihmafficheur.h \
+    partie.h
 
 FORMS += \
     ihmafficheur.ui
