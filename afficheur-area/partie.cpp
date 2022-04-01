@@ -1,30 +1,44 @@
 #include "partie.h"
 
-Partie::Partie() : nombreSet(0), scoreJoueurG(0), scoreJoueurD(0), setJoueurG(0), setJoueurD(0), nombreNET(0), pointConsecutif(0), joueurPointConsecutif("")
-{
+/**
+ * @file partie.cpp
+ *
+ * @brief Définition de la classe Partie
+ * @author
+ * @version 1.0
+ *
+ */
 
+Partie::Partie() :
+    nombreSet(0), scoreJoueurG(0), scoreJoueurD(0), setJoueurG(0),
+    setJoueurD(0), nombreNET(0), pointConsecutif(0), joueurPointConsecutif("")
+{
+}
+
+Partie::Partie(const Partie& partie) :
+    nombreSet(partie.nombreSet), scoreJoueurG(partie.scoreJoueurG),
+    scoreJoueurD(partie.scoreJoueurD), setJoueurG(partie.setJoueurG),
+    setJoueurD(partie.setJoueurD), nombreNET(partie.nombreNET),
+    pointConsecutif(partie.pointConsecutif),
+    joueurPointConsecutif(partie.joueurPointConsecutif)
+{
 }
 
 Partie::~Partie()
 {
 }
 
-Partie::Partie(const Partie &partie)
-{
-    *this = partie;
-}
-
-Partie & Partie::operator=(const Partie & partie)
+Partie& Partie::operator=(const Partie& partie)
 {
     if(this != &partie)
     {
-        this->nombreSet = partie.nombreSet;
-        this->scoreJoueurG = partie.scoreJoueurG;
-        this->scoreJoueurD = partie.scoreJoueurD;
-        this->setJoueurG = partie.setJoueurG;
-        this->setJoueurD = partie.setJoueurD;
-        this->nombreNET = partie.nombreNET;
-        this->pointConsecutif = partie.pointConsecutif;
+        this->nombreSet             = partie.nombreSet;
+        this->scoreJoueurG          = partie.scoreJoueurG;
+        this->scoreJoueurD          = partie.scoreJoueurD;
+        this->setJoueurG            = partie.setJoueurG;
+        this->setJoueurD            = partie.setJoueurD;
+        this->nombreNET             = partie.nombreNET;
+        this->pointConsecutif       = partie.pointConsecutif;
         this->joueurPointConsecutif = partie.joueurPointConsecutif;
     }
 
@@ -33,42 +47,54 @@ Partie & Partie::operator=(const Partie & partie)
 
 bool Partie::aGagne() const
 {
-    return true;
+    return false;
 }
 
 bool Partie::estPointConsecutif() const
 {
-    return true;
+    return false;
 }
 
 void Partie::ajouterPointJoueurG()
 {
+    ++this->scoreJoueurG;
 }
 
 void Partie::ajouterPointJoueurD()
 {
+    ++this->scoreJoueurD;
 }
 
 void Partie::gagneSetJoueurG()
 {
+    ++this->setJoueurG;
 }
 
 void Partie::gagneSetJoueurD()
 {
+    ++this->setJoueurD;
 }
 
 void Partie::ajouterNET()
 {
+    ++this->nombreNET;
 }
 
 void Partie::rajouterPointConsecutif()
 {
+    ++this->pointConsecutif;
+}
+
+unsigned int Partie::getNombreSet() const
+{
+    return this->nombreSet;
 }
 
 unsigned int Partie::getScoreJoueurG() const
 {
     return this->scoreJoueurG;
 }
+
 unsigned int Partie::getScoreJoueurD() const
 {
     return this->scoreJoueurD;
@@ -99,37 +125,42 @@ QString Partie::getJoueurPointConsecutif() const
     return this->joueurPointConsecutif;
 }
 
-void Partie::setScoreJoueurG(unsigned int &scoreJoueurG)
+void Partie::setNombreSet(const unsigned int& nombreSet)
+{
+    this->nombreSet = nombreSet;
+}
+
+void Partie::setScoreJoueurG(const unsigned int& scoreJoueurG)
 {
     this->scoreJoueurG = scoreJoueurG;
 }
 
-void Partie::setScoreJoueurD(unsigned int &scoreJoueurD)
+void Partie::setScoreJoueurD(const unsigned int& scoreJoueurD)
 {
     this->scoreJoueurD = scoreJoueurD;
 }
 
-void Partie::setSetJoueurG(unsigned int &setJoueurG)
+void Partie::setSetJoueurG(const unsigned int& setJoueurG)
 {
     this->setJoueurG = setJoueurG;
 }
 
-void Partie::setSetJoueurD(unsigned int &setJoueurD)
+void Partie::setSetJoueurD(const unsigned int& setJoueurD)
 {
     this->setJoueurD = setJoueurD;
 }
 
-void Partie::setNombreNET(unsigned int &nombreNET)
+void Partie::setNombreNET(const unsigned int& nombreNET)
 {
     this->nombreNET = nombreNET;
 }
 
-void Partie::setPointConsecutif(unsigned int &pointConsecutif)
+void Partie::setPointConsecutif(const unsigned int& pointConsecutif)
 {
     this->pointConsecutif = pointConsecutif;
 }
 
-void Partie::setJoueurPointConsecutif(QString &joueurPointConsecutif)
+void Partie::setJoueurPointConsecutif(const QString& joueurPointConsecutif)
 {
     this->joueurPointConsecutif = joueurPointConsecutif;
 }
