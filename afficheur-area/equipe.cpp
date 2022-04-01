@@ -1,20 +1,27 @@
 #include "equipe.h"
 
+/**
+ * @file equipe.cpp
+ *
+ * @brief Définition de la classe Equipe
+ * @author
+ * @version 1.0
+ *
+ */
+
 Equipe::Equipe() : nom("")
 {
+}
 
+Equipe::Equipe(const Equipe& equipe) : nom(equipe.nom)
+{
 }
 
 Equipe::~Equipe()
 {
 }
 
-Equipe::Equipe(const Equipe &equipe)
-{
-    *this = equipe;
-}
-
-Equipe & Equipe::operator=(const Equipe & equipe)
+Equipe& Equipe::operator=(const Equipe& equipe)
 {
     if(this != &equipe)
     {
@@ -29,7 +36,7 @@ QString Equipe::getNom() const
     return this->nom;
 }
 
-void Equipe::setNom(const QString &nom)
+void Equipe::setNom(const QString& nom)
 {
     this->nom = nom;
 }
