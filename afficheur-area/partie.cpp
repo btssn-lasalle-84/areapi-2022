@@ -9,6 +9,28 @@ Partie::~Partie()
 {
 }
 
+Partie::Partie(const Partie &partie)
+{
+    *this = partie;
+}
+
+Partie & Partie::operator=(const Partie & partie)
+{
+    if(this != &partie)
+    {
+        this->nombreSet = partie.nombreSet;
+        this->scoreJoueurG = partie.scoreJoueurG;
+        this->scoreJoueurD = partie.scoreJoueurD;
+        this->setJoueurG = partie.setJoueurG;
+        this->setJoueurD = partie.setJoueurD;
+        this->nombreNET = partie.nombreNET;
+        this->pointConsecutif = partie.pointConsecutif;
+        this->joueurPointConsecutif = partie.joueurPointConsecutif;
+    }
+
+    return *this;
+}
+
 bool Partie::aGagne() const
 {
     return true;
@@ -43,64 +65,71 @@ void Partie::rajouterPointConsecutif()
 {
 }
 
-unsigned int getScoreJoueurG() const
+unsigned int Partie::getScoreJoueurG() const
 {
-    return 0;
+    return this->scoreJoueurG;
 }
-unsigned int getScoreJoueurD() const
+unsigned int Partie::getScoreJoueurD() const
 {
-    return 0;
-}
-
-unsigned int getSetJoueurG() const
-{
-    return 0;
+    return this->scoreJoueurD;
 }
 
-unsigned int getSetJoueurD() const
+unsigned int Partie::getSetJoueurG() const
 {
-    return 0;
+    return this->setJoueurG;
 }
 
-unsigned int getNombreNET() const
+unsigned int Partie::getSetJoueurD() const
 {
-    return 0;
+    return this->setJoueurD;
 }
 
-unsigned int getPointConsecutif() const
+unsigned int Partie::getNombreNET() const
 {
-    return 0;
+    return this->nombreNET;
 }
 
-QString getJoueurPointConsecutif() const
+unsigned int Partie::getPointConsecutif() const
 {
-    return "";
+    return this->pointConsecutif;
 }
 
-void setScoreJoueurG(unsigned int &scoreJoueurG)
+QString Partie::getJoueurPointConsecutif() const
 {
+    return this->joueurPointConsecutif;
 }
 
-void setScoreJoueurD(unsigned int &scoreJoueurD)
+void Partie::setScoreJoueurG(unsigned int &scoreJoueurG)
 {
+    this->scoreJoueurG = scoreJoueurG;
 }
 
-void setSetJoueurG(unsigned int &setJoueurG)
+void Partie::setScoreJoueurD(unsigned int &scoreJoueurD)
 {
+    this->scoreJoueurD = scoreJoueurD;
 }
 
-void setSetJoueurD(unsigned int &setJoueurD)
+void Partie::setSetJoueurG(unsigned int &setJoueurG)
 {
+    this->setJoueurG = setJoueurG;
 }
 
-void setNombreNET(unsigned int &nombreNET)
+void Partie::setSetJoueurD(unsigned int &setJoueurD)
 {
+    this->setJoueurD = setJoueurD;
 }
 
-void setPointConsecutif(unsigned int &pointConsecutif)
+void Partie::setNombreNET(unsigned int &nombreNET)
 {
+    this->nombreNET = nombreNET;
 }
 
-void setJoueurPointConsecutif(unsigned int &joueurPointConsecutif)
+void Partie::setPointConsecutif(unsigned int &pointConsecutif)
 {
+    this->pointConsecutif = pointConsecutif;
+}
+
+void Partie::setJoueurPointConsecutif(QString &joueurPointConsecutif)
+{
+    this->joueurPointConsecutif = joueurPointConsecutif;
 }

@@ -19,6 +19,10 @@ class Partie
     public:
         Partie();
         ~Partie();
+        Partie(const Partie &partie);
+
+        Partie & operator=(const Partie & partie);
+
         bool aGagne() const;
         bool estPointConsecutif() const;
         void ajouterPointJoueurG();
