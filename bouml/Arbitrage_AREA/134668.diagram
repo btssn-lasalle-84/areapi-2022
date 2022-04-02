@@ -1,0 +1,23 @@
+format 224
+
+classcanvas 128140 class_ref 134540 // Joueur
+  classdiagramsettings member_max_width 0 end
+  xyz 356 370 2000
+end
+classcanvas 128268 class_ref 134668 // Partie
+  classdiagramsettings member_max_width 0 end
+  xyz 529 371 2000
+end
+classcanvas 128396 class_ref 134796 // Club
+  classdiagramsettings member_max_width 0 end
+  xyz 363 285 2000
+end
+classcanvas 128524 class_ref 134924 // Rencontre
+  classdiagramsettings member_max_width 0 end
+  xyz 515 283 2000
+end
+classcanvas 128652 class_ref 135052 // Score
+  classdiagramsettings member_max_width 0 end
+  xyz 662 373 2000
+end
+end

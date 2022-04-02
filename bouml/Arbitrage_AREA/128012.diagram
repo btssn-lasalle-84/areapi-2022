@@ -1,0 +1,134 @@
+format 224
+
+fragment 128268 "alt"
+  xyzwh 260.6 119.4 1995 467 297
+  separator 5880
+end
+classinstance 129932 class_ref 128012 // Arbitre
+  name ""   xyz 407.4 63.4 2000 life_line_z 1985
+textcanvas 131852 "[Création d'une Rencontre]"
+  xyzwh 275.4 192.2 2000 108 51
+textcanvas 132364 "[Sélection d'une rencontre
+déjà existante]"
+  xyzwh 276.9 306.3 2000 108 51
+classinstance 132748 class_ref 135180 // systeme
+  name ""   xyz 627.4 71.4 2000 life_line_z 2000
+fragment 135436 "alt"
+  xyzwh 357 508.8 2000 404 279
+  separator 3033
+  separator 6664
+end
+fragment 135564 "loop"
+  xyzwh 147.3 498.5 2000 647 308
+end
+textcanvas 135692 "[Jusqu'à la fin de la partie]"
+  xyzwh 169.8 534.6 2005 184 26
+durationcanvas 136332 classinstance_ref 129932 // :Arbitre
+  xyzwh 427 451.2 1995 11 38
+end
+durationcanvas 136460 classinstance_ref 132748 // :systeme
+  xyzwh 657 451.2 2010 11 38
+end
+durationcanvas 136716 classinstance_ref 129932 // :Arbitre
+  xyzwh 427 339 1995 11 43
+end
+durationcanvas 136844 classinstance_ref 132748 // :systeme
+  xyzwh 657 334.8 2010 11 34
+end
+durationcanvas 137100 classinstance_ref 129932 // :Arbitre
+  xyzwh 427 541 1995 11 40
+end
+durationcanvas 137228 classinstance_ref 132748 // :systeme
+  xyzwh 657 542.2 2010 11 25
+end
+durationcanvas 137484 classinstance_ref 129932 // :Arbitre
+  xyzwh 427 619.6 1995 11 56
+end
+durationcanvas 137612 classinstance_ref 132748 // :systeme
+  xyzwh 657 620.6 2010 11 54
+end
+durationcanvas 137868 classinstance_ref 129932 // :Arbitre
+  xyzwh 427 730.2 1995 11 40
+end
+durationcanvas 137996 classinstance_ref 132748 // :systeme
+  xyzwh 657 730.6 2010 11 25
+end
+durationcanvas 138252 classinstance_ref 129932 // :Arbitre
+  xyzwh 427 831 1995 11 40
+end
+durationcanvas 138380 classinstance_ref 132748 // :systeme
+  xyzwh 657 831.4 2010 11 25
+end
+durationcanvas 138636 classinstance_ref 129932 // :Arbitre
+  xyzwh 427 143.7 1995 11 40
+end
+durationcanvas 138764 classinstance_ref 132748 // :systeme
+  xyzwh 657 145.3 2010 11 25
+end
+durationcanvas 139020 classinstance_ref 129932 // :Arbitre
+  xyzwh 427 193.7 1995 11 40
+end
+durationcanvas 139148 classinstance_ref 132748 // :systeme
+  xyzwh 657 195.3 2010 11 25
+end
+durationcanvas 139404 classinstance_ref 129932 // :Arbitre
+  xyzwh 427 242.8 1995 11 40
+end
+durationcanvas 139532 classinstance_ref 132748 // :systeme
+  xyzwh 657 244.4 2010 11 25
+end
+msg 136588 synchronous
+  from durationcanvas_ref 136332
+  to durationcanvas_ref 136460
+  yz 452 2015 explicitmsg "demarrerPartie()"
+  show_full_operations_definition default show_class_of_operation default drawing_language default show_context_mode default
+  label_xy 498 435
+msg 136972 synchronous
+  from durationcanvas_ref 136716
+  to durationcanvas_ref 136844
+  yz 341 2015 explicitmsg "choisirRencontre()"
+  show_full_operations_definition default show_class_of_operation default drawing_language default show_context_mode default
+  label_xy 488 324
+msg 137356 synchronous
+  from durationcanvas_ref 137100
+  to durationcanvas_ref 137228
+  yz 543 2015 explicitmsg "ajouterPoint()"
+  show_full_operations_definition default show_class_of_operation default drawing_language default show_context_mode default
+  label_xy 504 526
+msg 137740 synchronous
+  from durationcanvas_ref 137484
+  to durationcanvas_ref 137612
+  yz 624 2015 explicitmsg "lancerTempsMort()"
+  show_full_operations_definition default show_class_of_operation default drawing_language default show_context_mode default
+  label_xy 486 607
+msg 138124 synchronous
+  from durationcanvas_ref 137868
+  to durationcanvas_ref 137996
+  yz 731 2015 explicitmsg "FinirPartie()"
+  show_full_operations_definition default show_class_of_operation default drawing_language default show_context_mode default
+  label_xy 511 714
+msg 138508 synchronous
+  from durationcanvas_ref 138252
+  to durationcanvas_ref 138380
+  yz 832 2015 explicitmsg "envoyerScore()"
+  show_full_operations_definition default show_class_of_operation default drawing_language default show_context_mode default
+  label_xy 496 815
+msg 138892 synchronous
+  from durationcanvas_ref 138636
+  to durationcanvas_ref 138764
+  yz 145 2015 explicitmsg "creerRencontre()"
+  show_full_operations_definition default show_class_of_operation default drawing_language default show_context_mode default
+  label_xy 492 129
+msg 139276 synchronous
+  from durationcanvas_ref 139020
+  to durationcanvas_ref 139148
+  yz 195 2015 explicitmsg "choisirClub()"
+  show_full_operations_definition default show_class_of_operation default drawing_language default show_context_mode default
+  label_xy 506 179
+msg 139660 synchronous
+  from durationcanvas_ref 139404
+  to durationcanvas_ref 139532
+  yz 244 2015 explicitmsg "choisirJoueur()"
+  show_full_operations_definition default show_class_of_operation default drawing_language default show_context_mode default
+  label_xy 499 227
+end
