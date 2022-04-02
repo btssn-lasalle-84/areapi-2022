@@ -10,8 +10,7 @@
 *.dll
 *.dylib
 
-#bouml
-
+# BOUML
 *.lock
 idl_includes
 *.d

@@ -16,7 +16,7 @@
  * @def PLEIN_ECRAN
  * @brief Pour le mode kiosque Télévision
  */
-#define PLEIN_ECRAN
+//#define PLEIN_ECRAN
 
 QT_BEGIN_NAMESPACE
 namespace Ui

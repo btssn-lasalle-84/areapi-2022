@@ -6,11 +6,17 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    main.cpp \
-    ihmafficheur.cpp
+    joueur.cpp \
+    equipe.cpp \
+    partie.cpp \    
+    ihmafficheur.cpp \
+    main.cpp
 
 HEADERS += \
-    ihmafficheur.h
+    joueur.h \
+    equipe.h \
+    partie.h \
+    ihmafficheur.h \
 
 FORMS += \
     ihmafficheur.ui
