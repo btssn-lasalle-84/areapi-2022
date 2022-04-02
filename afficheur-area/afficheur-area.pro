@@ -7,12 +7,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     joueur.cpp \
-    partie.cpp \
+    equipe.cpp \
+    partie.cpp \    
     ihmafficheur.cpp \
     main.cpp
 
 HEADERS += \
     joueur.h \
+    equipe.h \
     partie.h \
     ihmafficheur.h \
 
