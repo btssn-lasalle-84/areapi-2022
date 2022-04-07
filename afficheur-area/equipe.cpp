@@ -9,7 +9,7 @@
  *
  */
 
-Equipe::Equipe() : nom("")
+Equipe::Equipe() : nom(""), joueurs()
 {
 }
 
@@ -26,6 +26,7 @@ Equipe& Equipe::operator=(const Equipe& equipe)
     if(this != &equipe)
     {
         this->nom = equipe.nom;
+        this->joueurs = equipe.joueurs;
     }
 
     return *this;

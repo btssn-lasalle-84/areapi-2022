@@ -11,6 +11,8 @@
  */
 
 #include <QString>
+#include <QVector>
+#include "joueur.h"
 
 /**
  * @class Partie
@@ -28,6 +30,7 @@ class Partie
     unsigned int nombreNET;             //!<
     unsigned int pointConsecutif;       //!<
     QString      joueurPointConsecutif; //!<
+    QVector<Joueur> joueurs;
 
   public:
     Partie();

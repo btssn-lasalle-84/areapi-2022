@@ -11,6 +11,8 @@
  */
 
 #include <QString>
+#include <QVector>
+#include "joueur.h"
 
 /**
  * @class Equipe
@@ -21,6 +23,7 @@ class Equipe
 {
   private:
     QString nom;
+    QVector<Joueur> joueurs;
 
   public:
     Equipe();

@@ -8,7 +8,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     joueur.cpp \
     equipe.cpp \
-    partie.cpp \    
+    partie.cpp \
+    rencontre.cpp \
     ihmafficheur.cpp \
     main.cpp
 
@@ -17,6 +18,7 @@ HEADERS += \
     equipe.h \
     partie.h \
     ihmafficheur.h \
+    rencontre.h \
 
 FORMS += \
     ihmafficheur.ui
