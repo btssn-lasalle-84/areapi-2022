@@ -22,11 +22,12 @@
 class Equipe
 {
   private:
-    QString nom;
+    QString         nom;
     QVector<Joueur> joueurs;
 
   public:
     Equipe();
+    Equipe(QString nom);
     Equipe(const Equipe& equipe);
     ~Equipe();
 
@@ -34,6 +35,12 @@ class Equipe
 
     QString getNom() const;
     void    setNom(const QString& nom);
+    void    ajouterJoueur(QString nom,
+                          QString prenom,
+                          QString lettre,
+                          int     classement);
+    Joueur* getJoueur(QString lettre);
+    int     getNbJoueurs() const;
 };
 
 #endif // EQUIPE_H

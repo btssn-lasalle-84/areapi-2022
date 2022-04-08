@@ -1,4 +1,5 @@
 #include "partie.h"
+#include "joueur.h"
 
 /**
  * @file partie.cpp
@@ -11,7 +12,8 @@
 
 Partie::Partie() :
     estDouble(0), nombreSet(0), scoreJoueurG(0), scoreJoueurD(0), setJoueurG(0),
-    setJoueurD(0), nombreNET(0), pointConsecutif(0), joueurPointConsecutif(""), joueurs()
+    setJoueurD(0), nombreNET(0), pointConsecutif(0), joueurPointConsecutif(""),
+    joueurs()
 {
 }
 
@@ -131,7 +133,7 @@ QString Partie::getJoueurPointConsecutif() const
     return this->joueurPointConsecutif;
 }
 
-void Partie::setEstDouble(const bool &estDouble)
+void Partie::setEstDouble(const bool& estDouble)
 {
     this->estDouble = estDouble;
 }

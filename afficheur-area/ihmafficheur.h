@@ -18,12 +18,16 @@
  */
 //#define PLEIN_ECRAN
 
-QT_BEGIN_NAMESPACE
+#define TEST_RELATIONS
+
 namespace Ui
 {
 class IHMAfficheur;
 }
-QT_END_NAMESPACE
+
+#ifdef TEST_RELATIONS
+class Rencontre;
+#endif
 
 /**
  * @class IHMAfficheur
@@ -40,6 +44,9 @@ class IHMAfficheur : public QMainWindow
 
   private:
     Ui::IHMAfficheur* ui; //!< la fenêtre graphique associée à cette classe
+#ifdef TEST_RELATIONS
+    Rencontre* rencontre;
+#endif
 };
 
 #endif // IHMAFFICHEUR_H
