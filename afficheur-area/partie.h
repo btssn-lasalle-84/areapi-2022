@@ -22,6 +22,7 @@
 class Partie
 {
   private:
+    bool         estDouble;             //!<
     unsigned int nombreSet;             //!<
     unsigned int scoreJoueurG;          //!<
     unsigned int scoreJoueurD;          //!<
@@ -48,6 +49,7 @@ class Partie
     void ajouterNET();
     void rajouterPointConsecutif();
 
+    bool         getEstDouble() const;
     unsigned int getNombreSet() const;
     unsigned int getScoreJoueurG() const;
     unsigned int getScoreJoueurD() const;
@@ -57,6 +59,7 @@ class Partie
     unsigned int getPointConsecutif() const;
     QString      getJoueurPointConsecutif() const;
 
+    void setEstDouble(const bool &estDouble);
     void setNombreSet(const unsigned int& nombreSet);
     void setScoreJoueurG(const unsigned int& scoreJoueurG);
     void setScoreJoueurD(const unsigned int& scoreJoueurD);

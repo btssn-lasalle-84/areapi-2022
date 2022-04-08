@@ -10,7 +10,7 @@
  */
 
 Partie::Partie() :
-    nombreSet(0), scoreJoueurG(0), scoreJoueurD(0), setJoueurG(0),
+    estDouble(0), nombreSet(0), scoreJoueurG(0), scoreJoueurD(0), setJoueurG(0),
     setJoueurD(0), nombreNET(0), pointConsecutif(0), joueurPointConsecutif(""), joueurs()
 {
 }
@@ -86,6 +86,11 @@ void Partie::rajouterPointConsecutif()
     ++this->pointConsecutif;
 }
 
+bool Partie::getEstDouble() const
+{
+    return this->estDouble;
+}
+
 unsigned int Partie::getNombreSet() const
 {
     return this->nombreSet;
@@ -124,6 +129,11 @@ unsigned int Partie::getPointConsecutif() const
 QString Partie::getJoueurPointConsecutif() const
 {
     return this->joueurPointConsecutif;
+}
+
+void Partie::setEstDouble(const bool &estDouble)
+{
+    this->estDouble = estDouble;
 }
 
 void Partie::setNombreSet(const unsigned int& nombreSet)
