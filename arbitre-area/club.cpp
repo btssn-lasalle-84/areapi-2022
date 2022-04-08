@@ -4,7 +4,13 @@ Club::Club() : idClub(1), nomClub("")
 {
 
 }
+
 Club(int idClub, QString nomClub) : idClub(idClub), nomClub(nomClub)
+{
+
+}
+
+~Club()
 {
 
 }
@@ -23,6 +29,7 @@ void setIdClub(int idClub)
 {
     this->idClub = idClub;
 }
+
 void setnomClub(QString nomClub)
 {
     this->nomClub = nomClub;
