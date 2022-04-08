@@ -15,6 +15,10 @@ class Rencontre
 
     public:
         Rencontre();
+        Rencontre(const Rencontre& rencontre);
+        ~Rencontre();
+
+        Rencontre& operator=(const Rencontre& rencontre);
 };
 
 #endif // RENCONTRE_H
