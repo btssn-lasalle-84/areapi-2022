@@ -5,32 +5,32 @@ Club::Club() : idClub(1), nomClub("")
 
 }
 
-Club(int idClub, QString nomClub) : idClub(idClub), nomClub(nomClub)
+Club::Club(int idClub, QString nomClub) : idClub(idClub), nomClub(nomClub)
 {
 
 }
 
-~Club()
+Club::~Club()
 {
 
 }
 
-int getIdClub()
+int Club::getIdClub()
 {
     return this->idClub;
 }
 
-QString nomClub()
+QString Club::getNomClub()
 {
     return this->nomClub;
 }
 
-void setIdClub(int idClub)
+void Club::setIdClub(int idClub)
 {
     this->idClub = idClub;
 }
 
-void setnomClub(QString nomClub)
+void Club::setnomClub(QString nomClub)
 {
     this->nomClub = nomClub;
 }

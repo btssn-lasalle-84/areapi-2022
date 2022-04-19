@@ -14,7 +14,7 @@ public:
     Club(int idClub, QString nomClub);
     ~Club();
     int getIdClub();
-    QString nomClub();
+    QString getNomClub();
     void setIdClub(int idClub);
     void setnomClub(QString nomClub);
 };
