@@ -7,11 +7,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     basededonnees.cpp \
+    club.cpp \
     main.cpp \
     ihmarbitre.cpp
 
 HEADERS += \
     basededonnees.h \
+    club.h \
     ihmarbitre.h
 
 FORMS += \
