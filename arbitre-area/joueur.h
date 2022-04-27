@@ -14,6 +14,7 @@ private:
 public:
     Joueur();
     Joueur(int numeroLicence, int idClub, QString nom, QString prenom);
+    ~Joueur();
     int getNumeroLicence() const;
     int getIdClub() const;
     QString getNom() const;
