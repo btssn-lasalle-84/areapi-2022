@@ -16,12 +16,12 @@ public:
     Rencontre();
     Rencontre(int idRencontre, int idClubA, int idClubB, bool estFinie, QString horodatage);
     ~Rencontre();
-    int getIdRencontre();
-    int getIdClubA();
-    int getIdClubB();
-    bool getFinie();
+    int getIdRencontre() const;
+    int getIdClubA() const;
+    int getIdClubB() const;
+    bool getFinie() const;
     void setFinie(bool estFinie);
-    QString getHorodatage();
+    QString getHorodatage() const;
     void setHorodatage(QString horodatage);
 };
 

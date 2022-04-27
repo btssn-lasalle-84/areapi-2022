@@ -15,22 +15,22 @@ Rencontre::~Rencontre()
 
 }
 
-int Rencontre::getIdRencontre()
+int Rencontre::getIdRencontre() const
 {
     return this->idRencontre;
 }
 
-int Rencontre::getIdClubA()
+int Rencontre::getIdClubA() const
 {
     return this->idClubA;
 }
 
-int Rencontre::getIdClubB()
+int Rencontre::getIdClubB() const
 {
     return this->idClubB;
 }
 
-bool Rencontre::getFinie()
+bool Rencontre::getFinie() const
 {
     return this->estFinie;
 }
@@ -40,7 +40,7 @@ void Rencontre::setFinie(bool estFinie)
     this->estFinie = estFinie;
 }
 
-QString Rencontre::getHorodatage()
+QString Rencontre::getHorodatage() const
 {
     return this->horodatage;
 }
