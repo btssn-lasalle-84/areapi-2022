@@ -1,8 +1,8 @@
 #include "receptiontrame.h"
 
-ReceptionTrame::ReceptionTrame() :
-                trame(""), server(QBluetoothServiceInfo::RfcommProtocol), socket(),
-                appareilLocal(), nomAppareilLocal("")
+ReceptionTrame::ReceptionTrame(QObject *parent) :
+            QObject(parent), trame(""), serveur(NULL),
+            socket(),peripheriqueLocal(), nomPeripheriqueLocal("")
 {
 }
 
@@ -12,15 +12,20 @@ ReceptionTrame::~ReceptionTrame()
 
 void ReceptionTrame::connecterBluetooth()
 {
-    if(appareilLocal.isValid())
+    if(peripheriqueLocal.isValid())
     {
-        this->appareilLocal.powerOn();
-        this->nomAppareilLocal = this->appareilLocal.name();
+        qDebug() << peripheriqueLocal.hostMode();
+
+        this->peripheriqueLocal.powerOn();
+        this->nomPeripheriqueLocal = this->peripheriqueLocal.name();
+        this->adressePeripheriqueLocal = this->peripheriqueLocal.address().toString();
         QList<QBluetoothAddress> appareilconnectes;
-        appareilconnectes = this->appareilLocal.connectedDevices();
+        appareilconnectes = this->peripheriqueLocal.connectedDevices();
+        peripheriqueLocal.setHostMode(QBluetoothLocalDevice::HostDiscoverable);
     }
     else
     {
+
     }
 }
 
@@ -40,9 +45,20 @@ bool ReceptionTrame::estConnecte()
 
 void ReceptionTrame::demarrerServeur()
 {
+    if(!serveur)
+    {
+        serveur = new QBluetoothServer(QBluetoothServiceInfo::RfcommProtocol, this);
+        connect(serveur, SIGNAL(newConnection()), this, SLOT(nouveauClient()));
+        QBluetoothUuid uuid = QBluetoothUuid(serviceUuid);
+        serviceInfo = serveur->listen(uuid, serviceNom);
+    }
 }
 
 
 void ReceptionTrame::arreterServeur()
+{
+}
+
+void ReceptionTrame::nouveauClient()
 {
 }

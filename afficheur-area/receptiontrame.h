@@ -12,6 +12,8 @@
 #include <QBluetoothSocket>
 #include <QBluetoothServer>
 #include <QBluetoothLocalDevice>
+#include <QBluetoothServiceInfo>
+#include <QBluetoothDeviceInfo>
 
 /**
  * @class ReceptionTrame
@@ -19,17 +21,22 @@
  * @details gère la connexion avec le module d'arbitrage et les trames reçus
  */
 
-class ReceptionTrame
+static const QString serviceUuid(QStringLiteral("00001101-0000-1000-8000-00805F9B34FB"));
+static const QString serviceNom(QStringLiteral("AREA-Afficheur"));
+
+class ReceptionTrame : public QObject
 {
     private:
         QString trame;
-        QBluetoothServer server;
+        QBluetoothServer *serveur;
         QBluetoothSocket socket;
-        QBluetoothLocalDevice appareilLocal;
-        QString nomAppareilLocal;
+        QBluetoothLocalDevice peripheriqueLocal;
+        QString nomPeripheriqueLocal;
+        QString adressePeripheriqueLocal;
+        QBluetoothServiceInfo serviceInfo;
 
     public:
-        ReceptionTrame();
+        ReceptionTrame(QObject *parent = 0);
         ~ReceptionTrame();
         void connecterBluetooth();
         void rechercherPeripheriqueBluetooth();
@@ -37,6 +44,11 @@ class ReceptionTrame
         bool estConnecte();
         void demarrerServeur();
         void arreterServeur();
+
+    private slots:
+        void nouveauClient();
+
+    signals:
 
 };
 
