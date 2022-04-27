@@ -27,13 +27,14 @@ class Joueur
 
   public:
     Joueur();
+    Joueur(QString nom, QString prenom, QString lettre, int classement);
     Joueur(const Joueur& joueur);
     ~Joueur();
 
     Joueur& operator=(const Joueur& joueur);
 
     QString getNom() const;
-    QString getprenom() const;
+    QString getPrenom() const;
     QString getLettre() const;
     int     getClassement() const;
 

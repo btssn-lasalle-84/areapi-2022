@@ -1,4 +1,5 @@
 #include "partie.h"
+#include "joueur.h"
 
 /**
  * @file partie.cpp
@@ -10,8 +11,9 @@
  */
 
 Partie::Partie() :
-    nombreSet(0), scoreJoueurG(0), scoreJoueurD(0), setJoueurG(0),
-    setJoueurD(0), nombreNET(0), pointConsecutif(0), joueurPointConsecutif("")
+    estDouble(0), nombreSet(0), scoreJoueurG(0), scoreJoueurD(0), setJoueurG(0),
+    setJoueurD(0), nombreNET(0), pointConsecutif(0), joueurPointConsecutif(""),
+    joueurs()
 {
 }
 
@@ -20,7 +22,7 @@ Partie::Partie(const Partie& partie) :
     scoreJoueurD(partie.scoreJoueurD), setJoueurG(partie.setJoueurG),
     setJoueurD(partie.setJoueurD), nombreNET(partie.nombreNET),
     pointConsecutif(partie.pointConsecutif),
-    joueurPointConsecutif(partie.joueurPointConsecutif)
+    joueurPointConsecutif(partie.joueurPointConsecutif), joueurs(partie.joueurs)
 {
 }
 
@@ -40,6 +42,7 @@ Partie& Partie::operator=(const Partie& partie)
         this->nombreNET             = partie.nombreNET;
         this->pointConsecutif       = partie.pointConsecutif;
         this->joueurPointConsecutif = partie.joueurPointConsecutif;
+        this->joueurs               = partie.joueurs;
     }
 
     return *this;
@@ -85,6 +88,11 @@ void Partie::rajouterPointConsecutif()
     ++this->pointConsecutif;
 }
 
+bool Partie::getEstDouble() const
+{
+    return this->estDouble;
+}
+
 unsigned int Partie::getNombreSet() const
 {
     return this->nombreSet;
@@ -123,6 +131,11 @@ unsigned int Partie::getPointConsecutif() const
 QString Partie::getJoueurPointConsecutif() const
 {
     return this->joueurPointConsecutif;
+}
+
+void Partie::setEstDouble(const bool& estDouble)
+{
+    this->estDouble = estDouble;
 }
 
 void Partie::setNombreSet(const unsigned int& nombreSet)

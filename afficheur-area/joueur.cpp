@@ -1,4 +1,5 @@
 #include "joueur.h"
+#include <QDebug>
 
 /**
  * @file joueur.cpp
@@ -11,16 +12,25 @@
 
 Joueur::Joueur() : nom(""), prenom(""), lettre(""), classement(0)
 {
+    qDebug() << Q_FUNC_INFO;
+}
+
+Joueur::Joueur(QString nom, QString prenom, QString lettre, int classement) :
+    nom(nom), prenom(prenom), lettre(lettre), classement(classement)
+{
+    qDebug() << Q_FUNC_INFO << prenom << nom << lettre << classement;
 }
 
 Joueur::Joueur(const Joueur& joueur) :
     nom(joueur.nom), prenom(joueur.prenom), lettre(joueur.lettre),
     classement(joueur.classement)
 {
+    qDebug() << Q_FUNC_INFO << prenom << nom << lettre << classement;
 }
 
 Joueur::~Joueur()
 {
+    qDebug() << Q_FUNC_INFO;
 }
 
 Joueur& Joueur::operator=(const Joueur& joueur)
@@ -31,6 +41,7 @@ Joueur& Joueur::operator=(const Joueur& joueur)
         this->prenom     = joueur.prenom;
         this->lettre     = joueur.lettre;
         this->classement = joueur.classement;
+        qDebug() << Q_FUNC_INFO << prenom << nom << lettre << classement;
     }
 
     return *this;
@@ -41,7 +52,7 @@ QString Joueur::getNom() const
     return this->nom;
 }
 
-QString Joueur::getprenom() const
+QString Joueur::getPrenom() const
 {
     return this->prenom;
 }
