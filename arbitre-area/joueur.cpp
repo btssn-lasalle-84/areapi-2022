@@ -1,41 +1,46 @@
 #include "joueur.h"
 
-joueur::joueur() : nbLicence(0), idClub(0), nom(""), prenom("")
+Joueur::Joueur() : numeroLicence(0), idClub(0), nom(""), prenom("")
 {
 
 }
 
-joueur::joueur(int nbLicence, int idClub, QString nom, QString prenom) : nbLicence(nbLicence), idClub(idClub), nom(nom), prenom(prenom)
+Joueur::Joueur(int numeroLicence, int idClub, QString nom, QString prenom) : numeroLicence(numeroLicence), idClub(idClub), nom(nom), prenom(prenom)
 {
 
 }
 
-int joueur::getNbLicence() const
+Joueur::~Joueur()
 {
-    return this->nbLicence;
+
 }
 
-int joueur::getIdClub() const
+int Joueur::getNumeroLicence() const
+{
+    return this->numeroLicence;
+}
+
+int Joueur::getIdClub() const
 {
     return this->idClub;
 }
 
-QString joueur::getNom() const
+QString Joueur::getNom() const
 {
     return this->nom;
 }
 
-QString joueur::getPrenom() const
+QString Joueur::getPrenom() const
 {
     return this->prenom;
 }
 
-void joueur::setNom(QString nom)
+void Joueur::setNom(QString nom)
 {
     this->nom = nom;
 }
 
-void joueur::setPrenom(QString prenom)
+void Joueur::setPrenom(QString prenom)
 {
     this->prenom = prenom;
 }

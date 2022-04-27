@@ -1,20 +1,20 @@
 #ifndef JOUEUR_H
 #define JOUEUR_H
 
-#include<QString>
+#include <QString>
 
-class joueur
+class Joueur
 {
 private:
-    int nbLicence;
+    int numeroLicence;
     int idClub;
     QString nom;
     QString prenom;
 
 public:
-    joueur();
-    joueur(int nbLicence, int idClub, QString nom, QString prenom);
-    int getNbLicence() const;
+    Joueur();
+    Joueur(int numeroLicence, int idClub, QString nom, QString prenom);
+    int getNumeroLicence() const;
     int getIdClub() const;
     QString getNom() const;
     QString getPrenom() const;
