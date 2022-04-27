@@ -9,12 +9,14 @@ SOURCES += \
     basededonnees.cpp \
     club.cpp \
     main.cpp \
-    ihmarbitre.cpp
+    ihmarbitre.cpp \
+    rencontre.cpp
 
 HEADERS += \
     basededonnees.h \
     club.h \
-    ihmarbitre.h
+    ihmarbitre.h \
+    rencontre.h
 
 FORMS += \
     ihmarbitre.ui
