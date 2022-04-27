@@ -8,6 +8,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     basededonnees.cpp \
     club.cpp \
+    joueur.cpp \
     main.cpp \
     ihmarbitre.cpp \
     rencontre.cpp
@@ -16,6 +17,7 @@ HEADERS += \
     basededonnees.h \
     club.h \
     ihmarbitre.h \
+    joueur.h \
     rencontre.h
 
 FORMS += \
