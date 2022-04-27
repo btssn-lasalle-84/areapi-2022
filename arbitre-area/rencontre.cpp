@@ -1,6 +1,6 @@
 #include "rencontre.h"
 
-Rencontre::Rencontre() : idRencontre(0), idClubA(0), idClubB(0), estFinie(true), horodatage("20221223 00:00:00.00")
+Rencontre::Rencontre() : idRencontre(0), idClubA(0), idClubB(1), estFinie(true), horodatage("20221223 00:00:00.00")
 {
 
 }
