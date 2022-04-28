@@ -24,12 +24,14 @@
  */
 #define PLEIN_ECRAN
 
-QT_BEGIN_NAMESPACE
+//QT_BEGIN_NAMESPACE
 namespace Ui
 {
 class IHMArbitre;
 }
-QT_END_NAMESPACE
+//QT_END_NAMESPACE
+
+class CommunicationBluetooth;
 
 /**
  * @class IHMArbitre
@@ -46,6 +48,7 @@ class IHMArbitre : public QMainWindow
 
   private:
     Ui::IHMArbitre* ui; //!< la fenêtre graphique associée à cette classe
+    CommunicationBluetooth *communicationBluetooth;
 
     /**
      * @enum Ecran

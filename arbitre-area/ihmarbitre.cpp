@@ -1,5 +1,6 @@
 #include "ihmarbitre.h"
 #include "ui_ihmarbitre.h"
+#include "communicationbluetooth.h"
 #include <QDebug>
 
 /**
@@ -27,6 +28,8 @@ IHMArbitre::IHMArbitre(QWidget* parent) :
 #ifdef TEST_IHMARBITRE
     creerRaccourcisClavier();
 #endif
+
+    communicationBluetooth = new CommunicationBluetooth(this);
 
     afficherEcran(IHMArbitre::AccueilRencontre);
 
