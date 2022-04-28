@@ -24,6 +24,7 @@ class Rencontre
   private:
     QVector<Equipe*> equipes;
     QVector<Partie>  parties;
+    ReceptionTrame*  receptionTrame;
 
   public:
     Rencontre();
@@ -32,6 +33,10 @@ class Rencontre
 
     Equipe* getEquipeA() const;
     Equipe* getEquipeW() const;
+
+    QVector<Partie> getParties() const;
+
+    void    ajouterPartieSimple();
 
     enum NomEquipe
     {

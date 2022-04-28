@@ -14,6 +14,7 @@
 #include <QBluetoothLocalDevice>
 #include <QBluetoothServiceInfo>
 #include <QBluetoothDeviceInfo>
+#include <QByteArray>
 
 /**
  * @class ReceptionTrame
@@ -26,27 +27,35 @@ static const QString serviceNom(QStringLiteral("AREA-Afficheur"));
 
 class ReceptionTrame : public QObject
 {
+    Q_OBJECT
     private:
-        QString trame;
+        QByteArray trame;
         QBluetoothServer *serveur;
-        QBluetoothSocket socket;
+        QBluetoothSocket *socket;
         QBluetoothLocalDevice peripheriqueLocal;
         QString nomPeripheriqueLocal;
         QString adressePeripheriqueLocal;
         QBluetoothServiceInfo serviceInfo;
+        bool connecte;
 
     public:
         ReceptionTrame(QObject *parent = 0);
         ~ReceptionTrame();
         void connecterBluetooth();
-        void rechercherPeripheriqueBluetooth();
         void deconnecterBluetooth();
         bool estConnecte();
         void demarrerServeur();
         void arreterServeur();
+        QString getNomPeripheriqueLocal();
+        QString getAdressePeripheriqueLocal();
 
-    private slots:
-        void nouveauClient();
+    public slots:
+        void gererClient();
+        void deconnecterSocket();
+        void lireSocket();
+        void renvoyerErreurSocket(QBluetoothSocket::SocketError erreur);
+        void changerEtatSocket(QBluetoothSocket::SocketState etat);
+        void renvoieBluetoothErreur(QBluetoothLocalDevice::Error erreur);
 
     signals:
 

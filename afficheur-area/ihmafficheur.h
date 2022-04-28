@@ -18,7 +18,8 @@
  */
 //#define PLEIN_ECRAN
 
-#define TEST_RELATIONS
+//#define TEST_RELATIONS
+#define TEST_BLUETOOTH
 
 namespace Ui
 {
@@ -26,7 +27,11 @@ class IHMAfficheur;
 }
 
 #ifdef TEST_RELATIONS
-class Rencontre;
+    class Rencontre;
+#endif
+
+#ifdef TEST_BLUETOOTH
+    class Rencontre;
 #endif
 
 /**
@@ -45,6 +50,10 @@ class IHMAfficheur : public QMainWindow
   private:
     Ui::IHMAfficheur* ui; //!< la fenêtre graphique associée à cette classe
 #ifdef TEST_RELATIONS
+    Rencontre* rencontre;
+#endif
+
+#ifdef TEST_BLUETOOTH
     Rencontre* rencontre;
 #endif
 };

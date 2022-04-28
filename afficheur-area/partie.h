@@ -13,6 +13,7 @@
 #include <QString>
 #include <QVector>
 
+class ReceptionTrame;
 class Joueur;
 
 /**
@@ -32,10 +33,12 @@ class Partie
     unsigned int     nombreNET;             //!<
     unsigned int     pointConsecutif;       //!<
     QString          joueurPointConsecutif; //!<
-    QVector<Joueur*> joueurs;
+    QVector<Joueur*> joueurs;               //!<
+
 
   public:
     Partie();
+    Partie(bool estDouble);
     Partie(const Partie& partie);
     ~Partie();
     Partie& operator=(const Partie& partie);
@@ -49,15 +52,15 @@ class Partie
     void ajouterNET();
     void rajouterPointConsecutif();
 
-    bool         getEstDouble() const;
-    unsigned int getNombreSet() const;
-    unsigned int getScoreJoueurG() const;
-    unsigned int getScoreJoueurD() const;
-    unsigned int getSetJoueurG() const;
-    unsigned int getSetJoueurD() const;
-    unsigned int getNombreNET() const;
-    unsigned int getPointConsecutif() const;
-    QString      getJoueurPointConsecutif() const;
+    bool           getEstDouble() const;
+    unsigned int   getNombreSet() const;
+    unsigned int   getScoreJoueurG() const;
+    unsigned int   getScoreJoueurD() const;
+    unsigned int   getSetJoueurG() const;
+    unsigned int   getSetJoueurD() const;
+    unsigned int   getNombreNET() const;
+    unsigned int   getPointConsecutif() const;
+    QString        getJoueurPointConsecutif() const;
 
     void setEstDouble(const bool& estDouble);
     void setNombreSet(const unsigned int& nombreSet);

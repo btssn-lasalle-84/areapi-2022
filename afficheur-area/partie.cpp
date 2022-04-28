@@ -1,5 +1,6 @@
 #include "partie.h"
 #include "joueur.h"
+#include "receptiontrame.h"
 
 /**
  * @file partie.cpp
@@ -12,6 +13,13 @@
 
 Partie::Partie() :
     estDouble(0), nombreSet(0), scoreJoueurG(0), scoreJoueurD(0), setJoueurG(0),
+    setJoueurD(0), nombreNET(0), pointConsecutif(0), joueurPointConsecutif(""),
+    joueurs()
+{
+}
+
+Partie::Partie(bool estDouble) :
+    estDouble(estDouble), nombreSet(0), scoreJoueurG(0), scoreJoueurD(0), setJoueurG(0),
     setJoueurD(0), nombreNET(0), pointConsecutif(0), joueurPointConsecutif(""),
     joueurs()
 {
@@ -177,3 +185,4 @@ void Partie::setJoueurPointConsecutif(const QString& joueurPointConsecutif)
 {
     this->joueurPointConsecutif = joueurPointConsecutif;
 }
+

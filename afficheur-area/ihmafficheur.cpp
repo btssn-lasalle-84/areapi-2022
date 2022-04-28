@@ -3,9 +3,14 @@
 #include <QDebug>
 
 #ifdef TEST_RELATIONS
-#include "rencontre.h"
-#include "equipe.h"
+    #include "rencontre.h"
+    #include "equipe.h"
 #endif
+
+#ifdef TEST_BLUETOOTH
+    #include "rencontre.h"
+#endif
+
 
 /**
  * @file ihmafficheur.cpp
@@ -56,12 +61,17 @@ IHMAfficheur::IHMAfficheur(QWidget* parent) :
     unJoueur = equipeW->getJoueur("X");
     qDebug() << Q_FUNC_INFO << unJoueur->getPrenom() << unJoueur->getNom()
              << unJoueur->getLettre();
-#endif
+#endif //TEST_RELATIONS
+
+#ifdef TEST_BLUETOOTH
+    // crée une partie
+    rencontre = new Rencontre();
+#endif //TEST_BLUETOOTH
 
 #ifdef PLEIN_ECRAN
     showFullScreen();
     // showMaximized();
-#endif
+#endif //PLEIN_ECRAN
 }
 
 /**
@@ -74,6 +84,10 @@ IHMAfficheur::~IHMAfficheur()
 {
     delete ui;
 #ifdef TEST_RELATIONS
+    delete rencontre;
+#endif
+
+#ifdef TEST_BLUETOOTH
     delete rencontre;
 #endif
     qDebug() << Q_FUNC_INFO;
