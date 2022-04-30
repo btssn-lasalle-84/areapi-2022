@@ -28,8 +28,8 @@
 #define BROCHE_I2C_SCL      22      //!< Broche SCL
 
 // Protocole (cf. Google Drive)
-#define EN_TETE_TRAME_RECEPTION "MOBILE_AREA"
-#define EN_TETE_TRAME_EMISSION  "NET_AREA"
+#define EN_TETE_TRAME_RECEPTION "$AREA"
+#define EN_TETE_TRAME_EMISSION  "$AREA"
 #define TRAME_SERVICE           "SERVICE"
 #define TRAME_NET               "NET"
 #define TRAME_RAZ_COMPTEUR_NET  "RAZ_COMPTEUR_NET"
@@ -55,8 +55,8 @@ void envoyerTrameNet(int nbNets)
 {
   char trameEnvoi[64];
 
-  //Format : NET_AREA;NET;1\r\n
-  sprintf((char *)trameEnvoi, "NET_AREA;NET;%d\r\n", nbNets);
+  //Format : $AREA;NET;1\r\n
+  sprintf((char *)trameEnvoi, "$AREA;NET;%d\r\n", nbNets);
   ESPBluetooth.write((uint8_t*)trameEnvoi, strlen((char *)trameEnvoi));
   #ifdef DEBUG
   String trame = String(trameEnvoi);
