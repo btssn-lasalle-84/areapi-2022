@@ -4,7 +4,9 @@
 #include <QObject>
 #include <QtBluetooth>
 
-#define PREFIXE_MODULE_AREA "area"
+#define PREFIXE_MODULE_AREA "areapi"
+#define DEBUT_TRAME         "$AREA"
+#define FIN_TRAME           "\r\n"
 
 class IHMArbitre;
 
@@ -28,28 +30,38 @@ class CommunicationBluetooth : public QObject
   private:
     IHMArbitre*                     ihmArbitre;
     QBluetoothLocalDevice           interfaceLocale;
-    QList<QBluetoothDeviceInfo>     modulesAREA;
+    QVector<QBluetoothDeviceInfo>   modulesAREA;
     QBluetoothDeviceDiscoveryAgent* discoveryAgentDevice;
     QBluetoothSocket*               socketEcran;
     QBluetoothSocket*               socketNet;
     QBluetoothSocket*               socketScore;
+    QString                         trameNet;
+
+    void enregistrerModule(const QBluetoothDeviceInfo device);
+    void initialiserSocketNet(const QBluetoothDeviceInfo device);
+    void initialiserSocketEcran(const QBluetoothDeviceInfo device);
+    void initialiserSocketScore(const QBluetoothDeviceInfo device);
 
   public:
     CommunicationBluetooth(IHMArbitre* ihmArbitre = nullptr);
     ~CommunicationBluetooth();
 
-    void connecter(const QBluetoothDeviceInfo device);
+    void connecter(Module module);
     void deconnecter();
     void deconnecter(Module module);
-    void initSocketNet(const QBluetoothDeviceInfo device);
-    void initSocketEcran(const QBluetoothDeviceInfo device);
-    void initSocketScore(const QBluetoothDeviceInfo device);
 
   public slots:
+    void demarrerRecherche();
+    void arreterRecherche();
     void chercherModule(QBluetoothDeviceInfo device);
     void recevoirEcran();
     void recevoirNet();
     void recevoirScore();
+
+  signals:
+    void moduleEcranTrouve();
+    void moduleNetTrouve();
+    void moduleScoreTrouve();
 };
 
 #endif // COMMUNICATION_BLUETOOTH_H
