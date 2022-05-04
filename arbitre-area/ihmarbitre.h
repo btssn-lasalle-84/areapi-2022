@@ -89,9 +89,17 @@ class IHMArbitre : public QMainWindow
     void fermerApplication();
     void demarrer();
     void afficherNetTrouve();
+    void afficherEcranTrouve();
+    void afficherScoreTrouve();
     void afficherConnexionNet();
+    void afficherConnexionEcran();
+    void afficherConnexionScore();
     void afficherDeconnexionNet();
+    void afficherDeconnexionEcran();
+    void afficherDeconnexionScore();
     void gererConnexionNet();
+    void gererConnexionEcran();
+    void gererConnexionScore();
 };
 
 #endif // IHMARBITRE_H

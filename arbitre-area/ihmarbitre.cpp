@@ -120,16 +120,52 @@ void IHMArbitre::afficherNetTrouve()
     ui->pushButtonModuleNet->setText("Connecter");
 }
 
+void IHMArbitre::afficherEcranTrouve()
+{
+    afficherEtatBluetooth(ui->labelEtatModuleEcran, Trouve);
+    ui->pushButtonModuleEcran->setText("Connecter");
+}
+
+void IHMArbitre::afficherScoreTrouve()
+{
+    afficherEtatBluetooth(ui->labelEtatModuleScore, Trouve);
+    ui->pushButtonModuleScore->setText("Connecter");
+}
+
 void IHMArbitre::afficherConnexionNet()
 {
     afficherEtatBluetooth(ui->labelEtatModuleNet, Connecte);
     ui->pushButtonModuleNet->setText("Déconnecter");
 }
 
+void IHMArbitre::afficherConnexionEcran()
+{
+    afficherEtatBluetooth(ui->labelEtatModuleEcran, Connecte);
+    ui->pushButtonModuleEcran->setText("Déconnecter");
+}
+
+void IHMArbitre::afficherConnexionScore()
+{
+    afficherEtatBluetooth(ui->labelEtatModuleScore, Connecte);
+    ui->pushButtonModuleScore->setText("Déconnecter");
+}
+
 void IHMArbitre::afficherDeconnexionNet()
 {
     afficherEtatBluetooth(ui->labelEtatModuleNet, Trouve);
     ui->pushButtonModuleNet->setText("Connecter");
+}
+
+void IHMArbitre::afficherDeconnexionEcran()
+{
+    afficherEtatBluetooth(ui->labelEtatModuleEcran, Trouve);
+    ui->pushButtonModuleEcran->setText("Connecter");
+}
+
+void IHMArbitre::afficherDeconnexionScore()
+{
+    afficherEtatBluetooth(ui->labelEtatModuleScore, Trouve);
+    ui->pushButtonModuleScore->setText("Connecter");
 }
 
 void IHMArbitre::gererConnexionNet()
@@ -149,7 +185,43 @@ void IHMArbitre::gererConnexionNet()
           CommunicationBluetooth::Module::Net);
     }
 }
+void IHMArbitre::gererConnexionEcran()
+{
+    if(ui->pushButtonModuleEcran->text() == "Connecter")
+    {
+        communicationBluetooth->connecter(
+          CommunicationBluetooth::Module::Ecran);
+    }
+    else if(ui->pushButtonModuleEcran->text() == "Détecter")
+    {
+        communicationBluetooth->arreterRecherche();
+        communicationBluetooth->demarrerRecherche();
+    }
+    else if(ui->pushButtonModuleEcran->text() == "Déconnecter")
+    {
+        communicationBluetooth->deconnecter(
+          CommunicationBluetooth::Module::Ecran);
+    }
+}
 
+void IHMArbitre::gererConnexionScore()
+{
+    if(ui->pushButtonModuleScore->text() == "Connecter")
+    {
+        communicationBluetooth->connecter(
+          CommunicationBluetooth::Module::Score);
+    }
+    else if(ui->pushButtonModuleScore->text() == "Détecter")
+    {
+        communicationBluetooth->arreterRecherche();
+        communicationBluetooth->demarrerRecherche();
+    }
+    else if(ui->pushButtonModuleScore->text() == "Déconnecter")
+    {
+        communicationBluetooth->deconnecter(
+          CommunicationBluetooth::Module::Score);
+    }
+}
 void IHMArbitre::installerGestionEvenements()
 {
     connect(ui->pushButtonDemarrer,
