@@ -1,6 +1,5 @@
 #include "rencontre.h"
 #include "equipe.h"
-#include "receptiontrame.h"
 #include <QDebug>
 
 /**
@@ -10,14 +9,14 @@
  * @author
  */
 
-Rencontre::Rencontre() : parties(), receptionTrame(new ReceptionTrame)
+Rencontre::Rencontre() : parties()
 {
     qDebug() << Q_FUNC_INFO;
     equipes.push_back(new Equipe());
     equipes.push_back(new Equipe());
 }
 
-Rencontre::Rencontre(QString nomEquipeA, QString nomEquipeW) : parties(), receptionTrame(new ReceptionTrame)
+Rencontre::Rencontre(QString nomEquipeA, QString nomEquipeW) : parties()
 {
     qDebug() << Q_FUNC_INFO << nomEquipeA << nomEquipeW;
     equipes.push_back(new Equipe(nomEquipeA));
@@ -31,7 +30,6 @@ Rencontre::~Rencontre()
         if(equipes[i] != nullptr)
             delete equipes[i];
     }
-    delete this->receptionTrame;
     qDebug() << Q_FUNC_INFO;
 }
 
@@ -66,4 +64,3 @@ void Rencontre::ajouterPartieSimple()
 {
     parties.push_back(Partie(true));
 }
-
