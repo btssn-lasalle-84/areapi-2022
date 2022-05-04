@@ -14,6 +14,7 @@
 #include <QBluetoothLocalDevice>
 #include <QBluetoothServiceInfo>
 #include <QBluetoothDeviceInfo>
+#include <QBluetoothUuid>
 #include <QByteArray>
 
 /**

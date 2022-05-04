@@ -9,7 +9,6 @@ ReceptionTrame::ReceptionTrame(QObject *parent) :
     qDebug() << Q_FUNC_INFO;
     connecterBluetooth();
     demarrerServeur();
-    qDebug() << peripheriqueLocal.hostMode();
 }
 
 ReceptionTrame::~ReceptionTrame()
@@ -21,6 +20,7 @@ ReceptionTrame::~ReceptionTrame()
 
 void ReceptionTrame::connecterBluetooth()
 {
+    qDebug() << Q_FUNC_INFO;
     if(!peripheriqueLocal.isValid())
     {
         QMessageBox::critical(0, QString::fromUtf8("Erreur"), QString::fromUtf8("Bluetooth désactivé !"));
@@ -33,8 +33,7 @@ void ReceptionTrame::connecterBluetooth()
         nomPeripheriqueLocal = peripheriqueLocal.name();
         adressePeripheriqueLocal = peripheriqueLocal.address().toString();
         peripheriqueLocal.setHostMode(QBluetoothLocalDevice::HostDiscoverable);
-        QList<QBluetoothAddress> remotes;
-        remotes = peripheriqueLocal.connectedDevices();
+        qDebug() << peripheriqueLocal.hostMode();
 
         connect(&peripheriqueLocal,
                 SIGNAL(error(QBluetoothLocalDevice::Error)),
@@ -64,6 +63,7 @@ void ReceptionTrame::demarrerServeur()
                 SLOT(gererClient()));
         QBluetoothUuid uuid = QBluetoothUuid(serviceUuid);
         this->serviceInfo = this->serveur->listen(uuid, serviceNom);
+        qDebug() << serviceInfo;
     }
 }
 
@@ -93,16 +93,18 @@ void ReceptionTrame::arreterServeur()
 void ReceptionTrame::gererClient()
 {
         qDebug() << Q_FUNC_INFO;
-        this->socket = this->serveur->nextPendingConnection();
+        socket = serveur->nextPendingConnection();
         if (!this->socket)
         {
             return;
         }
 
+        /*
         connect(socket, SIGNAL(disconnected()), this, SLOT(deconnecterSocket()));
         connect(socket, SIGNAL(readyRead()), this, SLOT(lireSocket()));
         connect(socket, SIGNAL(error(QBluetoothSocket::SocketError)), this, SLOT(renvoyerErreurSocket(QBluetoothSocket::SocketError)));
         connect(socket, SIGNAL(stateChanged(QBluetoothSocket::SocketState)), this, SLOT(changerEtatSocket(QBluetoothSocket::SocketState)));
+        */
 
         connecte = true;
 }
