@@ -10,6 +10,7 @@ SOURCES += \
     basededonnees.cpp \
     club.cpp \
     communicationbluetooth.cpp \
+    joueur.cpp \
     main.cpp \
     ihmarbitre.cpp \
     rencontre.cpp
@@ -19,6 +20,7 @@ HEADERS += \
     club.h \
     communicationbluetooth.h \
     ihmarbitre.h \
+    joueur.h \
     rencontre.h
 
 FORMS += \
