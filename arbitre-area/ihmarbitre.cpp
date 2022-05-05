@@ -33,6 +33,10 @@ IHMArbitre::IHMArbitre(QWidget* parent) :
 
     communicationBluetooth = new CommunicationBluetooth(this);
     installerGestionEvenements();
+    connect(communicationBluetooth,
+            SIGNAL(netDetecte()),
+            this,
+            SLOT(declencherNet()));
 
     afficherEcran(IHMArbitre::Accueil);
     // afficherEcran(IHMArbitre::AccueilRencontre);
@@ -236,6 +240,11 @@ void IHMArbitre::installerGestionEvenements()
             SIGNAL(clicked(bool)),
             this,
             SLOT(gererConnexionNet()));
+}
+
+void IHMArbitre::declencherNet()
+{
+    qDebug() << Q_FUNC_INFO << "NET";
 }
 
 void IHMArbitre::initialiserPageAccueil()

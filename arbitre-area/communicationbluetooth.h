@@ -64,6 +64,7 @@ class CommunicationBluetooth : public QObject
     void moduleEcranTrouve();
     void moduleNetTrouve();
     void moduleScoreTrouve();
+    void netDetecte();
 };
 
 #endif // COMMUNICATION_BLUETOOTH_H

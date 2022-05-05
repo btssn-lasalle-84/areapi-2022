@@ -154,9 +154,9 @@ void CommunicationBluetooth::recevoirNet()
     if(trameNet.startsWith(DEBUT_TRAME) && trameNet.endsWith(FIN_TRAME))
     {
         QStringList resultatTrame = trameNet.split(";");
-        if(resultatTrame[2] == "1\r\n")
+        if(resultatTrame.at(2) == "1\r\n")
         {
-            qDebug() << Q_FUNC_INFO << "Un net est détecté";
+            emit netDetecte();
         }
         else
         {

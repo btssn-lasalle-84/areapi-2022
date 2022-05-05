@@ -100,6 +100,7 @@ class IHMArbitre : public QMainWindow
     void gererConnexionNet();
     void gererConnexionEcran();
     void gererConnexionScore();
+    void declencherNet();
 };
 
 #endif // IHMARBITRE_H
