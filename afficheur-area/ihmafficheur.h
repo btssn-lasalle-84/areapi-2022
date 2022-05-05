@@ -11,14 +11,15 @@
  */
 
 #include <QtWidgets>
+#include <QVector>
 
 /**
  * @def PLEIN_ECRAN
  * @brief Pour le mode kiosque Télévision
  */
-//#define PLEIN_ECRAN
+#define PLEIN_ECRAN
 
-#define TEST_RELATIONS
+//#define TEST_RELATIONS
 
 namespace Ui
 {
@@ -40,16 +41,40 @@ class IHMAfficheur : public QMainWindow
 {
     Q_OBJECT
 
-  public:
-    IHMAfficheur(QWidget* parent = nullptr);
-    ~IHMAfficheur();
+    public:
+        IHMAfficheur(QWidget* parent = nullptr);
+        ~IHMAfficheur();
+        void initialiserEquipes();
+        void initialiserJoueurA();
+        void initialiserJoueurB();
+        void initialiserJoueurC();
+        void initialiserJoueurD();
+        void initialiserJoueurW();
+        void initialiserJoueurX();
+        void initialiserJoueurY();
+        void initialiserJoueurZ();
 
-  private:
-    Ui::IHMAfficheur* ui; //!< la fenêtre graphique associée à cette classe
-    ReceptionTrame*   receptionTrame;
-#ifdef TEST_RELATIONS
-    Rencontre* rencontre;
-#endif
+
+
+    private:
+        Ui::IHMAfficheur* ui; //!< la fenêtre graphique associée à cette classe
+        ReceptionTrame*   receptionTrame;
+        QVector<QLabel*>  labelsJoueurA;
+        QVector<QLabel*>  labelsJoueurB;
+        QVector<QLabel*>  labelsJoueurC;
+        QVector<QLabel*>  labelsJoueurD;
+        QVector<QLabel*>  labelsJoueurW;
+        QVector<QLabel*>  labelsJoueurX;
+        QVector<QLabel*>  labelsJoueurY;
+        QVector<QLabel*>  labelsJoueurZ;
+        #ifdef TEST_RELATIONS
+            Rencontre* rencontre;
+        #endif
+
+
+    public slots:
+        void initialiserRencontre();
+        void initialiserPartieSimple();
 };
 
 #endif // IHMAFFICHEUR_H

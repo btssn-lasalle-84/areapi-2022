@@ -1,10 +1,11 @@
 #include "receptiontrame.h"
+#include "ihmafficheur.h"
 #include <QDebug>
 
 ReceptionTrame::ReceptionTrame(QObject* parent) :
     QObject(parent), serveur(nullptr), nomsTableArbitre(NB_TABLES),
     peripheriqueLocal(), nomPeripheriqueLocal(""), adressePeripheriqueLocal(""),
-    serviceInfo()
+    serviceInfo(),decoupageTrame()
 {
     qDebug() << Q_FUNC_INFO;
     for(int i = 0; i < NB_TABLES; ++i)
@@ -117,6 +118,7 @@ void ReceptionTrame::arreterServeur()
 
 void ReceptionTrame::gererClient()
 {
+    qDebug() << Q_FUNC_INFO;
     QBluetoothSocket* socket = this->serveur->nextPendingConnection();
     if(!socket)
     {
@@ -186,6 +188,48 @@ void ReceptionTrame::lireSocket()
         /**
          * @todo Traiter la trame puis signaler les données reçues
          */
+        decoupageTrame = trame.split(';');
+        qDebug() << Q_FUNC_INFO << decoupageTrame;
+
+        if(decoupageTrame[1] == "RENCONTRE")
+        {
+            qDebug() << decoupageTrame[1] << decoupageTrame.length();
+            if(decoupageTrame.length() == TAILLE_PROTOCOLE_RENCONTRE)
+            {
+                emit recevoirTrameRencontre();
+            }
+            else
+            {
+                qDebug() << Q_FUNC_INFO << "Trame rencontre non complete";
+            }
+        }
+
+        if(decoupageTrame[1] == "SIMPLE")
+        {
+            qDebug() << decoupageTrame[1] << decoupageTrame.length();
+            if(decoupageTrame.length() == TAILLE_PROTOCOLE_SIMPLE)
+            {
+                emit recevoirTrameSimple();
+            }
+            else
+            {
+                qDebug() << Q_FUNC_INFO << "Trame rencontre non complete";
+            }
+        }
+
+        if(decoupageTrame[1] == "DOUBLE")
+        {
+            qDebug() << decoupageTrame[1];
+            //initialiserPartieDouble()
+        }
+
+        if(decoupageTrame[1] == "SCORE")
+        {
+            qDebug() << decoupageTrame[1];
+            //actualiserScore()
+        }
+
+
 
         // prochaine réception
         trame.clear();
@@ -205,4 +249,9 @@ void ReceptionTrame::renvoyerErreurSocket(QBluetoothSocket::SocketError erreur)
 void ReceptionTrame::renvoyerErreurDevice(QBluetoothLocalDevice::Error erreur)
 {
     qDebug() << Q_FUNC_INFO << erreur;
+}
+
+QByteArray ReceptionTrame::getDecoupageTrame(int caseConteneur) const
+{
+    return decoupageTrame[caseConteneur];
 }

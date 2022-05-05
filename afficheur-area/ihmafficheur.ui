@@ -578,7 +578,7 @@
              <enum>QFrame::Box</enum>
             </property>
             <property name="text">
-             <string>PPC Sorguais 1</string>
+             <string/>
             </property>
            </widget>
           </item>
@@ -614,7 +614,7 @@ p, li { white-space: pre-wrap; }
              <enum>QFrame::Box</enum>
             </property>
             <property name="text">
-             <string>PPC Sorguais 2</string>
+             <string/>
             </property>
            </widget>
           </item>
@@ -638,9 +638,9 @@ p, li { white-space: pre-wrap; }
           <item>
            <layout class="QHBoxLayout" name="layoutPartie1">
             <item>
-             <widget class="QLabel" name="joueurPartie1coteG">
+             <widget class="QLabel" name="joueurPartie1CoteG">
               <property name="text">
-               <string>BEAUMONT Jérôme</string>
+               <string/>
               </property>
              </widget>
             </item>
@@ -698,9 +698,9 @@ p, li { white-space: pre-wrap; }
              </spacer>
             </item>
             <item>
-             <widget class="QLabel" name="joueurPartie1coteD">
+             <widget class="QLabel" name="joueurPartie1CoteD">
               <property name="text">
-               <string>LEVRARD Mickael</string>
+               <string/>
               </property>
              </widget>
             </item>
@@ -722,9 +722,9 @@ p, li { white-space: pre-wrap; }
           <item>
            <layout class="QHBoxLayout" name="layoutPartie2">
             <item>
-             <widget class="QLabel" name="joueurPartie2coteG">
+             <widget class="QLabel" name="joueurPartie2CoteG">
               <property name="text">
-               <string>BENZONANA Marc</string>
+               <string/>
               </property>
              </widget>
             </item>
@@ -782,9 +782,9 @@ p, li { white-space: pre-wrap; }
              </spacer>
             </item>
             <item>
-             <widget class="QLabel" name="joueurPartie2coteD">
+             <widget class="QLabel" name="joueurPartie2CoteD">
               <property name="text">
-               <string>TEYSSIER Michel</string>
+               <string/>
               </property>
              </widget>
             </item>
@@ -806,9 +806,9 @@ p, li { white-space: pre-wrap; }
           <item>
            <layout class="QHBoxLayout" name="layoutPartie3">
             <item>
-             <widget class="QLabel" name="joueurPartie3coteG">
+             <widget class="QLabel" name="joueurPartie3CoteG">
               <property name="text">
-               <string>BIANCHERI Lorik</string>
+               <string/>
               </property>
              </widget>
             </item>
@@ -866,9 +866,9 @@ p, li { white-space: pre-wrap; }
              </spacer>
             </item>
             <item>
-             <widget class="QLabel" name="joueurPartie3coteD">
+             <widget class="QLabel" name="joueurPartie3CoteD">
               <property name="text">
-               <string>COMTE Emmanuel</string>
+               <string/>
               </property>
              </widget>
             </item>
@@ -890,9 +890,9 @@ p, li { white-space: pre-wrap; }
           <item>
            <layout class="QHBoxLayout" name="layoutPartie4">
             <item>
-             <widget class="QLabel" name="joueurPartie4coteG">
+             <widget class="QLabel" name="joueurPartie4CoteG">
               <property name="text">
-               <string>FILAFERRO Thomas</string>
+               <string/>
               </property>
              </widget>
             </item>
@@ -950,9 +950,9 @@ p, li { white-space: pre-wrap; }
              </spacer>
             </item>
             <item>
-             <widget class="QLabel" name="joueurPartie4coteD">
+             <widget class="QLabel" name="joueurPartie4CoteD">
               <property name="text">
-               <string>Saumien Christian</string>
+               <string/>
               </property>
              </widget>
             </item>
@@ -974,9 +974,9 @@ p, li { white-space: pre-wrap; }
           <item>
            <layout class="QHBoxLayout" name="layoutPartie5">
             <item>
-             <widget class="QLabel" name="joueurPartie5coteG">
+             <widget class="QLabel" name="joueurPartie5CoteG">
               <property name="text">
-               <string>BEAUMONT Jérôme</string>
+               <string/>
               </property>
              </widget>
             </item>
@@ -1034,9 +1034,9 @@ p, li { white-space: pre-wrap; }
              </spacer>
             </item>
             <item>
-             <widget class="QLabel" name="joueurPartie5coteD">
+             <widget class="QLabel" name="joueurPartie5CoteD">
               <property name="text">
-               <string>TEYSSIER Michel</string>
+               <string/>
               </property>
              </widget>
             </item>
@@ -1058,9 +1058,9 @@ p, li { white-space: pre-wrap; }
           <item>
            <layout class="QHBoxLayout" name="layoutPartie6">
             <item>
-             <widget class="QLabel" name="joueurPartie6coteG">
+             <widget class="QLabel" name="joueurPartie6CoteG">
               <property name="text">
-               <string>BENZONANA Marc</string>
+               <string/>
               </property>
              </widget>
             </item>
@@ -1118,9 +1118,9 @@ p, li { white-space: pre-wrap; }
              </spacer>
             </item>
             <item>
-             <widget class="QLabel" name="joueurPartie6coteD">
+             <widget class="QLabel" name="joueurPartie6CoteD">
               <property name="text">
-               <string>LEVRARD Mickael</string>
+               <string/>
               </property>
              </widget>
             </item>
@@ -1142,9 +1142,9 @@ p, li { white-space: pre-wrap; }
           <item>
            <layout class="QHBoxLayout" name="layoutPartie7">
             <item>
-             <widget class="QLabel" name="joueurPartie7coteG">
+             <widget class="QLabel" name="joueurPartie7CoteG">
               <property name="text">
-               <string>BIANCHERI Lorik</string>
+               <string/>
               </property>
              </widget>
             </item>
@@ -1202,9 +1202,9 @@ p, li { white-space: pre-wrap; }
              </spacer>
             </item>
             <item>
-             <widget class="QLabel" name="joueurPartie7coteD">
+             <widget class="QLabel" name="joueurPartie7CoteD">
               <property name="text">
-               <string>COMTE Emmanuel</string>
+               <string/>
               </property>
              </widget>
             </item>
@@ -1226,9 +1226,9 @@ p, li { white-space: pre-wrap; }
           <item>
            <layout class="QHBoxLayout" name="layoutPartie8">
             <item>
-             <widget class="QLabel" name="joueurPartie8coteG">
+             <widget class="QLabel" name="joueurPartie8CoteG">
               <property name="text">
-               <string>FILAFERRO Thomas</string>
+               <string/>
               </property>
              </widget>
             </item>
@@ -1286,9 +1286,9 @@ p, li { white-space: pre-wrap; }
              </spacer>
             </item>
             <item>
-             <widget class="QLabel" name="joueurPartie8coteD">
+             <widget class="QLabel" name="joueurPartie8CoteD">
               <property name="text">
-               <string>Saumien Christian</string>
+               <string/>
               </property>
              </widget>
             </item>
@@ -1465,9 +1465,9 @@ p, li { white-space: pre-wrap; }
           <item>
            <layout class="QHBoxLayout" name="layoutPartie11">
             <item>
-             <widget class="QLabel" name="joueurPartie11coteG">
+             <widget class="QLabel" name="joueurPartie11CoteG">
               <property name="text">
-               <string>BEAUMONT Jérôme</string>
+               <string/>
               </property>
              </widget>
             </item>
@@ -1525,9 +1525,9 @@ p, li { white-space: pre-wrap; }
              </spacer>
             </item>
             <item>
-             <widget class="QLabel" name="joueurPartie11coteD">
+             <widget class="QLabel" name="joueurPartie11CoteD">
               <property name="text">
-               <string>COMTE Emmanuel</string>
+               <string/>
               </property>
              </widget>
             </item>
@@ -1549,9 +1549,9 @@ p, li { white-space: pre-wrap; }
           <item>
            <layout class="QHBoxLayout" name="layoutPartie12">
             <item>
-             <widget class="QLabel" name="joueurPartie12coteG">
+             <widget class="QLabel" name="joueurPartie12CoteG">
               <property name="text">
-               <string>BIANCHERI Lorik</string>
+               <string/>
               </property>
              </widget>
             </item>
@@ -1609,9 +1609,9 @@ p, li { white-space: pre-wrap; }
              </spacer>
             </item>
             <item>
-             <widget class="QLabel" name="joueurPartie12coteD">
+             <widget class="QLabel" name="joueurPartie12CoteD">
               <property name="text">
-               <string>LEVRARD Mickael</string>
+               <string/>
               </property>
              </widget>
             </item>
@@ -1633,9 +1633,9 @@ p, li { white-space: pre-wrap; }
           <item>
            <layout class="QHBoxLayout" name="layoutPartie13">
             <item>
-             <widget class="QLabel" name="joueurPartie13coteG">
+             <widget class="QLabel" name="joueurPartie13CoteG">
               <property name="text">
-               <string>FILAFERRO Thomas</string>
+               <string/>
               </property>
              </widget>
             </item>
@@ -1693,9 +1693,9 @@ p, li { white-space: pre-wrap; }
              </spacer>
             </item>
             <item>
-             <widget class="QLabel" name="joueurPartie13coteD">
+             <widget class="QLabel" name="joueurPartie13CoteD">
               <property name="text">
-               <string>TEYSSIER Michel</string>
+               <string/>
               </property>
              </widget>
             </item>
@@ -1717,9 +1717,9 @@ p, li { white-space: pre-wrap; }
           <item>
            <layout class="QHBoxLayout" name="layoutPartie14">
             <item>
-             <widget class="QLabel" name="joueurPartie14coteG">
+             <widget class="QLabel" name="joueurPartie14CoteG">
               <property name="text">
-               <string>BENZONANA Marc</string>
+               <string/>
               </property>
              </widget>
             </item>
@@ -1777,9 +1777,9 @@ p, li { white-space: pre-wrap; }
              </spacer>
             </item>
             <item>
-             <widget class="QLabel" name="joueurPartie14coteD">
+             <widget class="QLabel" name="joueurPartie14CoteD">
               <property name="text">
-               <string>Saumien Christian</string>
+               <string/>
               </property>
              </widget>
             </item>

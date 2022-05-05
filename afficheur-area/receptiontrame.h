@@ -15,13 +15,19 @@
 #include <QVector>
 
 #define NB_TABLES 2
+#define TAILLE_PROTOCOLE_RENCONTRE 20
+#define TAILLE_PROTOCOLE_SIMPLE 6
+#define TAILLE_PROTOCOLE_DOUBLE 8
+#define TAILLE_PROTOCOLE_SCORE 11
+#define NOM_MODULE_ARBITRE_1  "AREAPI-arbitre-1"
+#define NOM_MODULE_ARBITRE_2  "AREAPI-arbitre-2"
 
 #define DEBUT_TRAME "$AREA"
 #define FIN_TRAME   "\r\n"
 
 static const QString serviceUuid(
   QStringLiteral("0000110a-0000-1000-8000-00805f9b34fb"));
-// static const QString serviceNom(QStringLiteral("AREA-Afficheur"));
+static const QString serviceNom(QStringLiteral("AREA-Afficheur"));
 
 /**
  * @class ReceptionTrame
@@ -42,6 +48,7 @@ class ReceptionTrame : public QObject
     QList<QBluetoothAddress>   peripheriquesDistants;
     bool                       connecte;
     QByteArray                 trame;
+    QList<QByteArray>          decoupageTrame;
 
   public:
     ReceptionTrame(QObject* parent = 0);
@@ -53,6 +60,7 @@ class ReceptionTrame : public QObject
     void    arreterServeur();
     QString getNomPeripheriqueLocal() const;
     QString getAdressePeripheriqueLocal() const;
+    QByteArray getDecoupageTrame(int caseConteneur) const;
 
   public slots:
     void gererClient();
@@ -65,6 +73,8 @@ class ReceptionTrame : public QObject
   signals:
     void clientConnecte(QString nom, QString adresse);
     void clientDeconnecte();
+    void recevoirTrameRencontre();
+    void recevoirTrameSimple();
 };
 
 #endif // RECEPTIONTRAME_H
