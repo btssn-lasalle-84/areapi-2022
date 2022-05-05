@@ -140,12 +140,6 @@ void CommunicationBluetooth::recevoirEcran()
     if(trameEcran.startsWith(DEBUT_TRAME) && trameEcran.endsWith(FIN_TRAME))
     {
         qDebug() << Q_FUNC_INFO << trameEcran;
-        /**
-         * @todo Traiter la trame puis signaler les données reçues
-         */
-        resultatTrame = trameEcran.split(";");
-        // prochaine réception
-        qDebug() << Q_FUNC_INFO << resultatTrame;
         trameEcran.clear();
     }
 }
@@ -159,12 +153,15 @@ void CommunicationBluetooth::recevoirNet()
     trameNet += QString(donnees);
     if(trameNet.startsWith(DEBUT_TRAME) && trameNet.endsWith(FIN_TRAME))
     {
-        qDebug() << Q_FUNC_INFO << trameNet;
-        /**
-         * @todo Traiter la trame puis signaler les données reçues
-         */
-        resultatTrame = trameNet.split(";");
-        // prochaine réception
+        QStringList resultatTrame = trameNet.split(";");
+        if(resultatTrame[2] == "1\r\n")
+        {
+            qDebug() << Q_FUNC_INFO << "Un net est détecté";
+        }
+        else
+        {
+            qDebug() << Q_FUNC_INFO << "Pas de net détecté";
+        }
         qDebug() << Q_FUNC_INFO << resultatTrame;
         // prochaine réception
         trameNet.clear();
@@ -181,12 +178,6 @@ void CommunicationBluetooth::recevoirScore()
     if(trameScore.startsWith(DEBUT_TRAME) && trameScore.endsWith(FIN_TRAME))
     {
         qDebug() << Q_FUNC_INFO << trameScore;
-        /**
-         * @todo Traiter la trame puis signaler les données reçues
-         */
-        resultatTrame = trameScore.split(";");
-        // prochaine réception
-        qDebug() << Q_FUNC_INFO << resultatTrame;
         // prochaine réception
         trameScore.clear();
     }

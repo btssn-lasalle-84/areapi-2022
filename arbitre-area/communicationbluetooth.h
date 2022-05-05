@@ -38,7 +38,6 @@ class CommunicationBluetooth : public QObject
     QString                         trameEcran;
     QString                         trameNet;
     QString                         trameScore;
-    QStringList                     resultatTrame;
 
     void enregistrerModule(const QBluetoothDeviceInfo device);
     void initialiserSocketNet(const QBluetoothDeviceInfo device);
