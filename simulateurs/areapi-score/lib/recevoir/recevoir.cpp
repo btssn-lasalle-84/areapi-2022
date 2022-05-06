@@ -25,6 +25,7 @@ String positionJoueurA = "";
 int idPartie = -1;
 String etatPartie;
 int nbSets = 0;
+int nbNets = 0;
 PositionJoueur placeJoueurA = PositionJoueur::GAUCHE;
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -37,8 +38,10 @@ void initBluetooth(String nomIot)
   Serial.print("liaisonBluetooth = ");
   Serial.println(retour);
   #endif
+  /*
   if(retour)
     timerHeartBeat.attach(30, envoyerTrameHeartBeat);
+  */
 }
 
 void initAfficheurs()
@@ -74,22 +77,7 @@ bool decoderTrame()
     if(typeTrame == "SCORE")
     {
           //$AREA;SCORE;idPartie;scoreJG;scoreJD;etatPartie;tempsMort;nbSetJG;nbSetJD;tourService;net\r\n
-          #ifdef DEBUG_RECEVOIR
-          Serial.print("ID PARTIE = ");
-          Serial.println(extraireChamp(ID_PARTIE));
-          #endif
-          if(idPartie == extraireChamp(ID_PARTIE).toInt())
-          {
-            gererScore(extraireChamp(ID_PARTIE).toInt(), extraireChamp(POINTS_JOUEUR_A).toInt(), extraireChamp(POINTS_JOUEUR_B).toInt(), extraireChamp(MANCHES_JOUEUR_A).toInt(), extraireChamp(MANCHES_JOUEUR_B).toInt());
-          }
-          #ifdef DEBUG_RECEVOIR
-          else
-          {
-            Serial.print("idPartie = ");
-            Serial.println(idPartie);
-          }
-          #endif
-          // Le champ ETAT peut prendre deux valeurs : DEMARREE ou TERMINEE
+          // Le champ ETAT_PARTIE peut prendre deux valeurs : DEMARREE ou TERMINEE
           etatPartie = extraireChamp(ETAT_PARTIE);
           #ifdef DEBUG_RECEVOIR
           Serial.print("ID PARTIE = ");
@@ -97,10 +85,9 @@ bool decoderTrame()
           Serial.print(" -> ETAT PARTIE = ");
           Serial.println(etatPartie);
           #endif
-
           if(etatPartie == "1") // DEMARREE
           {
-            idPartie = extraireChamp(ID_PARTIE).toInt();            
+            idPartie = extraireChamp(ID_PARTIE).toInt();
           }
           else if(etatPartie == "0") // TERMINEE
           {
@@ -108,7 +95,7 @@ bool decoderTrame()
             effacerScore();
             nbSets = 0;
           }
-          else if(etatPartie == "ANNULEE")
+          else if(etatPartie == "2") // ANNULEE ?
           {
             idPartie = -1;
             effacerScore();
@@ -117,6 +104,37 @@ bool decoderTrame()
           else
             Serial.println("ETAT inconnu !");
           #endif
+          #ifdef DEBUG_RECEVOIR
+          Serial.print("idPartie = ");
+          Serial.println(idPartie);
+          #endif
+          // Gestion du score
+          if(idPartie == extraireChamp(ID_PARTIE).toInt())
+          {
+            gererScore(extraireChamp(ID_PARTIE).toInt(), extraireChamp(POINTS_JOUEUR_G).toInt(), extraireChamp(POINTS_JOUEUR_D).toInt(), extraireChamp(MANCHES_JOUEUR_G).toInt(), extraireChamp(MANCHES_JOUEUR_D).toInt());
+          }
+          #ifdef DEBUG_RECEVOIR
+          else
+          {
+            Serial.print("idPartie = ");
+            Serial.println(idPartie);
+          }
+          #endif
+          #ifdef DEBUG_RECEVOIR
+          Serial.print("TEMPS MORT = ");
+          Serial.println(extraireChamp(TEMPS_MORT).toInt());
+          Serial.print("TOUR SERVICE = ");
+          Serial.println(extraireChamp(TOUR_SERVICE));
+          Serial.print("NET = ");
+          Serial.println(extraireChamp(NET).toInt());
+          #endif
+          if(nbNets != extraireChamp(NET).toInt())
+          {
+            #ifdef DEBUG_RECEVOIR
+            Serial.println("Détection NET !");
+            #endif
+            nbNets = extraireChamp(NET).toInt();
+          }
     }
     else
     {
@@ -142,27 +160,14 @@ void gererScore(int idPartie, int pointJoueurA, int pointJoueurB, int mancheJoue
   Serial.print(" vs ");
   Serial.println(mancheJoueurB);
   #endif
-  nbSets = mancheJoueurA + mancheJoueurB;
-  /*if((nbSets % 2) == 0)
-  {
-  }
-  else
-  {
-  }*/
-  if(placeJoueurA == PositionJoueur::GAUCHE)
-  {
-    scoreGauche.afficherScore(pointJoueurA);
-    scoreDroit.afficherScore(pointJoueurB);
-  }
-  else if(placeJoueurA == PositionJoueur::DROITE)
-  {
-    scoreDroit.afficherScore(pointJoueurA);
-    scoreGauche.afficherScore(pointJoueurB);
-  }
+  //placeJoueurA => PositionJoueur::GAUCHE
+  scoreGauche.afficherScore(pointJoueurA);
+  scoreDroit.afficherScore(pointJoueurB);
   /**
    * @todo Gérer l'affichage des sets ?
    *
    */
+  nbSets = mancheJoueurA + mancheJoueurB;
 }
 
 void effacerScore()
@@ -218,7 +223,7 @@ void envoyerTrameHeartBeat()
 {
   char trameEnvoi[64];
 
-  sprintf((char *)trameEnvoi, "SCORE_AREA;HEARTBEAT\r\n");
+  sprintf((char *)trameEnvoi, "$AREA;HEARTBEAT;\r\n");
   liaisonBluetooth.write((uint8_t*)trameEnvoi, strlen((char *)trameEnvoi));
   #ifdef DEBUG_RECEVOIR
   String trame = String(trameEnvoi);
