@@ -240,6 +240,22 @@ void IHMArbitre::installerGestionEvenements()
             SIGNAL(clicked(bool)),
             this,
             SLOT(gererConnexionNet()));
+    connect(communicationBluetooth,
+            SIGNAL(moduleEcranTrouve()),
+            this,
+            SLOT(afficherEcranTrouve()));
+    connect(ui->pushButtonModuleEcran,
+            SIGNAL(clicked(bool)),
+            this,
+            SLOT(gererConnexionEcran()));
+    connect(communicationBluetooth,
+            SIGNAL(moduleScoreTrouve()),
+            this,
+            SLOT(afficherScoreTrouve()));
+    connect(ui->pushButtonModuleScore,
+            SIGNAL(clicked(bool)),
+            this,
+            SLOT(gererConnexionScore()));
 }
 
 void IHMArbitre::declencherNet()
