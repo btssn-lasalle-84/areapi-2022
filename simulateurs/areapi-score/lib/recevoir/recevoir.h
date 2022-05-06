@@ -8,9 +8,7 @@
 #include <Arduino.h>
 
 /*
-MOBILE_AREA;2    ;ID_PARTIE;POINTS_JOUEUR_A;POINTS_JOUEUR_B;NB_MANCHES_GAGNEES_JOUEUR_A;NB_MANCHES_GAGNEES_JOUEUR_B\r\n
-
-$AREA      ;SCORE;idPartie ;scoreJG        ;scoreJD        ;etatPartie;tempsMort;nbSetJG;nbSetJD;tourService;net\r\n
+$AREA;SCORE;idPartie;scoreJG;scoreJD;etatPartie;tempsMort;nbSetJG;nbSetJD;tourService;net\r\n
 
 idPartie : int (identifiant de la partie)
 scoreJG : int (joueur à gauche de l’arbitre)
@@ -23,21 +21,21 @@ tourService : int (G ou D)
 net : int (nombre de nets)
 
 Exemple : $AREA;SCORE;1;2;5;1;0;1;2;G;5\r\n
-
 */
 
 #define ENTETE_TRAME                "$AREA"
 #define CHAMP_TYPE_TRAME            1
-#define CHAMP_POSITION              2
 #define ID_PARTIE                   2
-#define POINTS_JOUEUR_A             3
-#define POINTS_JOUEUR_B             4
+#define POINTS_JOUEUR_G             3
+#define POINTS_JOUEUR_D             4
 #define ETAT_PARTIE                 5
 #define TEMPS_MORT                  6
-#define MANCHES_JOUEUR_A            7
-#define MANCHES_JOUEUR_B            8
+#define MANCHES_JOUEUR_G            7
+#define MANCHES_JOUEUR_D            8
+#define TOUR_SERVICE                9
+#define NET                         10
 
-#define NB_CHAMPS_PARTIE_SIMPLE     7
+#define NB_CHAMPS                   10
 
 enum TypeTrame
 {
