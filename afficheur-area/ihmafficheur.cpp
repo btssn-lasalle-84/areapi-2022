@@ -123,7 +123,7 @@ void IHMAfficheur::initialiserJoueurA()
     labelsJoueurA.push_back(ui->joueurPartie11CoteG);
     for(int i = 0; i < labelsJoueurA.size(); ++i)
     {
-        labelsJoueurA[i]->setText(receptionTrame->getDecoupageTrame(4) + " " +receptionTrame->getDecoupageTrame(5));
+        labelsJoueurA[i]->setText(receptionTrame->getDecoupageTrame(4) + " " + receptionTrame->getDecoupageTrame(5));
     }
 }
 
@@ -134,7 +134,7 @@ void IHMAfficheur::initialiserJoueurB()
     labelsJoueurB.push_back(ui->joueurPartie14CoteG);
     for(int i = 0; i < labelsJoueurB.size(); ++i)
     {
-        labelsJoueurB[i]->setText(receptionTrame->getDecoupageTrame(6) + " " +receptionTrame->getDecoupageTrame(7));
+        labelsJoueurB[i]->setText(receptionTrame->getDecoupageTrame(6) + " " + receptionTrame->getDecoupageTrame(7));
     }
 }
 
@@ -145,7 +145,7 @@ void IHMAfficheur::initialiserJoueurC()
     labelsJoueurC.push_back(ui->joueurPartie12CoteG);
     for(int i = 0; i < labelsJoueurC.size(); ++i)
     {
-        labelsJoueurC[i]->setText(receptionTrame->getDecoupageTrame(8) + " " +receptionTrame->getDecoupageTrame(9));
+        labelsJoueurC[i]->setText(receptionTrame->getDecoupageTrame(8) + " " + receptionTrame->getDecoupageTrame(9));
     }
 }
 
@@ -156,7 +156,7 @@ void IHMAfficheur::initialiserJoueurD()
     labelsJoueurD.push_back(ui->joueurPartie13CoteG);
     for(int i = 0; i < labelsJoueurD.size(); ++i)
     {
-        labelsJoueurD[i]->setText(receptionTrame->getDecoupageTrame(10) + " " +receptionTrame->getDecoupageTrame(11));
+        labelsJoueurD[i]->setText(receptionTrame->getDecoupageTrame(10) + " " + receptionTrame->getDecoupageTrame(11));
     }
 }
 
@@ -167,7 +167,7 @@ void IHMAfficheur::initialiserJoueurW()
     labelsJoueurW.push_back(ui->joueurPartie12CoteD);
     for(int i = 0; i < labelsJoueurW.size(); ++i)
     {
-        labelsJoueurW[i]->setText(receptionTrame->getDecoupageTrame(12) + " " +receptionTrame->getDecoupageTrame(13));
+        labelsJoueurW[i]->setText(receptionTrame->getDecoupageTrame(12) + " " + receptionTrame->getDecoupageTrame(13));
     }
 }
 
@@ -178,7 +178,7 @@ void IHMAfficheur::initialiserJoueurX()
     labelsJoueurX.push_back(ui->joueurPartie13CoteD);
     for(int i = 0; i < labelsJoueurX.size(); ++i)
     {
-        labelsJoueurX[i]->setText(receptionTrame->getDecoupageTrame(14) + " " +receptionTrame->getDecoupageTrame(15));
+        labelsJoueurX[i]->setText(receptionTrame->getDecoupageTrame(14) + " " + receptionTrame->getDecoupageTrame(15));
     }
 }
 
@@ -189,7 +189,7 @@ void IHMAfficheur::initialiserJoueurY()
     labelsJoueurY.push_back(ui->joueurPartie11CoteD);
     for(int i = 0; i < labelsJoueurY.size(); ++i)
     {
-        labelsJoueurY[i]->setText(receptionTrame->getDecoupageTrame(16) + " " +receptionTrame->getDecoupageTrame(17));
+        labelsJoueurY[i]->setText(receptionTrame->getDecoupageTrame(16) + " " + receptionTrame->getDecoupageTrame(17));
     }
 }
 
@@ -197,9 +197,10 @@ void IHMAfficheur::initialiserJoueurZ()
 {
     labelsJoueurZ.push_back(ui->joueurPartie4CoteD);
     labelsJoueurZ.push_back(ui->joueurPartie8CoteD);
-    labelsJoueurZ.push_back(ui->joueurPartie12CoteD);
+    labelsJoueurZ.push_back(ui->joueurPartie14CoteD);
     for(int i = 0; i < labelsJoueurZ.size(); ++i)
     {
-        labelsJoueurZ[i]->setText(receptionTrame->getDecoupageTrame(18) + " " +receptionTrame->getDecoupageTrame(19));
+        qDebug() << Q_FUNC_INFO << receptionTrame->getDecoupageTrame(19);
+        labelsJoueurZ[i]->setText(receptionTrame->getDecoupageTrame(18) + " " + receptionTrame->getDecoupageTrame(19));
     }
 }
