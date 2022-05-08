@@ -1,11 +1,18 @@
 #include "receptiontrame.h"
-#include "ihmafficheur.h"
+#include "protocolearea.h"
 #include <QDebug>
+
+/**
+ * @file receptiontrame.cpp
+ * @brief Définition de la classe ReceptionTrame
+ * @version 1.0
+ * @author Enzo LADRIERE
+ */
 
 ReceptionTrame::ReceptionTrame(QObject* parent) :
     QObject(parent), serveur(nullptr), nomsTableArbitre(NB_TABLES),
     peripheriqueLocal(), nomPeripheriqueLocal(""), adressePeripheriqueLocal(""),
-    serviceInfo(),decoupageTrame()
+    serviceInfo()
 {
     qDebug() << Q_FUNC_INFO;
     for(int i = 0; i < NB_TABLES; ++i)
@@ -124,6 +131,7 @@ void ReceptionTrame::gererClient()
     {
         return;
     }
+    // nouveau client
     qDebug() << Q_FUNC_INFO << socket->peerName()
              << socket->peerAddress().toString();
     for(int numeroTable = 0; numeroTable < NB_TABLES; ++numeroTable)
@@ -133,6 +141,7 @@ void ReceptionTrame::gererClient()
             /**
              * @todo Vérifier avant si c'est bien un arbitre AREA
              */
+            qDebug() << Q_FUNC_INFO << socket << "numeroTable" << numeroTable;
             socketsTableArbitre[numeroTable] = socket;
             nomsTableArbitre[numeroTable]    = socket->peerName();
             connect(socket,
@@ -168,10 +177,45 @@ QString ReceptionTrame::getAdressePeripheriqueLocal() const
     return this->adressePeripheriqueLocal;
 }
 
+QString ReceptionTrame::recupererNomTableArbitre(QBluetoothSocket* socket) const
+{
+    for(int i = 0; i < NB_TABLES; ++i)
+    {
+        if(socketsTableArbitre.at(i) == socket)
+        {
+            return nomsTableArbitre.at(i);
+        }
+    }
+    return QString();
+}
+
+int ReceptionTrame::recupererNumeroTableArbitre(QBluetoothSocket* socket) const
+{
+    for(int i = 0; i < NB_TABLES; ++i)
+    {
+        if(socketsTableArbitre.at(i) == socket)
+        {
+            return i;
+        }
+    }
+    return -1;
+}
+
 void ReceptionTrame::deconnecterSocket()
 {
-    qDebug() << Q_FUNC_INFO;
-    emit clientDeconnecte();
+    // quel arbitre ?
+    QBluetoothSocket* socket      = qobject_cast<QBluetoothSocket*>(sender());
+    int               numeroTable = recupererNumeroTableArbitre(socket);
+    if(numeroTable != -1)
+    {
+        qDebug() << Q_FUNC_INFO << socket << socket->peerName()
+                 << socket->peerAddress().toString() << socket->state()
+                 << recupererNomTableArbitre(socket);
+        emit clientDeconnecte(recupererNomTableArbitre(socket));
+        delete socketsTableArbitre[numeroTable];
+        socketsTableArbitre[numeroTable] = nullptr;
+        nomsTableArbitre[numeroTable]    = "";
+    }
 }
 
 void ReceptionTrame::lireSocket()
@@ -182,54 +226,74 @@ void ReceptionTrame::lireSocket()
              << socket->peerAddress().toString();
     trame += socket->readAll();
     // une trame AREA ?
-    if(trame.startsWith(DEBUT_TRAME) && trame.endsWith(FIN_TRAME))
+    if(trame.startsWith(ProtocoleArea::DEBUT_TRAME) &&
+       trame.endsWith(ProtocoleArea::FIN_TRAME))
     {
         qDebug() << Q_FUNC_INFO << trame;
         /**
          * @todo Traiter la trame puis signaler les données reçues
          */
-        decoupageTrame = trame.split(';');
+        QList<QByteArray> decoupageTrame =
+          trame.split(ProtocoleArea::DELIMITEUR_TRAME);
         qDebug() << Q_FUNC_INFO << decoupageTrame;
 
-        if(decoupageTrame[1] == "RENCONTRE")
+        if(decoupageTrame[ProtocoleArea::ChampsTrame::TYPE] ==
+           ProtocoleArea::RENCONTRE)
         {
-            qDebug() << decoupageTrame[1] << decoupageTrame.length();
-            if(decoupageTrame.length() == TAILLE_PROTOCOLE_RENCONTRE)
+            qDebug() << decoupageTrame[ProtocoleArea::ChampsTrame::TYPE]
+                     << decoupageTrame.length();
+            if(decoupageTrame.length() ==
+               ProtocoleArea::ChampsRencontre::NbChampsRencontre + 1)
             {
-                emit recevoirTrameRencontre();
+                emit nouvelleTrameRencontre(
+                  socket->peerName(),
+                  decoupageTrame[ProtocoleArea::ChampsRencontre::NomClubA],
+                  decoupageTrame[ProtocoleArea::ChampsRencontre::NomClubW],
+                  decoupageTrame[ProtocoleArea::ChampsRencontre::NomJoueurA],
+                  decoupageTrame[ProtocoleArea::ChampsRencontre::PrenomJoueurA],
+                  decoupageTrame[ProtocoleArea::ChampsRencontre::NomJoueurB],
+                  decoupageTrame[ProtocoleArea::ChampsRencontre::PrenomJoueurB],
+                  decoupageTrame[ProtocoleArea::ChampsRencontre::NomJoueurC],
+                  decoupageTrame[ProtocoleArea::ChampsRencontre::PrenomJoueurC],
+                  decoupageTrame[ProtocoleArea::ChampsRencontre::NomJoueurD],
+                  decoupageTrame[ProtocoleArea::ChampsRencontre::PrenomJoueurD],
+                  decoupageTrame[ProtocoleArea::ChampsRencontre::NomJoueurW],
+                  decoupageTrame[ProtocoleArea::ChampsRencontre::PrenomJoueurW],
+                  decoupageTrame[ProtocoleArea::ChampsRencontre::NomJoueurX],
+                  decoupageTrame[ProtocoleArea::ChampsRencontre::PrenomJoueurX],
+                  decoupageTrame[ProtocoleArea::ChampsRencontre::NomJoueurY],
+                  decoupageTrame[ProtocoleArea::ChampsRencontre::PrenomJoueurY],
+                  decoupageTrame[ProtocoleArea::ChampsRencontre::NomJoueurZ],
+                  decoupageTrame
+                    [ProtocoleArea::ChampsRencontre::PrenomJoueurZ]);
             }
             else
             {
-                qDebug() << Q_FUNC_INFO << "Trame rencontre non complete";
+                qDebug() << Q_FUNC_INFO << "Trame RENCONTRE invalide !";
             }
         }
-
-        if(decoupageTrame[1] == "SIMPLE")
+        else if(decoupageTrame[ProtocoleArea::ChampsTrame::TYPE] ==
+                ProtocoleArea::SIMPLE)
         {
-            qDebug() << decoupageTrame[1] << decoupageTrame.length();
-            if(decoupageTrame.length() == TAILLE_PROTOCOLE_SIMPLE)
-            {
-                emit recevoirTrameSimple();
-            }
-            else
-            {
-                qDebug() << Q_FUNC_INFO << "Trame rencontre non complete";
-            }
+            qDebug() << decoupageTrame[ProtocoleArea::ChampsTrame::TYPE]
+                     << decoupageTrame.length();
         }
-
-        if(decoupageTrame[1] == "DOUBLE")
+        else if(decoupageTrame[ProtocoleArea::ChampsTrame::TYPE] ==
+                ProtocoleArea::DOUBLE)
         {
-            qDebug() << decoupageTrame[1];
-            //initialiserPartieDouble()
+            qDebug() << decoupageTrame[ProtocoleArea::ChampsTrame::TYPE]
+                     << decoupageTrame.length();
         }
-
-        if(decoupageTrame[1] == "SCORE")
+        else if(decoupageTrame[ProtocoleArea::ChampsTrame::TYPE] ==
+                ProtocoleArea::SCORE)
         {
-            qDebug() << decoupageTrame[1];
-            //actualiserScore()
+            qDebug() << decoupageTrame[ProtocoleArea::ChampsTrame::TYPE]
+                     << decoupageTrame.length();
         }
-
-
+        else
+        {
+            qDebug() << Q_FUNC_INFO << "Trame inconnue !";
+        }
 
         // prochaine réception
         trame.clear();
@@ -249,9 +313,4 @@ void ReceptionTrame::renvoyerErreurSocket(QBluetoothSocket::SocketError erreur)
 void ReceptionTrame::renvoyerErreurDevice(QBluetoothLocalDevice::Error erreur)
 {
     qDebug() << Q_FUNC_INFO << erreur;
-}
-
-QByteArray ReceptionTrame::getDecoupageTrame(int caseConteneur) const
-{
-    return decoupageTrame[caseConteneur];
 }

@@ -1,18 +1,15 @@
 #include "ihmafficheur.h"
 #include "ui_ihmafficheur.h"
 #include "receptiontrame.h"
-#include <QDebug>
-
-#ifdef TEST_RELATIONS
 #include "rencontre.h"
 #include "equipe.h"
-#endif
+#include <QDebug>
 
 /**
  * @file ihmafficheur.cpp
  *
  * @brief Définition de la classe IHMAfficheur
- * @author
+ * @author Enzo LADRIERE
  * @version 1.0
  *
  */
@@ -25,53 +22,17 @@
  * fenêtre principale de l'application
  */
 IHMAfficheur::IHMAfficheur(QWidget* parent) :
-    QMainWindow(parent), ui(new Ui::IHMAfficheur), labelsJoueurA()
+    QMainWindow(parent), ui(new Ui::IHMAfficheur), receptionTrame(nullptr),
+    rencontre(nullptr)
 {
     ui->setupUi(this);
     qDebug() << Q_FUNC_INFO;
 
-    receptionTrame = new ReceptionTrame(this);
-    connect(receptionTrame,
-            SIGNAL(recevoirTrameRencontre()),
-            this,
-            SLOT(initialiserRencontre()));
-
-    connect(receptionTrame,
-            SIGNAL(recevoirTrameSimple()),
-            this,
-            SLOT(initialiserPartieSimple()));
-
-#ifdef TEST_RELATIONS
-    // crée une rencontre et les deux équipes
-    rencontre = new Rencontre("PPC Avignon", "PPC Sorgues");
-    // ajoute des joueurs dans une équipe
-    Equipe* equipeA = rencontre->getEquipeA();
-    equipeA->ajouterJoueur("GUIDARELLI", "Nicolas", "A", 0);
-    equipeA->ajouterJoueur("SAULNIER", "Christian", "B", 0);
-    // ajoute des joueurs dans une équipe
-    Equipe* equipeW = rencontre->getEquipeW();
-    equipeW->ajouterJoueur("BEAUMONT", "Jérôme", "W", 0);
-    equipeW->ajouterJoueur("RUIZ", "Jean-michel", "X", 0);
-    // récupère les joueurs d'une équipe
-    qDebug() << Q_FUNC_INFO << equipeA->getNbJoueurs();
-    Joueur* unJoueur = nullptr;
-    unJoueur         = equipeA->getJoueur("A");
-    qDebug() << Q_FUNC_INFO << unJoueur->getPrenom() << unJoueur->getNom()
-             << unJoueur->getLettre();
-    unJoueur = equipeA->getJoueur("B");
-    qDebug() << Q_FUNC_INFO << unJoueur->getPrenom() << unJoueur->getNom()
-             << unJoueur->getLettre();
-    // de l'autre l'équipe
-    unJoueur = equipeW->getJoueur("W");
-    qDebug() << Q_FUNC_INFO << unJoueur->getPrenom() << unJoueur->getNom()
-             << unJoueur->getLettre();
-    unJoueur = equipeW->getJoueur("X");
-    qDebug() << Q_FUNC_INFO << unJoueur->getPrenom() << unJoueur->getNom()
-             << unJoueur->getLettre();
-#endif // TEST_RELATIONS
+    initialiserIHM();
+    initialiserReception();
 
 #ifdef PLEIN_ECRAN
-    //showFullScreen();
+    // showFullScreen();
     showMaximized();
 #endif // PLEIN_ECRAN
 }
@@ -85,24 +46,109 @@ IHMAfficheur::IHMAfficheur(QWidget* parent) :
 IHMAfficheur::~IHMAfficheur()
 {
     delete ui;
-#ifdef TEST_RELATIONS
-    delete rencontre;
-#endif
+    if(rencontre != nullptr)
+        delete rencontre;
     qDebug() << Q_FUNC_INFO;
 }
 
-void IHMAfficheur::initialiserRencontre()
+void IHMAfficheur::initialiserRencontre(QString    nomModule,
+                                        QByteArray NomClubA,
+                                        QByteArray NomClubW,
+                                        QByteArray NomJoueurA,
+                                        QByteArray PrenomJoueurA,
+                                        QByteArray NomJoueurB,
+                                        QByteArray PrenomJoueurB,
+                                        QByteArray NomJoueurC,
+                                        QByteArray PrenomJoueurC,
+                                        QByteArray NomJoueurD,
+                                        QByteArray PrenomJoueurD,
+                                        QByteArray NomJoueurW,
+                                        QByteArray PrenomJoueurW,
+                                        QByteArray NomJoueurX,
+                                        QByteArray PrenomJoueurX,
+                                        QByteArray NomJoueurY,
+                                        QByteArray PrenomJoueurY,
+                                        QByteArray NomJoueurZ,
+                                        QByteArray PrenomJoueurZ)
 {
-    qDebug() << Q_FUNC_INFO;
-    initialiserEquipes();
-    initialiserJoueurA();
-    initialiserJoueurB();
-    initialiserJoueurC();
-    initialiserJoueurD();
-    initialiserJoueurW();
-    initialiserJoueurX();
-    initialiserJoueurY();
-    initialiserJoueurZ();
+    qDebug() << Q_FUNC_INFO << nomModule;
+    // crée une rencontre et les deux équipes
+    if(rencontre == nullptr)
+    {
+        rencontre =
+          new Rencontre(QString(NomClubA.data()), QString(NomClubW.data()));
+        // ajoute les joueurs dans les équipes
+        Equipe* equipeA = rencontre->getEquipeA();
+        equipeA->ajouterJoueur(QString(NomJoueurA.data()),
+                               QString(PrenomJoueurA.data()),
+                               "A",
+                               0);
+        equipeA->ajouterJoueur(QString(NomJoueurB.data()),
+                               QString(PrenomJoueurB.data()),
+                               "B",
+                               0);
+        equipeA->ajouterJoueur(QString(NomJoueurC.data()),
+                               QString(PrenomJoueurC.data()),
+                               "C",
+                               0);
+        equipeA->ajouterJoueur(QString(NomJoueurD.data()),
+                               QString(PrenomJoueurD.data()),
+                               "D",
+                               0);
+        // Exemple : récupère les joueurs de l'équipe A
+        /*
+        qDebug() << Q_FUNC_INFO << equipeA->getNbJoueurs();
+        Joueur* unJoueur = nullptr;
+        unJoueur         = equipeA->getJoueur("A");
+        qDebug() << Q_FUNC_INFO << unJoueur->getPrenom() << unJoueur->getNom()
+                 << unJoueur->getLettre();
+        */
+        Equipe* equipeW = rencontre->getEquipeW();
+        equipeW->ajouterJoueur(QString(NomJoueurW.data()),
+                               QString(PrenomJoueurW.data()),
+                               "W",
+                               0);
+        equipeW->ajouterJoueur(QString(NomJoueurX.data()),
+                               QString(PrenomJoueurX.data()),
+                               "X",
+                               0);
+        equipeW->ajouterJoueur(QString(NomJoueurY.data()),
+                               QString(PrenomJoueurY.data()),
+                               "Y",
+                               0);
+        equipeW->ajouterJoueur(QString(NomJoueurZ.data()),
+                               QString(PrenomJoueurZ.data()),
+                               "Z",
+                               0);
+        // Exemple : récupère les joueurs de l'équipe W
+        /*
+        qDebug() << Q_FUNC_INFO << equipeW->getNbJoueurs();
+        unJoueur = equipeW->getJoueur("W");
+        qDebug() << Q_FUNC_INFO << unJoueur->getPrenom() << unJoueur->getNom()
+                 << unJoueur->getLettre();
+        */
+        initialiserEquipes(QString(NomClubA.data()), QString(NomClubW.data()));
+        initialiserJoueurA(QString(NomJoueurA.data()),
+                           QString(PrenomJoueurA.data()));
+        initialiserJoueurB(QString(NomJoueurB.data()),
+                           QString(PrenomJoueurB.data()));
+        initialiserJoueurC(QString(NomJoueurC.data()),
+                           QString(PrenomJoueurC.data()));
+        initialiserJoueurD(QString(NomJoueurD.data()),
+                           QString(PrenomJoueurD.data()));
+        initialiserJoueurW(QString(NomJoueurW.data()),
+                           QString(PrenomJoueurW.data()));
+        initialiserJoueurX(QString(NomJoueurX.data()),
+                           QString(PrenomJoueurX.data()));
+        initialiserJoueurY(QString(NomJoueurY.data()),
+                           QString(PrenomJoueurY.data()));
+        initialiserJoueurZ(QString(NomJoueurZ.data()),
+                           QString(PrenomJoueurZ.data()));
+    }
+    else
+    {
+        qDebug() << Q_FUNC_INFO << "Erreur rencontre en cours !";
+    }
 }
 
 void IHMAfficheur::initialiserPartieSimple()
@@ -110,97 +156,160 @@ void IHMAfficheur::initialiserPartieSimple()
     qDebug() << Q_FUNC_INFO;
 }
 
-void IHMAfficheur::initialiserEquipes()
+void IHMAfficheur::initialiserIHM()
 {
-    ui->clubA->setText(receptionTrame->getDecoupageTrame(2));
-    ui->clubW->setText(receptionTrame->getDecoupageTrame(3));
+    qDebug() << Q_FUNC_INFO;
 }
 
-void IHMAfficheur::initialiserJoueurA()
+void IHMAfficheur::initialiserReception()
+{
+    qDebug() << Q_FUNC_INFO;
+    receptionTrame = new ReceptionTrame(this);
+
+    connect(receptionTrame,
+            SIGNAL(nouvelleTrameRencontre(QString,
+                                          QByteArray,
+                                          QByteArray,
+                                          QByteArray,
+                                          QByteArray,
+                                          QByteArray,
+                                          QByteArray,
+                                          QByteArray,
+                                          QByteArray,
+                                          QByteArray,
+                                          QByteArray,
+                                          QByteArray,
+                                          QByteArray,
+                                          QByteArray,
+                                          QByteArray,
+                                          QByteArray,
+                                          QByteArray,
+                                          QByteArray,
+                                          QByteArray)),
+            this,
+            SLOT(initialiserRencontre(QString,
+                                      QByteArray,
+                                      QByteArray,
+                                      QByteArray,
+                                      QByteArray,
+                                      QByteArray,
+                                      QByteArray,
+                                      QByteArray,
+                                      QByteArray,
+                                      QByteArray,
+                                      QByteArray,
+                                      QByteArray,
+                                      QByteArray,
+                                      QByteArray,
+                                      QByteArray,
+                                      QByteArray,
+                                      QByteArray,
+                                      QByteArray,
+                                      QByteArray)));
+}
+
+void IHMAfficheur::initialiserEquipes(QString clubA, QString clubW)
+{
+    qDebug() << Q_FUNC_INFO << clubA << clubW;
+    ui->clubA->setText(clubA);
+    ui->clubW->setText(clubW);
+    /**
+     * @todo Initialiser les parties DOUBLE dans l'IHM
+     */
+}
+
+void IHMAfficheur::initialiserJoueurA(QString nom, QString prenom)
 {
     labelsJoueurA.push_back(ui->joueurPartie1CoteG);
     labelsJoueurA.push_back(ui->joueurPartie5CoteG);
     labelsJoueurA.push_back(ui->joueurPartie11CoteG);
+    qDebug() << Q_FUNC_INFO << nom << prenom;
     for(int i = 0; i < labelsJoueurA.size(); ++i)
     {
-        labelsJoueurA[i]->setText(receptionTrame->getDecoupageTrame(4) + " " + receptionTrame->getDecoupageTrame(5));
+        labelsJoueurA[i]->setText(nom + " " + prenom);
     }
 }
 
-void IHMAfficheur::initialiserJoueurB()
+void IHMAfficheur::initialiserJoueurB(QString nom, QString prenom)
 {
     labelsJoueurB.push_back(ui->joueurPartie2CoteG);
     labelsJoueurB.push_back(ui->joueurPartie6CoteG);
     labelsJoueurB.push_back(ui->joueurPartie14CoteG);
+    qDebug() << Q_FUNC_INFO << nom << prenom;
     for(int i = 0; i < labelsJoueurB.size(); ++i)
     {
-        labelsJoueurB[i]->setText(receptionTrame->getDecoupageTrame(6) + " " + receptionTrame->getDecoupageTrame(7));
+        labelsJoueurB[i]->setText(nom + " " + prenom);
     }
 }
 
-void IHMAfficheur::initialiserJoueurC()
+void IHMAfficheur::initialiserJoueurC(QString nom, QString prenom)
 {
     labelsJoueurC.push_back(ui->joueurPartie3CoteG);
     labelsJoueurC.push_back(ui->joueurPartie8CoteG);
     labelsJoueurC.push_back(ui->joueurPartie12CoteG);
+    qDebug() << Q_FUNC_INFO << nom << prenom;
     for(int i = 0; i < labelsJoueurC.size(); ++i)
     {
-        labelsJoueurC[i]->setText(receptionTrame->getDecoupageTrame(8) + " " + receptionTrame->getDecoupageTrame(9));
+        labelsJoueurC[i]->setText(nom + " " + prenom);
     }
 }
 
-void IHMAfficheur::initialiserJoueurD()
+void IHMAfficheur::initialiserJoueurD(QString nom, QString prenom)
 {
     labelsJoueurD.push_back(ui->joueurPartie4CoteG);
     labelsJoueurD.push_back(ui->joueurPartie7CoteG);
     labelsJoueurD.push_back(ui->joueurPartie13CoteG);
+    qDebug() << Q_FUNC_INFO << nom << prenom;
     for(int i = 0; i < labelsJoueurD.size(); ++i)
     {
-        labelsJoueurD[i]->setText(receptionTrame->getDecoupageTrame(10) + " " + receptionTrame->getDecoupageTrame(11));
+        labelsJoueurD[i]->setText(nom + " " + prenom);
     }
 }
 
-void IHMAfficheur::initialiserJoueurW()
+void IHMAfficheur::initialiserJoueurW(QString nom, QString prenom)
 {
     labelsJoueurW.push_back(ui->joueurPartie1CoteD);
     labelsJoueurW.push_back(ui->joueurPartie6CoteD);
     labelsJoueurW.push_back(ui->joueurPartie12CoteD);
+    qDebug() << Q_FUNC_INFO << nom << prenom;
     for(int i = 0; i < labelsJoueurW.size(); ++i)
     {
-        labelsJoueurW[i]->setText(receptionTrame->getDecoupageTrame(12) + " " + receptionTrame->getDecoupageTrame(13));
+        labelsJoueurW[i]->setText(nom + " " + prenom);
     }
 }
 
-void IHMAfficheur::initialiserJoueurX()
+void IHMAfficheur::initialiserJoueurX(QString nom, QString prenom)
 {
     labelsJoueurX.push_back(ui->joueurPartie2CoteD);
     labelsJoueurX.push_back(ui->joueurPartie5CoteD);
     labelsJoueurX.push_back(ui->joueurPartie13CoteD);
+    qDebug() << Q_FUNC_INFO << nom << prenom;
     for(int i = 0; i < labelsJoueurX.size(); ++i)
     {
-        labelsJoueurX[i]->setText(receptionTrame->getDecoupageTrame(14) + " " + receptionTrame->getDecoupageTrame(15));
+        labelsJoueurX[i]->setText(nom + " " + prenom);
     }
 }
 
-void IHMAfficheur::initialiserJoueurY()
+void IHMAfficheur::initialiserJoueurY(QString nom, QString prenom)
 {
     labelsJoueurY.push_back(ui->joueurPartie3CoteD);
     labelsJoueurY.push_back(ui->joueurPartie7CoteD);
     labelsJoueurY.push_back(ui->joueurPartie11CoteD);
+    qDebug() << Q_FUNC_INFO << nom << prenom;
     for(int i = 0; i < labelsJoueurY.size(); ++i)
     {
-        labelsJoueurY[i]->setText(receptionTrame->getDecoupageTrame(16) + " " + receptionTrame->getDecoupageTrame(17));
+        labelsJoueurY[i]->setText(nom + " " + prenom);
     }
 }
 
-void IHMAfficheur::initialiserJoueurZ()
+void IHMAfficheur::initialiserJoueurZ(QString nom, QString prenom)
 {
     labelsJoueurZ.push_back(ui->joueurPartie4CoteD);
     labelsJoueurZ.push_back(ui->joueurPartie8CoteD);
     labelsJoueurZ.push_back(ui->joueurPartie14CoteD);
+    qDebug() << Q_FUNC_INFO << nom << prenom;
     for(int i = 0; i < labelsJoueurZ.size(); ++i)
     {
-        qDebug() << Q_FUNC_INFO << receptionTrame->getDecoupageTrame(19);
-        labelsJoueurZ[i]->setText(receptionTrame->getDecoupageTrame(18) + " " + receptionTrame->getDecoupageTrame(19));
+        labelsJoueurZ[i]->setText(nom + " " + prenom);
     }
 }

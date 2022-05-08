@@ -10,6 +10,7 @@ SOURCES += \
     joueur.cpp \
     equipe.cpp \
     partie.cpp \
+    protocolearea.cpp \
     receptiontrame.cpp \
     rencontre.cpp \
     ihmafficheur.cpp \
@@ -20,6 +21,7 @@ HEADERS += \
     equipe.h \
     partie.h \
     ihmafficheur.h \
+    protocolearea.h \
     receptiontrame.h \
     rencontre.h \
 

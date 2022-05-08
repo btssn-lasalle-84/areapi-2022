@@ -4,8 +4,8 @@
 /**
  * @file receptiontrame.h
  * @brief Déclaration de la classe ReceptionTrame
- * @version
- * @author
+ * @version 1.0
+ * @author Enzo LADRIERE
  */
 
 #include <QtBluetooth>
@@ -14,16 +14,9 @@
 #include <QList>
 #include <QVector>
 
-#define NB_TABLES 2
-#define TAILLE_PROTOCOLE_RENCONTRE 21
-#define TAILLE_PROTOCOLE_SIMPLE 7
-#define TAILLE_PROTOCOLE_DOUBLE 9
-#define TAILLE_PROTOCOLE_SCORE 12
-#define NOM_MODULE_ARBITRE_1  "AREAPI-arbitre-1"
-#define NOM_MODULE_ARBITRE_2  "AREAPI-arbitre-2"
-
-#define DEBUT_TRAME "$AREA"
-#define FIN_TRAME   "\r\n"
+#define NB_TABLES            2
+#define NOM_MODULE_ARBITRE_1 "AREAPI-arbitre-1"
+#define NOM_MODULE_ARBITRE_2 "AREAPI-arbitre-2"
 
 static const QString serviceUuid(
   QStringLiteral("0000110a-0000-1000-8000-00805f9b34fb"));
@@ -48,7 +41,6 @@ class ReceptionTrame : public QObject
     QList<QBluetoothAddress>   peripheriquesDistants;
     bool                       connecte;
     QByteArray                 trame;
-    QList<QByteArray>          decoupageTrame;
 
   public:
     ReceptionTrame(QObject* parent = 0);
@@ -60,7 +52,8 @@ class ReceptionTrame : public QObject
     void    arreterServeur();
     QString getNomPeripheriqueLocal() const;
     QString getAdressePeripheriqueLocal() const;
-    QByteArray getDecoupageTrame(int caseConteneur) const;
+    QString recupererNomTableArbitre(QBluetoothSocket* socket) const;
+    int     recupererNumeroTableArbitre(QBluetoothSocket* socket) const;
 
   public slots:
     void gererClient();
@@ -72,9 +65,26 @@ class ReceptionTrame : public QObject
 
   signals:
     void clientConnecte(QString nom, QString adresse);
-    void clientDeconnecte();
-    void recevoirTrameRencontre();
-    void recevoirTrameSimple();
+    void clientDeconnecte(QString nomModule);
+    void nouvelleTrameRencontre(QString    nomModule,
+                                QByteArray NomClubA,
+                                QByteArray NomClubW,
+                                QByteArray NomJoueurA,
+                                QByteArray PrenomJoueurA,
+                                QByteArray NomJoueurB,
+                                QByteArray PrenomJoueurB,
+                                QByteArray NomJoueurC,
+                                QByteArray PrenomJoueurC,
+                                QByteArray NomJoueurD,
+                                QByteArray PrenomJoueurD,
+                                QByteArray NomJoueurW,
+                                QByteArray PrenomJoueurW,
+                                QByteArray NomJoueurX,
+                                QByteArray PrenomJoueurX,
+                                QByteArray NomJoueurY,
+                                QByteArray PrenomJoueurY,
+                                QByteArray NomJoueurZ,
+                                QByteArray PrenomJoueurZ);
 };
 
 #endif // RECEPTIONTRAME_H

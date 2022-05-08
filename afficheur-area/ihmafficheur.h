@@ -5,7 +5,7 @@
  * @file ihmafficheur.h
  *
  * @brief Déclaration de la classe IHMAfficheur
- * @author
+ * @author Enzo LADRIERE
  * @version 1.0
  *
  */
@@ -27,10 +27,7 @@ class IHMAfficheur;
 }
 
 class ReceptionTrame;
-
-#ifdef TEST_RELATIONS
 class Rencontre;
-#endif
 
 /**
  * @class IHMAfficheur
@@ -41,40 +38,56 @@ class IHMAfficheur : public QMainWindow
 {
     Q_OBJECT
 
-    public:
-        IHMAfficheur(QWidget* parent = nullptr);
-        ~IHMAfficheur();
-        void initialiserEquipes();
-        void initialiserJoueurA();
-        void initialiserJoueurB();
-        void initialiserJoueurC();
-        void initialiserJoueurD();
-        void initialiserJoueurW();
-        void initialiserJoueurX();
-        void initialiserJoueurY();
-        void initialiserJoueurZ();
+  private:
+    Ui::IHMAfficheur* ui; //!< la fenêtre graphique associée à cette classe
+    ReceptionTrame*   receptionTrame;
+    QVector<QLabel*>  labelsJoueurA;
+    QVector<QLabel*>  labelsJoueurB;
+    QVector<QLabel*>  labelsJoueurC;
+    QVector<QLabel*>  labelsJoueurD;
+    QVector<QLabel*>  labelsJoueurW;
+    QVector<QLabel*>  labelsJoueurX;
+    QVector<QLabel*>  labelsJoueurY;
+    QVector<QLabel*>  labelsJoueurZ;
+    Rencontre*        rencontre;
 
+    void initialiserIHM();
+    void initialiserReception();
+    void initialiserEquipes(QString clubA, QString clubW);
+    void initialiserJoueurA(QString nom, QString prenom);
+    void initialiserJoueurB(QString nom, QString prenom);
+    void initialiserJoueurC(QString nom, QString prenom);
+    void initialiserJoueurD(QString nom, QString prenom);
+    void initialiserJoueurW(QString nom, QString prenom);
+    void initialiserJoueurX(QString nom, QString prenom);
+    void initialiserJoueurY(QString nom, QString prenom);
+    void initialiserJoueurZ(QString nom, QString prenom);
 
+  public:
+    IHMAfficheur(QWidget* parent = nullptr);
+    ~IHMAfficheur();
 
-    private:
-        Ui::IHMAfficheur* ui; //!< la fenêtre graphique associée à cette classe
-        ReceptionTrame*   receptionTrame;
-        QVector<QLabel*>  labelsJoueurA;
-        QVector<QLabel*>  labelsJoueurB;
-        QVector<QLabel*>  labelsJoueurC;
-        QVector<QLabel*>  labelsJoueurD;
-        QVector<QLabel*>  labelsJoueurW;
-        QVector<QLabel*>  labelsJoueurX;
-        QVector<QLabel*>  labelsJoueurY;
-        QVector<QLabel*>  labelsJoueurZ;
-        #ifdef TEST_RELATIONS
-            Rencontre* rencontre;
-        #endif
-
-
-    public slots:
-        void initialiserRencontre();
-        void initialiserPartieSimple();
+  public slots:
+    void initialiserRencontre(QString    nomModule,
+                              QByteArray NomClubA,
+                              QByteArray NomClubW,
+                              QByteArray NomJoueurA,
+                              QByteArray PrenomJoueurA,
+                              QByteArray NomJoueurB,
+                              QByteArray PrenomJoueurB,
+                              QByteArray NomJoueurC,
+                              QByteArray PrenomJoueurC,
+                              QByteArray NomJoueurD,
+                              QByteArray PrenomJoueurD,
+                              QByteArray NomJoueurW,
+                              QByteArray PrenomJoueurW,
+                              QByteArray NomJoueurX,
+                              QByteArray PrenomJoueurX,
+                              QByteArray NomJoueurY,
+                              QByteArray PrenomJoueurY,
+                              QByteArray NomJoueurZ,
+                              QByteArray PrenomJoueurZ);
+    void initialiserPartieSimple();
 };
 
 #endif // IHMAFFICHEUR_H
