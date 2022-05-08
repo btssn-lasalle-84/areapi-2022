@@ -1,0 +1,68 @@
+class Partie
+!!!139927.cpp!!!	operator =(in partie : Partie) : Partie
+    if(this != &partie)
+    {
+        this->nombreSet             = partie.nombreSet;
+        this->scoreJoueurG          = partie.scoreJoueurG;
+        this->scoreJoueurD          = partie.scoreJoueurD;
+        this->setJoueurG            = partie.setJoueurG;
+        this->setJoueurD            = partie.setJoueurD;
+        this->nombreNET             = partie.nombreNET;
+        this->pointConsecutif       = partie.pointConsecutif;
+        this->joueurPointConsecutif = partie.joueurPointConsecutif;
+        this->joueurs               = partie.joueurs;
+    }
+
+    return *this;
+!!!140055.cpp!!!	aGagne() : bool
+    return false;
+!!!140183.cpp!!!	estPointConsecutif() : bool
+    return false;
+!!!140311.cpp!!!	ajouterPointJoueurG() : void
+    ++this->scoreJoueurG;
+!!!140439.cpp!!!	ajouterPointJoueurD() : void
+    ++this->scoreJoueurD;
+!!!140567.cpp!!!	gagneSetJoueurG() : void
+    ++this->setJoueurG;
+!!!140695.cpp!!!	gagneSetJoueurD() : void
+    ++this->setJoueurD;
+!!!140823.cpp!!!	ajouterNET() : void
+    ++this->nombreNET;
+!!!140951.cpp!!!	rajouterPointConsecutif() : void
+    ++this->pointConsecutif;
+!!!141079.cpp!!!	getEstDouble() : bool
+    return this->estDouble;
+!!!141207.cpp!!!	getNombreSet() : uint
+    return this->nombreSet;
+!!!141335.cpp!!!	getScoreJoueurG() : uint
+    return this->scoreJoueurG;
+!!!141463.cpp!!!	getScoreJoueurD() : uint
+    return this->scoreJoueurD;
+!!!141591.cpp!!!	getSetJoueurG() : uint
+    return this->setJoueurG;
+!!!141719.cpp!!!	getSetJoueurD() : uint
+    return this->setJoueurD;
+!!!141847.cpp!!!	getNombreNET() : uint
+    return this->nombreNET;
+!!!141975.cpp!!!	getPointConsecutif() : uint
+    return this->pointConsecutif;
+!!!142103.cpp!!!	getJoueurPointConsecutif() : QString
+    return this->joueurPointConsecutif;
+!!!142231.cpp!!!	setEstDouble(in estDouble : bool) : void
+    this->estDouble = estDouble;
+!!!142359.cpp!!!	setNombreSet(in nombreSet : uint) : void
+    this->nombreSet = nombreSet;
+!!!142487.cpp!!!	setScoreJoueurG(in scoreJoueurG : uint) : void
+    this->scoreJoueurG = scoreJoueurG;
+!!!142615.cpp!!!	setScoreJoueurD(in scoreJoueurD : uint) : void
+    this->scoreJoueurD = scoreJoueurD;
+!!!142743.cpp!!!	setSetJoueurG(in setJoueurG : uint) : void
+    this->setJoueurG = setJoueurG;
+!!!142871.cpp!!!	setSetJoueurD(in setJoueurD : uint) : void
+    this->setJoueurD = setJoueurD;
+!!!142999.cpp!!!	setNombreNET(in nombreNET : uint) : void
+    this->nombreNET = nombreNET;
+!!!143127.cpp!!!	setPointConsecutif(in pointConsecutif : uint) : void
+    this->pointConsecutif = pointConsecutif;
+!!!143255.cpp!!!	setJoueurPointConsecutif(in joueurPointConsecutif : QString) : void
+    this->joueurPointConsecutif = joueurPointConsecutif;

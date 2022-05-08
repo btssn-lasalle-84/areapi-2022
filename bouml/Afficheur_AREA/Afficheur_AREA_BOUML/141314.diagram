@@ -1,27 +1,27 @@
 format 224
 
 classinstance 128002 class_ref 148610 // Arbitre
-  name ""   xyz 104.5 6 2000 life_line_z 2000
+  name ""   xyz 104 6 2000 life_line_z 2000
 classinstance 128130 class_ref 148738 // Systeme
-  name ""   xyz 373.5 13 2000 life_line_z 2000
+  name ""   xyz 374.5 12.5 2000 life_line_z 2000
 fragment 128535 "loop"
-  xyzwh 48 126 2005 684 183
+  xyzwh 47.5 126.5 2005 684 183
 end
 fragment 131330 "dss"
-  xyzwh 6 1 1990 745 361
+  xyzwh 6 1.5 1990 745 361
 end
 textcanvas 131458 "[connecte]"
-  xyzwh 165 134 2005 143 36
+  xyzwh 165 133.5 2005 143 36
 durationcanvas 130690 classinstance_ref 128002 // :Arbitre
-  xyzwh 147 71 2010 11 40
+  xyzwh 148 71 2010 11 40
 end
 durationcanvas 130818 classinstance_ref 128130 // :Systeme
-  xyzwh 432 74 2010 11 223
+  xyzwh 433 74.5 2010 11 223
   overlappingdurationcanvas 128023
-    xyzwh 438 196 2020 11 25
+    xyzwh 439 196 2020 11 25
   end
   overlappingdurationcanvas 128279
-    xyzwh 438 254 2020 11 25
+    xyzwh 439 254 2020 11 25
   end
 end
 reflexivemsg 128151 synchronous

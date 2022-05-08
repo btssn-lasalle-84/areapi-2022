@@ -1,0 +1,37 @@
+class Equipe
+!!!134551.cpp!!!	Equipe()
+    qDebug() << Q_FUNC_INFO;
+!!!134679.cpp!!!	Equipe(in nom : QString)
+    qDebug() << Q_FUNC_INFO << this << nom;
+!!!134807.cpp!!!	Equipe(in equipe : Equipe)
+    qDebug() << Q_FUNC_INFO << nom;
+!!!134935.cpp!!!	~Equipe()
+    qDebug() << Q_FUNC_INFO << this;
+!!!135063.cpp!!!	operator =(in equipe : Equipe) : Equipe
+    if(this != &equipe)
+    {
+        this->nom     = equipe.nom;
+        this->joueurs = equipe.joueurs;
+    }
+
+    return *this;
+!!!135191.cpp!!!	getNom() : QString
+    return this->nom;
+!!!135319.cpp!!!	setNom(in nom : QString) : void
+    this->nom = nom;
+!!!135447.cpp!!!	ajouterJoueur(in nom : QString, in prenom : QString, in lettre : QString, in classement : int) : void
+    joueurs.push_back(Joueur(nom, prenom, lettre, classement));
+!!!135575.cpp!!!	getJoueur(in lettre : QString) : Joueur
+    qDebug() << Q_FUNC_INFO << "lettre" << lettre;
+    for(int i = 0; i < joueurs.size(); i++)
+    {
+        if(joueurs[i].getLettre() == lettre)
+        {
+            qDebug() << Q_FUNC_INFO << &(joueurs[i]) << joueurs[i].getPrenom()
+                     << joueurs[i].getNom();
+            return &(joueurs[i]);
+        }
+    }
+    return nullptr;
+!!!135703.cpp!!!	getNbJoueurs() : int
+    return joueurs.size();

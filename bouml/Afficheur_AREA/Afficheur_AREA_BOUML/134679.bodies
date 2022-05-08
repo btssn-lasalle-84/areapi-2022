@@ -1,0 +1,36 @@
+class Joueur
+!!!137751.cpp!!!	Joueur()
+    qDebug() << Q_FUNC_INFO;
+!!!137879.cpp!!!	Joueur(in nom : QString, in prenom : QString, in lettre : QString, in classement : int)
+    qDebug() << Q_FUNC_INFO << prenom << nom << lettre << classement;
+!!!138007.cpp!!!	Joueur(in joueur : Joueur)
+    qDebug() << Q_FUNC_INFO << prenom << nom << lettre << classement;
+!!!138135.cpp!!!	~Joueur()
+    qDebug() << Q_FUNC_INFO;
+!!!138263.cpp!!!	operator =(in joueur : Joueur) : Joueur
+    if(this != &joueur)
+    {
+        this->nom        = joueur.nom;
+        this->prenom     = joueur.prenom;
+        this->lettre     = joueur.lettre;
+        this->classement = joueur.classement;
+        qDebug() << Q_FUNC_INFO << prenom << nom << lettre << classement;
+    }
+
+    return *this;
+!!!138391.cpp!!!	getNom() : QString
+    return this->nom;
+!!!138519.cpp!!!	getPrenom() : QString
+    return this->prenom;
+!!!138647.cpp!!!	getLettre() : QString
+    return this->lettre;
+!!!138775.cpp!!!	getClassement() : int
+    return this->classement;
+!!!138903.cpp!!!	setNom(in nom : QString) : void
+    this->nom = nom;
+!!!139031.cpp!!!	setPrenom(in prenom : QString) : void
+    this->prenom = prenom;
+!!!139159.cpp!!!	setLettre(in lettre : QString) : void
+    this->lettre = lettre;
+!!!139287.cpp!!!	setClassement(in classement : int) : void
+    this->classement = classement;

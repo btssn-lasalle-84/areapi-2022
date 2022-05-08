@@ -1,7 +1,8 @@
 format 224
 "Afficheur_AREA_BOUML"
-  revision 13
+  revision 15
   modified_by 23 "tv"
+  cpp_root_dir "../../../afficheur-area/"
 
 
   
@@ -744,4 +745,6 @@ format 224
       
     end
   end
+
+  package_ref 134551 // afficheur-area
 end
