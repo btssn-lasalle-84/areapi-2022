@@ -17,7 +17,6 @@ class CommunicationBluetooth : public QObject
     /**
      * @enum Module
      * @brief Définit les différents modules AREA
-     *
      */
     enum Module
     {
@@ -25,6 +24,17 @@ class CommunicationBluetooth : public QObject
         Net,
         Score,
         NbModules
+    };
+    /**
+     * @enum TrameNet
+     * @brief Définit les champs d'une trame NET ("$AREA", "NET", "1", "\r\n")
+     */
+    enum TrameNet
+    {
+        EnTete,
+        Type,
+        NbNets,
+        Fin
     };
 
   private:
@@ -64,7 +74,7 @@ class CommunicationBluetooth : public QObject
     void moduleEcranTrouve();
     void moduleNetTrouve();
     void moduleScoreTrouve();
-    void netDetecte();
+    void netDetecte(int nbNets);
 };
 
 #endif // COMMUNICATION_BLUETOOTH_H

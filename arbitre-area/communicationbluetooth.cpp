@@ -153,16 +153,12 @@ void CommunicationBluetooth::recevoirNet()
     trameNet += QString(donnees);
     if(trameNet.startsWith(DEBUT_TRAME) && trameNet.endsWith(FIN_TRAME))
     {
-        QStringList resultatTrame = trameNet.split(";");
-        if(resultatTrame.at(2) == "1\r\n")
+        QStringList champsTrames = trameNet.split(";");
+        qDebug() << Q_FUNC_INFO << champsTrames;
+        if(champsTrames.at(TrameNet::Type) == "NET")
         {
-            emit netDetecte();
+            emit netDetecte(champsTrames.at(TrameNet::NbNets).toInt());
         }
-        else
-        {
-            qDebug() << Q_FUNC_INFO << "Pas de net détecté";
-        }
-        qDebug() << Q_FUNC_INFO << resultatTrame;
         // prochaine réception
         trameNet.clear();
     }

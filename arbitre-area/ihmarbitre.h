@@ -48,7 +48,8 @@ class IHMArbitre : public QMainWindow
 
   private:
     Ui::IHMArbitre* ui; //!< la fenêtre graphique associée à cette classe
-    CommunicationBluetooth* communicationBluetooth;
+    CommunicationBluetooth*
+      communicationBluetooth; //!< la communication avec les modules
 
     /**
      * @enum Ecran
@@ -74,6 +75,7 @@ class IHMArbitre : public QMainWindow
         NbEtats
     };
 
+    void initialiserCommunicationBluetooth();
     void installerGestionEvenements();
     void initialiserPageAccueil();
     void afficherEtatBluetooth(QLabel* module, EtatModule etat);
@@ -100,7 +102,7 @@ class IHMArbitre : public QMainWindow
     void gererConnexionNet();
     void gererConnexionEcran();
     void gererConnexionScore();
-    void declencherNet();
+    void declencherNet(int nbNets);
 };
 
 #endif // IHMARBITRE_H

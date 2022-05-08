@@ -30,13 +30,8 @@ IHMArbitre::IHMArbitre(QWidget* parent) :
 #endif
 
     initialiserPageAccueil();
-
-    communicationBluetooth = new CommunicationBluetooth(this);
+    initialiserCommunicationBluetooth();
     installerGestionEvenements();
-    connect(communicationBluetooth,
-            SIGNAL(netDetecte()),
-            this,
-            SLOT(declencherNet()));
 
     afficherEcran(IHMArbitre::Accueil);
     // afficherEcran(IHMArbitre::AccueilRencontre);
@@ -226,41 +221,54 @@ void IHMArbitre::gererConnexionScore()
           CommunicationBluetooth::Module::Score);
     }
 }
+
+void IHMArbitre::declencherNet(int nbNets)
+{
+    qDebug() << Q_FUNC_INFO << "NET" << nbNets;
+}
+
+// Méthodes privées
+
+void IHMArbitre::initialiserCommunicationBluetooth()
+{
+    communicationBluetooth = new CommunicationBluetooth(this);
+}
+
 void IHMArbitre::installerGestionEvenements()
 {
     connect(ui->pushButtonDemarrer,
             SIGNAL(clicked(bool)),
             this,
             SLOT(demarrer()));
-    connect(communicationBluetooth,
-            SIGNAL(moduleNetTrouve()),
-            this,
-            SLOT(afficherNetTrouve()));
-    connect(ui->pushButtonModuleNet,
-            SIGNAL(clicked(bool)),
-            this,
-            SLOT(gererConnexionNet()));
-    connect(communicationBluetooth,
-            SIGNAL(moduleEcranTrouve()),
-            this,
-            SLOT(afficherEcranTrouve()));
     connect(ui->pushButtonModuleEcran,
             SIGNAL(clicked(bool)),
             this,
             SLOT(gererConnexionEcran()));
-    connect(communicationBluetooth,
-            SIGNAL(moduleScoreTrouve()),
+    connect(ui->pushButtonModuleNet,
+            SIGNAL(clicked(bool)),
             this,
-            SLOT(afficherScoreTrouve()));
+            SLOT(gererConnexionNet()));
     connect(ui->pushButtonModuleScore,
             SIGNAL(clicked(bool)),
             this,
             SLOT(gererConnexionScore()));
-}
+    connect(communicationBluetooth,
+            SIGNAL(moduleEcranTrouve()),
+            this,
+            SLOT(afficherEcranTrouve()));
+    connect(communicationBluetooth,
+            SIGNAL(moduleNetTrouve()),
+            this,
+            SLOT(afficherNetTrouve()));
+    connect(communicationBluetooth,
+            SIGNAL(moduleScoreTrouve()),
+            this,
+            SLOT(afficherScoreTrouve()));
 
-void IHMArbitre::declencherNet()
-{
-    qDebug() << Q_FUNC_INFO << "NET";
+    connect(communicationBluetooth,
+            SIGNAL(netDetecte(int)),
+            this,
+            SLOT(declencherNet(int)));
 }
 
 void IHMArbitre::initialiserPageAccueil()
