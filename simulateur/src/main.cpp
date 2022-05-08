@@ -30,9 +30,10 @@
 // Protocole (cf. Google Drive)
 #define EN_TETE_TRAME_RECEPTION "$AREA"
 #define EN_TETE_TRAME_EMISSION  "$AREA"
+#define TRAME_TABLE             "TABLE"
 #define TRAME_SERVICE           "SERVICE"
 #define TRAME_NET               "NET"
-#define TRAME_RAZ_COMPTEUR_NET  "RAZ_COMPTEUR_NET"
+#define TRAME_RAZ_COMPTEUR_NET  "RAZ"
 #define DELIMITEUR_CHAMP        ";"
 #define DELIMITEURS_FIN         "\r\n"
 #define DELIMITEUR_DATAS        ';'
@@ -41,6 +42,7 @@
 // Variables
 BluetoothSerial ESPBluetooth;
 int nbNets = 1;             //!< Compteur de nets par partie
+bool enCours = false;       //!< true si une partie est en cours
 bool service = false;       //!< true si un service est en cours
 bool refresh = false;       //!< true pour demander un refraichissement de l'écran OLED
 bool refreshNet = false;    //!< pour la détction d'un net
@@ -55,8 +57,8 @@ void envoyerTrameNet(int nbNets)
 {
   char trameEnvoi[64];
 
-  //Format : $AREA;NET;1\r\n
-  sprintf((char *)trameEnvoi, "$AREA;NET;%d\r\n", nbNets);
+  //Format : $AREA;NET;1;\r\n
+  sprintf((char *)trameEnvoi, "$AREA;NET;%d;\r\n", nbNets);
   ESPBluetooth.write((uint8_t*)trameEnvoi, strlen((char *)trameEnvoi));
   #ifdef DEBUG
   String trame = String(trameEnvoi);
@@ -143,22 +145,63 @@ bool lireTrame(String &trame)
 }
 
 /**
- * @brief Vérifie si la trame reçue est une trame de SERVICE valide ou RAZ
+ * @brief Vérifie si la trame reçue est une trame valide
  *
  * @fn verifierTrameMobile(String &trame)
  * @param trame
- * @return bool true si une trame de SERVICE ou RAZ a été reçue, sinon false
+ * @return bool true si une trame valide a été reçue, sinon false
  */
 bool verifierTrameMobile(String &trame)
 {
+  String trameTable;
+  String trameDebutTable;
+  //trame.toUpperCase();
+  // $AREA;TABLE;ETAT;\r\n
+  trameDebutTable = String(EN_TETE_TRAME_RECEPTION) + String(DELIMITEUR_CHAMP) + String(TRAME_TABLE) + String(DELIMITEUR_CHAMP);
+  trameTable = String(EN_TETE_TRAME_RECEPTION) + String(DELIMITEUR_CHAMP) + String(TRAME_TABLE) + String(DELIMITEUR_CHAMP) + String("1") + String(DELIMITEUR_CHAMP) + String(DELIMITEURS_FIN);
+  //trameDebutTable.toUpperCase();
+  //trameService.toUpperCase();
+  if(trame.startsWith(trameDebutTable))
+  {
+    if(trame.equals(trameTable))
+    {
+      enCours = true;
+
+      char strMessageDisplay[24];
+      sprintf(strMessageDisplay, "PARTIE en cours");
+      afficheur.setMessageLigne(Afficheur::Ligne1, String(strMessageDisplay));
+      afficheur.setMessageLigne(Afficheur::Ligne2, ""); // Reset ligne NET
+      refresh = true;
+      #ifdef DEBUG
+      Serial.println("Partie en cours !");
+      #endif
+      return true;
+    }
+    else
+    {
+      enCours = false;
+
+      char strMessageDisplay[24];
+      sprintf(strMessageDisplay, "PARTIE finie");
+      afficheur.setMessageLigne(Afficheur::Ligne1, String(strMessageDisplay));
+      afficheur.setMessageLigne(Afficheur::Ligne2, ""); // Reset ligne NET
+      refresh = true;
+      #ifdef DEBUG
+      Serial.println("Partie terminée !");
+      #endif
+      return true;
+    }
+  }
+
   String trameService;
   //trame.toUpperCase();
-  // MOBILE_AREA;SERVICE\r\n
-  trameService = String(EN_TETE_TRAME_RECEPTION) + String(DELIMITEUR_CHAMP) + String(TRAME_SERVICE) + String(DELIMITEURS_FIN);
+  // $AREA;SERVICE;\r\n
+  trameService = String(EN_TETE_TRAME_RECEPTION) + String(DELIMITEUR_CHAMP) + String(TRAME_SERVICE) + String(DELIMITEUR_CHAMP) + String(DELIMITEURS_FIN);
   //trameService.toUpperCase();
   if(trame.equals(trameService))
   //if(trame.startsWith(trameService))
   {
+    //if(enCours)
     service = true;
 
     char strMessageDisplay[24];
@@ -174,8 +217,8 @@ bool verifierTrameMobile(String &trame)
 
   String trameRaz;
   //trame.toUpperCase();
-  // MOBILE_AREA;SERVICE\r\n
-  trameRaz = String(EN_TETE_TRAME_RECEPTION) + String(DELIMITEUR_CHAMP) + String(TRAME_RAZ_COMPTEUR_NET) + String(DELIMITEURS_FIN);
+  // $AREA;RAZ;\r\n
+  trameRaz = String(EN_TETE_TRAME_RECEPTION) + String(DELIMITEUR_CHAMP) + String(TRAME_RAZ_COMPTEUR_NET) + String(DELIMITEUR_CHAMP) + String(DELIMITEURS_FIN);
   //trameRaz.toUpperCase();
   if(trame.equals(trameRaz))
   //if(trame.startsWith(trameRaz))
