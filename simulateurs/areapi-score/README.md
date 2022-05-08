@@ -2,11 +2,11 @@
 
 ## Présentation du protocole implanté dans le simulateur ESP32
 
-Ce document présente rapidement le fonctionnement du simulateur ainsi que le protocole implémenté. Le protocole complet est disponible dans Google Drive. Actuellement, la version du protocole est la **0.1** (04 avril 2022).
+Ce document présente rapidement le fonctionnement du simulateur ainsi que le protocole implémenté. Le protocole complet est disponible dans Google Drive. Actuellement, la version du protocole est la **2.0** (08 mai 2022).
 
 Trame reçue :
 
-`$AREA;SCORE;idPartie;scoreJG;scoreJD;etatPartie;tempsMort;nbSetJG;nbSetJD;tourService;net\r\n`
+`$AREA;SCORE;idPartie;scoreJG;scoreJD;etatPartie;tempsMort;nbSetJG;nbSetJD;tourService;net;\r\n`
 
 Champs :
 
@@ -20,7 +20,7 @@ Champs :
 - `tourService` : int (G ou D)
 - `net` : int (nombre de nets)
 
-Exemple : `$AREA;SCORE;1;2;5;1;0;1;2;G;5\r\n`
+Exemple : `$AREA;SCORE;1;2;5;1;0;1;2;G;5;\r\n`
 
 ## platform.ini
 

@@ -8,7 +8,7 @@
 #include <Arduino.h>
 
 /*
-$AREA;SCORE;idPartie;scoreJG;scoreJD;etatPartie;tempsMort;nbSetJG;nbSetJD;tourService;net\r\n
+$AREA;SCORE;idPartie;scoreJG;scoreJD;etatPartie;tempsMort;nbSetJG;nbSetJD;tourService;net;\r\n
 
 idPartie : int (identifiant de la partie)
 scoreJG : int (joueur à gauche de l’arbitre)
@@ -20,7 +20,7 @@ nbSetJ2 : int (max 5)
 tourService : int (G ou D)
 net : int (nombre de nets)
 
-Exemple : $AREA;SCORE;1;2;5;1;0;1;2;G;5\r\n
+Exemple : $AREA;SCORE;1;2;5;1;0;1;2;G;5;\r\n
 */
 
 #define ENTETE_TRAME                "$AREA"

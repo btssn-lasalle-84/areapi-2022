@@ -76,7 +76,7 @@ bool decoderTrame()
 
     if(typeTrame == "SCORE")
     {
-          //$AREA;SCORE;idPartie;scoreJG;scoreJD;etatPartie;tempsMort;nbSetJG;nbSetJD;tourService;net\r\n
+          //$AREA;SCORE;idPartie;scoreJG;scoreJD;etatPartie;tempsMort;nbSetJG;nbSetJD;tourService;net;\r\n
           // Le champ ETAT_PARTIE peut prendre deux valeurs : DEMARREE ou TERMINEE
           etatPartie = extraireChamp(ETAT_PARTIE);
           #ifdef DEBUG_RECEVOIR
