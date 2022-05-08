@@ -1,0 +1,256 @@
+class CommunicationBluetooth
+!!!136855.cpp!!!	enregistrerModule(in device : QBluetoothDeviceInfo) : void
+
+    QStringList nomDevice = device.name().split("-", QString::SkipEmptyParts);
+    qDebug() << Q_FUNC_INFO << nomDevice.at(1);
+    if(nomDevice.at(1) == "net")
+    {
+        // nouvelle détecion
+        if(!modulesAREA[Module::Net].isValid())
+        {
+            modulesAREA[Module::Net] = device;
+            qDebug() << Q_FUNC_INFO << "module NET trouvé !";
+            emit moduleNetTrouve();
+        }
+    }
+    else if(nomDevice.at(1) == "ecran")
+    {
+        // nouvelle détecion
+        if(!modulesAREA[Module::Ecran].isValid())
+        {
+            modulesAREA[Module::Ecran] = device;
+            qDebug() << Q_FUNC_INFO << "module ECRAN trouvé !";
+            emit moduleEcranTrouve();
+        }
+    }
+    else if(nomDevice.at(1) == "score")
+    {
+        // nouvelle détecion
+        if(!modulesAREA[Module::Score].isValid())
+        {
+            modulesAREA[Module::Score] = device;
+            qDebug() << Q_FUNC_INFO << "module SCORE trouvé !";
+            emit moduleScoreTrouve();
+        }
+        else
+        {
+            qDebug() << Q_FUNC_INFO << "Erreur module AREAPI non reconnu !";
+        }
+    }
+!!!136983.cpp!!!	initialiserSocketNet(in device : QBluetoothDeviceInfo) : void
+
+    if(socketNet == nullptr)
+    {
+        qDebug() << Q_FUNC_INFO << device.name() << device.address();
+        socketNet = new QBluetoothSocket(QBluetoothServiceInfo::RfcommProtocol);
+        connect(socketNet,
+                SIGNAL(connected()),
+                ihmArbitre,
+                SLOT(afficherConnexionNet()));
+        connect(socketNet,
+                SIGNAL(disconnected()),
+                ihmArbitre,
+                SLOT(afficherDeconnexionNet()));
+        connect(socketNet, SIGNAL(readyRead()), this, SLOT(recevoirNet()));
+
+        QBluetoothAddress adresse = QBluetoothAddress(device.address());
+        QBluetoothUuid    uuid    = QBluetoothUuid(QBluetoothUuid::SerialPort);
+        socketNet->connectToService(adresse, uuid);
+        socketNet->open(QIODevice::ReadWrite);
+    }
+!!!137111.cpp!!!	initialiserSocketEcran(in device : QBluetoothDeviceInfo) : void
+
+    if(socketEcran == nullptr)
+    {
+        qDebug() << Q_FUNC_INFO << device.name() << device.address();
+        socketEcran =
+          new QBluetoothSocket(QBluetoothServiceInfo::RfcommProtocol);
+        connect(socketEcran,
+                SIGNAL(connected()),
+                ihmArbitre,
+                SLOT(afficherConnexionEcran()));
+        connect(socketEcran,
+                SIGNAL(disconnected()),
+                ihmArbitre,
+                SLOT(afficherDeconnexionEcran()));
+        connect(socketEcran, SIGNAL(readyRead()), this, SLOT(recevoirEcran()));
+
+        QBluetoothAddress adresse = QBluetoothAddress(device.address());
+        QBluetoothUuid    uuid    = QBluetoothUuid(QBluetoothUuid::SerialPort);
+        socketEcran->connectToService(adresse, uuid);
+        socketEcran->open(QIODevice::ReadWrite);
+    }
+!!!137239.cpp!!!	initialiserSocketScore(in device : QBluetoothDeviceInfo) : void
+
+    if(socketScore == nullptr)
+    {
+        qDebug() << Q_FUNC_INFO << device.name() << device.address();
+        socketScore =
+          new QBluetoothSocket(QBluetoothServiceInfo::RfcommProtocol);
+        connect(socketScore,
+                SIGNAL(connected()),
+                ihmArbitre,
+                SLOT(afficherConnexionScore()));
+        connect(socketScore,
+                SIGNAL(disconnected()),
+                ihmArbitre,
+                SLOT(afficherDeconnexionScore()));
+        connect(socketScore, SIGNAL(readyRead()), this, SLOT(recevoirScore()));
+
+        QBluetoothAddress adresse = QBluetoothAddress(device.address());
+        QBluetoothUuid    uuid    = QBluetoothUuid(QBluetoothUuid::SerialPort);
+        socketScore->connectToService(adresse, uuid);
+        socketScore->open(QIODevice::ReadWrite);
+    }
+!!!137367.cpp!!!	CommunicationBluetooth(inout ihmArbitre : IHMArbitre = nullptr)
+
+    qDebug() << Q_FUNC_INFO;
+    if(!interfaceLocale.isValid())
+    {
+        // QMessageBox::critical(0, QString::fromUtf8("Erreur"),
+        // QString::fromUtf8("Bluetooth désactivé !"));
+        qDebug() << Q_FUNC_INFO << "Pas de Bluetooth !";
+        return;
+    }
+
+    interfaceLocale.powerOn();
+
+    qDebug() << Q_FUNC_INFO << interfaceLocale.name()
+             << interfaceLocale.address().toString();
+
+    discoveryAgentDevice = new QBluetoothDeviceDiscoveryAgent(this);
+    connect(discoveryAgentDevice,
+            SIGNAL(deviceDiscovered(QBluetoothDeviceInfo)),
+            this,
+            SLOT(chercherModule(QBluetoothDeviceInfo)));
+!!!137495.cpp!!!	~CommunicationBluetooth()
+
+    deconnecter();
+    qDebug() << Q_FUNC_INFO;
+!!!137623.cpp!!!	connecter(in module : CommunicationBluetooth::Module) : void
+
+    if(modulesAREA.at(module).isValid())
+    {
+        QStringList nomDevice =
+          modulesAREA.at(module).name().split("-", QString::SkipEmptyParts);
+        qDebug() << Q_FUNC_INFO << modulesAREA.at(module).name()
+                 << modulesAREA.at(module).address().toString() << nomDevice;
+        switch(module)
+        {
+            case Module::Ecran:
+                this->initialiserSocketEcran(modulesAREA.at(module));
+                break;
+            case Module::Net:
+                this->initialiserSocketNet(modulesAREA.at(module));
+                break;
+            case Module::Score:
+                this->initialiserSocketScore(modulesAREA.at(module));
+                break;
+            default:
+                qDebug() << Q_FUNC_INFO << "module AREAPI inconnu !";
+                break;
+        }
+    }
+    else
+    {
+        qDebug() << Q_FUNC_INFO << "Erreur module AREAPI non valide !";
+    }
+!!!137751.cpp!!!	deconnecter() : void
+
+    qDebug() << Q_FUNC_INFO;
+    this->deconnecter(Ecran);
+    this->deconnecter(Net);
+    this->deconnecter(Score);
+!!!137879.cpp!!!	deconnecter(in module : CommunicationBluetooth::Module) : void
+
+    qDebug() << Q_FUNC_INFO;
+    switch(module)
+    {
+        case Module::Ecran:
+            if(socketEcran != nullptr && socketEcran->isOpen())
+            {
+                socketEcran->close();
+            }
+            delete socketEcran;
+            socketEcran = nullptr;
+            break;
+        case Module::Net:
+            if(socketNet != nullptr && socketNet->isOpen())
+            {
+                socketNet->close();
+            }
+            delete socketNet;
+            socketNet = nullptr;
+            break;
+        case Module::Score:
+            if(socketScore != nullptr && socketScore->isOpen())
+            {
+                socketScore->close();
+            }
+            delete socketScore;
+            socketScore = nullptr;
+            break;
+        default:
+            qDebug() << Q_FUNC_INFO << "module AREAPI inconnu !";
+            break;
+    }
+!!!138007.cpp!!!	demarrerRecherche() : void
+
+    discoveryAgentDevice->start();
+!!!138135.cpp!!!	arreterRecherche() : void
+
+    discoveryAgentDevice->stop();
+!!!138263.cpp!!!	chercherModule(in device : QBluetoothDeviceInfo) : void
+
+    qDebug() << Q_FUNC_INFO << device.name() << device.address()
+             << device.rssi();
+
+    if(device.name().startsWith(PREFIXE_MODULE_AREA))
+    {
+        qDebug() << Q_FUNC_INFO << "module AREAPI détecté !" << device.name()
+                 << device.address() << device.rssi();
+        enregistrerModule(device);
+    }
+!!!138391.cpp!!!	recevoirEcran() : void
+
+    QByteArray donnees;
+    donnees = socketEcran->readAll();
+    // qDebug() << Q_FUNC_INFO << donnees;
+
+    trameEcran += QString(donnees);
+    if(trameEcran.startsWith(DEBUT_TRAME) && trameEcran.endsWith(FIN_TRAME))
+    {
+        qDebug() << Q_FUNC_INFO << trameEcran;
+        trameEcran.clear();
+    }
+!!!138519.cpp!!!	recevoirNet() : void
+
+    QByteArray donnees;
+    donnees = socketNet->readAll();
+    // qDebug() << Q_FUNC_INFO << donnees;
+
+    trameNet += QString(donnees);
+    if(trameNet.startsWith(DEBUT_TRAME) && trameNet.endsWith(FIN_TRAME))
+    {
+        QStringList champsTrames = trameNet.split(";");
+        qDebug() << Q_FUNC_INFO << champsTrames;
+        if(champsTrames.at(TrameNet::Type) == "NET")
+        {
+            emit netDetecte(champsTrames.at(TrameNet::NbNets).toInt());
+        }
+        // prochaine réception
+        trameNet.clear();
+    }
+!!!138647.cpp!!!	recevoirScore() : void
+
+    QByteArray donnees;
+    donnees = socketScore->readAll();
+    // qDebug() << Q_FUNC_INFO << donnees;
+
+    trameScore += QString(donnees);
+    if(trameScore.startsWith(DEBUT_TRAME) && trameScore.endsWith(FIN_TRAME))
+    {
+        qDebug() << Q_FUNC_INFO << trameScore;
+        // prochaine réception
+        trameScore.clear();
+    }

@@ -1,0 +1,9 @@
+class Club
+!!!136343.cpp!!!	getIdClub() : int
+ return this->idClub;
+!!!136471.cpp!!!	getNomClub() : QString
+ return this->nomClub;
+!!!136599.cpp!!!	setIdClub(in idClub : int) : void
+ this->idClub = idClub;
+!!!136727.cpp!!!	setnomClub(in nomClub : QString) : void
+ this->nomClub = nomClub;

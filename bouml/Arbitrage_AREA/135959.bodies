@@ -1,0 +1,21 @@
+class Rencontre
+!!!143639.cpp!!!	Rencontre()
+
+!!!143767.cpp!!!	Rencontre(in idRencontre : int, in idClubA : int, in idClubB : int, in estFinie : bool, in horodatage : QString)
+
+!!!143895.cpp!!!	~Rencontre()
+
+!!!144023.cpp!!!	getIdRencontre() : int
+    return this->idRencontre;
+!!!144151.cpp!!!	getIdClubA() : int
+    return this->idClubA;
+!!!144279.cpp!!!	getIdClubB() : int
+    return this->idClubB;
+!!!144407.cpp!!!	getFinie() : bool
+    return this->estFinie;
+!!!144535.cpp!!!	setFinie(in estFinie : bool) : void
+    this->estFinie = estFinie;
+!!!144663.cpp!!!	getHorodatage() : QString
+    return this->horodatage;
+!!!144791.cpp!!!	setHorodatage(in horodatage : QString) : void
+    this->horodatage = horodatage;
