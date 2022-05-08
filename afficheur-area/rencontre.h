@@ -33,6 +33,10 @@ class Rencontre
     Equipe* getEquipeA() const;
     Equipe* getEquipeW() const;
 
+    QVector<Partie> getParties() const;
+
+    void ajouterPartieSimple();
+
     enum NomEquipe
     {
         EquipeA = 0,

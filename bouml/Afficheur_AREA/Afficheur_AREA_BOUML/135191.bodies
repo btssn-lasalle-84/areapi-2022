@@ -1,40 +1,20 @@
-#include "rencontre.h"
-#include "equipe.h"
-#include <QDebug>
-
-/**
- * @file rencontre.cpp
- * @brief Définition de la classe Rencontre
- * @version
- * @author
- */
-
-Rencontre::Rencontre() : parties()
-{
+class Rencontre
+!!!145943.cpp!!!	Rencontre()
     qDebug() << Q_FUNC_INFO;
     equipes.push_back(new Equipe());
     equipes.push_back(new Equipe());
-}
-
-Rencontre::Rencontre(QString nomEquipeA, QString nomEquipeW) : parties()
-{
+!!!146071.cpp!!!	Rencontre(in nomEquipeA : QString, in nomEquipeW : QString)
     qDebug() << Q_FUNC_INFO << nomEquipeA << nomEquipeW;
     equipes.push_back(new Equipe(nomEquipeA));
     equipes.push_back(new Equipe(nomEquipeW));
-}
-
-Rencontre::~Rencontre()
-{
+!!!146199.cpp!!!	~Rencontre()
     for(int i = 0; i < equipes.size(); i++)
     {
         if(equipes[i] != nullptr)
             delete equipes[i];
     }
     qDebug() << Q_FUNC_INFO;
-}
-
-Equipe* Rencontre::getEquipeA() const
-{
+!!!146327.cpp!!!	getEquipeA() : Equipe
     if(equipes.size() == Rencontre::NbEquipes)
     {
         qDebug() << Q_FUNC_INFO << equipes[NomEquipe::EquipeA]
@@ -42,10 +22,7 @@ Equipe* Rencontre::getEquipeA() const
         return equipes[NomEquipe::EquipeA];
     }
     return nullptr;
-}
-
-Equipe* Rencontre::getEquipeW() const
-{
+!!!146455.cpp!!!	getEquipeW() : Equipe
     if(equipes.size() == Rencontre::NbEquipes)
     {
         qDebug() << Q_FUNC_INFO << equipes[NomEquipe::EquipeW]
@@ -53,14 +30,7 @@ Equipe* Rencontre::getEquipeW() const
         return equipes[NomEquipe::EquipeW];
     }
     return nullptr;
-}
-
-QVector<Partie> Rencontre::getParties() const
-{
+!!!146583.cpp!!!	getParties() : QVector<Partie>
     return this->parties;
-}
-
-void Rencontre::ajouterPartieSimple()
-{
+!!!146711.cpp!!!	ajouterPartieSimple() : void
     parties.push_back(Partie(true));
-}
