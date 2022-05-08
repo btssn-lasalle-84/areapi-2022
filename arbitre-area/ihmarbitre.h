@@ -24,12 +24,14 @@
  */
 #define PLEIN_ECRAN
 
-QT_BEGIN_NAMESPACE
+// QT_BEGIN_NAMESPACE
 namespace Ui
 {
 class IHMArbitre;
 }
-QT_END_NAMESPACE
+// QT_END_NAMESPACE
+
+class CommunicationBluetooth;
 
 /**
  * @class IHMArbitre
@@ -46,19 +48,37 @@ class IHMArbitre : public QMainWindow
 
   private:
     Ui::IHMArbitre* ui; //!< la fenêtre graphique associée à cette classe
+    CommunicationBluetooth*
+      communicationBluetooth; //!< la communication avec les modules
 
     /**
      * @enum Ecran
      * @brief Définit les différents écrans de l'IHM
-     *
      */
     enum Ecran
     {
-        AccueilRencontre = 0,
+        Accueil,
+        AccueilRencontre,
         CreationRencontre,
         CreationTournoi,
         NbEcrans
     };
+    /**
+     * @enum Ecran
+     * @brief Définit les différents écrans de l'IHM
+     */
+    enum EtatModule
+    {
+        Absent,   // 0
+        Trouve,   // 1
+        Connecte, // 2
+        NbEtats
+    };
+
+    void initialiserCommunicationBluetooth();
+    void installerGestionEvenements();
+    void initialiserPageAccueil();
+    void afficherEtatBluetooth(QLabel* module, EtatModule etat);
 
 #ifdef TEST_IHMARBITRE
     void creerRaccourcisClavier();
@@ -69,6 +89,20 @@ class IHMArbitre : public QMainWindow
     void afficherEcranPrecedent();
     void afficherEcranSuivant();
     void fermerApplication();
+    void demarrer();
+    void afficherNetTrouve();
+    void afficherEcranTrouve();
+    void afficherScoreTrouve();
+    void afficherConnexionNet();
+    void afficherConnexionEcran();
+    void afficherConnexionScore();
+    void afficherDeconnexionNet();
+    void afficherDeconnexionEcran();
+    void afficherDeconnexionScore();
+    void gererConnexionNet();
+    void gererConnexionEcran();
+    void gererConnexionScore();
+    void declencherNet(int nbNets);
 };
 
 #endif // IHMARBITRE_H

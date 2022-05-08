@@ -1,0 +1,19 @@
+class Joueur
+!!!142487.cpp!!!	Joueur()
+
+!!!142615.cpp!!!	Joueur(in numeroLicence : int, in idClub : int, in nom : QString, in prenom : QString)
+
+!!!142743.cpp!!!	~Joueur()
+
+!!!142871.cpp!!!	getNumeroLicence() : int
+    return this->numeroLicence;
+!!!142999.cpp!!!	getIdClub() : int
+    return this->idClub;
+!!!143127.cpp!!!	getNom() : QString
+    return this->nom;
+!!!143255.cpp!!!	getPrenom() : QString
+    return this->prenom;
+!!!143383.cpp!!!	setNom(in nom : QString) : void
+    this->nom = nom;
+!!!143511.cpp!!!	setPrenom(in prenom : QString) : void
+    this->prenom = prenom;

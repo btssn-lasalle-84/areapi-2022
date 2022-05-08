@@ -1,4 +1,5 @@
 QT       += core gui widgets sql
+QT       += bluetooth
 
 CONFIG += c++11
 
@@ -8,6 +9,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     basededonnees.cpp \
     club.cpp \
+    communicationbluetooth.cpp \
     joueur.cpp \
     main.cpp \
     ihmarbitre.cpp \
@@ -16,6 +18,7 @@ SOURCES += \
 HEADERS += \
     basededonnees.h \
     club.h \
+    communicationbluetooth.h \
     ihmarbitre.h \
     joueur.h \
     rencontre.h

@@ -2,7 +2,7 @@
 
 ## Présentation du protocole implanté dans le simulateur ESP32
 
-Ce document présente rapidement le fonctionnement du simulateur ainsi que le protocole implémenté. Le protocole complet est disponible dans Google Drive. Actuellement, la version du protocole est la **0.1** (04 avril 2022).
+Ce document présente rapidement le fonctionnement du simulateur ainsi que le protocole implémenté. Le protocole complet est disponible dans Google Drive. Actuellement, la version du protocole est la **2.0** (08 mai 2022).
 
 ## Configuration du simulateur
 

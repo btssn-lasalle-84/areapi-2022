@@ -1,0 +1,210 @@
+class IHMArbitre
+!!!139287.cpp!!!	IHMArbitre(inout parent : QWidget = nullptr)
+    ui->setupUi(this);
+    qDebug() << Q_FUNC_INFO;
+
+#ifdef TEST_IHMARBITRE
+    creerRaccourcisClavier();
+#endif
+
+    initialiserPageAccueil();
+    initialiserCommunicationBluetooth();
+    installerGestionEvenements();
+
+    afficherEcran(IHMArbitre::Accueil);
+    // afficherEcran(IHMArbitre::AccueilRencontre);
+
+#ifdef PLEIN_ECRAN
+    showFullScreen();
+// showMaximized();
+#endif
+
+    communicationBluetooth->demarrerRecherche();
+!!!139415.cpp!!!	~IHMArbitre()
+    delete ui;
+    qDebug() << Q_FUNC_INFO;
+!!!139543.cpp!!!	initialiserCommunicationBluetooth() : void
+    communicationBluetooth = new CommunicationBluetooth(this);
+!!!139671.cpp!!!	installerGestionEvenements() : void
+    connect(ui->pushButtonDemarrer,
+            SIGNAL(clicked(bool)),
+            this,
+            SLOT(demarrer()));
+    connect(ui->pushButtonModuleEcran,
+            SIGNAL(clicked(bool)),
+            this,
+            SLOT(gererConnexionEcran()));
+    connect(ui->pushButtonModuleNet,
+            SIGNAL(clicked(bool)),
+            this,
+            SLOT(gererConnexionNet()));
+    connect(ui->pushButtonModuleScore,
+            SIGNAL(clicked(bool)),
+            this,
+            SLOT(gererConnexionScore()));
+    connect(communicationBluetooth,
+            SIGNAL(moduleEcranTrouve()),
+            this,
+            SLOT(afficherEcranTrouve()));
+    connect(communicationBluetooth,
+            SIGNAL(moduleNetTrouve()),
+            this,
+            SLOT(afficherNetTrouve()));
+    connect(communicationBluetooth,
+            SIGNAL(moduleScoreTrouve()),
+            this,
+            SLOT(afficherScoreTrouve()));
+
+    connect(communicationBluetooth,
+            SIGNAL(netDetecte(int)),
+            this,
+            SLOT(declencherNet(int)));
+!!!139799.cpp!!!	initialiserPageAccueil() : void
+    afficherEtatBluetooth(ui->labelEtatModuleEcran, Absent);
+    ui->pushButtonModuleEcran->setText("Détecter");
+    afficherEtatBluetooth(ui->labelEtatModuleNet, Absent);
+    ui->pushButtonModuleNet->setText("Détecter");
+    afficherEtatBluetooth(ui->labelEtatModuleScore, Absent);
+    ui->pushButtonModuleScore->setText("Détecter");
+!!!139927.cpp!!!	afficherEtatBluetooth(inout module : QLabel, in etat : IHMArbitre::EtatModule) : void
+    QImage* image;
+    QPixmap pixmap;
+
+    image = new QImage();
+    switch(etat)
+    {
+        case Absent:
+            image->load(":/images/rouge.png");
+            break;
+        case Trouve:
+            image->load(":/images/orange.png");
+            break;
+        case Connecte:
+            image->load(":/images/vert.png");
+            break;
+        default:
+            break;
+    }
+
+    pixmap = QPixmap::fromImage(*image);
+    module->setPixmap(pixmap);
+
+    delete image;
+!!!140055.cpp!!!	creerRaccourcisClavier() : void
+    // Ctrl-Q pour quitter
+    QAction* quitter = new QAction(this);
+    quitter->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_Q));
+    addAction(quitter);
+    connect(quitter, SIGNAL(triggered()), this, SLOT(fermerApplication()));
+
+    // Flèche droite pour écran suivant
+    QAction* actionAllerDroite = new QAction(this);
+    actionAllerDroite->setShortcut(QKeySequence(Qt::Key_Right));
+    addAction(actionAllerDroite);
+    connect(actionAllerDroite,
+            SIGNAL(triggered()),
+            this,
+            SLOT(afficherEcranSuivant()));
+
+    // Flèche gauche pour écran précédent
+    QAction* actionAllerGauche = new QAction(this);
+    actionAllerGauche->setShortcut(QKeySequence(Qt::Key_Left));
+    addAction(actionAllerGauche);
+    connect(actionAllerGauche,
+            SIGNAL(triggered()),
+            this,
+            SLOT(afficherEcranPrecedent()));
+!!!140183.cpp!!!	afficherEcran(in ecran : IHMArbitre::Ecran) : void
+    qDebug() << Q_FUNC_INFO << "ecran" << ecran;
+    ui->ecrans->setCurrentIndex(ecran);
+!!!140311.cpp!!!	afficherEcranPrecedent() : void
+    int ecranCourant   = ui->ecrans->currentIndex();
+    int ecranPrecedent = (ecranCourant - 1) % int(IHMArbitre::NbEcrans);
+    if(ecranPrecedent == -1)
+        ecranPrecedent = int(IHMArbitre::NbEcrans) - 1;
+    afficherEcran(IHMArbitre::Ecran(ecranPrecedent));
+!!!140439.cpp!!!	afficherEcranSuivant() : void
+    int ecranCourant = IHMArbitre::Ecran(ui->ecrans->currentIndex());
+    int ecranSuivant = (ecranCourant + 1) % int(IHMArbitre::NbEcrans);
+    afficherEcran(IHMArbitre::Ecran(ecranSuivant));
+!!!140567.cpp!!!	fermerApplication() : void
+    this->close();
+    qDebug() << Q_FUNC_INFO;
+!!!140695.cpp!!!	demarrer() : void
+    afficherEcran(Ecran::AccueilRencontre);
+!!!140823.cpp!!!	afficherNetTrouve() : void
+    afficherEtatBluetooth(ui->labelEtatModuleNet, Trouve);
+    ui->pushButtonModuleNet->setText("Connecter");
+!!!140951.cpp!!!	afficherEcranTrouve() : void
+    afficherEtatBluetooth(ui->labelEtatModuleEcran, Trouve);
+    ui->pushButtonModuleEcran->setText("Connecter");
+!!!141079.cpp!!!	afficherScoreTrouve() : void
+    afficherEtatBluetooth(ui->labelEtatModuleScore, Trouve);
+    ui->pushButtonModuleScore->setText("Connecter");
+!!!141207.cpp!!!	afficherConnexionNet() : void
+    afficherEtatBluetooth(ui->labelEtatModuleNet, Connecte);
+    ui->pushButtonModuleNet->setText("Déconnecter");
+!!!141335.cpp!!!	afficherConnexionEcran() : void
+    afficherEtatBluetooth(ui->labelEtatModuleEcran, Connecte);
+    ui->pushButtonModuleEcran->setText("Déconnecter");
+!!!141463.cpp!!!	afficherConnexionScore() : void
+    afficherEtatBluetooth(ui->labelEtatModuleScore, Connecte);
+    ui->pushButtonModuleScore->setText("Déconnecter");
+!!!141591.cpp!!!	afficherDeconnexionNet() : void
+    afficherEtatBluetooth(ui->labelEtatModuleNet, Trouve);
+    ui->pushButtonModuleNet->setText("Connecter");
+!!!141719.cpp!!!	afficherDeconnexionEcran() : void
+    afficherEtatBluetooth(ui->labelEtatModuleEcran, Trouve);
+    ui->pushButtonModuleEcran->setText("Connecter");
+!!!141847.cpp!!!	afficherDeconnexionScore() : void
+    afficherEtatBluetooth(ui->labelEtatModuleScore, Trouve);
+    ui->pushButtonModuleScore->setText("Connecter");
+!!!141975.cpp!!!	gererConnexionNet() : void
+    if(ui->pushButtonModuleNet->text() == "Connecter")
+    {
+        communicationBluetooth->connecter(CommunicationBluetooth::Module::Net);
+    }
+    else if(ui->pushButtonModuleNet->text() == "Détecter")
+    {
+        communicationBluetooth->arreterRecherche();
+        communicationBluetooth->demarrerRecherche();
+    }
+    else if(ui->pushButtonModuleNet->text() == "Déconnecter")
+    {
+        communicationBluetooth->deconnecter(
+          CommunicationBluetooth::Module::Net);
+    }
+!!!142103.cpp!!!	gererConnexionEcran() : void
+    if(ui->pushButtonModuleEcran->text() == "Connecter")
+    {
+        communicationBluetooth->connecter(
+          CommunicationBluetooth::Module::Ecran);
+    }
+    else if(ui->pushButtonModuleEcran->text() == "Détecter")
+    {
+        communicationBluetooth->arreterRecherche();
+        communicationBluetooth->demarrerRecherche();
+    }
+    else if(ui->pushButtonModuleEcran->text() == "Déconnecter")
+    {
+        communicationBluetooth->deconnecter(
+          CommunicationBluetooth::Module::Ecran);
+    }
+!!!142231.cpp!!!	gererConnexionScore() : void
+    if(ui->pushButtonModuleScore->text() == "Connecter")
+    {
+        communicationBluetooth->connecter(
+          CommunicationBluetooth::Module::Score);
+    }
+    else if(ui->pushButtonModuleScore->text() == "Détecter")
+    {
+        communicationBluetooth->arreterRecherche();
+        communicationBluetooth->demarrerRecherche();
+    }
+    else if(ui->pushButtonModuleScore->text() == "Déconnecter")
+    {
+        communicationBluetooth->deconnecter(
+          CommunicationBluetooth::Module::Score);
+    }
+!!!142359.cpp!!!	declencherNet(in nbNets : int) : void
+    qDebug() << Q_FUNC_INFO << "NET" << nbNets;

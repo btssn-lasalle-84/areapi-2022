@@ -1,5 +1,6 @@
 #include "ihmarbitre.h"
 #include "ui_ihmarbitre.h"
+#include "communicationbluetooth.h"
 #include <QDebug>
 
 /**
@@ -28,12 +29,19 @@ IHMArbitre::IHMArbitre(QWidget* parent) :
     creerRaccourcisClavier();
 #endif
 
-    afficherEcran(IHMArbitre::AccueilRencontre);
+    initialiserPageAccueil();
+    initialiserCommunicationBluetooth();
+    installerGestionEvenements();
+
+    afficherEcran(IHMArbitre::Accueil);
+    // afficherEcran(IHMArbitre::AccueilRencontre);
 
 #ifdef PLEIN_ECRAN
     showFullScreen();
 // showMaximized();
 #endif
+
+    communicationBluetooth->demarrerRecherche();
 }
 
 /**
@@ -98,6 +106,206 @@ void IHMArbitre::fermerApplication()
 {
     this->close();
     qDebug() << Q_FUNC_INFO;
+}
+
+void IHMArbitre::demarrer()
+{
+    afficherEcran(Ecran::AccueilRencontre);
+}
+
+void IHMArbitre::afficherNetTrouve()
+{
+    afficherEtatBluetooth(ui->labelEtatModuleNet, Trouve);
+    ui->pushButtonModuleNet->setText("Connecter");
+}
+
+void IHMArbitre::afficherEcranTrouve()
+{
+    afficherEtatBluetooth(ui->labelEtatModuleEcran, Trouve);
+    ui->pushButtonModuleEcran->setText("Connecter");
+}
+
+void IHMArbitre::afficherScoreTrouve()
+{
+    afficherEtatBluetooth(ui->labelEtatModuleScore, Trouve);
+    ui->pushButtonModuleScore->setText("Connecter");
+}
+
+void IHMArbitre::afficherConnexionNet()
+{
+    afficherEtatBluetooth(ui->labelEtatModuleNet, Connecte);
+    ui->pushButtonModuleNet->setText("Déconnecter");
+}
+
+void IHMArbitre::afficherConnexionEcran()
+{
+    afficherEtatBluetooth(ui->labelEtatModuleEcran, Connecte);
+    ui->pushButtonModuleEcran->setText("Déconnecter");
+}
+
+void IHMArbitre::afficherConnexionScore()
+{
+    afficherEtatBluetooth(ui->labelEtatModuleScore, Connecte);
+    ui->pushButtonModuleScore->setText("Déconnecter");
+}
+
+void IHMArbitre::afficherDeconnexionNet()
+{
+    afficherEtatBluetooth(ui->labelEtatModuleNet, Trouve);
+    ui->pushButtonModuleNet->setText("Connecter");
+}
+
+void IHMArbitre::afficherDeconnexionEcran()
+{
+    afficherEtatBluetooth(ui->labelEtatModuleEcran, Trouve);
+    ui->pushButtonModuleEcran->setText("Connecter");
+}
+
+void IHMArbitre::afficherDeconnexionScore()
+{
+    afficherEtatBluetooth(ui->labelEtatModuleScore, Trouve);
+    ui->pushButtonModuleScore->setText("Connecter");
+}
+
+void IHMArbitre::gererConnexionNet()
+{
+    if(ui->pushButtonModuleNet->text() == "Connecter")
+    {
+        communicationBluetooth->connecter(CommunicationBluetooth::Module::Net);
+    }
+    else if(ui->pushButtonModuleNet->text() == "Détecter")
+    {
+        communicationBluetooth->arreterRecherche();
+        communicationBluetooth->demarrerRecherche();
+    }
+    else if(ui->pushButtonModuleNet->text() == "Déconnecter")
+    {
+        communicationBluetooth->deconnecter(
+          CommunicationBluetooth::Module::Net);
+    }
+}
+void IHMArbitre::gererConnexionEcran()
+{
+    if(ui->pushButtonModuleEcran->text() == "Connecter")
+    {
+        communicationBluetooth->connecter(
+          CommunicationBluetooth::Module::Ecran);
+    }
+    else if(ui->pushButtonModuleEcran->text() == "Détecter")
+    {
+        communicationBluetooth->arreterRecherche();
+        communicationBluetooth->demarrerRecherche();
+    }
+    else if(ui->pushButtonModuleEcran->text() == "Déconnecter")
+    {
+        communicationBluetooth->deconnecter(
+          CommunicationBluetooth::Module::Ecran);
+    }
+}
+
+void IHMArbitre::gererConnexionScore()
+{
+    if(ui->pushButtonModuleScore->text() == "Connecter")
+    {
+        communicationBluetooth->connecter(
+          CommunicationBluetooth::Module::Score);
+    }
+    else if(ui->pushButtonModuleScore->text() == "Détecter")
+    {
+        communicationBluetooth->arreterRecherche();
+        communicationBluetooth->demarrerRecherche();
+    }
+    else if(ui->pushButtonModuleScore->text() == "Déconnecter")
+    {
+        communicationBluetooth->deconnecter(
+          CommunicationBluetooth::Module::Score);
+    }
+}
+
+void IHMArbitre::declencherNet(int nbNets)
+{
+    qDebug() << Q_FUNC_INFO << "NET" << nbNets;
+}
+
+// Méthodes privées
+
+void IHMArbitre::initialiserCommunicationBluetooth()
+{
+    communicationBluetooth = new CommunicationBluetooth(this);
+}
+
+void IHMArbitre::installerGestionEvenements()
+{
+    connect(ui->pushButtonDemarrer,
+            SIGNAL(clicked(bool)),
+            this,
+            SLOT(demarrer()));
+    connect(ui->pushButtonModuleEcran,
+            SIGNAL(clicked(bool)),
+            this,
+            SLOT(gererConnexionEcran()));
+    connect(ui->pushButtonModuleNet,
+            SIGNAL(clicked(bool)),
+            this,
+            SLOT(gererConnexionNet()));
+    connect(ui->pushButtonModuleScore,
+            SIGNAL(clicked(bool)),
+            this,
+            SLOT(gererConnexionScore()));
+    connect(communicationBluetooth,
+            SIGNAL(moduleEcranTrouve()),
+            this,
+            SLOT(afficherEcranTrouve()));
+    connect(communicationBluetooth,
+            SIGNAL(moduleNetTrouve()),
+            this,
+            SLOT(afficherNetTrouve()));
+    connect(communicationBluetooth,
+            SIGNAL(moduleScoreTrouve()),
+            this,
+            SLOT(afficherScoreTrouve()));
+
+    connect(communicationBluetooth,
+            SIGNAL(netDetecte(int)),
+            this,
+            SLOT(declencherNet(int)));
+}
+
+void IHMArbitre::initialiserPageAccueil()
+{
+    afficherEtatBluetooth(ui->labelEtatModuleEcran, Absent);
+    ui->pushButtonModuleEcran->setText("Détecter");
+    afficherEtatBluetooth(ui->labelEtatModuleNet, Absent);
+    ui->pushButtonModuleNet->setText("Détecter");
+    afficherEtatBluetooth(ui->labelEtatModuleScore, Absent);
+    ui->pushButtonModuleScore->setText("Détecter");
+}
+
+void IHMArbitre::afficherEtatBluetooth(QLabel* module, EtatModule etat)
+{
+    QImage* image;
+    QPixmap pixmap;
+
+    image = new QImage();
+    switch(etat)
+    {
+        case Absent:
+            image->load(":/images/rouge.png");
+            break;
+        case Trouve:
+            image->load(":/images/orange.png");
+            break;
+        case Connecte:
+            image->load(":/images/vert.png");
+            break;
+        default:
+            break;
+    }
+
+    pixmap = QPixmap::fromImage(*image);
+    module->setPixmap(pixmap);
+
+    delete image;
 }
 
 #ifdef TEST_IHMARBITRE
