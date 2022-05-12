@@ -60,7 +60,9 @@ QVector<Partie> Rencontre::getParties() const
     return this->parties;
 }
 
-void Rencontre::ajouterPartieSimple()
+void Rencontre::setParties(int cases, Partie partie)
 {
-    parties.push_back(Partie(true));
+    parties[cases] = partie;
 }
+
+

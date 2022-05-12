@@ -67,7 +67,11 @@ class ProtocoleArea
      */
     enum ChampsPartieSimple
     {
-
+        idPartie = 2,
+        JoueurA,
+        ClassementJoueurA,
+        JoueurW,
+        ClassementJoueurW,
         NbChampsPartieSimple
     };
     /**

@@ -62,6 +62,18 @@ class IHMAfficheur : public QMainWindow
     void initialiserJoueurX(QString nom, QString prenom);
     void initialiserJoueurY(QString nom, QString prenom);
     void initialiserJoueurZ(QString nom, QString prenom);
+    void initialiserPartieSimple1(QString nomJoueurA, QString prenomJoueurA, QString nomJoueurW, QString prenomJoueurW);
+    void initialiserPartieSimple2(QString nomJoueurB, QString prenomJoueurB, QString nomJoueurX, QString prenomJoueurX);
+    void initialiserPartieSimple3(QString nomJoueurC, QString prenomJoueurC, QString nomJoueurY, QString prenomJoueurY);
+    void initialiserPartieSimple4(QString nomJoueurD, QString prenomJoueurD, QString nomJoueurZ, QString prenomJoueurZ);
+    void initialiserPartieSimple5(QString nomJoueurA, QString prenomJoueurA, QString nomJoueurX, QString prenomJoueurX);
+    void initialiserPartieSimple6(QString nomJoueurB, QString prenomJoueurB, QString nomJoueurW, QString prenomJoueurW);
+    void initialiserPartieSimple7(QString nomJoueurD, QString prenomJoueurD, QString nomJoueurY, QString prenomJoueurY);
+    void initialiserPartieSimple8(QString nomJoueurC, QString prenomJoueurC, QString nomJoueurZ, QString prenomJoueurZ);
+    void initialiserPartieSimple9(QString nomJoueurA, QString prenomJoueurA, QString nomJoueurY, QString prenomJoueurY);
+    void initialiserPartieSimple10(QString nomJoueurC, QString prenomJoueurC, QString nomJoueurW, QString prenomJoueurW);
+    void initialiserPartieSimple11(QString nomJoueurD, QString prenomJoueurD, QString nomJoueurX, QString prenomJoueurX);
+    void initialiserPartieSimple12(QString nomJoueurB, QString prenomJoueurB, QString nomJoueurZ, QString prenomJoueurZ);
 
   public:
     IHMAfficheur(QWidget* parent = nullptr);
@@ -87,7 +99,13 @@ class IHMAfficheur : public QMainWindow
                               QByteArray PrenomJoueurY,
                               QByteArray NomJoueurZ,
                               QByteArray PrenomJoueurZ);
-    void initialiserPartieSimple();
+
+void initialiserPartieSimple(QString nomModule,
+                                           QByteArray idPartie,
+                                           QByteArray JoueurA,
+                                           QByteArray ClassementJoueurA,
+                                           QByteArray JoueurB,
+                                           QByteArray ClassementJoueurW);
 };
 
 #endif // IHMAFFICHEUR_H

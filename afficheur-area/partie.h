@@ -39,6 +39,7 @@ class Partie
   public:
     Partie();
     Partie(bool estDouble);
+    Partie(QString nomJoueurA, QString prenomJoueurA, QString nomJoueurW, QString prenomJoueurW);
     Partie(const Partie& partie);
     ~Partie();
     Partie& operator=(const Partie& partie);

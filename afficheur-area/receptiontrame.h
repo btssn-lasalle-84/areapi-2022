@@ -85,6 +85,13 @@ class ReceptionTrame : public QObject
                                 QByteArray PrenomJoueurY,
                                 QByteArray NomJoueurZ,
                                 QByteArray PrenomJoueurZ);
+
+    void nouvelleTrameSimple(QString nomModule,
+                             QByteArray idPartie,
+                             QByteArray JoueurA,
+                             QByteArray ClassementJoueurA,
+                             QByteArray JoueurB,
+                             QByteArray ClassementJoueurW);
 };
 
 #endif // RECEPTIONTRAME_H

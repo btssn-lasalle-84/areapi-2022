@@ -264,8 +264,7 @@ void ReceptionTrame::lireSocket()
                   decoupageTrame[ProtocoleArea::ChampsRencontre::NomJoueurY],
                   decoupageTrame[ProtocoleArea::ChampsRencontre::PrenomJoueurY],
                   decoupageTrame[ProtocoleArea::ChampsRencontre::NomJoueurZ],
-                  decoupageTrame
-                    [ProtocoleArea::ChampsRencontre::PrenomJoueurZ]);
+                  decoupageTrame[ProtocoleArea::ChampsRencontre::PrenomJoueurZ]);
             }
             else
             {
@@ -277,6 +276,21 @@ void ReceptionTrame::lireSocket()
         {
             qDebug() << decoupageTrame[ProtocoleArea::ChampsTrame::TYPE]
                      << decoupageTrame.length();
+            if(decoupageTrame.length() ==
+                    ProtocoleArea::ChampsPartieSimple::NbChampsPartieSimple + 1)
+            {
+                emit nouvelleTrameSimple(
+                  socket->peerName(),
+                            decoupageTrame[ProtocoleArea::ChampsPartieSimple::idPartie],
+                            decoupageTrame[ProtocoleArea::ChampsPartieSimple::JoueurA],
+                            decoupageTrame[ProtocoleArea::ChampsPartieSimple::ClassementJoueurA],
+                            decoupageTrame[ProtocoleArea::ChampsPartieSimple::JoueurW],
+                            decoupageTrame[ProtocoleArea::ChampsPartieSimple::ClassementJoueurW]);
+            }
+            else
+            {
+                qDebug() << Q_FUNC_INFO << "Trame SIMPLE invalide !";
+            }
         }
         else if(decoupageTrame[ProtocoleArea::ChampsTrame::TYPE] ==
                 ProtocoleArea::DOUBLE)
