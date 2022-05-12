@@ -14,7 +14,8 @@ SOURCES += \
     main.cpp \
     ihmarbitre.cpp \
     partie.cpp \
-    rencontre.cpp
+    rencontre.cpp \
+    score.cpp
 
 HEADERS += \
     basededonnees.h \
@@ -23,7 +24,8 @@ HEADERS += \
     ihmarbitre.h \
     joueur.h \
     partie.h \
-    rencontre.h
+    rencontre.h \
+    score.h
 
 FORMS += \
     ihmarbitre.ui
