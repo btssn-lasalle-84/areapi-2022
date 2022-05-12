@@ -11,6 +11,7 @@
  */
 
 #include <QtWidgets>
+#include "basededonnees.h"
 
 /**
  * @def TEST_IHMARBITRE
@@ -49,7 +50,8 @@ class IHMArbitre : public QMainWindow
   private:
     Ui::IHMArbitre* ui; //!< la fenêtre graphique associée à cette classe
     CommunicationBluetooth*
-      communicationBluetooth; //!< la communication avec les modules
+                   communicationBluetooth; //!< la communication avec les modules
+    BaseDeDonnees* baseDeDonnees;
 
     /**
      * @enum Ecran
@@ -78,6 +80,7 @@ class IHMArbitre : public QMainWindow
     void initialiserCommunicationBluetooth();
     void installerGestionEvenements();
     void initialiserPageAccueil();
+    void initialiserBDD();
     void afficherEtatBluetooth(QLabel* module, EtatModule etat);
 
 #ifdef TEST_IHMARBITRE

@@ -32,6 +32,7 @@ IHMArbitre::IHMArbitre(QWidget* parent) :
     initialiserPageAccueil();
     initialiserCommunicationBluetooth();
     installerGestionEvenements();
+    initialiserBDD();
 
     afficherEcran(IHMArbitre::Accueil);
     // afficherEcran(IHMArbitre::AccueilRencontre);
@@ -235,6 +236,15 @@ void IHMArbitre::declencherNet(int nbNets)
 void IHMArbitre::initialiserCommunicationBluetooth()
 {
     communicationBluetooth = new CommunicationBluetooth(this);
+}
+
+void IHMArbitre::initialiserBDD()
+{
+    BaseDeDonnees* bdd = BaseDeDonnees::getInstance("QSQLITE");
+    if(bdd->estOuvert() == false)
+    {
+        // bdd->ouvrir();
+    }
 }
 
 void IHMArbitre::installerGestionEvenements()
