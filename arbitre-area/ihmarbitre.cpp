@@ -133,18 +133,21 @@ void IHMArbitre::afficherScoreTrouve()
 
 void IHMArbitre::afficherConnexionNet()
 {
+    qDebug() << Q_FUNC_INFO;
     afficherEtatBluetooth(ui->labelEtatModuleNet, Connecte);
     ui->pushButtonModuleNet->setText("Déconnecter");
 }
 
 void IHMArbitre::afficherConnexionEcran()
 {
+    qDebug() << Q_FUNC_INFO;
     afficherEtatBluetooth(ui->labelEtatModuleEcran, Connecte);
     ui->pushButtonModuleEcran->setText("Déconnecter");
 }
 
 void IHMArbitre::afficherConnexionScore()
 {
+    qDebug() << Q_FUNC_INFO;
     afficherEtatBluetooth(ui->labelEtatModuleScore, Connecte);
     ui->pushButtonModuleScore->setText("Déconnecter");
 }

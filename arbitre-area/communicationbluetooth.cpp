@@ -179,6 +179,17 @@ void CommunicationBluetooth::recevoirScore()
     }
 }
 
+void CommunicationBluetooth::detecterErreurSocket(
+  QBluetoothSocket::SocketError erreur)
+{
+    qDebug() << Q_FUNC_INFO << erreur;
+}
+
+void CommunicationBluetooth::gererEtatSocket(QBluetoothSocket::SocketState etat)
+{
+    qDebug() << Q_FUNC_INFO << etat;
+}
+
 void CommunicationBluetooth::enregistrerModule(
   const QBluetoothDeviceInfo device)
 {
@@ -234,6 +245,14 @@ void CommunicationBluetooth::initialiserSocketNet(
                 SIGNAL(disconnected()),
                 ihmArbitre,
                 SLOT(afficherDeconnexionNet()));
+        connect(socketNet,
+                SIGNAL(error(QBluetoothSocket::SocketError)),
+                this,
+                SLOT(detecterErreurSocket(QBluetoothSocket::SocketError)));
+        connect(socketNet,
+                SIGNAL(stateChanged(QBluetoothSocket::SocketState)),
+                this,
+                SLOT(gererEtatSocket(QBluetoothSocket::SocketState)));
         connect(socketNet, SIGNAL(readyRead()), this, SLOT(recevoirNet()));
 
         QBluetoothAddress adresse = QBluetoothAddress(device.address());
@@ -284,6 +303,14 @@ void CommunicationBluetooth::initialiserSocketScore(
                 SIGNAL(disconnected()),
                 ihmArbitre,
                 SLOT(afficherDeconnexionScore()));
+        connect(socketScore,
+                SIGNAL(error(QBluetoothSocket::SocketError)),
+                this,
+                SLOT(detecterErreurSocket(QBluetoothSocket::SocketError)));
+        connect(socketScore,
+                SIGNAL(stateChanged(QBluetoothSocket::SocketState)),
+                this,
+                SLOT(gererEtatSocket(QBluetoothSocket::SocketState)));
         connect(socketScore, SIGNAL(readyRead()), this, SLOT(recevoirScore()));
 
         QBluetoothAddress adresse = QBluetoothAddress(device.address());

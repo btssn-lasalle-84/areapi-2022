@@ -69,6 +69,8 @@ class CommunicationBluetooth : public QObject
     void recevoirEcran();
     void recevoirNet();
     void recevoirScore();
+    void detecterErreurSocket(QBluetoothSocket::SocketError erreur);
+    void gererEtatSocket(QBluetoothSocket::SocketState etat);
 
   signals:
     void moduleEcranTrouve();
