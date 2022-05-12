@@ -80,6 +80,7 @@ void CommunicationBluetooth::deconnecter(Module module)
         case Module::Ecran:
             if(socketEcran != nullptr && socketEcran->isOpen())
             {
+                socketEcran->disconnectFromService();
                 socketEcran->close();
             }
             delete socketEcran;
@@ -88,6 +89,7 @@ void CommunicationBluetooth::deconnecter(Module module)
         case Module::Net:
             if(socketNet != nullptr && socketNet->isOpen())
             {
+                socketNet->disconnectFromService();
                 socketNet->close();
             }
             delete socketNet;
@@ -96,6 +98,7 @@ void CommunicationBluetooth::deconnecter(Module module)
         case Module::Score:
             if(socketScore != nullptr && socketScore->isOpen())
             {
+                socketScore->disconnectFromService();
                 socketScore->close();
             }
             delete socketScore;
@@ -197,6 +200,7 @@ void CommunicationBluetooth::enregistrerModule(
     qDebug() << Q_FUNC_INFO << nomDevice.at(1);
     if(nomDevice.at(1) == "net")
     {
+        moduleNet = device;
         // nouvelle détecion
         if(!modulesAREA[Module::Net].isValid())
         {
@@ -207,6 +211,7 @@ void CommunicationBluetooth::enregistrerModule(
     }
     else if(nomDevice.at(1) == "ecran")
     {
+        moduleEcran = device;
         // nouvelle détecion
         if(!modulesAREA[Module::Ecran].isValid())
         {
@@ -217,6 +222,7 @@ void CommunicationBluetooth::enregistrerModule(
     }
     else if(nomDevice.at(1) == "score")
     {
+        moduleScore = device;
         // nouvelle détecion
         if(!modulesAREA[Module::Score].isValid())
         {
@@ -255,10 +261,13 @@ void CommunicationBluetooth::initialiserSocketNet(
                 SLOT(gererEtatSocket(QBluetoothSocket::SocketState)));
         connect(socketNet, SIGNAL(readyRead()), this, SLOT(recevoirNet()));
 
-        QBluetoothAddress adresse = QBluetoothAddress(device.address());
+        // QBluetoothAddress adresse = QBluetoothAddress(device.address());
+        QBluetoothAddress adresse = QBluetoothAddress(moduleNet.address());
         QBluetoothUuid    uuid    = QBluetoothUuid(QBluetoothUuid::SerialPort);
+        qDebug() << Q_FUNC_INFO << uuid;
         socketNet->connectToService(adresse, uuid);
-        socketNet->open(QIODevice::ReadWrite);
+        bool retour = socketNet->open(QIODevice::ReadWrite);
+        qDebug() << Q_FUNC_INFO << retour;
     }
 }
 
@@ -280,10 +289,13 @@ void CommunicationBluetooth::initialiserSocketEcran(
                 SLOT(afficherDeconnexionEcran()));
         connect(socketEcran, SIGNAL(readyRead()), this, SLOT(recevoirEcran()));
 
-        QBluetoothAddress adresse = QBluetoothAddress(device.address());
+        // QBluetoothAddress adresse = QBluetoothAddress(device.address());
+        QBluetoothAddress adresse = QBluetoothAddress(moduleEcran.address());
         QBluetoothUuid    uuid    = QBluetoothUuid(QBluetoothUuid::SerialPort);
+        qDebug() << Q_FUNC_INFO << uuid;
         socketEcran->connectToService(adresse, uuid);
-        socketEcran->open(QIODevice::ReadWrite);
+        bool retour = socketEcran->open(QIODevice::ReadWrite);
+        qDebug() << Q_FUNC_INFO << retour;
     }
 }
 
@@ -313,9 +325,12 @@ void CommunicationBluetooth::initialiserSocketScore(
                 SLOT(gererEtatSocket(QBluetoothSocket::SocketState)));
         connect(socketScore, SIGNAL(readyRead()), this, SLOT(recevoirScore()));
 
-        QBluetoothAddress adresse = QBluetoothAddress(device.address());
+        // QBluetoothAddress adresse = QBluetoothAddress(device.address());
+        QBluetoothAddress adresse = QBluetoothAddress(moduleScore.address());
         QBluetoothUuid    uuid    = QBluetoothUuid(QBluetoothUuid::SerialPort);
+        qDebug() << Q_FUNC_INFO << uuid;
         socketScore->connectToService(adresse, uuid);
-        socketScore->open(QIODevice::ReadWrite);
+        bool retour = socketScore->open(QIODevice::ReadWrite);
+        qDebug() << Q_FUNC_INFO << retour;
     }
 }

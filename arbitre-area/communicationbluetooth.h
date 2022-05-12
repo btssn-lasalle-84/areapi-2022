@@ -42,6 +42,9 @@ class CommunicationBluetooth : public QObject
     QBluetoothLocalDevice           interfaceLocale;
     QVector<QBluetoothDeviceInfo>   modulesAREA;
     QBluetoothDeviceDiscoveryAgent* discoveryAgentDevice;
+    QBluetoothDeviceInfo            moduleEcran;
+    QBluetoothDeviceInfo            moduleNet;
+    QBluetoothDeviceInfo            moduleScore;
     QBluetoothSocket*               socketEcran;
     QBluetoothSocket*               socketNet;
     QBluetoothSocket*               socketScore;
