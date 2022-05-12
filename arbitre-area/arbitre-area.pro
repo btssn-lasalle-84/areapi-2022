@@ -13,6 +13,7 @@ SOURCES += \
     joueur.cpp \
     main.cpp \
     ihmarbitre.cpp \
+    partie.cpp \
     rencontre.cpp
 
 HEADERS += \
@@ -21,6 +22,7 @@ HEADERS += \
     communicationbluetooth.h \
     ihmarbitre.h \
     joueur.h \
+    partie.h \
     rencontre.h
 
 FORMS += \
