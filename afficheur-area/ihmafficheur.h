@@ -62,18 +62,12 @@ class IHMAfficheur : public QMainWindow
     void initialiserJoueurX(QString nom, QString prenom);
     void initialiserJoueurY(QString nom, QString prenom);
     void initialiserJoueurZ(QString nom, QString prenom);
-    void initialiserPartieSimple1(QString nomJoueurA, QString prenomJoueurA, QString nomJoueurW, QString prenomJoueurW);
-    void initialiserPartieSimple2(QString nomJoueurB, QString prenomJoueurB, QString nomJoueurX, QString prenomJoueurX);
-    void initialiserPartieSimple3(QString nomJoueurC, QString prenomJoueurC, QString nomJoueurY, QString prenomJoueurY);
-    void initialiserPartieSimple4(QString nomJoueurD, QString prenomJoueurD, QString nomJoueurZ, QString prenomJoueurZ);
-    void initialiserPartieSimple5(QString nomJoueurA, QString prenomJoueurA, QString nomJoueurX, QString prenomJoueurX);
-    void initialiserPartieSimple6(QString nomJoueurB, QString prenomJoueurB, QString nomJoueurW, QString prenomJoueurW);
-    void initialiserPartieSimple7(QString nomJoueurD, QString prenomJoueurD, QString nomJoueurY, QString prenomJoueurY);
-    void initialiserPartieSimple8(QString nomJoueurC, QString prenomJoueurC, QString nomJoueurZ, QString prenomJoueurZ);
-    void initialiserPartieSimple9(QString nomJoueurA, QString prenomJoueurA, QString nomJoueurY, QString prenomJoueurY);
-    void initialiserPartieSimple10(QString nomJoueurC, QString prenomJoueurC, QString nomJoueurW, QString prenomJoueurW);
-    void initialiserPartieSimple11(QString nomJoueurD, QString prenomJoueurD, QString nomJoueurX, QString prenomJoueurX);
-    void initialiserPartieSimple12(QString nomJoueurB, QString prenomJoueurB, QString nomJoueurZ, QString prenomJoueurZ);
+    void initialiserPartieSimple1(QString nomJoueurA, QString prenomJoueurA,
+                                  QString nomJoueurW, QString prenomJoueurW);
+    void initialiserPartieDouble1(QString nomJoueurA1, QString prenomJoueurA1,
+                                  QString nomJoueurA2, QString prenomJoueurA2,
+                                  QString nomJoueurW1, QString prenomJoueurW1,
+                                  QString nomJoueurW2, QString prenomJoueurW2);
 
   public:
     IHMAfficheur(QWidget* parent = nullptr);
@@ -100,12 +94,23 @@ class IHMAfficheur : public QMainWindow
                               QByteArray NomJoueurZ,
                               QByteArray PrenomJoueurZ);
 
-void initialiserPartieSimple(QString nomModule,
-                                           QByteArray idPartie,
-                                           QByteArray JoueurA,
-                                           QByteArray ClassementJoueurA,
-                                           QByteArray JoueurB,
-                                           QByteArray ClassementJoueurW);
+void initialiserPartieSimple(QString    nomModule,
+                             QByteArray idPartie,
+                             QByteArray JoueurA,
+                             QByteArray ClassementJoueurA,
+                             QByteArray JoueurB,
+                             QByteArray ClassementJoueurW);
+
+void initialiserPartieDouble(QString    nomModule,
+                             QByteArray idPartieDouble,
+                             QByteArray JoueurA1,
+                             QByteArray ClassementA1,
+                             QByteArray JoueurA2,
+                             QByteArray ClassementA2,
+                             QByteArray JoueurW1,
+                             QByteArray ClassementW1,
+                             QByteArray JoueurW2,
+                             QByteArray ClassementW2);
 };
 
 #endif // IHMAFFICHEUR_H

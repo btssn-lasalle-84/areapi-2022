@@ -38,8 +38,10 @@ class Partie
 
   public:
     Partie();
-    Partie(bool estDouble);
-    Partie(QString nomJoueurA, QString prenomJoueurA, QString nomJoueurW, QString prenomJoueurW);
+    Partie(bool estDouble, QString nomJoueurA1, QString prenomJoueurA1,
+           QString nomJoueurW1, QString prenomJoueurW1,
+           QString nomJoueurA2 = "", QString prenomJoueurA2 ="",
+           QString nomJoueurW2 = "", QString prenomJoueurW2 = "");
     Partie(const Partie& partie);
     ~Partie();
     Partie& operator=(const Partie& partie);

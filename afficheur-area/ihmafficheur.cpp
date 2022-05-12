@@ -143,33 +143,51 @@ void IHMAfficheur::initialiserRencontre(QString    nomModule,
         initialiserJoueurY(QString(NomJoueurY.data()),
                            QString(PrenomJoueurY.data()));
         initialiserJoueurZ(QString(NomJoueurZ.data()),
-                           QString(PrenomJoueurZ.data()));     
+                           QString(PrenomJoueurZ.data()));
+
+        //Partie 1
+        initialiserPartieSimple1(QString(NomJoueurA.data()), QString(PrenomJoueurA.data()),
+                                 QString(NomJoueurW.data()), QString(PrenomJoueurW.data()));
+        //Partie 2
+        initialiserPartieSimple1(QString(NomJoueurB.data()), QString(PrenomJoueurB.data()),
+                                 QString(NomJoueurX.data()), QString(PrenomJoueurX.data()));
+        //Partie 3
+        initialiserPartieSimple1(QString(NomJoueurC.data()), QString(PrenomJoueurC.data()),
+                                 QString(NomJoueurY.data()), QString(PrenomJoueurY.data()));
+        //Partie 4
+        initialiserPartieSimple1(QString(NomJoueurD.data()), QString(PrenomJoueurD.data()),
+                                 QString(NomJoueurZ.data()), QString(PrenomJoueurZ.data()));
+        //Partie 5
+        initialiserPartieSimple1(QString(NomJoueurA.data()), QString(PrenomJoueurA.data()),
+                                 QString(NomJoueurX.data()), QString(PrenomJoueurX.data()));
+        //Partie 6
+        initialiserPartieSimple1(QString(NomJoueurB.data()), QString(PrenomJoueurB.data()),
+                                 QString(NomJoueurW.data()), QString(PrenomJoueurW.data()));
+        //Partie 7
+        initialiserPartieSimple1(QString(NomJoueurD.data()), QString(PrenomJoueurD.data()),
+                                 QString(NomJoueurY.data()), QString(PrenomJoueurY.data()));
+        //Partie 8
+        initialiserPartieSimple1(QString(NomJoueurC.data()), QString(PrenomJoueurC.data()),
+                                 QString(NomJoueurZ.data()), QString(PrenomJoueurZ.data()));
+        //Partie 9
+        initialiserPartieSimple1(QString(NomJoueurA.data()), QString(PrenomJoueurA.data()),
+                                 QString(NomJoueurY.data()), QString(PrenomJoueurY.data()));
+
+        //Partie 10
+        initialiserPartieSimple1(QString(NomJoueurC.data()), QString(PrenomJoueurC.data()),
+                                 QString(NomJoueurW.data()), QString(PrenomJoueurW.data()));
+
+        //Partie 11
+        initialiserPartieSimple1(QString(NomJoueurD.data()), QString(PrenomJoueurD.data()),
+                                 QString(NomJoueurX.data()), QString(PrenomJoueurX.data()));
+
+        //Partie 12
+        initialiserPartieSimple1(QString(NomJoueurB.data()), QString(PrenomJoueurB.data()),
+                                 QString(NomJoueurZ.data()), QString(PrenomJoueurZ.data()));
     }
     else
     {
         qDebug() << Q_FUNC_INFO << "Erreur rencontre en cours !";
-    }
-}
-
-void IHMAfficheur::initialiserPartieSimple(QString nomModule,
-                                           QByteArray idPartie,
-                                           QByteArray JoueurA,
-                                           QByteArray ClassementJoueurA,
-                                           QByteArray JoueurB,
-                                           QByteArray ClassementJoueurW)
-{
-    qDebug() << Q_FUNC_INFO << nomModule;
-    if(rencontre == nullptr)
-    {
-        qDebug() << Q_FUNC_INFO << "Erreur il y a pas de rencontre en cours";
-        return;
-    }
-    else
-    {
-        ui->nomJoueurGPartieG->setText(JoueurA);
-        ui->nomJoueurDPartieG->setText(JoueurB);
-        ui->classementJoueurGPartieG->setText(ClassementJoueurA + " pts");
-        ui->classementJoueurDPartieG->setText(ClassementJoueurW + " pts");
     }
 }
 
@@ -238,6 +256,79 @@ void IHMAfficheur::initialiserReception()
                                          QByteArray,
                                          QByteArray,
                                          QByteArray)));
+
+    connect(receptionTrame,
+            SIGNAL(nouvelleTrameDouble(QString,
+                                       QByteArray,
+                                       QByteArray,
+                                       QByteArray,
+                                       QByteArray,
+                                       QByteArray,
+                                       QByteArray,
+                                       QByteArray,
+                                       QByteArray,
+                                       QByteArray)),
+            this,
+            SLOT(initialiserPartieDouble(QString,
+                                         QByteArray,
+                                         QByteArray,
+                                         QByteArray,
+                                         QByteArray,
+                                         QByteArray,
+                                         QByteArray,
+                                         QByteArray,
+                                         QByteArray,
+                                         QByteArray)));
+}
+
+void IHMAfficheur::initialiserPartieSimple(QString nomModule,
+                                           QByteArray idPartie,
+                                           QByteArray JoueurA,
+                                           QByteArray ClassementJoueurA,
+                                           QByteArray JoueurB,
+                                           QByteArray ClassementJoueurW)
+{
+    qDebug() << Q_FUNC_INFO << nomModule;
+    if(rencontre == nullptr)
+    {
+        qDebug() << Q_FUNC_INFO << "Erreur il y a pas de rencontre en cours";
+        return;
+    }
+    else
+    {
+        ui->nomJoueurGPartieG->setText(JoueurA);
+        ui->nomJoueurDPartieG->setText(JoueurB);
+        ui->classementJoueurGPartieG->setText(ClassementJoueurA + " pts");
+        ui->classementJoueurDPartieG->setText(ClassementJoueurW + " pts");
+    }
+}
+
+void IHMAfficheur::initialiserPartieDouble(QString nomModule,
+                                           QByteArray idPartieDouble,
+                                           QByteArray JoueurA1,
+                                           QByteArray ClassementA1,
+                                           QByteArray JoueurA2,
+                                           QByteArray ClassementA2,
+                                           QByteArray JoueurW1,
+                                           QByteArray ClassementW1,
+                                           QByteArray JoueurW2,
+                                           QByteArray ClassementW2)
+{
+    qDebug() << Q_FUNC_INFO << nomModule;
+    if(rencontre == nullptr)
+    {
+        qDebug() << Q_FUNC_INFO << "Erreur il y a pas de rencontre en cours";
+        return;
+    }
+    else
+    {
+        ui->nomJoueurGPartieG->setText(JoueurA1 + " / " + JoueurA2);
+        ui->nomJoueurDPartieG->setText(JoueurW1 + " / " + JoueurW2);
+        QString sommeClassementA = QString::number(ClassementA1.toInt() + ClassementA2.toInt());
+        QString sommeClassementW = QString::number(ClassementW1.toInt() + ClassementW2.toInt());
+        ui->classementJoueurGPartieG->setText(sommeClassementA + "pts");
+        ui->classementJoueurDPartieG->setText(sommeClassementW + "pts");
+    }
 }
 
 void IHMAfficheur::initialiserEquipes(QString clubA, QString clubW)
@@ -346,63 +437,24 @@ void IHMAfficheur::initialiserJoueurZ(QString nom, QString prenom)
     }
 }
 
-void IHMAfficheur::initialiserPartieSimple1(QString nomJoueurA, QString prenomJoueurA, QString nomJoueurW, QString prenomJoueurW)
+void IHMAfficheur::initialiserPartieSimple1(QString nomJoueurA, QString prenomJoueurA,
+                                            QString nomJoueurW, QString prenomJoueurW)
 {
-    rencontre->setParties(0, new Partie(nomJoueurA, prenomJoueurA, nomJoueurW, prenomJoueurW));
+    qDebug() << Q_FUNC_INFO;
+    rencontre->setPartiesSimple(nomJoueurA, prenomJoueurA,
+                                nomJoueurW, prenomJoueurW);
+
 }
 
-void IHMAfficheur::initialiserPartieSimple2(QString nomJoueurB, QString prenomJoueurB, QString nomJoueurX, QString prenomJoueurX)
-{
-    rencontre->setParties(1, new Partie(nomJoueurB, prenomJoueurB, nomJoueurX, prenomJoueurX));
-}
 
-void IHMAfficheur::initialiserPartieSimple3(QString nomJoueurC, QString prenomJoueurC, QString nomJoueurY, QString prenomJoueurY)
+void IHMAfficheur::initialiserPartieDouble1(QString nomJoueurA1, QString prenomJoueurA1,
+                                            QString nomJoueurA2, QString prenomJoueurA2,
+                                            QString nomJoueurW1, QString prenomJoueurW1,
+                                            QString nomJoueurW2, QString prenomJoueurW2)
 {
-    rencontre->setParties(2, new Partie(nomJoueurC, prenomJoueurC, nomJoueurY, prenomJoueurY));
+    qDebug() << Q_FUNC_INFO;
+    rencontre->setPartiesDouble(nomJoueurA1, prenomJoueurA1,
+                                nomJoueurA2, prenomJoueurA2,
+                                nomJoueurW1, prenomJoueurW1,
+                                nomJoueurW2, prenomJoueurW2);
 }
-
-void IHMAfficheur::initialiserPartieSimple4(QString nomJoueurD, QString prenomJoueurD, QString nomJoueurZ, QString prenomJoueurZ)
-{
-    rencontre->setParties(3, new Partie(nomJoueurD, prenomJoueurD, nomJoueurZ, prenomJoueurZ));
-}
-
-void IHMAfficheur::initialiserPartieSimple5(QString nomJoueurA, QString prenomJoueurA, QString nomJoueurX, QString prenomJoueurX)
-{
-    rencontre->setParties(4, new Partie(nomJoueurA, prenomJoueurA, nomJoueurX, prenomJoueurX));
-}
-
-void IHMAfficheur::initialiserPartieSimple6(QString nomJoueurB, QString prenomJoueurB, QString nomJoueurW, QString prenomJoueurW)
-{
-    rencontre->setParties(5, new Partie(nomJoueurB, prenomJoueurB, nomJoueurW, prenomJoueurW));
-}
-
-void IHMAfficheur::initialiserPartieSimple7(QString nomJoueurD, QString prenomJoueurD, QString nomJoueurY, QString prenomJoueurY)
-{
-    rencontre->setParties(6, new Partie(nomJoueurD, prenomJoueurD, nomJoueurY, prenomJoueurY));
-}
-
-void IHMAfficheur::initialiserPartieSimple8(QString nomJoueurC, QString prenomJoueurC, QString nomJoueurZ, QString prenomJoueurZ)
-{
-    rencontre->setParties(7, new Partie(nomJoueurC, prenomJoueurC, nomJoueurZ, prenomJoueurZ));
-}
-
-void IHMAfficheur::initialiserPartieSimple9(QString nomJoueurA, QString prenomJoueurA, QString nomJoueurY, QString prenomJoueurY)
-{
-    rencontre->setParties(10, new Partie(nomJoueurA, prenomJoueurA, nomJoueurY, prenomJoueurY));
-}
-
-void IHMAfficheur::initialiserPartieSimple10(QString nomJoueurC, QString prenomJoueurC, QString nomJoueurW, QString prenomJoueurW)
-{
-    rencontre->setParties(11, new Partie(nomJoueurC, prenomJoueurC, nomJoueurW, prenomJoueurW));
-}
-
-void IHMAfficheur::initialiserPartieSimple11(QString nomJoueurD, QString prenomJoueurD, QString nomJoueurX, QString prenomJoueurX)
-{
-    rencontre->setParties(12, new Partie(nomJoueurD, prenomJoueurD, nomJoueurX, prenomJoueurX));
-}
-
-void IHMAfficheur::initialiserPartieSimple12(QString nomJoueurB, QString prenomJoueurB, QString nomJoueurZ, QString prenomJoueurZ)
-{
-    rencontre->setParties(13, new Partie(nomJoueurB, prenomJoueurB, nomJoueurZ, prenomJoueurZ));
-}
-

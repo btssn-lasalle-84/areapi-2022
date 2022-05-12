@@ -297,6 +297,21 @@ void ReceptionTrame::lireSocket()
         {
             qDebug() << decoupageTrame[ProtocoleArea::ChampsTrame::TYPE]
                      << decoupageTrame.length();
+            if(decoupageTrame.length() ==
+                    ProtocoleArea::ChampsPartieDouble::NbChampsPartieDouble + 1)
+            {
+                emit nouvelleTrameDouble(
+                  socket->peerName(),
+                            decoupageTrame[ProtocoleArea::ChampsPartieDouble::idPartieDouble],
+                            decoupageTrame[ProtocoleArea::ChampsPartieDouble::JoueurA1],
+                            decoupageTrame[ProtocoleArea::ChampsPartieDouble::ClassementA1],
+                            decoupageTrame[ProtocoleArea::ChampsPartieDouble::JoueurA2],
+                            decoupageTrame[ProtocoleArea::ChampsPartieDouble::ClassementA2],
+                            decoupageTrame[ProtocoleArea::ChampsPartieDouble::JoueurW1],
+                            decoupageTrame[ProtocoleArea::ChampsPartieDouble::ClassementW1],
+                            decoupageTrame[ProtocoleArea::ChampsPartieDouble::JoueurW2],
+                            decoupageTrame[ProtocoleArea::ChampsPartieDouble::ClassementW2]);
+            }
         }
         else if(decoupageTrame[ProtocoleArea::ChampsTrame::TYPE] ==
                 ProtocoleArea::SCORE)

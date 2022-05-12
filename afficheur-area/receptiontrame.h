@@ -92,6 +92,18 @@ class ReceptionTrame : public QObject
                              QByteArray ClassementJoueurA,
                              QByteArray JoueurB,
                              QByteArray ClassementJoueurW);
+
+    void nouvelleTrameDouble(QString nomModule,
+                             QByteArray idPartieDouble,
+                             QByteArray JoueurA1,
+                             QByteArray ClassementA1,
+                             QByteArray JoueurA2,
+                             QByteArray ClassementA2,
+                             QByteArray JoueurW1,
+                             QByteArray ClassementW1,
+                             QByteArray JoueurW2,
+                             QByteArray ClassementW2
+                             );
 };
 
 #endif // RECEPTIONTRAME_H

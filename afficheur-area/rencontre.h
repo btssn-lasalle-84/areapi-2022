@@ -34,9 +34,14 @@ class Rencontre
     Equipe* getEquipeW() const;
 
     QVector<Partie> getParties() const;
-    void setParties(int cases, Partie partie);
+    void setPartiesSimple(QString nomJoueurA1, QString prenomJoueurA1,
+                          QString nomJoueurW1, QString prenomJoueurW2);
 
-    void ajouterPartiesSimple();
+    void setPartiesDouble(QString nomJoueurA1, QString prenomJoueurA1,
+                          QString nomJoueurA2, QString prenomJoueurA2,
+                          QString nomJoueurW1, QString prenomJoueurW1,
+                          QString nomJoueurW2, QString prenomJoueurW2);
+
 
     enum NomEquipe
     {
