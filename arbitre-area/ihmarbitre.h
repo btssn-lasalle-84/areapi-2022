@@ -51,7 +51,7 @@ class IHMArbitre : public QMainWindow
     Ui::IHMArbitre* ui; //!< la fenêtre graphique associée à cette classe
     CommunicationBluetooth*
                    communicationBluetooth; //!< la communication avec les modules
-    BaseDeDonnees* baseDeDonnees;
+    BaseDeDonnees* bdd;
 
     /**
      * @enum Ecran

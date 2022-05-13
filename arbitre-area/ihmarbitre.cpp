@@ -112,7 +112,7 @@ void IHMArbitre::fermerApplication()
 
 void IHMArbitre::demarrer()
 {
-    afficherEcran(Ecran::AccueilRencontre);
+    afficherEcran(Ecran::CreationTournoi);
 }
 
 void IHMArbitre::afficherNetTrouve()
@@ -188,7 +188,8 @@ void IHMArbitre::initialiserBDD()
     BaseDeDonnees* bdd = BaseDeDonnees::getInstance("QSQLITE");
     if(bdd->estOuvert() == false)
     {
-        // bdd->ouvrir();
+        bdd->ouvrir("areapi.sqlite");
+        qDebug() << Q_FUNC_INFO << "Ouverture BDD" << bdd;
     }
 }
 
