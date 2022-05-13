@@ -26,6 +26,11 @@ CommunicationBluetooth::CommunicationBluetooth(IHMArbitre* ihmArbitre) :
             SIGNAL(deviceDiscovered(QBluetoothDeviceInfo)),
             this,
             SLOT(chercherModule(QBluetoothDeviceInfo)));
+    discoveryAgentService = new QBluetoothServiceDiscoveryAgent(this);
+    connect(discoveryAgentService,
+            SIGNAL(serviceDiscovered(QBluetoothServiceInfo)),
+            this,
+            SLOT(chercherService(QBluetoothServiceInfo)));
 }
 
 CommunicationBluetooth::~CommunicationBluetooth()
@@ -112,12 +117,14 @@ void CommunicationBluetooth::deconnecter(Module module)
 
 void CommunicationBluetooth::demarrerRecherche()
 {
-    discoveryAgentDevice->start();
+    // discoveryAgentDevice->start();
+    discoveryAgentService->start();
 }
 
 void CommunicationBluetooth::arreterRecherche()
 {
-    discoveryAgentDevice->stop();
+    // discoveryAgentDevice->stop();
+    discoveryAgentService->stop();
 }
 
 void CommunicationBluetooth::chercherModule(QBluetoothDeviceInfo device)
@@ -131,6 +138,12 @@ void CommunicationBluetooth::chercherModule(QBluetoothDeviceInfo device)
                  << device.address() << device.rssi();
         enregistrerModule(device);
     }
+}
+
+void CommunicationBluetooth::chercherService(QBluetoothServiceInfo service)
+{
+    qDebug() << Q_FUNC_INFO << service.serviceName() << service.serviceUuid()
+             << service.device().name() << service.device().address();
 }
 
 void CommunicationBluetooth::recevoirEcran()

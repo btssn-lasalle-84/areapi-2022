@@ -38,19 +38,20 @@ class CommunicationBluetooth : public QObject
     };
 
   private:
-    IHMArbitre*                     ihmArbitre;
-    QBluetoothLocalDevice           interfaceLocale;
-    QVector<QBluetoothDeviceInfo>   modulesAREA;
-    QBluetoothDeviceDiscoveryAgent* discoveryAgentDevice;
-    QBluetoothDeviceInfo            moduleEcran;
-    QBluetoothDeviceInfo            moduleNet;
-    QBluetoothDeviceInfo            moduleScore;
-    QBluetoothSocket*               socketEcran;
-    QBluetoothSocket*               socketNet;
-    QBluetoothSocket*               socketScore;
-    QString                         trameEcran;
-    QString                         trameNet;
-    QString                         trameScore;
+    IHMArbitre*                      ihmArbitre;
+    QBluetoothLocalDevice            interfaceLocale;
+    QVector<QBluetoothDeviceInfo>    modulesAREA;
+    QBluetoothDeviceDiscoveryAgent*  discoveryAgentDevice;
+    QBluetoothServiceDiscoveryAgent* discoveryAgentService;
+    QBluetoothDeviceInfo             moduleEcran;
+    QBluetoothDeviceInfo             moduleNet;
+    QBluetoothDeviceInfo             moduleScore;
+    QBluetoothSocket*                socketEcran;
+    QBluetoothSocket*                socketNet;
+    QBluetoothSocket*                socketScore;
+    QString                          trameEcran;
+    QString                          trameNet;
+    QString                          trameScore;
 
     void enregistrerModule(const QBluetoothDeviceInfo device);
     void initialiserSocketNet(const QBluetoothDeviceInfo device);
@@ -69,6 +70,7 @@ class CommunicationBluetooth : public QObject
     void demarrerRecherche();
     void arreterRecherche();
     void chercherModule(QBluetoothDeviceInfo device);
+    void chercherService(QBluetoothServiceInfo service);
     void recevoirEcran();
     void recevoirNet();
     void recevoirScore();
