@@ -122,8 +122,8 @@ void CommunicationBluetooth::arreterRecherche()
 
 void CommunicationBluetooth::chercherModule(QBluetoothDeviceInfo device)
 {
-    qDebug() << Q_FUNC_INFO << device.name() << device.address()
-             << device.rssi();
+    // qDebug() << Q_FUNC_INFO << device.name() << device.address() <<
+    // device.rssi();
 
     if(device.name().startsWith(PREFIXE_MODULE_AREA))
     {
@@ -190,7 +190,10 @@ void CommunicationBluetooth::detecterErreurSocket(
 
 void CommunicationBluetooth::gererEtatSocket(QBluetoothSocket::SocketState etat)
 {
-    qDebug() << Q_FUNC_INFO << etat;
+    QBluetoothSocket* socket = qobject_cast<QBluetoothSocket*>(sender());
+    qDebug() << Q_FUNC_INFO << socket << socket->peerName()
+             << socket->peerAddress().toString() << socket->state() << etat;
+    // qDebug() << Q_FUNC_INFO << etat;
 }
 
 void CommunicationBluetooth::enregistrerModule(
@@ -260,14 +263,34 @@ void CommunicationBluetooth::initialiserSocketNet(
                 this,
                 SLOT(gererEtatSocket(QBluetoothSocket::SocketState)));
         connect(socketNet, SIGNAL(readyRead()), this, SLOT(recevoirNet()));
+    }
+
+    if(socketNet->state() == QBluetoothSocket::ConnectingState)
+    {
+        socketNet->disconnectFromService();
+    }
+    if(socketNet->state() != QBluetoothSocket::ConnectedState)
+    {
+        /*QBluetoothServiceInfo service;
+        service.setDevice(moduleNet);
+        service.setServiceUuid(QBluetoothUuid(
+          QLatin1String("00001101-0000-1000-8000-00805f9b34fb")));
+        qDebug()
+          << Q_FUNC_INFO
+          << service.socketProtocol(); // QBluetoothServiceInfo::RfcommProtocol
+        qDebug() << Q_FUNC_INFO << service.serviceName();
+        qDebug() << Q_FUNC_INFO << service.serviceUuid();
+        socketNet->connectToService(service);
+        // bool retour = socketNet->open(QIODevice::ReadWrite);
+        // qDebug() << Q_FUNC_INFO << retour;
+        return;*/
 
         // QBluetoothAddress adresse = QBluetoothAddress(device.address());
         QBluetoothAddress adresse = QBluetoothAddress(moduleNet.address());
         QBluetoothUuid    uuid    = QBluetoothUuid(QBluetoothUuid::SerialPort);
         qDebug() << Q_FUNC_INFO << uuid;
         socketNet->connectToService(adresse, uuid);
-        bool retour = socketNet->open(QIODevice::ReadWrite);
-        qDebug() << Q_FUNC_INFO << retour;
+        // socketNet->open(QIODevice::ReadWrite);
     }
 }
 
@@ -294,8 +317,8 @@ void CommunicationBluetooth::initialiserSocketEcran(
         QBluetoothUuid    uuid    = QBluetoothUuid(QBluetoothUuid::SerialPort);
         qDebug() << Q_FUNC_INFO << uuid;
         socketEcran->connectToService(adresse, uuid);
-        bool retour = socketEcran->open(QIODevice::ReadWrite);
-        qDebug() << Q_FUNC_INFO << retour;
+        // bool retour = socketEcran->open(QIODevice::ReadWrite);
+        // qDebug() << Q_FUNC_INFO << retour;
     }
 }
 
@@ -324,13 +347,31 @@ void CommunicationBluetooth::initialiserSocketScore(
                 this,
                 SLOT(gererEtatSocket(QBluetoothSocket::SocketState)));
         connect(socketScore, SIGNAL(readyRead()), this, SLOT(recevoirScore()));
+    }
 
+    if(socketScore->state() == QBluetoothSocket::ConnectingState)
+    {
+        qDebug() << Q_FUNC_INFO << "disconnectFromService";
+        socketScore->disconnectFromService();
+    }
+    if(socketScore->state() != QBluetoothSocket::ConnectedState)
+    {
+        /*QBluetoothServiceInfo service;
+        service.setDevice(moduleScore);
+        service.setServiceUuid(QBluetoothUuid(
+          QLatin1String("00001101-0000-1000-8000-00805f9b34fb")));
+        qDebug() << Q_FUNC_INFO << service.socketProtocol();
+        qDebug() << Q_FUNC_INFO << service.serviceName();
+        qDebug() << Q_FUNC_INFO << service.serviceUuid();
+        socketScore->connectToService(service);
+        // bool retour = socketScore->open(QIODevice::ReadWrite);
+        // qDebug() << Q_FUNC_INFO << retour;
+        return;*/
         // QBluetoothAddress adresse = QBluetoothAddress(device.address());
         QBluetoothAddress adresse = QBluetoothAddress(moduleScore.address());
         QBluetoothUuid    uuid    = QBluetoothUuid(QBluetoothUuid::SerialPort);
         qDebug() << Q_FUNC_INFO << uuid;
         socketScore->connectToService(adresse, uuid);
-        bool retour = socketScore->open(QIODevice::ReadWrite);
-        qDebug() << Q_FUNC_INFO << retour;
+        socketScore->open(QIODevice::ReadWrite);
     }
 }
