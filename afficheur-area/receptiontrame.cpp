@@ -318,6 +318,20 @@ void ReceptionTrame::lireSocket()
         {
             qDebug() << decoupageTrame[ProtocoleArea::ChampsTrame::TYPE]
                      << decoupageTrame.length();
+            if(decoupageTrame.length() == ProtocoleArea::ChampsPartieScore::NbChampsScore + 1)
+            {
+                emit nouvelleTrameScore(
+                    socket->peerName(),
+                            decoupageTrame[ProtocoleArea::ChampsPartieScore::idPartieScore],
+                            decoupageTrame[ProtocoleArea::ChampsPartieScore::scoreJG],
+                            decoupageTrame[ProtocoleArea::ChampsPartieScore::scoreJD],
+                            decoupageTrame[ProtocoleArea::ChampsPartieScore::etatPartie],
+                            decoupageTrame[ProtocoleArea::ChampsPartieScore::tempsMort],
+                            decoupageTrame[ProtocoleArea::ChampsPartieScore::nbSetJG],
+                            decoupageTrame[ProtocoleArea::ChampsPartieScore::nbSetJD],
+                            decoupageTrame[ProtocoleArea::ChampsPartieScore::tourService],
+                            decoupageTrame[ProtocoleArea::ChampsPartieScore::net]);
+            }
         }
         else
         {

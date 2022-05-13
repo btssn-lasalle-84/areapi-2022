@@ -279,6 +279,28 @@ void IHMAfficheur::initialiserReception()
                                          QByteArray,
                                          QByteArray,
                                          QByteArray)));
+    connect(receptionTrame,
+            SIGNAL(nouvelleTrameScore(QString,
+                                      QByteArray,
+                                      QByteArray,
+                                      QByteArray,
+                                      QByteArray,
+                                      QByteArray,
+                                      QByteArray,
+                                      QByteArray,
+                                      QByteArray,
+                                      QByteArray)),
+            this,
+            SLOT(initialiserScorePartie(QString,
+                                        QByteArray,
+                                        QByteArray,
+                                        QByteArray,
+                                        QByteArray,
+                                        QByteArray,
+                                        QByteArray,
+                                        QByteArray,
+                                        QByteArray,
+                                        QByteArray)));
 }
 
 void IHMAfficheur::initialiserPartieSimple(QString nomModule,
@@ -328,6 +350,78 @@ void IHMAfficheur::initialiserPartieDouble(QString nomModule,
         QString sommeClassementW = QString::number(ClassementW1.toInt() + ClassementW2.toInt());
         ui->classementJoueurGPartieG->setText(sommeClassementA + "pts");
         ui->classementJoueurDPartieG->setText(sommeClassementW + "pts");
+    }
+}
+
+
+void IHMAfficheur::initialiserScorePartie(QString    nomModule,
+                                          QByteArray idPartieScore,
+                                          QByteArray scoreJG,
+                                          QByteArray scoreJD,
+                                          QByteArray etatPartie,
+                                          QByteArray tempsMort,
+                                          QByteArray nbSetJG,
+                                          QByteArray nbSetJD,
+                                          QByteArray tourService,
+                                          QByteArray net)
+{
+    qDebug() << Q_FUNC_INFO << nomModule;
+    if(rencontre == nullptr)
+    {
+        qDebug() << Q_FUNC_INFO << "Erreur il y a pas de rencontre en cours";
+        return;
+    }
+    else
+    {
+        rencontre->actualiserPartie(idPartieScore, scoreJG, scoreJD,
+                                    etatPartie, tempsMort, nbSetJG,
+                                    nbSetJD, net);
+
+        switch (rencontre->getPartie(idPartieScore.toUInt()).getNombreSet()) {
+
+        case 0:
+            ui->scoreSet1JoueurGPartieG->setText(scoreJG);
+            ui->scoreSet1JoueurDPartieG->setText(scoreJD);
+            ui->statistiquesSet1PartieG->setText("Net = " +
+                                                 QString::number(rencontre->getPartie
+                                                                 (idPartieScore.toUInt()).getNombreNET()));
+            break;
+
+        case 1:
+            ui->scoreSet2JoueurGPartieG->setText(scoreJG);
+            ui->scoreSet2JoueurDPartieG->setText(scoreJD);
+            ui->statistiquesSet2PartieG->setText("Net = " +
+                                                 QString::number(rencontre->getPartie
+                                                                 (idPartieScore.toUInt()).getNombreNET()));
+            break;
+
+        case 2:
+            ui->scoreSet3JoueurGPartieG->setText(scoreJG);
+            ui->scoreSet3JoueurDPartieG->setText(scoreJD);
+            ui->statistiquesSet3PartieG->setText("Net = " +
+                                                 QString::number(rencontre->getPartie
+                                                                 (idPartieScore.toUInt()).getNombreNET()));
+            break;
+
+        case 3:
+            ui->scoreSet4JoueurGPartieG->setText(scoreJG);
+            ui->scoreSet4JoueurDPartieG->setText(scoreJD);
+            ui->statistiquesSet4PartieG->setText("Net = " +
+                                                 QString::number(rencontre->getPartie
+                                                                 (idPartieScore.toUInt()).getNombreNET()));
+            break;
+
+        case 4:
+            ui->scoreSet5JoueurGPartieG->setText(scoreJG);
+            ui->scoreSet5JoueurDPartieG->setText(scoreJD);
+            ui->statistiquesSet5PartieG->setText("Net = " +
+                                                 QString::number(rencontre->getPartie
+                                                                 (idPartieScore.toUInt()).getNombreNET()));
+            break;
+
+        default:
+            break;
+        }
     }
 }
 
@@ -458,3 +552,4 @@ void IHMAfficheur::initialiserPartieDouble1(QString nomJoueurA1, QString prenomJ
                                 nomJoueurW1, prenomJoueurW1,
                                 nomJoueurW2, prenomJoueurW2);
 }
+

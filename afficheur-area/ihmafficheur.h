@@ -111,6 +111,17 @@ void initialiserPartieDouble(QString    nomModule,
                              QByteArray ClassementW1,
                              QByteArray JoueurW2,
                              QByteArray ClassementW2);
+
+void initialiserScorePartie(QString nomModule,
+                            QByteArray idPartieScore,
+                            QByteArray scoreJG,
+                            QByteArray scoreJD,
+                            QByteArray etatPartie,
+                            QByteArray tempsMort,
+                            QByteArray nbSetJG,
+                            QByteArray nbSetJD,
+                            QByteArray tourService,
+                            QByteArray net);
 };
 
 #endif // IHMAFFICHEUR_H

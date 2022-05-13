@@ -92,6 +92,24 @@ class ProtocoleArea
         ClassementW2,
         NbChampsPartieDouble
     };
+
+    /**
+     * @enum ChampsPartieDouble
+     * @brief Définit les différents champs d'une trame SCORE
+     */
+    enum ChampsPartieScore
+    {
+        idPartieScore = 2,
+        scoreJG,
+        scoreJD,
+        etatPartie,
+        tempsMort,
+        nbSetJG,
+        nbSetJD,
+        tourService,
+        net,
+        NbChampsScore
+    };
 };
 
 #endif // PROTOCOLEAREA_H

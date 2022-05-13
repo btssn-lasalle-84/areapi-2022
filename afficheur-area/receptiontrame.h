@@ -104,6 +104,18 @@ class ReceptionTrame : public QObject
                              QByteArray JoueurW2,
                              QByteArray ClassementW2
                              );
+
+    void nouvelleTrameScore(QString nomModule,
+                            QByteArray idPartieScore,
+                            QByteArray scoreJG,
+                            QByteArray scoreJD,
+                            QByteArray etatPartie,
+                            QByteArray tempsMort,
+                            QByteArray nbSetJG,
+                            QByteArray nbSetJD,
+                            QByteArray tourService,
+                            QByteArray net
+                            );
 };
 
 #endif // RECEPTIONTRAME_H
