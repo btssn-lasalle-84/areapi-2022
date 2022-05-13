@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>480</height>
+    <width>1920</width>
+    <height>1080</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -24,8 +24,8 @@
   </property>
   <property name="maximumSize">
    <size>
-    <width>800</width>
-    <height>480</height>
+    <width>1920</width>
+    <height>1080</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -51,7 +51,7 @@
     <item>
      <widget class="QStackedWidget" name="ecrans">
       <property name="currentIndex">
-       <number>0</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="accueil">
        <property name="styleSheet">
@@ -582,7 +582,7 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="creationRencontre">
+      <widget class="QWidget" name="creationPartie">
        <property name="styleSheet">
         <string notr="true">background:rgb(186, 189, 182);</string>
        </property>
@@ -595,7 +595,7 @@
           <height>481</height>
          </rect>
         </property>
-        <layout class="QVBoxLayout" name="layoutCreationRencontre">
+        <layout class="QVBoxLayout" name="layoutCreationPartie">
          <property name="spacing">
           <number>0</number>
          </property>
@@ -605,17 +605,148 @@
         </layout>
        </widget>
       </widget>
-      <widget class="QWidget" name="arbitragePartie">
-       <widget class="QWidget" name="verticalLayoutWidget_2">
+      <widget class="QWidget" name="creationRencontre">
+       <property name="styleSheet">
+        <string notr="true">background:rgb(186, 189, 182);</string>
+       </property>
+       <widget class="QWidget" name="horizontalLayoutWidget">
         <property name="geometry">
          <rect>
-          <x>-1</x>
-          <y>-1</y>
-          <width>801</width>
-          <height>481</height>
+          <x>0</x>
+          <y>0</y>
+          <width>1921</width>
+          <height>1081</height>
          </rect>
         </property>
-        <layout class="QVBoxLayout" name="verticalLayout_3"/>
+        <layout class="QHBoxLayout" name="horizontalLayoutRencontre">
+         <item>
+          <layout class="QVBoxLayout" name="layoutTournoiExistant">
+           <item>
+            <widget class="QLabel" name="labelInfoTournoi">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>50</height>
+              </size>
+             </property>
+             <property name="layoutDirection">
+              <enum>Qt::LeftToRight</enum>
+             </property>
+             <property name="text">
+              <string>Choisire un tournoi existant</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QComboBox" name="comboBoxListeTournoi"/>
+           </item>
+           <item>
+            <widget class="QPushButton" name="pushButtonChoisirTournoi">
+             <property name="text">
+              <string>Choisire tournoi</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="layoutCentral_2">
+           <item>
+            <widget class="QLabel" name="label_2">
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>50</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>ou</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_5">
+             <item>
+              <widget class="Line" name="line">
+               <property name="lineWidth">
+                <number>1</number>
+               </property>
+               <property name="orientation">
+                <enum>Qt::Vertical</enum>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="layoutNouveauTournoi">
+           <item>
+            <widget class="QLabel" name="label">
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>50</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>Créer un nouveau tournoi</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_2">
+             <item>
+              <widget class="QComboBox" name="comboBox_2"/>
+             </item>
+             <item>
+              <widget class="QComboBox" name="comboBox"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_4">
+             <item>
+              <widget class="QDateEdit" name="dateEdit"/>
+             </item>
+             <item>
+              <widget class="QTimeEdit" name="timeEdit"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_3">
+             <item>
+              <widget class="QPushButton" name="pushButtonCreerTournoi">
+               <property name="text">
+                <string>Créer nouveau tournoi</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+        </layout>
        </widget>
       </widget>
      </widget>
