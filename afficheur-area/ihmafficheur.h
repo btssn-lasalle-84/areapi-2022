@@ -120,7 +120,6 @@ void initialiserScorePartie(QString nomModule,
                             QByteArray tempsMort,
                             QByteArray nbSetJG,
                             QByteArray nbSetJD,
-                            QByteArray tourService,
                             QByteArray net);
 };
 

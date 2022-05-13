@@ -84,8 +84,7 @@ void Rencontre::setPartiesDouble(QString nomJoueurA1, QString prenomJoueurA1,
 }
 
 void Rencontre::actualiserPartie(QByteArray idPartieScore, QByteArray scoreJG, QByteArray scoreJD,
-                                 QByteArray etatPartie, QByteArray tempsMort, QByteArray nbSetJG,
-                                 QByteArray nbSetJD, QByteArray net)
+                                 QByteArray nbSetJG,QByteArray nbSetJD, QByteArray net)
 {
     qDebug() << Q_FUNC_INFO;
     parties[idPartieScore.toUInt()].setSetJoueurG(nbSetJG.toUInt());

@@ -43,8 +43,8 @@ class Rencontre
                           QString nomJoueurW1, QString prenomJoueurW1,
                           QString nomJoueurW2, QString prenomJoueurW2);
 
-    void actualiserPartie(QByteArray idPartieScore, QByteArray scoreJG, QByteArray scoreJD,
-                          QByteArray etatPartie, QByteArray tempsMort, QByteArray nbSetJG,
+    void actualiserPartie(QByteArray idPartieScore, QByteArray scoreJG,
+                          QByteArray scoreJD, QByteArray nbSetJG,
                           QByteArray nbSetJD, QByteArray net);
 
 

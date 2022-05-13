@@ -305,6 +305,9 @@ void IHMAfficheur::initialiserReception()
 
 void IHMAfficheur::initialiserPartieSimple(QString nomModule,
                                            QByteArray idPartie,
+                                                /**
+                                                * @todo Gerer deux parties en même temps
+                                                */
                                            QByteArray JoueurA,
                                            QByteArray ClassementJoueurA,
                                            QByteArray JoueurB,
@@ -327,6 +330,9 @@ void IHMAfficheur::initialiserPartieSimple(QString nomModule,
 
 void IHMAfficheur::initialiserPartieDouble(QString nomModule,
                                            QByteArray idPartieDouble,
+                                           /**
+                                           * @todo Gerer deux parties en même temps
+                                           */
                                            QByteArray JoueurA1,
                                            QByteArray ClassementA1,
                                            QByteArray JoueurA2,
@@ -360,9 +366,11 @@ void IHMAfficheur::initialiserScorePartie(QString    nomModule,
                                           QByteArray scoreJD,
                                           QByteArray etatPartie,
                                           QByteArray tempsMort,
+                                          /**
+                                          * @todo Gerer l'état d'un partie (début/fin/pause)
+                                          */
                                           QByteArray nbSetJG,
                                           QByteArray nbSetJD,
-                                          QByteArray tourService,
                                           QByteArray net)
 {
     qDebug() << Q_FUNC_INFO << nomModule;
@@ -374,8 +382,7 @@ void IHMAfficheur::initialiserScorePartie(QString    nomModule,
     else
     {
         rencontre->actualiserPartie(idPartieScore, scoreJG, scoreJD,
-                                    etatPartie, tempsMort, nbSetJG,
-                                    nbSetJD, net);
+                                    nbSetJG,nbSetJD, net);
 
         switch (rencontre->getPartie(idPartieScore.toUInt()).getNombreSet()) {
 
@@ -430,9 +437,7 @@ void IHMAfficheur::initialiserEquipes(QString clubA, QString clubW)
     qDebug() << Q_FUNC_INFO << clubA << clubW;
     ui->clubA->setText(clubA);
     ui->clubW->setText(clubW);
-    /**
-     * @todo Initialiser les parties DOUBLE dans l'IHM
-     */
+
 }
 
 void IHMAfficheur::initialiserJoueurA(QString nom, QString prenom)
