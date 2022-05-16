@@ -41,7 +41,8 @@ IHMArbitre::IHMArbitre(QWidget* parent) :
 // showMaximized();
 #endif
 
-    communicationBluetooth->demarrerRecherche();
+    // communicationBluetooth->demarrerRecherche();
+    communicationBluetooth->demarrerRechercheService();
 }
 
 /**
@@ -116,110 +117,57 @@ void IHMArbitre::demarrer()
 void IHMArbitre::afficherNetTrouve()
 {
     afficherEtatBluetooth(ui->labelEtatModuleNet, Trouve);
-    ui->pushButtonModuleNet->setText("Connecter");
 }
 
 void IHMArbitre::afficherEcranTrouve()
 {
     afficherEtatBluetooth(ui->labelEtatModuleEcran, Trouve);
-    ui->pushButtonModuleEcran->setText("Connecter");
 }
 
 void IHMArbitre::afficherScoreTrouve()
 {
     afficherEtatBluetooth(ui->labelEtatModuleScore, Trouve);
-    ui->pushButtonModuleScore->setText("Connecter");
 }
 
 void IHMArbitre::afficherConnexionNet()
 {
+    qDebug() << Q_FUNC_INFO;
     afficherEtatBluetooth(ui->labelEtatModuleNet, Connecte);
-    ui->pushButtonModuleNet->setText("Déconnecter");
 }
 
 void IHMArbitre::afficherConnexionEcran()
 {
+    qDebug() << Q_FUNC_INFO;
     afficherEtatBluetooth(ui->labelEtatModuleEcran, Connecte);
-    ui->pushButtonModuleEcran->setText("Déconnecter");
 }
 
 void IHMArbitre::afficherConnexionScore()
 {
+    qDebug() << Q_FUNC_INFO;
     afficherEtatBluetooth(ui->labelEtatModuleScore, Connecte);
-    ui->pushButtonModuleScore->setText("Déconnecter");
 }
 
 void IHMArbitre::afficherDeconnexionNet()
 {
     afficherEtatBluetooth(ui->labelEtatModuleNet, Trouve);
-    ui->pushButtonModuleNet->setText("Connecter");
 }
 
 void IHMArbitre::afficherDeconnexionEcran()
 {
     afficherEtatBluetooth(ui->labelEtatModuleEcran, Trouve);
-    ui->pushButtonModuleEcran->setText("Connecter");
 }
 
 void IHMArbitre::afficherDeconnexionScore()
 {
     afficherEtatBluetooth(ui->labelEtatModuleScore, Trouve);
-    ui->pushButtonModuleScore->setText("Connecter");
 }
 
-void IHMArbitre::gererConnexionNet()
+void IHMArbitre::detecter()
 {
-    if(ui->pushButtonModuleNet->text() == "Connecter")
-    {
-        communicationBluetooth->connecter(CommunicationBluetooth::Module::Net);
-    }
-    else if(ui->pushButtonModuleNet->text() == "Détecter")
-    {
-        communicationBluetooth->arreterRecherche();
-        communicationBluetooth->demarrerRecherche();
-    }
-    else if(ui->pushButtonModuleNet->text() == "Déconnecter")
-    {
-        communicationBluetooth->deconnecter(
-          CommunicationBluetooth::Module::Net);
-    }
-}
-void IHMArbitre::gererConnexionEcran()
-{
-    if(ui->pushButtonModuleEcran->text() == "Connecter")
-    {
-        communicationBluetooth->connecter(
-          CommunicationBluetooth::Module::Ecran);
-    }
-    else if(ui->pushButtonModuleEcran->text() == "Détecter")
-    {
-        communicationBluetooth->arreterRecherche();
-        communicationBluetooth->demarrerRecherche();
-    }
-    else if(ui->pushButtonModuleEcran->text() == "Déconnecter")
-    {
-        communicationBluetooth->deconnecter(
-          CommunicationBluetooth::Module::Ecran);
-    }
-}
-
-void IHMArbitre::gererConnexionScore()
-{
-    if(ui->pushButtonModuleScore->text() == "Connecter")
-    {
-        communicationBluetooth->connecter(
-          CommunicationBluetooth::Module::Score);
-    }
-    else if(ui->pushButtonModuleScore->text() == "Détecter")
-    {
-        communicationBluetooth->arreterRecherche();
-        communicationBluetooth->demarrerRecherche();
-    }
-    else if(ui->pushButtonModuleScore->text() == "Déconnecter")
-    {
-        communicationBluetooth->deconnecter(
-          CommunicationBluetooth::Module::Score);
-    }
+    // communicationBluetooth->arreterRecherche();
+    communicationBluetooth->arreterRechercheService();
+    // communicationBluetooth->demarrerRecherche();
+    communicationBluetooth->demarrerRechercheService();
 }
 
 void IHMArbitre::declencherNet(int nbNets)
@@ -236,22 +184,14 @@ void IHMArbitre::initialiserCommunicationBluetooth()
 
 void IHMArbitre::installerGestionEvenements()
 {
+    connect(ui->pushButtonDetecterModules,
+            SIGNAL(clicked(bool)),
+            this,
+            SLOT(detecter()));
     connect(ui->pushButtonDemarrer,
             SIGNAL(clicked(bool)),
             this,
             SLOT(demarrer()));
-    connect(ui->pushButtonModuleEcran,
-            SIGNAL(clicked(bool)),
-            this,
-            SLOT(gererConnexionEcran()));
-    connect(ui->pushButtonModuleNet,
-            SIGNAL(clicked(bool)),
-            this,
-            SLOT(gererConnexionNet()));
-    connect(ui->pushButtonModuleScore,
-            SIGNAL(clicked(bool)),
-            this,
-            SLOT(gererConnexionScore()));
     connect(communicationBluetooth,
             SIGNAL(moduleEcranTrouve()),
             this,
@@ -264,7 +204,30 @@ void IHMArbitre::installerGestionEvenements()
             SIGNAL(moduleScoreTrouve()),
             this,
             SLOT(afficherScoreTrouve()));
-
+    connect(communicationBluetooth,
+            SIGNAL(moduleEcranConnecte()),
+            this,
+            SLOT(afficherConnexionEcran()));
+    connect(communicationBluetooth,
+            SIGNAL(moduleNetConnecte()),
+            this,
+            SLOT(afficherConnexionNet()));
+    connect(communicationBluetooth,
+            SIGNAL(moduleScoreConnecte()),
+            this,
+            SLOT(afficherConnexionScore()));
+    connect(communicationBluetooth,
+            SIGNAL(moduleEcranDeconnecte()),
+            this,
+            SLOT(afficherDeconnexionEcran()));
+    connect(communicationBluetooth,
+            SIGNAL(moduleNetDeconnecte()),
+            this,
+            SLOT(afficherDeconnexionNet()));
+    connect(communicationBluetooth,
+            SIGNAL(moduleScoreDeconnecte()),
+            this,
+            SLOT(afficherDeconnexionScore()));
     connect(communicationBluetooth,
             SIGNAL(netDetecte(int)),
             this,
@@ -274,11 +237,8 @@ void IHMArbitre::installerGestionEvenements()
 void IHMArbitre::initialiserPageAccueil()
 {
     afficherEtatBluetooth(ui->labelEtatModuleEcran, Absent);
-    ui->pushButtonModuleEcran->setText("Détecter");
     afficherEtatBluetooth(ui->labelEtatModuleNet, Absent);
-    ui->pushButtonModuleNet->setText("Détecter");
     afficherEtatBluetooth(ui->labelEtatModuleScore, Absent);
-    ui->pushButtonModuleScore->setText("Détecter");
 }
 
 void IHMArbitre::afficherEtatBluetooth(QLabel* module, EtatModule etat)

@@ -38,16 +38,20 @@ class CommunicationBluetooth : public QObject
     };
 
   private:
-    IHMArbitre*                     ihmArbitre;
-    QBluetoothLocalDevice           interfaceLocale;
-    QVector<QBluetoothDeviceInfo>   modulesAREA;
-    QBluetoothDeviceDiscoveryAgent* discoveryAgentDevice;
-    QBluetoothSocket*               socketEcran;
-    QBluetoothSocket*               socketNet;
-    QBluetoothSocket*               socketScore;
-    QString                         trameEcran;
-    QString                         trameNet;
-    QString                         trameScore;
+    IHMArbitre*                      ihmArbitre;
+    QBluetoothLocalDevice            interfaceLocale;
+    QVector<QBluetoothDeviceInfo>    modulesAREA;
+    QBluetoothDeviceDiscoveryAgent*  discoveryAgentDevice;
+    QBluetoothServiceDiscoveryAgent* discoveryAgentService;
+    QBluetoothSocket*                socketEcran;
+    QBluetoothSocket*                socketNet;
+    QBluetoothSocket*                socketScore;
+    QString                          trameReceptionEcran;
+    QString                          trameReceptionNet;
+    QString                          trameReceptionScore;
+    QString                          trameEnvoiEcran;
+    QString                          trameEnvoiNet;
+    QString                          trameEnvoiScore;
 
     void enregistrerModule(const QBluetoothDeviceInfo device);
     void initialiserSocketNet(const QBluetoothDeviceInfo device);
@@ -65,15 +69,30 @@ class CommunicationBluetooth : public QObject
   public slots:
     void demarrerRecherche();
     void arreterRecherche();
+    void demarrerRechercheService();
+    void arreterRechercheService();
     void chercherModule(QBluetoothDeviceInfo device);
+    void chercherService(QBluetoothServiceInfo service);
+    void gererConnexionEcran();
+    void gererConnexionNet();
+    void gererConnexionScore();
+    void envoyer(Module module, QString trame);
     void recevoirEcran();
     void recevoirNet();
     void recevoirScore();
+    void detecterErreurSocket(QBluetoothSocket::SocketError erreur);
+    void gererEtatSocket(QBluetoothSocket::SocketState etat);
 
   signals:
     void moduleEcranTrouve();
     void moduleNetTrouve();
     void moduleScoreTrouve();
+    void moduleEcranConnecte();
+    void moduleNetConnecte();
+    void moduleScoreConnecte();
+    void moduleEcranDeconnecte();
+    void moduleNetDeconnecte();
+    void moduleScoreDeconnecte();
     void netDetecte(int nbNets);
 };
 
