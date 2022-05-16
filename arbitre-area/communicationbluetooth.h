@@ -43,15 +43,15 @@ class CommunicationBluetooth : public QObject
     QVector<QBluetoothDeviceInfo>    modulesAREA;
     QBluetoothDeviceDiscoveryAgent*  discoveryAgentDevice;
     QBluetoothServiceDiscoveryAgent* discoveryAgentService;
-    QBluetoothDeviceInfo             moduleEcran;
-    QBluetoothDeviceInfo             moduleNet;
-    QBluetoothDeviceInfo             moduleScore;
     QBluetoothSocket*                socketEcran;
     QBluetoothSocket*                socketNet;
     QBluetoothSocket*                socketScore;
-    QString                          trameEcran;
-    QString                          trameNet;
-    QString                          trameScore;
+    QString                          trameReceptionEcran;
+    QString                          trameReceptionNet;
+    QString                          trameReceptionScore;
+    QString                          trameEnvoiEcran;
+    QString                          trameEnvoiNet;
+    QString                          trameEnvoiScore;
 
     void enregistrerModule(const QBluetoothDeviceInfo device);
     void initialiserSocketNet(const QBluetoothDeviceInfo device);
@@ -69,8 +69,14 @@ class CommunicationBluetooth : public QObject
   public slots:
     void demarrerRecherche();
     void arreterRecherche();
+    void demarrerRechercheService();
+    void arreterRechercheService();
     void chercherModule(QBluetoothDeviceInfo device);
     void chercherService(QBluetoothServiceInfo service);
+    void gererConnexionEcran();
+    void gererConnexionNet();
+    void gererConnexionScore();
+    void envoyer(Module module, QString trame);
     void recevoirEcran();
     void recevoirNet();
     void recevoirScore();
@@ -81,6 +87,12 @@ class CommunicationBluetooth : public QObject
     void moduleEcranTrouve();
     void moduleNetTrouve();
     void moduleScoreTrouve();
+    void moduleEcranConnecte();
+    void moduleNetConnecte();
+    void moduleScoreConnecte();
+    void moduleEcranDeconnecte();
+    void moduleNetDeconnecte();
+    void moduleScoreDeconnecte();
     void netDetecte(int nbNets);
 };
 

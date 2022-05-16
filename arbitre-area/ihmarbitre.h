@@ -99,9 +99,7 @@ class IHMArbitre : public QMainWindow
     void afficherDeconnexionNet();
     void afficherDeconnexionEcran();
     void afficherDeconnexionScore();
-    void gererConnexionNet();
-    void gererConnexionEcran();
-    void gererConnexionScore();
+    void detecter();
     void declencherNet(int nbNets);
 };
 
