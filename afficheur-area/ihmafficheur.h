@@ -41,6 +41,7 @@ class IHMAfficheur : public QMainWindow
   private:
     Ui::IHMAfficheur* ui; //!< la fenêtre graphique associée à cette classe
     ReceptionTrame*   receptionTrame;
+    Rencontre*        rencontre;
     QVector<QLabel*>  labelsJoueurA;
     QVector<QLabel*>  labelsJoueurB;
     QVector<QLabel*>  labelsJoueurC;
@@ -49,11 +50,28 @@ class IHMAfficheur : public QMainWindow
     QVector<QLabel*>  labelsJoueurX;
     QVector<QLabel*>  labelsJoueurY;
     QVector<QLabel*>  labelsJoueurZ;
-    Rencontre*        rencontre;
 
     void initialiserIHM();
     void initialiserReception();
     void initialiserEquipes(QString clubA, QString clubW);
+    void initialiserEquipeA(QString    nomModule,
+                            QByteArray NomJoueurA,
+                            QByteArray PrenomJoueurA,
+                            QByteArray NomJoueurB,
+                            QByteArray PrenomJoueurB,
+                            QByteArray NomJoueurC,
+                            QByteArray PrenomJoueurC,
+                            QByteArray NomJoueurD,
+                            QByteArray PrenomJoueurD);
+    void initialiserEquipeW(QString    nomModule,
+                            QByteArray NomJoueurW,
+                            QByteArray PrenomJoueurW,
+                            QByteArray NomJoueurX,
+                            QByteArray PrenomJoueurX,
+                            QByteArray NomJoueurY,
+                            QByteArray PrenomJoueurY,
+                            QByteArray NomJoueurZ,
+                            QByteArray PrenomJoueurZ);
     void initialiserJoueurA(QString nom, QString prenom);
     void initialiserJoueurB(QString nom, QString prenom);
     void initialiserJoueurC(QString nom, QString prenom);
@@ -62,12 +80,18 @@ class IHMAfficheur : public QMainWindow
     void initialiserJoueurX(QString nom, QString prenom);
     void initialiserJoueurY(QString nom, QString prenom);
     void initialiserJoueurZ(QString nom, QString prenom);
-    void initialiserPartieSimple1(QString nomJoueurA, QString prenomJoueurA,
-                                  QString nomJoueurW, QString prenomJoueurW);
-    void initialiserPartieDouble1(QString nomJoueurA1, QString prenomJoueurA1,
-                                  QString nomJoueurA2, QString prenomJoueurA2,
-                                  QString nomJoueurW1, QString prenomJoueurW1,
-                                  QString nomJoueurW2, QString prenomJoueurW2);
+    void initialiserPartieSimple1(QString nomJoueurA,
+                                  QString prenomJoueurA,
+                                  QString nomJoueurW,
+                                  QString prenomJoueurW);
+    void initialiserPartieDouble1(QString nomJoueurA1,
+                                  QString prenomJoueurA1,
+                                  QString nomJoueurA2,
+                                  QString prenomJoueurA2,
+                                  QString nomJoueurW1,
+                                  QString prenomJoueurW1,
+                                  QString nomJoueurW2,
+                                  QString prenomJoueurW2);
 
   public:
     IHMAfficheur(QWidget* parent = nullptr);
@@ -93,34 +117,32 @@ class IHMAfficheur : public QMainWindow
                               QByteArray PrenomJoueurY,
                               QByteArray NomJoueurZ,
                               QByteArray PrenomJoueurZ);
-
-void initialiserPartieSimple(QString    nomModule,
-                             QByteArray idPartie,
-                             QByteArray JoueurA,
-                             QByteArray ClassementJoueurA,
-                             QByteArray JoueurB,
-                             QByteArray ClassementJoueurW);
-
-void initialiserPartieDouble(QString    nomModule,
-                             QByteArray idPartieDouble,
-                             QByteArray JoueurA1,
-                             QByteArray ClassementA1,
-                             QByteArray JoueurA2,
-                             QByteArray ClassementA2,
-                             QByteArray JoueurW1,
-                             QByteArray ClassementW1,
-                             QByteArray JoueurW2,
-                             QByteArray ClassementW2);
-
-void initialiserScorePartie(QString nomModule,
-                            QByteArray idPartieScore,
-                            QByteArray scoreJG,
-                            QByteArray scoreJD,
-                            QByteArray etatPartie,
-                            QByteArray tempsMort,
-                            QByteArray nbSetJG,
-                            QByteArray nbSetJD,
-                            QByteArray net);
+    void initialiserPartieSimple(QString    nomModule,
+                                 QByteArray idPartie,
+                                 QByteArray JoueurA,
+                                 QByteArray ClassementJoueurA,
+                                 QByteArray JoueurB,
+                                 QByteArray ClassementJoueurW);
+    void initialiserPartieDouble(QString    nomModule,
+                                 QByteArray idPartieDouble,
+                                 QByteArray JoueurA1,
+                                 QByteArray ClassementA1,
+                                 QByteArray JoueurA2,
+                                 QByteArray ClassementA2,
+                                 QByteArray JoueurW1,
+                                 QByteArray ClassementW1,
+                                 QByteArray JoueurW2,
+                                 QByteArray ClassementW2);
+    void initialiserScorePartie(QString    nomModule,
+                                QByteArray idPartieScore,
+                                QByteArray scoreJG,
+                                QByteArray scoreJD,
+                                QByteArray etatPartie,
+                                QByteArray tempsMort,
+                                QByteArray nbSetJG,
+                                QByteArray nbSetJD,
+                                QByteArray tourService,
+                                QByteArray net);
 };
 
 #endif // IHMAFFICHEUR_H
