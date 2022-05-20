@@ -226,8 +226,9 @@ void ReceptionTrame::lireSocket()
              << socket->peerAddress().toString();
     trame += socket->readAll();
     // une trame AREA ?
-    if(trame.startsWith(ProtocoleArea::DEBUT_TRAME) &&
-       trame.endsWith(ProtocoleArea::FIN_TRAME))
+    bool trameValide = trame.startsWith(ProtocoleArea::DEBUT_TRAME) &&
+            trame.endsWith(ProtocoleArea::FIN_TRAME);
+    if(trameValide)
     {
         qDebug() << Q_FUNC_INFO << trame;
         /**

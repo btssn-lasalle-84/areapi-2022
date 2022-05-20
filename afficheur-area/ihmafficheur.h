@@ -92,8 +92,9 @@ class IHMAfficheur : public QMainWindow
                                   QString prenomJoueurW1,
                                   QString nomJoueurW2,
                                   QString prenomJoueurW2);
+    void initialiserJoueurs(QByteArray NomJoueurA, QByteArray NomJoueurD, QByteArray PrenomJoueurC, QByteArray NomJoueurC, QByteArray PrenomJoueurB, QByteArray NomJoueurB, QByteArray PrenomJoueurY, QByteArray NomJoueurY, QByteArray PrenomJoueurX, QByteArray NomJoueurX, QByteArray PrenomJoueurZ, QByteArray PrenomJoueurW, QByteArray NomJoueurZ, QByteArray NomJoueurW, QByteArray PrenomJoueurA, QByteArray PrenomJoueurD);
 
-  public:
+public:
     IHMAfficheur(QWidget* parent = nullptr);
     ~IHMAfficheur();
 
