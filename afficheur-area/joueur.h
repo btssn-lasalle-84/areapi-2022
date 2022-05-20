@@ -27,7 +27,7 @@ class Joueur
 
   public:
     Joueur();
-    Joueur(QString nom, QString prenom, QString lettre, int classement);
+    Joueur(QString nom, QString prenom, QString lettre = "", int classement = 0);
     Joueur(const Joueur& joueur);
     ~Joueur();
 

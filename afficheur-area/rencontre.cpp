@@ -60,7 +60,42 @@ QVector<Partie> Rencontre::getParties() const
     return this->parties;
 }
 
-void Rencontre::ajouterPartieSimple()
+Partie Rencontre::getPartie(unsigned int cases) const
 {
-    parties.push_back(Partie(true));
+    return parties[cases];
 }
+
+void Rencontre::setPartiesSimple(QString nomJoueurA1, QString prenomJoueurA1,
+                                 QString nomJoueurW1, QString prenomJoueurW2)
+{
+    parties.push_back(Partie(0, nomJoueurA1, prenomJoueurA1,
+                                 nomJoueurW1, prenomJoueurW2));
+}
+
+void Rencontre::setPartiesDouble(QString nomJoueurA1, QString prenomJoueurA1,
+                                 QString nomJoueurA2, QString prenomJoueurA2,
+                                 QString nomJoueurW1, QString prenomJoueurW1,
+                                 QString nomJoueurW2, QString prenomJoueurW2)
+{
+    parties.push_back(Partie(1, nomJoueurA1, prenomJoueurA1,
+                                    nomJoueurA2, prenomJoueurA2,
+                                    nomJoueurW1, prenomJoueurW1,
+                                    nomJoueurW2, prenomJoueurW2));
+}
+
+void Rencontre::actualiserPartie(QByteArray idPartieScore, QByteArray scoreJG, QByteArray scoreJD,
+                                 QByteArray nbSetJG,QByteArray nbSetJD, QByteArray net)
+{
+    qDebug() << Q_FUNC_INFO;
+    parties[idPartieScore.toUInt()].setSetJoueurG(nbSetJG.toUInt());
+    parties[idPartieScore.toUInt()].setSetJoueurD(nbSetJD.toUInt());
+    parties[idPartieScore.toUInt()].setScoreJoueurG(scoreJG.toUInt());
+    parties[idPartieScore.toUInt()].setScoreJoueurG(scoreJD.toUInt());
+    if(net.toUInt() == 1)
+    {
+        parties[idPartieScore.toUInt()].setNombreNET((parties[idPartieScore.toUInt()].getNombreNET() + 1));
+    }
+
+}
+
+

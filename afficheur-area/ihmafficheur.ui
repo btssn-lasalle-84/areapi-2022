@@ -59,7 +59,7 @@
                <enum>QFrame::Box</enum>
               </property>
               <property name="text">
-               <string>BEAUMONT Jérôme</string>
+               <string/>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -72,7 +72,7 @@
                <enum>QFrame::Box</enum>
               </property>
               <property name="text">
-               <string>1682 pts</string>
+               <string/>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -112,7 +112,7 @@
                <enum>QFrame::Box</enum>
               </property>
               <property name="text">
-               <string>LEVRARD Mickael</string>
+               <string/>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -125,7 +125,7 @@
                <enum>QFrame::Box</enum>
               </property>
               <property name="text">
-               <string>1522 pts</string>
+               <string/>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -169,7 +169,7 @@
                <enum>QFrame::Box</enum>
               </property>
               <property name="text">
-               <string>12</string>
+               <string/>
               </property>
              </widget>
             </item>
@@ -198,7 +198,7 @@
                <enum>QFrame::Box</enum>
               </property>
               <property name="text">
-               <string>4 Points d'affilés par BEAUMONT Jérôme / NET = 3</string>
+               <string/>
               </property>
              </widget>
             </item>
@@ -221,7 +221,7 @@
                <enum>QFrame::Box</enum>
               </property>
               <property name="text">
-               <string>-10</string>
+               <string/>
               </property>
              </widget>
             </item>

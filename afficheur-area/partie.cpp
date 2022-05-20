@@ -18,11 +18,21 @@ Partie::Partie() :
 {
 }
 
-Partie::Partie(bool estDouble) :
-    estDouble(estDouble), nombreSet(0), scoreJoueurG(0), scoreJoueurD(0), setJoueurG(0),
+Partie::Partie(bool estDouble, QString nomJoueurA1, QString prenomJoueurA1,
+                               QString nomJoueurW1, QString prenomJoueurW1,
+                               QString nomJoueurA2, QString prenomJoueurA2,
+                               QString nomJoueurW2, QString prenomJoueurW2) :
+    estDouble(0), nombreSet(0), scoreJoueurG(0), scoreJoueurD(0), setJoueurG(0),
     setJoueurD(0), nombreNET(0), pointConsecutif(0), joueurPointConsecutif(""),
     joueurs()
 {
+    joueurs.push_back(new Joueur(nomJoueurA1, prenomJoueurA1));
+    joueurs.push_back(new Joueur(nomJoueurW1, prenomJoueurW1));
+    if(estDouble)
+    {
+        joueurs.push_back(new Joueur(nomJoueurA2, prenomJoueurA2));
+        joueurs.push_back(new Joueur(nomJoueurW2, prenomJoueurW2));
+    }
 }
 
 Partie::Partie(const Partie& partie) :

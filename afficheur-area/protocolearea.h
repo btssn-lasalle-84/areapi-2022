@@ -63,16 +63,53 @@ class ProtocoleArea
     };
     /**
      * @enum ChampsPartieSimple
-     * @brief Définit les différents champs d'une trame RENCONTRE
+     * @brief Définit les différents champs d'une trame SIMPLE
      */
     enum ChampsPartieSimple
     {
-
+        idPartie = 2,
+        JoueurA,
+        ClassementJoueurA,
+        JoueurW,
+        ClassementJoueurW,
         NbChampsPartieSimple
     };
+
     /**
-     * @todo Définir le reste du protocole
+     * @enum ChampsPartieDouble
+     * @brief Définit les différents champs d'une trame DOUBLE
      */
+    enum ChampsPartieDouble
+    {
+        idPartieDouble = 2,
+        JoueurA1,
+        ClassementA1,
+        JoueurA2,
+        ClassementA2,
+        JoueurW1,
+        ClassementW1,
+        JoueurW2,
+        ClassementW2,
+        NbChampsPartieDouble
+    };
+
+    /**
+     * @enum ChampsPartieDouble
+     * @brief Définit les différents champs d'une trame SCORE
+     */
+    enum ChampsPartieScore
+    {
+        idPartieScore = 2,
+        scoreJG,
+        scoreJD,
+        etatPartie,
+        tempsMort,
+        nbSetJG,
+        nbSetJD,
+        tourService,
+        net,
+        NbChampsScore
+    };
 };
 
 #endif // PROTOCOLEAREA_H

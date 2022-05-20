@@ -85,6 +85,37 @@ class ReceptionTrame : public QObject
                                 QByteArray PrenomJoueurY,
                                 QByteArray NomJoueurZ,
                                 QByteArray PrenomJoueurZ);
+
+    void nouvelleTrameSimple(QString nomModule,
+                             QByteArray idPartie,
+                             QByteArray JoueurA,
+                             QByteArray ClassementJoueurA,
+                             QByteArray JoueurB,
+                             QByteArray ClassementJoueurW);
+
+    void nouvelleTrameDouble(QString nomModule,
+                             QByteArray idPartieDouble,
+                             QByteArray JoueurA1,
+                             QByteArray ClassementA1,
+                             QByteArray JoueurA2,
+                             QByteArray ClassementA2,
+                             QByteArray JoueurW1,
+                             QByteArray ClassementW1,
+                             QByteArray JoueurW2,
+                             QByteArray ClassementW2
+                             );
+
+    void nouvelleTrameScore(QString nomModule,
+                            QByteArray idPartieScore,
+                            QByteArray scoreJG,
+                            QByteArray scoreJD,
+                            QByteArray etatPartie,
+                            QByteArray tempsMort,
+                            QByteArray nbSetJG,
+                            QByteArray nbSetJD,
+                            QByteArray tourService,
+                            QByteArray net
+                            );
 };
 
 #endif // RECEPTIONTRAME_H
