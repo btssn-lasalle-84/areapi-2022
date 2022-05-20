@@ -1,4 +1,12 @@
 class Partie
+!!!128770.cpp!!!	Partie(in estDouble : bool, in nomJoueurA1 : QString, in prenomJoueurA1 : QString, in nomJoueurW1 : QString, in prenomJoueurW1 : QString, in nomJoueurA2 : QString = "", in prenomJoueurA2 : QString = "", in nomJoueurW2 : QString = "", in prenomJoueurW2 : QString = "")
+    joueurs.push_back(new Joueur(nomJoueurA1, prenomJoueurA1));
+    joueurs.push_back(new Joueur(nomJoueurW1, prenomJoueurW1));
+    if(estDouble)
+    {
+        joueurs.push_back(new Joueur(nomJoueurA2, prenomJoueurA2));
+        joueurs.push_back(new Joueur(nomJoueurW2, prenomJoueurW2));
+    }
 !!!139927.cpp!!!	operator =(in partie : Partie) : Partie
     if(this != &partie)
     {

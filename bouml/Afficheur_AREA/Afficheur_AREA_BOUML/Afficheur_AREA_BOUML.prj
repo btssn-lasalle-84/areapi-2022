@@ -1,7 +1,7 @@
 format 224
 "Afficheur_AREA_BOUML"
-  revision 15
-  modified_by 23 "tv"
+  revision 16
+  modified_by 2 "ladriere"
   cpp_root_dir "../../../afficheur-area/"
 
 
@@ -233,6 +233,11 @@ format 224
       
       activitydiagramsettings
        end
+    end
+
+    sequencediagram 147842 "ds Initialiser une rencontre"
+      sequencediagramsettings end
+      overlapping_bars size A0
     end
   end
 
