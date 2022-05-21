@@ -42,6 +42,8 @@ class ReceptionTrame : public QObject
     bool                       connecte;
     QByteArray                 trame;
 
+    QList<QByteArray> decouperTrame();
+
   public:
     ReceptionTrame(QObject* parent = 0);
     ~ReceptionTrame();
@@ -86,14 +88,14 @@ class ReceptionTrame : public QObject
                                 QByteArray NomJoueurZ,
                                 QByteArray PrenomJoueurZ);
 
-    void nouvelleTrameSimple(QString nomModule,
+    void nouvelleTrameSimple(QString    nomModule,
                              QByteArray idPartie,
                              QByteArray JoueurA,
                              QByteArray ClassementJoueurA,
                              QByteArray JoueurB,
                              QByteArray ClassementJoueurW);
 
-    void nouvelleTrameDouble(QString nomModule,
+    void nouvelleTrameDouble(QString    nomModule,
                              QByteArray idPartieDouble,
                              QByteArray JoueurA1,
                              QByteArray ClassementA1,
@@ -102,10 +104,9 @@ class ReceptionTrame : public QObject
                              QByteArray JoueurW1,
                              QByteArray ClassementW1,
                              QByteArray JoueurW2,
-                             QByteArray ClassementW2
-                             );
+                             QByteArray ClassementW2);
 
-    void nouvelleTrameScore(QString nomModule,
+    void nouvelleTrameScore(QString    nomModule,
                             QByteArray idPartieScore,
                             QByteArray scoreJG,
                             QByteArray scoreJD,
@@ -114,8 +115,7 @@ class ReceptionTrame : public QObject
                             QByteArray nbSetJG,
                             QByteArray nbSetJD,
                             QByteArray tourService,
-                            QByteArray net
-                            );
+                            QByteArray net);
 };
 
 #endif // RECEPTIONTRAME_H
