@@ -33,9 +33,13 @@ IHMArbitre::IHMArbitre(QWidget* parent) :
     initialiserCommunicationBluetooth();
     installerGestionEvenements();
     initialiserBDD();
+    chargerRencontres();
+    chargerClubs();
 
+    // Pour les tests
     afficherEcran(IHMArbitre::Accueil);
-    // afficherEcran(IHMArbitre::AccueilRencontre);
+    // afficherEcran(IHMArbitre::Rencontre);
+    // afficherEcran(IHMArbitre::Partie);
 
 #ifdef PLEIN_ECRAN
     showFullScreen();
@@ -112,7 +116,7 @@ void IHMArbitre::fermerApplication()
 
 void IHMArbitre::demarrer()
 {
-    afficherEcran(Ecran::CreationTournoi);
+    afficherEcran(Ecran::Rencontre);
 }
 
 void IHMArbitre::afficherNetTrouve()
@@ -176,6 +180,25 @@ void IHMArbitre::declencherNet(int nbNets)
     qDebug() << Q_FUNC_INFO << "NET" << nbNets;
 }
 
+void IHMArbitre::demarrerRencontre()
+{
+    // aucune rencontre sélectionnée ?
+    if(ui->comboBoxListeRencontres->currentIndex() == -1)
+        return;
+    qDebug() << Q_FUNC_INFO << ui->comboBoxListeRencontres->currentText();
+    // aucune partie simple OU double sélectionnée ?
+    /**
+     * @todo Compléter le test de vérification
+     */
+    if(ui->comboBoxListePartiesSimples->currentIndex() == -1)
+        return;
+    qDebug() << Q_FUNC_INFO << ui->comboBoxListePartiesSimples->currentText();
+    /**
+     * @todo Afficher les informations de la partie dans l'écran Partie
+     */
+    afficherEcran(IHMArbitre::Partie);
+}
+
 // Méthodes privées
 
 void IHMArbitre::initialiserCommunicationBluetooth()
@@ -185,7 +208,7 @@ void IHMArbitre::initialiserCommunicationBluetooth()
 
 void IHMArbitre::initialiserBDD()
 {
-    BaseDeDonnees* bdd = BaseDeDonnees::getInstance("QSQLITE");
+    bdd = BaseDeDonnees::getInstance("QSQLITE");
     if(bdd->estOuvert() == false)
     {
         bdd->ouvrir("areapi.sqlite");
@@ -243,6 +266,14 @@ void IHMArbitre::installerGestionEvenements()
             SIGNAL(netDetecte(int)),
             this,
             SLOT(declencherNet(int)));
+    connect(ui->buttonSelectionnerRencontre,
+            SIGNAL(clicked(bool)),
+            this,
+            SLOT(demarrerRencontre()));
+    connect(ui->comboBoxListeRencontres,
+            SIGNAL(currentIndexChanged(int)),
+            this,
+            SLOT(chargerPartiesSimples()));
 }
 
 void IHMArbitre::initialiserPageAccueil()
@@ -277,6 +308,91 @@ void IHMArbitre::afficherEtatBluetooth(QLabel* module, EtatModule etat)
     module->setPixmap(pixmap);
 
     delete image;
+}
+
+void IHMArbitre::chargerRencontres()
+{
+    QString requete = "SELECT Rencontre.*, a.nomClub, b.nomClub FROM Rencontre "
+                      "INNER JOIN Club a ON (a.idClub = Rencontre.idClubA) "
+                      "INNER JOIN Club b ON (b.idClub = Rencontre.idClubW);";
+    bool retour;
+
+    rencontres.clear();
+    retour = bdd->recuperer(requete, rencontres);
+    qDebug() << Q_FUNC_INFO << rencontres;
+    if(retour)
+    {
+        for(int i = 0; i < rencontres.size(); ++i)
+        {
+            ui->comboBoxListeRencontres->addItem(
+              rencontres.at(i).at(COLONNE_nomClubA) + " vs " +
+              rencontres.at(i).at(COLONNE_nomClubW));
+        }
+        chargerPartiesSimples();
+        /**
+         * @todo Appeler chargerPartiesDoubles();
+         */
+    }
+}
+
+void IHMArbitre::chargerPartiesSimples()
+{
+    if(ui->comboBoxListeRencontres->currentIndex() == -1)
+        return;
+
+    qDebug() << Q_FUNC_INFO << ui->comboBoxListeRencontres->currentIndex();
+    QString requete =
+      "SELECT * FROM Partie "
+      "INNER JOIN Joueur joueurA ON (joueurA.numeroLicence = Partie.idJoueurA) "
+      "INNER JOIN Joueur joueurB ON (joueurB.numeroLicence = Partie.idJoueurB) "
+      "INNER JOIN Rencontre ON Partie.idRencontre = Rencontre.idRencontre "
+      "INNER JOIN Club ClubA ON (ClubA.idClub = Rencontre.idClubA) "
+      "INNER JOIN Club ClubW ON (ClubW.idClub = Rencontre.idClubW) "
+      "WHERE Rencontre.idRencontre='" +
+      rencontres.at(ui->comboBoxListeRencontres->currentIndex())
+        .at(COLONNE_idRencontre) +
+      "' AND Partie.typePartie='1';";
+    bool retour;
+
+    partiesSimples.clear();
+    retour = bdd->recuperer(requete, partiesSimples);
+    qDebug() << Q_FUNC_INFO << partiesSimples;
+    if(retour)
+    {
+        for(int i = 0; i < partiesSimples.size(); ++i)
+        {
+            /**
+             * @todo Définir les noms de colonnes
+             */
+            ui->comboBoxListePartiesSimples->addItem(
+              partiesSimples.at(i).at(13) + " vs " +
+              partiesSimples.at(i).at(17));
+        }
+    }
+}
+
+/**
+ * @todo Définir chargerPartiesDoubles();
+ */
+
+void IHMArbitre::chargerClubs()
+{
+    QString requete = "SELECT * FROM Club;";
+    bool    retour;
+
+    clubs.clear();
+    retour = bdd->recuperer(requete, clubs);
+    qDebug() << Q_FUNC_INFO << clubs;
+    if(retour)
+    {
+        for(int i = 0; i < clubs.size(); ++i)
+        {
+            ui->comboBoxChoixClubA->addItem(clubs.at(i).at(COLONNE_nomClub));
+            /**
+             * @todo Créer la liste pour le choix du clubW
+             */
+        }
+    }
 }
 
 #ifdef TEST_IHMARBITRE
