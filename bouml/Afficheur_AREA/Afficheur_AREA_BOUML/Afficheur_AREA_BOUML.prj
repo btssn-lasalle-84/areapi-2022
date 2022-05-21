@@ -1,7 +1,7 @@
 format 224
 "Afficheur_AREA_BOUML"
-  revision 16
-  modified_by 2 "ladriere"
+  revision 17
+  modified_by 23 "tv"
   cpp_root_dir "../../../afficheur-area/"
 
 
@@ -85,7 +85,7 @@ format 224
       
     end
 
-    usecase 134530 "Visualiser le tournoi"
+    usecase 134530 "Visualiser la rencontre"
       
       usecasediagramsettings end
       
@@ -148,7 +148,7 @@ format 224
        end
       simplerelation 134530
 	---|>
-	  on usecase_ref 134530 // Visualiser le tournoi
+	  on usecase_ref 134530 // Visualiser la rencontre
       end
     end
 
@@ -175,7 +175,7 @@ format 224
        end
       simplerelation 134658
 	---|>
-	  on usecase_ref 134530 // Visualiser le tournoi
+	  on usecase_ref 134530 // Visualiser la rencontre
       end
     end
 
@@ -202,13 +202,13 @@ format 224
        end
       simplerelation 134786
 	---|>
-	  on usecase_ref 134530 // Visualiser le tournoi
+	  on usecase_ref 134530 // Visualiser la rencontre
       end
 
       simplerelation 136706
 	-_->
 	  stereotype "extend"
-	  on usecase_ref 134530 // Visualiser le tournoi
+	  on usecase_ref 134530 // Visualiser la rencontre
       end
     end
 
@@ -238,6 +238,21 @@ format 224
     sequencediagram 147842 "ds Initialiser une rencontre"
       sequencediagramsettings end
       overlapping_bars size A0
+    end
+
+    sequencediagram 141079 "ds Dialoguer avec le module d'arbitrage"
+      sequencediagramsettings end
+      overlapping_bars size A0
+    end
+
+    sequencediagram 141207 "ds Visualiser le déroulement d'une partie"
+      sequencediagramsettings end
+      overlapping_bars size A4
+    end
+
+    sequencediagram 141335 "ds Initialiser une partie"
+      sequencediagramsettings end
+      overlapping_bars size A4
     end
   end
 

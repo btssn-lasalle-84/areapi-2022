@@ -4,8 +4,8 @@ classcanvas 128002 class_ref 128002 // Spectateur
   simpleclassdiagramsettings end
   xyz 81 277 2000
 end
-usecasecanvas 128130 usecase_ref 134530 // Visualiser le tournoi
-  xyzwh 301 294 3005 64 32 label_xy 262 331
+usecasecanvas 128130 usecase_ref 134530 // Visualiser la rencontre
+  xyzwh 301 294 3005 64 32 label_xy 245 331
 end
 usecasecanvas 128386 usecase_ref 134658 // Visualiser le déroulement d'une partie
   xyzwh 608 337 3005 64 32 label_xy 530 313

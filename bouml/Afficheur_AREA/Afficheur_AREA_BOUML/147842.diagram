@@ -1,101 +1,101 @@
 format 224
 
 classinstance 128130 class_ref 134807 // IHMAfficheur
-  name ""   xyz 36 4 2000 life_line_z 2000
+  name ""   xyz 36 4.8 2000 life_line_z 2000
 classinstance 128258 class_ref 135063 // ReceptionTrame
-  name ""   xyz 687 4 2000 life_line_z 2000
+  name ""   xyz 688.4 4.8 2000 life_line_z 2000
 note 128386 "Réception d'une trame : $AREA;RENCONTRE;NomClubA;NomClubW;
 NomJoueurA;PrenomJoueurA;[...];
 NomJoueurW;PrenomJoueurW;[...];\\r\\n"
-  xyzwh 840 26 2000 353 93
+  xyzwh 840.2 26.4 2000 353 93
 fragment 128898 "alt"
-  xyzwh 644 87 1995 326 125
+  xyzwh 644.2 87.8 1995 326 125
 end
 textcanvas 129026 "[trameValide]"
-  xyzwh 682 92 2010 96 22
+  xyzwh 681.8 92.4 2010 96 22
 fragment 129154 "alt"
-  xyzwh 655 139 2000 299 51
+  xyzwh 655.8 139.8 2000 299 91
 end
 textcanvas 129282 "[type = ProtocoleArea::RENCONTRE]"
   xyzwh 692 145 2020 267 22
 fragment 130178 "alt"
-  xyzwh 9 245 1990 627 766
+  xyzwh 9.4 245.4 1990 627 766
 end
 textcanvas 130306 "[aucune rencontre en cours]"
-  xyzwh 53 254 2025 183 15
+  xyzwh 53.8 254.2 2025 183 15
 classinstance 130434 class_ref 135191 // Rencontre
-  name ""   xyz 313 4 2000 life_line_z 2000
+  name ""   xyz 313 4.8 2000 life_line_z 2000
 fragment 131330 "loop"
-  xyzwh 22 345 2000 505 87
+  xyzwh 22.8 345 2000 505 91
 end
 classinstance 131714 class_ref 134551 // Equipe
-  name "equipeA"   xyz 422 4 2000 life_line_z 2000
+  name "equipeA"   xyz 422 4.8 2000 life_line_z 2000
 textcanvas 132098 "[pour chaque joueur de l'équipe A]"
-  xyzwh 112 352 2005 223 15
+  xyzwh 112.6 352.8 2005 223 15
 fragment 132994 "loop"
-  xyzwh 22 524 1995 605 83
+  xyzwh 22.8 524.8 1995 605 91
 end
 textcanvas 133122 "[pour chaque joueur de l'équipe W]"
-  xyzwh 110.5 530.5 2005 237 15
+  xyzwh 110.6 530.4 2005 237 15
 fragment 134018 "loop"
-  xyzwh 20 731 1995 605 255
+  xyzwh 20.4 731.6 1995 605 255
 end
 textcanvas 134658 "[pour chaque partie simple]"
-  xyzwh 107 741 2000 177 15
+  xyzwh 107 741.6 2000 177 15
 classinstance 135042 class_ref 134551 // Equipe
-  name "equipeW"   xyz 546 4 2000 life_line_z 2000
+  name "equipeW"   xyz 546.6 4.8 2000 life_line_z 2000
 note 136706 "Les lettres des joueurs  de l'équipe A : \"A\", \"B\", \"C\" et \"D\""
   xyzwh 672 355 2000 167 81
 note 136834 "Les lettres des joueurs  de l'équipe W : \"W\", \"X\", \"Y\" et \"Z\""
-  xyzwh 674 529 2000 167 77
+  xyzwh 674.4 529.4 2000 167 77
 durationcanvas 128514 classinstance_ref 128258 // :ReceptionTrame
-  xyzwh 742 68 2000 11 160
+  xyzwh 797 68.4 2000 11 160
 end
 durationcanvas 129666 classinstance_ref 128130 // :IHMAfficheur
-  xyzwh 81 162 2010 11 860
+  xyzwh 125 162.2 2010 11 860
   overlappingdurationcanvas 129922
     color transparent
-    xyzwh 87 197 2020 11 808
+    xyzwh 131 197 2020 11 808
     overlappingdurationcanvas 130818
-      xyzwh 93 294 2030 11 148
+      xyzwh 137 294.4 2030 11 148
     end
     overlappingdurationcanvas 132226
-      xyzwh 93 462 2030 11 164
+      xyzwh 137 461.6 2030 11 164
     end
     overlappingdurationcanvas 133506
-      xyzwh 93 649 2030 11 25
+      xyzwh 137 649.2 2030 11 25
     end
     overlappingdurationcanvas 133762
-      xyzwh 93 691 2030 11 25
+      xyzwh 137 691.6 2030 11 25
     end
     overlappingdurationcanvas 134402
-      xyzwh 93 951 2030 11 25
+      xyzwh 137 951.6 2030 11 25
     end
   end
 end
 durationcanvas 131074 classinstance_ref 130434 // :Rencontre
-  xyzwh 349 311 2010 11 25
+  xyzwh 381 311.6 2010 11 25
 end
 durationcanvas 131842 classinstance_ref 131714 // equipeA:Equipe
-  xyzwh 474 391 2010 11 25
+  xyzwh 522 391.6 2010 11 25
 end
 durationcanvas 132738 classinstance_ref 130434 // :Rencontre
-  xyzwh 349 492 2010 11 25
+  xyzwh 384 492.8 2010 11 25
 end
 durationcanvas 134786 classinstance_ref 130434 // :Rencontre
-  xyzwh 349 782 2010 11 25
+  xyzwh 384 782.8 2010 11 25
 end
 durationcanvas 135426 classinstance_ref 135042 // equipeW:Equipe
-  xyzwh 600 571 2010 11 25
+  xyzwh 653 571.6 2010 11 25
 end
 durationcanvas 135682 classinstance_ref 131714 // equipeA:Equipe
-  xyzwh 474 823 2010 11 25
+  xyzwh 525 823 2010 11 25
 end
 durationcanvas 135938 classinstance_ref 130434 // :Rencontre
-  xyzwh 349 870 2010 11 25
+  xyzwh 381 870.4 2010 11 25
 end
 durationcanvas 136450 classinstance_ref 135042 // equipeW:Equipe
-  xyzwh 600 918 2010 11 25
+  xyzwh 653 918 2010 11 25
 end
 reflexivemsg 128642 synchronous
   to durationcanvas_ref 128514
@@ -135,7 +135,7 @@ msg 131970 synchronous
   label_xy 250 378
 reflexivemsg 132354 synchronous
   to durationcanvas_ref 132226
-  yz 462 2035 msg operation_ref 128130 // "initialiserEquipeW(in nomModule : QString, in NomJoueurW : QByteArray, in PrenomJoueurW : QByteArray, in NomJoueurX : QByteArray, in PrenomJoueurX : QByteArray, in NomJoueurY : QByteArray, in PrenomJoueurY : QByteArray, in NomJoueurZ : QByteArray, in PrenomJoueurZ : QByteArray) : void"
+  yz 461 2035 msg operation_ref 128130 // "initialiserEquipeW(in nomModule : QString, in NomJoueurW : QByteArray, in PrenomJoueurW : QByteArray, in NomJoueurX : QByteArray, in PrenomJoueurX : QByteArray, in NomJoueurY : QByteArray, in PrenomJoueurY : QByteArray, in NomJoueurZ : QByteArray, in PrenomJoueurZ : QByteArray) : void"
   show_full_operations_definition default show_class_of_operation default drawing_language default show_context_mode default
   label_xy 106 449
 msg 132866 synchronous
