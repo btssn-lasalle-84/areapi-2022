@@ -274,6 +274,9 @@ void IHMArbitre::installerGestionEvenements()
             SIGNAL(currentIndexChanged(int)),
             this,
             SLOT(chargerPartiesSimples()));
+    /**
+     * @todo Connecter le même signal pour le slot chargerPartiesDoubles()
+     */
 }
 
 void IHMArbitre::initialiserPageAccueil()
