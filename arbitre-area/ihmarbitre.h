@@ -68,6 +68,9 @@ class IHMArbitre : public QMainWindow
     BaseDeDonnees*       bdd;        //!< la relation vers la base de données
     QVector<QStringList> rencontres; //!< Les rencontres
     QVector<QStringList> partiesSimples; //!< Les parties en simple
+    QVector<QStringList> partiesDoubleA; //!< Les joueurs du club A pour le double
+    QVector<QStringList> partiesDoubleW; //!< Les joueurs du club W pour le double
+
     QVector<QStringList> clubs;          //!< Les clubs
 
     /**
@@ -123,9 +126,7 @@ class IHMArbitre : public QMainWindow
     void detecter();
     void declencherNet(int nbNets);
     void chargerPartiesSimples();
-    /**
-     * @todo Déclarer chargerPartiesDoubles();
-     */
+    void chargerPartiesDoubles();
     void demarrerRencontre();
 };
 

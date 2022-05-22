@@ -313,7 +313,38 @@
              </widget>
             </item>
             <item>
-             <widget class="QComboBox" name="comboBox"/>
+             <layout class="QHBoxLayout" name="layoutPartieDouble">
+              <item>
+               <layout class="QVBoxLayout" name="layoutPartieDoubleClubA">
+                <item>
+                 <widget class="QComboBox" name="comboBoxListeJoueurA"/>
+                </item>
+                <item>
+                 <widget class="QComboBox" name="comboBoxListeJoueurB"/>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <widget class="QLabel" name="labelVs">
+                <property name="text">
+                 <string>VS</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <layout class="QVBoxLayout" name="layoutPartieDoubleClubW">
+                <item>
+                 <widget class="QComboBox" name="comboBoxListeJoueurW"/>
+                </item>
+                <item>
+                 <widget class="QComboBox" name="comboBoxListeJoueurX"/>
+                </item>
+               </layout>
+              </item>
+             </layout>
             </item>
             <item>
              <spacer name="verticalSpacer_4">
@@ -331,7 +362,14 @@
             <item>
              <widget class="QPushButton" name="buttonSelectionnerRencontre">
               <property name="text">
-               <string>Démarrer</string>
+               <string>Démarrer simple</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="buttonSelectionnerRencontreDouble">
+              <property name="text">
+               <string>Démarrer double</string>
               </property>
              </widget>
             </item>

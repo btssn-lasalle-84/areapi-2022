@@ -274,9 +274,10 @@ void IHMArbitre::installerGestionEvenements()
             SIGNAL(currentIndexChanged(int)),
             this,
             SLOT(chargerPartiesSimples()));
-    /**
-     * @todo Connecter le même signal pour le slot chargerPartiesDoubles()
-     */
+    connect(ui->comboBoxListeJoueurA,
+            SIGNAL(currentIndexChanged(int)),
+            this,
+            SLOT(chargerPartiesDoubles()));
 }
 
 void IHMArbitre::initialiserPageAccueil()
@@ -332,9 +333,7 @@ void IHMArbitre::chargerRencontres()
               rencontres.at(i).at(COLONNE_nomClubW));
         }
         chargerPartiesSimples();
-        /**
-         * @todo Appeler chargerPartiesDoubles();
-         */
+        chargerPartiesDoubles();
     }
 }
 
@@ -374,9 +373,42 @@ void IHMArbitre::chargerPartiesSimples()
     }
 }
 
-/**
- * @todo Définir chargerPartiesDoubles();
- */
+void IHMArbitre::chargerPartiesDoubles()
+{
+    qDebug() << Q_FUNC_INFO << ui->comboBoxListeJoueurA->currentIndex();
+    qDebug() << Q_FUNC_INFO << ui->comboBoxListeJoueurW->currentIndex();
+
+    QString requeteListeJoueurA =
+      "SELECT nom, prenom FROM Joueur "
+      "WHERE idClub = '3'";
+    QString requeteListeJoueurW =
+      "SELECT nom, prenom FROM Joueur "
+      "WHERE idClub = '1'";
+    bool retour;
+    partiesDoubleA.clear();
+    retour = bdd->recuperer(requeteListeJoueurA, partiesDoubleA);
+    qDebug() << Q_FUNC_INFO << partiesDoubleA;
+    if(retour)
+    {
+        for(int i = 0; i < partiesDoubleA.size(); ++i)
+        {
+            ui->comboBoxListeJoueurA->addItem(partiesDoubleA.at(i).at(0) + " " + partiesDoubleA.at(i).at(1));
+            ui->comboBoxListeJoueurB->addItem(partiesDoubleA.at(i).at(0) + " " + partiesDoubleA.at(i).at(1));
+        }
+    }
+    partiesDoubleW.clear();
+    retour = bdd->recuperer(requeteListeJoueurW, partiesDoubleW);
+    qDebug() << Q_FUNC_INFO << partiesDoubleW;
+    if(retour)
+    {
+        for(int i = 0; i < partiesDoubleW.size(); ++i)
+        {
+            ui->comboBoxListeJoueurW->addItem(partiesDoubleW.at(i).at(0) + " " + partiesDoubleW.at(i).at(1));
+            ui->comboBoxListeJoueurX->addItem(partiesDoubleW.at(i).at(0) + " " + partiesDoubleW.at(i).at(1));
+        }
+    }
+
+}
 
 void IHMArbitre::chargerClubs()
 {
@@ -391,9 +423,7 @@ void IHMArbitre::chargerClubs()
         for(int i = 0; i < clubs.size(); ++i)
         {
             ui->comboBoxChoixClubA->addItem(clubs.at(i).at(COLONNE_nomClub));
-            /**
-             * @todo Créer la liste pour le choix du clubW
-             */
+            ui->comboBoxChoixClubW->addItem(clubs.at(i).at(COLONNE_nomClub));
         }
     }
 }
