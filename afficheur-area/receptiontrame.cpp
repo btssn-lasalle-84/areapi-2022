@@ -226,15 +226,12 @@ void ReceptionTrame::lireSocket()
              << socket->peerAddress().toString();
     trame += socket->readAll();
     // une trame AREA ?
-    if(trame.startsWith(ProtocoleArea::DEBUT_TRAME) &&
-       trame.endsWith(ProtocoleArea::FIN_TRAME))
+    bool trameValide = trame.startsWith(ProtocoleArea::DEBUT_TRAME) &&
+                       trame.endsWith(ProtocoleArea::FIN_TRAME);
+    if(trameValide)
     {
         qDebug() << Q_FUNC_INFO << trame;
-        /**
-         * @todo Traiter la trame puis signaler les données reçues
-         */
-        QList<QByteArray> decoupageTrame =
-          trame.split(ProtocoleArea::DELIMITEUR_TRAME);
+        QList<QByteArray> decoupageTrame = decouperTrame();
         qDebug() << Q_FUNC_INFO << decoupageTrame;
 
         if(decoupageTrame[ProtocoleArea::ChampsTrame::TYPE] ==
@@ -277,15 +274,15 @@ void ReceptionTrame::lireSocket()
             qDebug() << decoupageTrame[ProtocoleArea::ChampsTrame::TYPE]
                      << decoupageTrame.length();
             if(decoupageTrame.length() ==
-                    ProtocoleArea::ChampsPartieSimple::NbChampsPartieSimple + 1)
+               ProtocoleArea::ChampsPartieSimple::NbChampsPartieSimple + 1)
             {
                 emit nouvelleTrameSimple(
                   socket->peerName(),
-                            decoupageTrame[ProtocoleArea::ChampsPartieSimple::idPartie],
-                            decoupageTrame[ProtocoleArea::ChampsPartieSimple::JoueurA],
-                            decoupageTrame[ProtocoleArea::ChampsPartieSimple::ClassementJoueurA],
-                            decoupageTrame[ProtocoleArea::ChampsPartieSimple::JoueurW],
-                            decoupageTrame[ProtocoleArea::ChampsPartieSimple::ClassementJoueurW]);
+                  decoupageTrame[ProtocoleArea::ChampsPartieSimple::idPartie],
+                  decoupageTrame[ProtocoleArea::ChampsPartieSimple::JoueurA],
+                  decoupageTrame[ProtocoleArea::ChampsPartieSimple::ClassementJoueurA],
+                  decoupageTrame[ProtocoleArea::ChampsPartieSimple::JoueurW],
+                  decoupageTrame[ProtocoleArea::ChampsPartieSimple::ClassementJoueurW]);
             }
             else
             {
@@ -298,19 +295,19 @@ void ReceptionTrame::lireSocket()
             qDebug() << decoupageTrame[ProtocoleArea::ChampsTrame::TYPE]
                      << decoupageTrame.length();
             if(decoupageTrame.length() ==
-                    ProtocoleArea::ChampsPartieDouble::NbChampsPartieDouble + 1)
+               ProtocoleArea::ChampsPartieDouble::NbChampsPartieDouble + 1)
             {
                 emit nouvelleTrameDouble(
                   socket->peerName(),
-                            decoupageTrame[ProtocoleArea::ChampsPartieDouble::idPartieDouble],
-                            decoupageTrame[ProtocoleArea::ChampsPartieDouble::JoueurA1],
-                            decoupageTrame[ProtocoleArea::ChampsPartieDouble::ClassementA1],
-                            decoupageTrame[ProtocoleArea::ChampsPartieDouble::JoueurA2],
-                            decoupageTrame[ProtocoleArea::ChampsPartieDouble::ClassementA2],
-                            decoupageTrame[ProtocoleArea::ChampsPartieDouble::JoueurW1],
-                            decoupageTrame[ProtocoleArea::ChampsPartieDouble::ClassementW1],
-                            decoupageTrame[ProtocoleArea::ChampsPartieDouble::JoueurW2],
-                            decoupageTrame[ProtocoleArea::ChampsPartieDouble::ClassementW2]);
+                  decoupageTrame[ProtocoleArea::ChampsPartieDouble::idPartieDouble],
+                  decoupageTrame[ProtocoleArea::ChampsPartieDouble::JoueurA1],
+                  decoupageTrame[ProtocoleArea::ChampsPartieDouble::ClassementA1],
+                  decoupageTrame[ProtocoleArea::ChampsPartieDouble::JoueurA2],
+                  decoupageTrame[ProtocoleArea::ChampsPartieDouble::ClassementA2],
+                  decoupageTrame[ProtocoleArea::ChampsPartieDouble::JoueurW1],
+                  decoupageTrame[ProtocoleArea::ChampsPartieDouble::ClassementW1],
+                  decoupageTrame[ProtocoleArea::ChampsPartieDouble::JoueurW2],
+                  decoupageTrame[ProtocoleArea::ChampsPartieDouble::ClassementW2]);
             }
         }
         else if(decoupageTrame[ProtocoleArea::ChampsTrame::TYPE] ==
@@ -321,16 +318,16 @@ void ReceptionTrame::lireSocket()
             if(decoupageTrame.length() == ProtocoleArea::ChampsPartieScore::NbChampsScore + 1)
             {
                 emit nouvelleTrameScore(
-                    socket->peerName(),
-                            decoupageTrame[ProtocoleArea::ChampsPartieScore::idPartieScore],
-                            decoupageTrame[ProtocoleArea::ChampsPartieScore::scoreJG],
-                            decoupageTrame[ProtocoleArea::ChampsPartieScore::scoreJD],
-                            decoupageTrame[ProtocoleArea::ChampsPartieScore::etatPartie],
-                            decoupageTrame[ProtocoleArea::ChampsPartieScore::tempsMort],
-                            decoupageTrame[ProtocoleArea::ChampsPartieScore::nbSetJG],
-                            decoupageTrame[ProtocoleArea::ChampsPartieScore::nbSetJD],
-                            decoupageTrame[ProtocoleArea::ChampsPartieScore::tourService],
-                            decoupageTrame[ProtocoleArea::ChampsPartieScore::net]);
+                  socket->peerName(),
+                  decoupageTrame[ProtocoleArea::ChampsPartieScore::idPartieScore],
+                  decoupageTrame[ProtocoleArea::ChampsPartieScore::scoreJG],
+                  decoupageTrame[ProtocoleArea::ChampsPartieScore::scoreJD],
+                  decoupageTrame[ProtocoleArea::ChampsPartieScore::etatPartie],
+                  decoupageTrame[ProtocoleArea::ChampsPartieScore::tempsMort],
+                  decoupageTrame[ProtocoleArea::ChampsPartieScore::nbSetJG],
+                  decoupageTrame[ProtocoleArea::ChampsPartieScore::nbSetJD],
+                  decoupageTrame[ProtocoleArea::ChampsPartieScore::tourService],
+                  decoupageTrame[ProtocoleArea::ChampsPartieScore::net]);
             }
         }
         else
@@ -356,4 +353,12 @@ void ReceptionTrame::renvoyerErreurSocket(QBluetoothSocket::SocketError erreur)
 void ReceptionTrame::renvoyerErreurDevice(QBluetoothLocalDevice::Error erreur)
 {
     qDebug() << Q_FUNC_INFO << erreur;
+}
+
+QList<QByteArray> ReceptionTrame::decouperTrame()
+{
+    QList<QByteArray> decoupageTrame =
+      trame.split(ProtocoleArea::DELIMITEUR_TRAME);
+
+    return decoupageTrame;
 }

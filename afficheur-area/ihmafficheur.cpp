@@ -79,14 +79,7 @@ void IHMAfficheur::initialiserRencontre(QString    nomModule,
 
         // initialise l'affichage
         initialiserEquipes(QString(NomClubA.data()), QString(NomClubW.data()));
-        initialiserJoueurA(QString(NomJoueurA.data()), QString(PrenomJoueurA.data()));
-        initialiserJoueurB(QString(NomJoueurB.data()), QString(PrenomJoueurB.data()));
-        initialiserJoueurC(QString(NomJoueurC.data()), QString(PrenomJoueurC.data()));
-        initialiserJoueurD(QString(NomJoueurD.data()), QString(PrenomJoueurD.data()));
-        initialiserJoueurW(QString(NomJoueurW.data()), QString(PrenomJoueurW.data()));
-        initialiserJoueurX(QString(NomJoueurX.data()), QString(PrenomJoueurX.data()));
-        initialiserJoueurY(QString(NomJoueurY.data()), QString(PrenomJoueurY.data()));
-        initialiserJoueurZ(QString(NomJoueurZ.data()), QString(PrenomJoueurZ.data()));
+        initialiserJoueurs(NomJoueurA, NomJoueurD, PrenomJoueurC, NomJoueurC, PrenomJoueurB, NomJoueurB, PrenomJoueurY, NomJoueurY, PrenomJoueurX, NomJoueurX, PrenomJoueurZ, PrenomJoueurW, NomJoueurZ, NomJoueurW, PrenomJoueurA, PrenomJoueurD);
 
         QStringList sequenceJoueursEquipeA;
         sequenceJoueursEquipeA << "A"
@@ -573,4 +566,16 @@ void IHMAfficheur::initialiserPartieDouble1(QString nomJoueurA1,
                                 prenomJoueurW1,
                                 nomJoueurW2,
                                 prenomJoueurW2);
+}
+
+void IHMAfficheur::initialiserJoueurs(QByteArray NomJoueurA, QByteArray NomJoueurD, QByteArray PrenomJoueurC, QByteArray NomJoueurC, QByteArray PrenomJoueurB, QByteArray NomJoueurB, QByteArray PrenomJoueurY, QByteArray NomJoueurY, QByteArray PrenomJoueurX, QByteArray NomJoueurX, QByteArray PrenomJoueurZ, QByteArray PrenomJoueurW, QByteArray NomJoueurZ, QByteArray NomJoueurW, QByteArray PrenomJoueurA, QByteArray PrenomJoueurD)
+{
+    initialiserJoueurA(QString(NomJoueurA.data()), QString(PrenomJoueurA.data()));
+    initialiserJoueurB(QString(NomJoueurB.data()), QString(PrenomJoueurB.data()));
+    initialiserJoueurC(QString(NomJoueurC.data()), QString(PrenomJoueurC.data()));
+    initialiserJoueurD(QString(NomJoueurD.data()), QString(PrenomJoueurD.data()));
+    initialiserJoueurW(QString(NomJoueurW.data()), QString(PrenomJoueurW.data()));
+    initialiserJoueurX(QString(NomJoueurX.data()), QString(PrenomJoueurX.data()));
+    initialiserJoueurY(QString(NomJoueurY.data()), QString(PrenomJoueurY.data()));
+    initialiserJoueurZ(QString(NomJoueurZ.data()), QString(PrenomJoueurZ.data()));
 }

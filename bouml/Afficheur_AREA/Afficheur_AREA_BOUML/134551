@@ -1,6 +1,6 @@
 format 224
 "afficheur-area" // afficheur-area
-  revision 2
+  revision 4
   modified_by 23 "tv"
   // class settings
   
@@ -346,7 +346,9 @@ ${body}}
 	  param in name "nom" explicit_type "QString"
 	  param in name "prenom" explicit_type "QString"
 	  param in name "lettre" explicit_type "QString"
+	    defaultvalue "\"\""
 	  param in name "classement" explicit_type "int"
+	    defaultvalue "0"
 	cpp_decl "    ${comment}${inline}${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}, ${t2} ${p2}${v2}, ${t3} ${p3}${v3}${)}${volatile}${throw}${abstract};
 "
 	cpp_def "${comment}${inline}${typeprefix}${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}${)} :
@@ -581,6 +583,15 @@ ${inlines}
 	  b parent class_ref 135063 // ReceptionTrame
       end
 
+      classrelation 134935 // rencontre (<unidirectional association>)
+	relation 134935 --->
+	  a role_name "rencontre" private
+	    cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 134935 // rencontre (<unidirectional association>)
+	  b parent class_ref 135191 // Rencontre
+      end
+
       attribute 134807 "labelsJoueurA"
 	private explicit_type "QLabel*"
 	stereotype "QVector"
@@ -685,21 +696,14 @@ ${inlines}
 	MysqlColumn
       end
 
-      classrelation 134935 // rencontre (<unidirectional association>)
-	relation 134935 --->
-	  a role_name "rencontre" private
-	    cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} * ${name}${value};
-"
-	    classrelation_ref 134935 // rencontre (<unidirectional association>)
-	  b parent class_ref 135191 // Rencontre
-      end
-
       operation 135831 "initialiserIHM"
 	preserve_cpp_body_indent private explicit_return_type "void"
 	nparams 0
 	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
 "
-	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+	cpp_def "// Méthodes privées
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
 ${body}}
 "
 	
@@ -730,6 +734,52 @@ ${body}}
 	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
 "
 	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 128002 "initialiserEquipeA"
+	preserve_cpp_body_indent private explicit_return_type "void"
+	nparams 9
+	  param in name "nomModule" explicit_type "QString"
+	  param in name "NomJoueurA" explicit_type "QByteArray"
+	  param in name "PrenomJoueurA" explicit_type "QByteArray"
+	  param in name "NomJoueurB" explicit_type "QByteArray"
+	  param in name "PrenomJoueurB" explicit_type "QByteArray"
+	  param in name "NomJoueurC" explicit_type "QByteArray"
+	  param in name "PrenomJoueurC" explicit_type "QByteArray"
+	  param in name "NomJoueurD" explicit_type "QByteArray"
+	  param in name "PrenomJoueurD" explicit_type "QByteArray"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}, ${t2} ${p2}${v2}, ${t3} ${p3}${v3}, ${t4} ${p4}${v4}, ${t5} ${p5}${v5}, ${t6} ${p6}${v6}, ${t7} ${p7}${v7}, ${t8} ${p8}${v8}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ${t4} ${p4}, ${t5} ${p5}, ${t6} ${p6}, ${t7} ${p7}, ${t8} ${p8}${)}${const}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 128130 "initialiserEquipeW"
+	preserve_cpp_body_indent private explicit_return_type "void"
+	nparams 9
+	  param in name "nomModule" explicit_type "QString"
+	  param in name "NomJoueurW" explicit_type "QByteArray"
+	  param in name "PrenomJoueurW" explicit_type "QByteArray"
+	  param in name "NomJoueurX" explicit_type "QByteArray"
+	  param in name "PrenomJoueurX" explicit_type "QByteArray"
+	  param in name "NomJoueurY" explicit_type "QByteArray"
+	  param in name "PrenomJoueurY" explicit_type "QByteArray"
+	  param in name "NomJoueurZ" explicit_type "QByteArray"
+	  param in name "PrenomJoueurZ" explicit_type "QByteArray"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}, ${t2} ${p2}${v2}, ${t3} ${p3}${v3}, ${t4} ${p4}${v4}, ${t5} ${p5}${v5}, ${t6} ${p6}${v6}, ${t7} ${p7}${v7}, ${t8} ${p8}${v8}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ${t4} ${p4}, ${t5} ${p5}, ${t6} ${p6}, ${t7} ${p7}, ${t8} ${p8}${)}${const}${throw}${staticnl}{
 ${body}}
 "
 	
@@ -866,6 +916,76 @@ ${body}}
 	
       end
 
+      operation 128258 "initialiserPartieSimple1"
+	preserve_cpp_body_indent private explicit_return_type "void"
+	nparams 4
+	  param in name "nomJoueurA" explicit_type "QString"
+	  param in name "prenomJoueurA" explicit_type "QString"
+	  param in name "nomJoueurW" explicit_type "QString"
+	  param in name "prenomJoueurW" explicit_type "QString"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}, ${t2} ${p2}${v2}, ${t3} ${p3}${v3}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}${)}${const}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 128386 "initialiserPartieDouble1"
+	preserve_cpp_body_indent private explicit_return_type "void"
+	nparams 8
+	  param in name "nomJoueurA1" explicit_type "QString"
+	  param in name "prenomJoueurA1" explicit_type "QString"
+	  param in name "nomJoueurA2" explicit_type "QString"
+	  param in name "prenomJoueurA2" explicit_type "QString"
+	  param in name "nomJoueurW1" explicit_type "QString"
+	  param in name "prenomJoueurW1" explicit_type "QString"
+	  param in name "nomJoueurW2" explicit_type "QString"
+	  param in name "prenomJoueurW2" explicit_type "QString"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}, ${t2} ${p2}${v2}, ${t3} ${p3}${v3}, ${t4} ${p4}${v4}, ${t5} ${p5}${v5}, ${t6} ${p6}${v6}, ${t7} ${p7}${v7}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ${t4} ${p4}, ${t5} ${p5}, ${t6} ${p6}, ${t7} ${p7}${)}${const}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 129794 "initialiserJoueurs"
+	preserve_cpp_body_indent private explicit_return_type "void"
+	nparams 16
+	  param in name "NomJoueurA" explicit_type "QByteArray"
+	  param in name "NomJoueurD" explicit_type "QByteArray"
+	  param in name "PrenomJoueurC" explicit_type "QByteArray"
+	  param in name "NomJoueurC" explicit_type "QByteArray"
+	  param in name "PrenomJoueurB" explicit_type "QByteArray"
+	  param in name "NomJoueurB" explicit_type "QByteArray"
+	  param in name "PrenomJoueurY" explicit_type "QByteArray"
+	  param in name "NomJoueurY" explicit_type "QByteArray"
+	  param in name "PrenomJoueurX" explicit_type "QByteArray"
+	  param in name "NomJoueurX" explicit_type "QByteArray"
+	  param in name "PrenomJoueurZ" explicit_type "QByteArray"
+	  param in name "PrenomJoueurW" explicit_type "QByteArray"
+	  param in name "NomJoueurZ" explicit_type "QByteArray"
+	  param in name "NomJoueurW" explicit_type "QByteArray"
+	  param in name "PrenomJoueurA" explicit_type "QByteArray"
+	  param in name "PrenomJoueurD" explicit_type "QByteArray"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}, ${t2} ${p2}${v2}, ${t3} ${p3}${v3}, ${t4} ${p4}${v4}, ${t5} ${p5}${v5}, ${t6} ${p6}${v6}, ${t7} ${p7}${v7}, ${t8} ${p8}${v8}, ${t9} ${p9}${v9}, ${t10} ${p10}${v10}, ${t11} ${p11}${v11}, ${t12} ${p12}${v12}, ${t13} ${p13}${v13}, ${t14} ${p14}${v14}, ${t15} ${p15}${v15}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ${t4} ${p4}, ${t5} ${p5}, ${t6} ${p6}, ${t7} ${p7}, ${t8} ${p8}, ${t9} ${p9}, ${t10} ${p10}, ${t11} ${p11}, ${t12} ${p12}, ${t13} ${p13}, ${t14} ${p14}, ${t15} ${p15}${)}${const}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
       operation 137239 "IHMAfficheur"
 	preserve_cpp_body_indent public explicit_return_type ""
 	nparams 1
@@ -967,10 +1087,64 @@ ${body}}
       operation 137623 "initialiserPartieSimple"
 	stereotype "slot"
 	preserve_cpp_body_indent public explicit_return_type "void"
-	nparams 0
-	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+	nparams 6
+	  param in name "nomModule" explicit_type "QString"
+	  param in name "idPartie" explicit_type "QByteArray"
+	  param in name "JoueurA" explicit_type "QByteArray"
+	  param in name "ClassementJoueurA" explicit_type "QByteArray"
+	  param in name "JoueurB" explicit_type "QByteArray"
+	  param in name "ClassementJoueurW" explicit_type "QByteArray"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}, ${t2} ${p2}${v2}, ${t3} ${p3}${v3}, ${t4} ${p4}${v4}, ${t5} ${p5}${v5}${)}${const}${volatile}${throw}${abstract};
 "
-	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ${t4} ${p4}, ${t5} ${p5}${)}${const}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 128514 "initialiserPartieDouble"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 10
+	  param in name "nomModule" explicit_type "QString"
+	  param in name "idPartieDouble" explicit_type "QByteArray"
+	  param in name "JoueurA1" explicit_type "QByteArray"
+	  param in name "ClassementA1" explicit_type "QByteArray"
+	  param in name "JoueurA2" explicit_type "QByteArray"
+	  param in name "ClassementA2" explicit_type "QByteArray"
+	  param in name "JoueurW1" explicit_type "QByteArray"
+	  param in name "ClassementW1" explicit_type "QByteArray"
+	  param in name "JoueurW2" explicit_type "QByteArray"
+	  param in name "ClassementW2" explicit_type "QByteArray"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}, ${t2} ${p2}${v2}, ${t3} ${p3}${v3}, ${t4} ${p4}${v4}, ${t5} ${p5}${v5}, ${t6} ${p6}${v6}, ${t7} ${p7}${v7}, ${t8} ${p8}${v8}, ${t9} ${p9}${v9}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ${t4} ${p4}, ${t5} ${p5}, ${t6} ${p6}, ${t7} ${p7}, ${t8} ${p8}, ${t9} ${p9}${)}${const}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 128642 "initialiserScorePartie"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 10
+	  param in name "nomModule" explicit_type "QString"
+	  param in name "idPartieScore" explicit_type "QByteArray"
+	  param in name "scoreJG" explicit_type "QByteArray"
+	  param in name "scoreJD" explicit_type "QByteArray"
+	  param in name "etatPartie" explicit_type "QByteArray"
+	  param in name "tempsMort" explicit_type "QByteArray"
+	  param in name "nbSetJG" explicit_type "QByteArray"
+	  param in name "nbSetJD" explicit_type "QByteArray"
+	  param in name "tourService" explicit_type "QByteArray"
+	  param in name "net" explicit_type "QByteArray"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}, ${t2} ${p2}${v2}, ${t3} ${p3}${v3}, ${t4} ${p4}${v4}, ${t5} ${p5}${v5}, ${t6} ${p6}${v6}, ${t7} ${p7}${v7}, ${t8} ${p8}${v8}, ${t9} ${p9}${v9}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ${t4} ${p4}, ${t5} ${p5}, ${t6} ${p6}, ${t7} ${p7}, ${t8} ${p8}, ${t9} ${p9}${)}${const}${throw}${staticnl}{
 ${body}}
 "
 	
@@ -1149,6 +1323,20 @@ ${inlines}
 	idl_decl ""
 	mysql_decl ""
 	MysqlColumn
+      end
+
+      operation 153111 "decouperTrame"
+	preserve_cpp_body_indent private explicit_return_type "QList<QByteArray>"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
       end
 
       operation 143383 "ReceptionTrame"
@@ -1492,6 +1680,65 @@ ${body}}
 	
       end
 
+      operation 128898 "nouvelleTrameSimple"
+	public explicit_return_type "void"
+	nparams 6
+	  param in name "nomModule" explicit_type "QString"
+	  param in name "idPartie" explicit_type "QByteArray"
+	  param in name "JoueurA" explicit_type "QByteArray"
+	  param in name "ClassementJoueurA" explicit_type "QByteArray"
+	  param in name "JoueurB" explicit_type "QByteArray"
+	  param in name "ClassementJoueurW" explicit_type "QByteArray"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}, ${t2} ${p2}${v2}, ${t3} ${p3}${v3}, ${t4} ${p4}${v4}, ${t5} ${p5}${v5}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	
+	
+      end
+
+      operation 129026 "nouvelleTrameDouble"
+	public explicit_return_type "void"
+	nparams 10
+	  param in name "nomModule" explicit_type "QString"
+	  param in name "idPartieDouble" explicit_type "QByteArray"
+	  param in name "JoueurA1" explicit_type "QByteArray"
+	  param in name "ClassementA1" explicit_type "QByteArray"
+	  param in name "JoueurA2" explicit_type "QByteArray"
+	  param in name "ClassementA2" explicit_type "QByteArray"
+	  param in name "JoueurW1" explicit_type "QByteArray"
+	  param in name "ClassementW1" explicit_type "QByteArray"
+	  param in name "JoueurW2" explicit_type "QByteArray"
+	  param in name "ClassementW2" explicit_type "QByteArray"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}, ${t2} ${p2}${v2}, ${t3} ${p3}${v3}, ${t4} ${p4}${v4}, ${t5} ${p5}${v5}, ${t6} ${p6}${v6}, ${t7} ${p7}${v7}, ${t8} ${p8}${v8}, ${t9} ${p9}${v9}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	
+	
+      end
+
+      operation 129154 "nouvelleTrameScore"
+	public explicit_return_type "void"
+	nparams 10
+	  param in name "nomModule" explicit_type "QString"
+	  param in name "idPartieScore" explicit_type "QByteArray"
+	  param in name "scoreJG" explicit_type "QByteArray"
+	  param in name "scoreJD" explicit_type "QByteArray"
+	  param in name "etatPartie" explicit_type "QByteArray"
+	  param in name "tempsMort" explicit_type "QByteArray"
+	  param in name "nbSetJG" explicit_type "QByteArray"
+	  param in name "nbSetJD" explicit_type "QByteArray"
+	  param in name "tourService" explicit_type "QByteArray"
+	  param in name "net" explicit_type "QByteArray"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}, ${t2} ${p2}${v2}, ${t3} ${p3}${v3}, ${t4} ${p4}${v4}, ${t5} ${p5}${v5}, ${t6} ${p6}${v6}, ${t7} ${p7}${v7}, ${t8} ${p8}${v8}, ${t9} ${p9}${v9}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	
+	
+      end
+
       classrelation 141975 // <dependency>
 	relation 141975 -_->
 	  a public
@@ -1632,12 +1879,73 @@ ${body}}
 	
       end
 
-      operation 146711 "ajouterPartieSimple"
-	preserve_cpp_body_indent public explicit_return_type "void"
-	nparams 0
-	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+      operation 129282 "getPartie"
+	preserve_cpp_body_indent const public return_type class_ref 135319 // Partie
+	nparams 1
+	  param in name "cases" explicit_type "uint"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
 "
-	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 129410 "setPartiesSimple"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 4
+	  param in name "nomJoueurA1" explicit_type "QString"
+	  param in name "prenomJoueurA1" explicit_type "QString"
+	  param in name "nomJoueurW1" explicit_type "QString"
+	  param in name "prenomJoueurW2" explicit_type "QString"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}, ${t2} ${p2}${v2}, ${t3} ${p3}${v3}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}${)}${const}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 129538 "setPartiesDouble"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 8
+	  param in name "nomJoueurA1" explicit_type "QString"
+	  param in name "prenomJoueurA1" explicit_type "QString"
+	  param in name "nomJoueurA2" explicit_type "QString"
+	  param in name "prenomJoueurA2" explicit_type "QString"
+	  param in name "nomJoueurW1" explicit_type "QString"
+	  param in name "prenomJoueurW1" explicit_type "QString"
+	  param in name "nomJoueurW2" explicit_type "QString"
+	  param in name "prenomJoueurW2" explicit_type "QString"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}, ${t2} ${p2}${v2}, ${t3} ${p3}${v3}, ${t4} ${p4}${v4}, ${t5} ${p5}${v5}, ${t6} ${p6}${v6}, ${t7} ${p7}${v7}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ${t4} ${p4}, ${t5} ${p5}, ${t6} ${p6}, ${t7} ${p7}${)}${const}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 129666 "actualiserPartie"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 6
+	  param in name "idPartieScore" explicit_type "QByteArray"
+	  param in name "scoreJG" explicit_type "QByteArray"
+	  param in name "scoreJD" explicit_type "QByteArray"
+	  param in name "nbSetJG" explicit_type "QByteArray"
+	  param in name "nbSetJD" explicit_type "QByteArray"
+	  param in name "net" explicit_type "QByteArray"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}, ${t2} ${p2}${v2}, ${t3} ${p3}${v3}, ${t4} ${p4}${v4}, ${t5} ${p5}${v5}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ${t4} ${p4}, ${t5} ${p5}${)}${const}${throw}${staticnl}{
 ${body}}
 "
 	
@@ -1865,14 +2173,26 @@ ${body}}
 	
       end
 
-      operation 139543 "Partie"
+      operation 128770 "Partie"
 	preserve_cpp_body_indent public explicit_return_type ""
-	nparams 1
+	nparams 9
 	  param in name "estDouble" explicit_type "bool"
-	cpp_decl "    ${comment}${inline}${name}${(}${t0} ${p0}${v0}${)}${volatile}${throw}${abstract};
+	  param in name "nomJoueurA1" explicit_type "QString"
+	  param in name "prenomJoueurA1" explicit_type "QString"
+	  param in name "nomJoueurW1" explicit_type "QString"
+	  param in name "prenomJoueurW1" explicit_type "QString"
+	  param in name "nomJoueurA2" explicit_type "QString"
+	    defaultvalue "\"\""
+	  param in name "prenomJoueurA2" explicit_type "QString"
+	    defaultvalue "\"\""
+	  param in name "nomJoueurW2" explicit_type "QString"
+	    defaultvalue "\"\""
+	  param in name "prenomJoueurW2" explicit_type "QString"
+	    defaultvalue "\"\""
+	cpp_decl "    ${comment}${inline}${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}, ${t2} ${p2}${v2}, ${t3} ${p3}${v3}, ${t4} ${p4}${v4}, ${t5} ${p5}${v5}, ${t6} ${p6}${v6}, ${t7} ${p7}${v7}, ${t8} ${p8}${v8}${)}${volatile}${throw}${abstract};
 "
-	cpp_def "${comment}${inline}${typeprefix}${class}::${name}${(}${t0} ${p0}${)} :
-    estDouble(estDouble), nombreSet(0), scoreJoueurG(0), scoreJoueurD(0), setJoueurG(0),
+	cpp_def "${comment}${inline}${typeprefix}${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ${t4} ${p4}, ${t5} ${p5}, ${t6} ${p6}, ${t7} ${p7}, ${t8} ${p8}${)} :
+    estDouble(0), nombreSet(0), scoreJoueurG(0), scoreJoueurD(0), setJoueurG(0),
     setJoueurD(0), nombreNET(0), pointConsecutif(0), joueurPointConsecutif(\"\"),
     joueurs()
 ${throw}{
@@ -2693,8 +3013,312 @@ ${items}};
 	explicit_switch_type ""
 	mysql_decl ""
 	
+	attribute 142594 "idPartie"
+	  public type class_ref 135831 // ChampsPartieSimple
+	  init_value " 2"
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 142722 "JoueurA"
+	  public type class_ref 135831 // ChampsPartieSimple
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 142850 "ClassementJoueurA"
+	  public type class_ref 135831 // ChampsPartieSimple
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 142978 "JoueurW"
+	  public type class_ref 135831 // ChampsPartieSimple
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 143106 "ClassementJoueurW"
+	  public type class_ref 135831 // ChampsPartieSimple
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
 	attribute 141079 "NbChampsPartieSimple"
 	  public type class_ref 135831 // ChampsPartieSimple
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+      end
+
+      class 155266 "ChampsPartieDouble"
+	visibility package stereotype "enum"
+	cpp_decl "${comment}enum ${name} {
+${items}};
+"
+	java_decl ""
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+	attribute 143234 "idPartieDouble"
+	  public type class_ref 155266 // ChampsPartieDouble
+	  init_value " 2"
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 143362 "JoueurA1"
+	  public type class_ref 155266 // ChampsPartieDouble
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 143490 "ClassementA1"
+	  public type class_ref 155266 // ChampsPartieDouble
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 143618 "JoueurA2"
+	  public type class_ref 155266 // ChampsPartieDouble
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 143746 "ClassementA2"
+	  public type class_ref 155266 // ChampsPartieDouble
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 143874 "JoueurW1"
+	  public type class_ref 155266 // ChampsPartieDouble
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 144002 "ClassementW1"
+	  public type class_ref 155266 // ChampsPartieDouble
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 144130 "JoueurW2"
+	  public type class_ref 155266 // ChampsPartieDouble
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 144258 "ClassementW2"
+	  public type class_ref 155266 // ChampsPartieDouble
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 144386 "NbChampsPartieDouble"
+	  public type class_ref 155266 // ChampsPartieDouble
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+      end
+
+      class 155394 "ChampsPartieScore"
+	visibility package stereotype "enum"
+	cpp_decl "${comment}enum ${name} {
+${items}};
+"
+	java_decl ""
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+	attribute 144514 "idPartieScore"
+	  public type class_ref 155394 // ChampsPartieScore
+	  init_value " 2"
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 144642 "scoreJG"
+	  public type class_ref 155394 // ChampsPartieScore
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 144770 "scoreJD"
+	  public type class_ref 155394 // ChampsPartieScore
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 144898 "etatPartie"
+	  public type class_ref 155394 // ChampsPartieScore
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 145026 "tempsMort"
+	  public type class_ref 155394 // ChampsPartieScore
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 145154 "nbSetJG"
+	  public type class_ref 155394 // ChampsPartieScore
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 145282 "nbSetJD"
+	  public type class_ref 155394 // ChampsPartieScore
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 145410 "tourService"
+	  public type class_ref 155394 // ChampsPartieScore
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 145538 "net"
+	  public type class_ref 155394 // ChampsPartieScore
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 145666 "NbChampsScore"
+	  public type class_ref 155394 // ChampsPartieScore
 	  cpp_decl "  ${name}${value},${comment}"
 	  java_decl ""
 	  php_decl ""
