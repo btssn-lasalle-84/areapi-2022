@@ -274,7 +274,7 @@ void IHMArbitre::installerGestionEvenements()
             SIGNAL(currentIndexChanged(int)),
             this,
             SLOT(chargerPartiesSimples()));
-    connect(ui->comboBoxListeJoueurA,
+    connect(ui->comboBoxListeRencontres,
             SIGNAL(currentIndexChanged(int)),
             this,
             SLOT(chargerPartiesDoubles()));
@@ -343,71 +343,58 @@ void IHMArbitre::chargerPartiesSimples()
         return;
 
     qDebug() << Q_FUNC_INFO << ui->comboBoxListeRencontres->currentIndex();
-    QString requete =
-      "SELECT * FROM Partie "
-      "INNER JOIN Joueur joueurA ON (joueurA.numeroLicence = Partie.idJoueurA) "
-      "INNER JOIN Joueur joueurB ON (joueurB.numeroLicence = Partie.idJoueurB) "
-      "INNER JOIN Rencontre ON Partie.idRencontre = Rencontre.idRencontre "
-      "INNER JOIN Club ClubA ON (ClubA.idClub = Rencontre.idClubA) "
-      "INNER JOIN Club ClubW ON (ClubW.idClub = Rencontre.idClubW) "
-      "WHERE Rencontre.idRencontre='" +
-      rencontres.at(ui->comboBoxListeRencontres->currentIndex())
-        .at(COLONNE_idRencontre) +
-      "' AND Partie.typePartie='1';";
-    bool retour;
 
-    partiesSimples.clear();
-    retour = bdd->recuperer(requete, partiesSimples);
-    qDebug() << Q_FUNC_INFO << partiesSimples;
-    if(retour)
+    chargerJoueurs();
+    ui->comboBoxListePartiesSimples->clear();
+    QVector<int> sequenceJoueursEquipeA({ 0, 1, 2, 3, 0, 1, 3, 2, 0, 2, 3, 1 });
+    QVector<int> sequenceJoueursEquipeW({ 0, 1, 2, 3, 1, 0, 2, 3, 2, 0, 1, 3 });
+    for(int i = 0; i < sequenceJoueursEquipeA.size(); ++i)
     {
-        for(int i = 0; i < partiesSimples.size(); ++i)
-        {
-            /**
-             * @todo Définir les noms de colonnes
-             */
-            ui->comboBoxListePartiesSimples->addItem(
-              partiesSimples.at(i).at(13) + " vs " +
-              partiesSimples.at(i).at(17));
-        }
+        /**
+         * @todo Définir les noms de colonnes et intégrer les prénoms
+         */
+        ui->comboBoxListePartiesSimples->addItem(
+          joueursEquipeA.at(sequenceJoueursEquipeA.at(i)).at(0) + " vs " +
+          joueursEquipeW.at(sequenceJoueursEquipeW.at(i)).at(0));
     }
 }
 
 void IHMArbitre::chargerPartiesDoubles()
 {
-    qDebug() << Q_FUNC_INFO << ui->comboBoxListeJoueurA->currentIndex();
-    qDebug() << Q_FUNC_INFO << ui->comboBoxListeJoueurW->currentIndex();
+    if(ui->comboBoxListeRencontres->currentIndex() == -1)
+        return;
 
-    QString requeteListeJoueurA =
-      "SELECT nom, prenom FROM Joueur "
-      "WHERE idClub = '3'";
-    QString requeteListeJoueurW =
-      "SELECT nom, prenom FROM Joueur "
-      "WHERE idClub = '1'";
-    bool retour;
-    partiesDoubleA.clear();
-    retour = bdd->recuperer(requeteListeJoueurA, partiesDoubleA);
-    qDebug() << Q_FUNC_INFO << partiesDoubleA;
-    if(retour)
+    qDebug() << Q_FUNC_INFO << ui->comboBoxListeRencontres->currentIndex();
+
+    chargerJoueurs();
+    ui->comboBoxListeJoueurA->clear();
+    ui->comboBoxListeJoueurB->clear();
+    /**
+     * @todo Définir les parties de double
+     */
+    for(int i = 0; i < joueursEquipeA.size(); ++i)
     {
-        for(int i = 0; i < partiesDoubleA.size(); ++i)
-        {
-            ui->comboBoxListeJoueurA->addItem(partiesDoubleA.at(i).at(0) + " " + partiesDoubleA.at(i).at(1));
-            ui->comboBoxListeJoueurB->addItem(partiesDoubleA.at(i).at(0) + " " + partiesDoubleA.at(i).at(1));
-        }
-    }
-    partiesDoubleW.clear();
-    retour = bdd->recuperer(requeteListeJoueurW, partiesDoubleW);
-    qDebug() << Q_FUNC_INFO << partiesDoubleW;
-    if(retour)
-    {
-        for(int i = 0; i < partiesDoubleW.size(); ++i)
-        {
-            ui->comboBoxListeJoueurW->addItem(partiesDoubleW.at(i).at(0) + " " + partiesDoubleW.at(i).at(1));
-            ui->comboBoxListeJoueurX->addItem(partiesDoubleW.at(i).at(0) + " " + partiesDoubleW.at(i).at(1));
-        }
+        /**
+         * @todo Définir les noms de colonnes
+         */
+        ui->comboBoxListeJoueurA->addItem(joueursEquipeA.at(i).at(0) + " " +
+                                          joueursEquipeA.at(i).at(1));
+        ui->comboBoxListeJoueurB->addItem(joueursEquipeA.at(i).at(0) + " " +
+                                          joueursEquipeA.at(i).at(1));
     }
 
+    ui->comboBoxListeJoueurW->clear();
+    ui->comboBoxListeJoueurX->clear();
+    for(int i = 0; i < joueursEquipeW.size(); ++i)
+    {
+        /**
+         * @todo Définir les noms de colonnes
+         */
+        ui->comboBoxListeJoueurW->addItem(joueursEquipeW.at(i).at(0) + " " +
+                                          joueursEquipeW.at(i).at(1));
+        ui->comboBoxListeJoueurX->addItem(joueursEquipeW.at(i).at(0) + " " +
+                                          joueursEquipeW.at(i).at(1));
+    }
 }
 
 void IHMArbitre::chargerClubs()
@@ -426,6 +413,28 @@ void IHMArbitre::chargerClubs()
             ui->comboBoxChoixClubW->addItem(clubs.at(i).at(COLONNE_nomClub));
         }
     }
+}
+
+void IHMArbitre::chargerJoueurs()
+{
+    QString requeteListeJoueurA =
+      "SELECT nom, prenom FROM Joueur "
+      "WHERE idClub = '" +
+      rencontres.at(ui->comboBoxListeRencontres->currentIndex())
+        .at(COLONNE_idClubA) +
+      "'";
+    joueursEquipeA.clear();
+    bool retour = bdd->recuperer(requeteListeJoueurA, joueursEquipeA);
+    qDebug() << Q_FUNC_INFO << joueursEquipeA;
+    QString requeteListeJoueurW =
+      "SELECT nom, prenom FROM Joueur "
+      "WHERE idClub = '" +
+      rencontres.at(ui->comboBoxListeRencontres->currentIndex())
+        .at(COLONNE_idClubW) +
+      "'";
+    joueursEquipeW.clear();
+    retour = bdd->recuperer(requeteListeJoueurW, joueursEquipeW);
+    qDebug() << Q_FUNC_INFO << joueursEquipeW;
 }
 
 #ifdef TEST_IHMARBITRE

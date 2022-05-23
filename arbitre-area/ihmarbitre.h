@@ -67,11 +67,10 @@ class IHMArbitre : public QMainWindow
                          communicationBluetooth; //!< la communication avec les modules
     BaseDeDonnees*       bdd;        //!< la relation vers la base de données
     QVector<QStringList> rencontres; //!< Les rencontres
-    QVector<QStringList> partiesSimples; //!< Les parties en simple
-    QVector<QStringList> partiesDoubleA; //!< Les joueurs du club A pour le double
-    QVector<QStringList> partiesDoubleW; //!< Les joueurs du club W pour le double
+    QVector<QStringList> joueursEquipeA; //!< Les joueurs du club A
+    QVector<QStringList> joueursEquipeW; //!< Les joueurs du club W
 
-    QVector<QStringList> clubs;          //!< Les clubs
+    QVector<QStringList> clubs; //!< Les clubs
 
     /**
      * @enum Ecran
@@ -103,6 +102,7 @@ class IHMArbitre : public QMainWindow
     void afficherEtatBluetooth(QLabel* module, EtatModule etat);
     void chargerRencontres();
     void chargerClubs();
+    void chargerJoueurs();
 
 #ifdef TEST_IHMARBITRE
     void creerRaccourcisClavier();
