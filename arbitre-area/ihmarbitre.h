@@ -11,6 +11,7 @@
  */
 
 #include <QtWidgets>
+#include "basededonnees.h"
 
 /**
  * @def TEST_IHMARBITRE
@@ -23,6 +24,20 @@
  * @brief Pour le mode kiosque Raspberry Pi
  */
 #define PLEIN_ECRAN
+
+// Numéro de champs pour les requête SQL
+#define COLONNE_idRencontre        0
+#define COLONNE_idClubA            1
+#define COLONNE_idClubW            2
+#define COLONNE_nbPartiesGagnantes 3
+#define COLONNE_estFinie           4
+#define COLONNE_horodatage         5
+#define COLONNE_nomClubA           6
+#define COLONNE_nomClubW           7
+#define COLONNE_nomClub            1
+/**
+ * @todo Définir les noms de colonnes pour les parties
+ */
 
 // QT_BEGIN_NAMESPACE
 namespace Ui
@@ -49,7 +64,13 @@ class IHMArbitre : public QMainWindow
   private:
     Ui::IHMArbitre* ui; //!< la fenêtre graphique associée à cette classe
     CommunicationBluetooth*
-      communicationBluetooth; //!< la communication avec les modules
+                         communicationBluetooth; //!< la communication avec les modules
+    BaseDeDonnees*       bdd;        //!< la relation vers la base de données
+    QVector<QStringList> rencontres; //!< Les rencontres
+    QVector<QStringList> joueursEquipeA; //!< Les joueurs du club A
+    QVector<QStringList> joueursEquipeW; //!< Les joueurs du club W
+
+    QVector<QStringList> clubs; //!< Les clubs
 
     /**
      * @enum Ecran
@@ -58,9 +79,8 @@ class IHMArbitre : public QMainWindow
     enum Ecran
     {
         Accueil,
-        AccueilRencontre,
-        CreationRencontre,
-        CreationTournoi,
+        Rencontre,
+        Partie,
         NbEcrans
     };
     /**
@@ -78,7 +98,11 @@ class IHMArbitre : public QMainWindow
     void initialiserCommunicationBluetooth();
     void installerGestionEvenements();
     void initialiserPageAccueil();
+    void initialiserBDD();
     void afficherEtatBluetooth(QLabel* module, EtatModule etat);
+    void chargerRencontres();
+    void chargerClubs();
+    void chargerJoueurs();
 
 #ifdef TEST_IHMARBITRE
     void creerRaccourcisClavier();
@@ -101,6 +125,9 @@ class IHMArbitre : public QMainWindow
     void afficherDeconnexionScore();
     void detecter();
     void declencherNet(int nbNets);
+    void chargerPartiesSimples();
+    void chargerPartiesDoubles();
+    void demarrerRencontre();
 };
 
 #endif // IHMARBITRE_H

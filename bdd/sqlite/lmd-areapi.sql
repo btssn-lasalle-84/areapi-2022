@@ -47,7 +47,7 @@ INSERT INTO Joueur(numeroLicence, idClub, nom, prenom) VALUES (43041,6,'JOULLIE'
 
 --- Table Rencontre
 
-INSERT INTO Rencontre(idRencontre, idClubA, idClubB, nbPartiesGagnantes, estFinie, horodatage) VALUES (NULL,3,1,8,0,'2022-01-29 08:00:00');
+INSERT INTO Rencontre(idRencontre, idClubA, idClubW, nbPartiesGagnantes, estFinie, horodatage) VALUES (NULL,3,1,8,0,'2022-01-29 08:00:00');
 
 --- Table Partie
 
@@ -57,6 +57,6 @@ INSERT INTO Partie(idPartie, idRencontre, idJoueurA, idJoueurB, idJoueurW, idJou
 
 --- Table Score
 
-INSERT INTO Score(idPartie, numeroSet, pointsJoueurClubA, pointsJoueurClubB, debut) VALUES (1,1,11,5,'2022-01-29 08:15:00');
-INSERT INTO Score(idPartie, numeroSet, pointsJoueurClubA, pointsJoueurClubB, debut) VALUES (1,2,0,0,'2022-01-29 08:25:00');
+INSERT INTO Score(idPartie, numeroSet, pointsJoueurClubA, pointsJoueurClubW, debut) VALUES (1,1,11,5,'2022-01-29 08:15:00');
+INSERT INTO Score(idPartie, numeroSet, pointsJoueurClubA, pointsJoueurClubW, debut) VALUES (1,2,0,0,'2022-01-29 08:25:00');
 

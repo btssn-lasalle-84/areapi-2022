@@ -32,9 +32,14 @@ IHMArbitre::IHMArbitre(QWidget* parent) :
     initialiserPageAccueil();
     initialiserCommunicationBluetooth();
     installerGestionEvenements();
+    initialiserBDD();
+    chargerRencontres();
+    chargerClubs();
 
+    // Pour les tests
     afficherEcran(IHMArbitre::Accueil);
-    // afficherEcran(IHMArbitre::AccueilRencontre);
+    // afficherEcran(IHMArbitre::Rencontre);
+    // afficherEcran(IHMArbitre::Partie);
 
 #ifdef PLEIN_ECRAN
     showFullScreen();
@@ -111,7 +116,7 @@ void IHMArbitre::fermerApplication()
 
 void IHMArbitre::demarrer()
 {
-    afficherEcran(Ecran::AccueilRencontre);
+    afficherEcran(Ecran::Rencontre);
 }
 
 void IHMArbitre::afficherNetTrouve()
@@ -175,11 +180,40 @@ void IHMArbitre::declencherNet(int nbNets)
     qDebug() << Q_FUNC_INFO << "NET" << nbNets;
 }
 
+void IHMArbitre::demarrerRencontre()
+{
+    // aucune rencontre sélectionnée ?
+    if(ui->comboBoxListeRencontres->currentIndex() == -1)
+        return;
+    qDebug() << Q_FUNC_INFO << ui->comboBoxListeRencontres->currentText();
+    // aucune partie simple OU double sélectionnée ?
+    /**
+     * @todo Compléter le test de vérification
+     */
+    if(ui->comboBoxListePartiesSimples->currentIndex() == -1)
+        return;
+    qDebug() << Q_FUNC_INFO << ui->comboBoxListePartiesSimples->currentText();
+    /**
+     * @todo Afficher les informations de la partie dans l'écran Partie
+     */
+    afficherEcran(IHMArbitre::Partie);
+}
+
 // Méthodes privées
 
 void IHMArbitre::initialiserCommunicationBluetooth()
 {
     communicationBluetooth = new CommunicationBluetooth(this);
+}
+
+void IHMArbitre::initialiserBDD()
+{
+    bdd = BaseDeDonnees::getInstance("QSQLITE");
+    if(bdd->estOuvert() == false)
+    {
+        bdd->ouvrir("areapi.sqlite");
+        qDebug() << Q_FUNC_INFO << "Ouverture BDD" << bdd;
+    }
 }
 
 void IHMArbitre::installerGestionEvenements()
@@ -232,6 +266,18 @@ void IHMArbitre::installerGestionEvenements()
             SIGNAL(netDetecte(int)),
             this,
             SLOT(declencherNet(int)));
+    connect(ui->buttonSelectionnerRencontre,
+            SIGNAL(clicked(bool)),
+            this,
+            SLOT(demarrerRencontre()));
+    connect(ui->comboBoxListeRencontres,
+            SIGNAL(currentIndexChanged(int)),
+            this,
+            SLOT(chargerPartiesSimples()));
+    connect(ui->comboBoxListeRencontres,
+            SIGNAL(currentIndexChanged(int)),
+            this,
+            SLOT(chargerPartiesDoubles()));
 }
 
 void IHMArbitre::initialiserPageAccueil()
@@ -266,6 +312,129 @@ void IHMArbitre::afficherEtatBluetooth(QLabel* module, EtatModule etat)
     module->setPixmap(pixmap);
 
     delete image;
+}
+
+void IHMArbitre::chargerRencontres()
+{
+    QString requete = "SELECT Rencontre.*, a.nomClub, b.nomClub FROM Rencontre "
+                      "INNER JOIN Club a ON (a.idClub = Rencontre.idClubA) "
+                      "INNER JOIN Club b ON (b.idClub = Rencontre.idClubW);";
+    bool retour;
+
+    rencontres.clear();
+    retour = bdd->recuperer(requete, rencontres);
+    qDebug() << Q_FUNC_INFO << rencontres;
+    if(retour)
+    {
+        for(int i = 0; i < rencontres.size(); ++i)
+        {
+            ui->comboBoxListeRencontres->addItem(
+              rencontres.at(i).at(COLONNE_nomClubA) + " vs " +
+              rencontres.at(i).at(COLONNE_nomClubW));
+        }
+        chargerPartiesSimples();
+        chargerPartiesDoubles();
+    }
+}
+
+void IHMArbitre::chargerPartiesSimples()
+{
+    if(ui->comboBoxListeRencontres->currentIndex() == -1)
+        return;
+
+    qDebug() << Q_FUNC_INFO << ui->comboBoxListeRencontres->currentIndex();
+
+    chargerJoueurs();
+    ui->comboBoxListePartiesSimples->clear();
+    QVector<int> sequenceJoueursEquipeA({ 0, 1, 2, 3, 0, 1, 3, 2, 0, 2, 3, 1 });
+    QVector<int> sequenceJoueursEquipeW({ 0, 1, 2, 3, 1, 0, 2, 3, 2, 0, 1, 3 });
+    for(int i = 0; i < sequenceJoueursEquipeA.size(); ++i)
+    {
+        /**
+         * @todo Définir les noms de colonnes et intégrer les prénoms
+         */
+        ui->comboBoxListePartiesSimples->addItem(
+          joueursEquipeA.at(sequenceJoueursEquipeA.at(i)).at(0) + " vs " +
+          joueursEquipeW.at(sequenceJoueursEquipeW.at(i)).at(0));
+    }
+}
+
+void IHMArbitre::chargerPartiesDoubles()
+{
+    if(ui->comboBoxListeRencontres->currentIndex() == -1)
+        return;
+
+    qDebug() << Q_FUNC_INFO << ui->comboBoxListeRencontres->currentIndex();
+
+    chargerJoueurs();
+    ui->comboBoxListeJoueurA->clear();
+    ui->comboBoxListeJoueurB->clear();
+    /**
+     * @todo Définir les parties de double
+     */
+    for(int i = 0; i < joueursEquipeA.size(); ++i)
+    {
+        /**
+         * @todo Définir les noms de colonnes
+         */
+        ui->comboBoxListeJoueurA->addItem(joueursEquipeA.at(i).at(0) + " " +
+                                          joueursEquipeA.at(i).at(1));
+        ui->comboBoxListeJoueurB->addItem(joueursEquipeA.at(i).at(0) + " " +
+                                          joueursEquipeA.at(i).at(1));
+    }
+
+    ui->comboBoxListeJoueurW->clear();
+    ui->comboBoxListeJoueurX->clear();
+    for(int i = 0; i < joueursEquipeW.size(); ++i)
+    {
+        /**
+         * @todo Définir les noms de colonnes
+         */
+        ui->comboBoxListeJoueurW->addItem(joueursEquipeW.at(i).at(0) + " " +
+                                          joueursEquipeW.at(i).at(1));
+        ui->comboBoxListeJoueurX->addItem(joueursEquipeW.at(i).at(0) + " " +
+                                          joueursEquipeW.at(i).at(1));
+    }
+}
+
+void IHMArbitre::chargerClubs()
+{
+    QString requete = "SELECT * FROM Club;";
+    bool    retour;
+
+    clubs.clear();
+    retour = bdd->recuperer(requete, clubs);
+    qDebug() << Q_FUNC_INFO << clubs;
+    if(retour)
+    {
+        for(int i = 0; i < clubs.size(); ++i)
+        {
+            ui->comboBoxChoixClubA->addItem(clubs.at(i).at(COLONNE_nomClub));
+            ui->comboBoxChoixClubW->addItem(clubs.at(i).at(COLONNE_nomClub));
+        }
+    }
+}
+
+void IHMArbitre::chargerJoueurs()
+{
+    QString requeteListeJoueurA =
+      "SELECT nom, prenom FROM Joueur "
+      "WHERE idClub = '" +
+      rencontres.at(ui->comboBoxListeRencontres->currentIndex())
+        .at(COLONNE_idClubA) +
+      "'";
+    joueursEquipeA.clear();
+    bool retour = bdd->recuperer(requeteListeJoueurA, joueursEquipeA);
+    qDebug() << Q_FUNC_INFO << joueursEquipeA;
+    QString requeteListeJoueurW =
+      "SELECT nom, prenom FROM Joueur "
+      "WHERE idClub = '" +
+      rencontres.at(ui->comboBoxListeRencontres->currentIndex())
+        .at(COLONNE_idClubW) +
+      "'";
+    joueursEquipeW.clear();
+    retour = bdd->recuperer(requeteListeJoueurW, joueursEquipeW);
+    qDebug() << Q_FUNC_INFO << joueursEquipeW;
 }
 
 #ifdef TEST_IHMARBITRE
