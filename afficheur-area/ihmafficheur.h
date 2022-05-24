@@ -98,6 +98,12 @@ public:
     IHMAfficheur(QWidget* parent = nullptr);
     ~IHMAfficheur();
 
+    enum Ecran
+    {
+        EcranVeille = 0,
+        EcranRencontre
+    };
+
   public slots:
     void initialiserRencontre(QString    nomModule,
                               QByteArray NomClubA,

@@ -70,6 +70,7 @@ void IHMAfficheur::initialiserRencontre(QString    nomModule,
     // crée une rencontre et les deux équipes
     if(rencontre == nullptr)
     {
+        ui->Application->setCurrentIndex(IHMAfficheur::Ecran::EcranRencontre);
         rencontre =
           new Rencontre(QString(NomClubA.data()), QString(NomClubW.data()));
 
@@ -262,6 +263,7 @@ void IHMAfficheur::initialiserScorePartie(QString    nomModule,
 void IHMAfficheur::initialiserIHM()
 {
     qDebug() << Q_FUNC_INFO;
+    ui->Application->setCurrentIndex(IHMAfficheur::Ecran::EcranVeille);
 #ifdef PLEIN_ECRAN
     // showFullScreen();
     showMaximized();
@@ -579,3 +581,4 @@ void IHMAfficheur::initialiserJoueurs(QByteArray NomJoueurA, QByteArray NomJoueu
     initialiserJoueurY(QString(NomJoueurY.data()), QString(PrenomJoueurY.data()));
     initialiserJoueurZ(QString(NomJoueurZ.data()), QString(PrenomJoueurZ.data()));
 }
+
