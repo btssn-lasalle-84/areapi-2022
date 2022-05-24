@@ -18,6 +18,7 @@
  * @brief Pour le mode kiosque Télévision
  */
 #define PLEIN_ECRAN
+//#define ECRAN_VEILLE
 
 //#define TEST_RELATIONS
 
@@ -97,6 +98,12 @@ class IHMAfficheur : public QMainWindow
 public:
     IHMAfficheur(QWidget* parent = nullptr);
     ~IHMAfficheur();
+
+    enum Ecran
+    {
+        EcranVeille = 0,
+        EcranRencontre
+    };
 
   public slots:
     void initialiserRencontre(QString    nomModule,
