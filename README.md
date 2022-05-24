@@ -9,6 +9,7 @@ Système d’assistance à l’arbitrage lors d’une partie de tennis de table 
 
 ## Historique des versions
 
+- Version 0.2 : 24/05/2022
 - Version 0.1 : 02/04/2022
 
 ## Auteurs
@@ -19,3 +20,16 @@ Système d’assistance à l’arbitrage lors d’une partie de tennis de table 
 ## Kanban
 
 [areapi-2022](https://github.com/btssn-lasalle-84/areapi-2022/projects/1)
+
+## Base de données
+
+![](images/schema-bdd-areapi-v0.2.png)
+
+## Module de gestion de partie Arbitre-AREA
+
+![](images/areapi-arbitre-accueil.png)
+
+![](images/areapi-arbitre-rencontre.png)
+
+![](images/areapi-arbitre-partie.png)
+
