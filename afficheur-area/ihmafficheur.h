@@ -18,6 +18,7 @@
  * @brief Pour le mode kiosque Télévision
  */
 #define PLEIN_ECRAN
+//#define ECRAN_VEILLE
 
 //#define TEST_RELATIONS
 

@@ -263,11 +263,14 @@ void IHMAfficheur::initialiserScorePartie(QString    nomModule,
 void IHMAfficheur::initialiserIHM()
 {
     qDebug() << Q_FUNC_INFO;
+#ifdef ECRAN_VEILLE
     ui->Application->setCurrentIndex(IHMAfficheur::Ecran::EcranVeille);
+#endif // ECRAN_VEILLE
+
 #ifdef PLEIN_ECRAN
-    // showFullScreen();
-    showMaximized();
-#endif // PLEIN_ECRAN
+    showFullScreen();
+    //showMaximized();
+#endif // PLEIN_ECRAN   
 }
 
 void IHMAfficheur::initialiserReception()
