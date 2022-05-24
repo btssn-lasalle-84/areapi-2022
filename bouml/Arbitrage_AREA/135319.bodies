@@ -1,0 +1,283 @@
+class IHMArbitre
+!!!139287.cpp!!!	IHMArbitre(inout parent : QWidget = nullptr)
+    ui->setupUi(this);
+    qDebug() << Q_FUNC_INFO;
+
+#ifdef TEST_IHMARBITRE
+    creerRaccourcisClavier();
+#endif
+
+    initialiserPageAccueil();
+    initialiserCommunicationBluetooth();
+    installerGestionEvenements();
+    initialiserBDD();
+    chargerRencontres();
+    chargerClubs();
+
+    // Pour les tests
+    afficherEcran(IHMArbitre::Accueil);
+    // afficherEcran(IHMArbitre::Rencontre);
+    // afficherEcran(IHMArbitre::Partie);
+
+#ifdef PLEIN_ECRAN
+    showFullScreen();
+// showMaximized();
+#endif
+
+    // communicationBluetooth->demarrerRecherche();
+    communicationBluetooth->demarrerRechercheService();
+!!!139415.cpp!!!	~IHMArbitre()
+    delete ui;
+    qDebug() << Q_FUNC_INFO;
+!!!139543.cpp!!!	initialiserCommunicationBluetooth() : void
+    communicationBluetooth = new CommunicationBluetooth(this);
+!!!139671.cpp!!!	installerGestionEvenements() : void
+    connect(ui->pushButtonDetecterModules,
+            SIGNAL(clicked(bool)),
+            this,
+            SLOT(detecter()));
+    connect(ui->pushButtonDemarrer,
+            SIGNAL(clicked(bool)),
+            this,
+            SLOT(demarrer()));
+    connect(communicationBluetooth,
+            SIGNAL(moduleEcranTrouve()),
+            this,
+            SLOT(afficherEcranTrouve()));
+    connect(communicationBluetooth,
+            SIGNAL(moduleNetTrouve()),
+            this,
+            SLOT(afficherNetTrouve()));
+    connect(communicationBluetooth,
+            SIGNAL(moduleScoreTrouve()),
+            this,
+            SLOT(afficherScoreTrouve()));
+    connect(communicationBluetooth,
+            SIGNAL(moduleEcranConnecte()),
+            this,
+            SLOT(afficherConnexionEcran()));
+    connect(communicationBluetooth,
+            SIGNAL(moduleNetConnecte()),
+            this,
+            SLOT(afficherConnexionNet()));
+    connect(communicationBluetooth,
+            SIGNAL(moduleScoreConnecte()),
+            this,
+            SLOT(afficherConnexionScore()));
+    connect(communicationBluetooth,
+            SIGNAL(moduleEcranDeconnecte()),
+            this,
+            SLOT(afficherDeconnexionEcran()));
+    connect(communicationBluetooth,
+            SIGNAL(moduleNetDeconnecte()),
+            this,
+            SLOT(afficherDeconnexionNet()));
+    connect(communicationBluetooth,
+            SIGNAL(moduleScoreDeconnecte()),
+            this,
+            SLOT(afficherDeconnexionScore()));
+    connect(communicationBluetooth,
+            SIGNAL(netDetecte(int)),
+            this,
+            SLOT(declencherNet(int)));
+    connect(ui->buttonSelectionnerRencontre,
+            SIGNAL(clicked(bool)),
+            this,
+            SLOT(demarrerRencontre()));
+    connect(ui->comboBoxListeRencontres,
+            SIGNAL(currentIndexChanged(int)),
+            this,
+            SLOT(chargerPartiesSimples()));
+!!!139799.cpp!!!	initialiserPageAccueil() : void
+    afficherEtatBluetooth(ui->labelEtatModuleEcran, Absent);
+    afficherEtatBluetooth(ui->labelEtatModuleNet, Absent);
+    afficherEtatBluetooth(ui->labelEtatModuleScore, Absent);
+!!!153239.cpp!!!	initialiserBDD() : void
+    bdd = BaseDeDonnees::getInstance("QSQLITE");
+    if(bdd->estOuvert() == false)
+    {
+        bdd->ouvrir("areapi.sqlite");
+        qDebug() << Q_FUNC_INFO << "Ouverture BDD" << bdd;
+    }
+!!!139927.cpp!!!	afficherEtatBluetooth(inout module : QLabel, in etat : IHMArbitre::EtatModule) : void
+    QImage* image;
+    QPixmap pixmap;
+
+    image = new QImage();
+    switch(etat)
+    {
+        case Absent:
+            image->load(":/images/rouge.png");
+            break;
+        case Trouve:
+            image->load(":/images/orange.png");
+            break;
+        case Connecte:
+            image->load(":/images/vert.png");
+            break;
+        default:
+            break;
+    }
+
+    pixmap = QPixmap::fromImage(*image);
+    module->setPixmap(pixmap);
+
+    delete image;
+!!!153367.cpp!!!	chargerRencontres() : void
+    QString requete = "SELECT Rencontre.*, a.nomClub, b.nomClub FROM Rencontre "
+                      "INNER JOIN Club a ON (a.idClub = Rencontre.idClubA) "
+                      "INNER JOIN Club b ON (b.idClub = Rencontre.idClubW);";
+    bool retour;
+
+    rencontres.clear();
+    retour = bdd->recuperer(requete, rencontres);
+    qDebug() << Q_FUNC_INFO << rencontres;
+    if(retour)
+    {
+        for(int i = 0; i < rencontres.size(); ++i)
+        {
+            ui->comboBoxListeRencontres->addItem(
+              rencontres.at(i).at(COLONNE_nomClubA) + " vs " +
+              rencontres.at(i).at(COLONNE_nomClubW));
+        }
+        chargerPartiesSimples();
+        /**
+         * @todo Appeler chargerPartiesDoubles();
+         */
+    }
+!!!153495.cpp!!!	chargerClubs() : void
+    QString requete = "SELECT * FROM Club;";
+    bool    retour;
+
+    clubs.clear();
+    retour = bdd->recuperer(requete, clubs);
+    qDebug() << Q_FUNC_INFO << clubs;
+    if(retour)
+    {
+        for(int i = 0; i < clubs.size(); ++i)
+        {
+            ui->comboBoxChoixClubA->addItem(clubs.at(i).at(COLONNE_nomClub));
+            /**
+             * @todo Créer la liste pour le choix du clubW
+             */
+        }
+    }
+!!!140055.cpp!!!	creerRaccourcisClavier() : void
+    // Ctrl-Q pour quitter
+    QAction* quitter = new QAction(this);
+    quitter->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_Q));
+    addAction(quitter);
+    connect(quitter, SIGNAL(triggered()), this, SLOT(fermerApplication()));
+
+    // Flèche droite pour écran suivant
+    QAction* actionAllerDroite = new QAction(this);
+    actionAllerDroite->setShortcut(QKeySequence(Qt::Key_Right));
+    addAction(actionAllerDroite);
+    connect(actionAllerDroite,
+            SIGNAL(triggered()),
+            this,
+            SLOT(afficherEcranSuivant()));
+
+    // Flèche gauche pour écran précédent
+    QAction* actionAllerGauche = new QAction(this);
+    actionAllerGauche->setShortcut(QKeySequence(Qt::Key_Left));
+    addAction(actionAllerGauche);
+    connect(actionAllerGauche,
+            SIGNAL(triggered()),
+            this,
+            SLOT(afficherEcranPrecedent()));
+!!!140183.cpp!!!	afficherEcran(in ecran : IHMArbitre::Ecran) : void
+    qDebug() << Q_FUNC_INFO << "ecran" << ecran;
+    ui->ecrans->setCurrentIndex(ecran);
+!!!140311.cpp!!!	afficherEcranPrecedent() : void
+    int ecranCourant   = ui->ecrans->currentIndex();
+    int ecranPrecedent = (ecranCourant - 1) % int(IHMArbitre::NbEcrans);
+    if(ecranPrecedent == -1)
+        ecranPrecedent = int(IHMArbitre::NbEcrans) - 1;
+    afficherEcran(IHMArbitre::Ecran(ecranPrecedent));
+!!!140439.cpp!!!	afficherEcranSuivant() : void
+    int ecranCourant = IHMArbitre::Ecran(ui->ecrans->currentIndex());
+    int ecranSuivant = (ecranCourant + 1) % int(IHMArbitre::NbEcrans);
+    afficherEcran(IHMArbitre::Ecran(ecranSuivant));
+!!!140567.cpp!!!	fermerApplication() : void
+    this->close();
+    qDebug() << Q_FUNC_INFO;
+!!!140695.cpp!!!	demarrer() : void
+    afficherEcran(Ecran::Rencontre);
+!!!140823.cpp!!!	afficherNetTrouve() : void
+    afficherEtatBluetooth(ui->labelEtatModuleNet, Trouve);
+!!!140951.cpp!!!	afficherEcranTrouve() : void
+    afficherEtatBluetooth(ui->labelEtatModuleEcran, Trouve);
+!!!141079.cpp!!!	afficherScoreTrouve() : void
+    afficherEtatBluetooth(ui->labelEtatModuleScore, Trouve);
+!!!141207.cpp!!!	afficherConnexionNet() : void
+    qDebug() << Q_FUNC_INFO;
+    afficherEtatBluetooth(ui->labelEtatModuleNet, Connecte);
+!!!141335.cpp!!!	afficherConnexionEcran() : void
+    qDebug() << Q_FUNC_INFO;
+    afficherEtatBluetooth(ui->labelEtatModuleEcran, Connecte);
+!!!141463.cpp!!!	afficherConnexionScore() : void
+    qDebug() << Q_FUNC_INFO;
+    afficherEtatBluetooth(ui->labelEtatModuleScore, Connecte);
+!!!141591.cpp!!!	afficherDeconnexionNet() : void
+    afficherEtatBluetooth(ui->labelEtatModuleNet, Trouve);
+!!!141719.cpp!!!	afficherDeconnexionEcran() : void
+    afficherEtatBluetooth(ui->labelEtatModuleEcran, Trouve);
+!!!141847.cpp!!!	afficherDeconnexionScore() : void
+    afficherEtatBluetooth(ui->labelEtatModuleScore, Trouve);
+!!!153623.cpp!!!	detecter() : void
+    // communicationBluetooth->arreterRecherche();
+    communicationBluetooth->arreterRechercheService();
+    // communicationBluetooth->demarrerRecherche();
+    communicationBluetooth->demarrerRechercheService();
+!!!142359.cpp!!!	declencherNet(in nbNets : int) : void
+    qDebug() << Q_FUNC_INFO << "NET" << nbNets;
+!!!153751.cpp!!!	chargerPartiesSimples() : void
+    if(ui->comboBoxListeRencontres->currentIndex() == -1)
+        return;
+
+    qDebug() << Q_FUNC_INFO << ui->comboBoxListeRencontres->currentIndex();
+    QString requete =
+      "SELECT * FROM Partie "
+      "INNER JOIN Joueur joueurA ON (joueurA.numeroLicence = Partie.idJoueurA) "
+      "INNER JOIN Joueur joueurB ON (joueurB.numeroLicence = Partie.idJoueurB) "
+      "INNER JOIN Rencontre ON Partie.idRencontre = Rencontre.idRencontre "
+      "INNER JOIN Club ClubA ON (ClubA.idClub = Rencontre.idClubA) "
+      "INNER JOIN Club ClubW ON (ClubW.idClub = Rencontre.idClubW) "
+      "WHERE Rencontre.idRencontre='" +
+      rencontres.at(ui->comboBoxListeRencontres->currentIndex())
+        .at(COLONNE_idRencontre) +
+      "' AND Partie.typePartie='1';";
+    bool retour;
+
+    partiesSimples.clear();
+    retour = bdd->recuperer(requete, partiesSimples);
+    qDebug() << Q_FUNC_INFO << partiesSimples;
+    if(retour)
+    {
+        for(int i = 0; i < partiesSimples.size(); ++i)
+        {
+            /**
+             * @todo Définir les noms de colonnes
+             */
+            ui->comboBoxListePartiesSimples->addItem(
+              partiesSimples.at(i).at(13) + " vs " +
+              partiesSimples.at(i).at(17));
+        }
+    }
+!!!153879.cpp!!!	demarrerRencontre() : void
+    // aucune rencontre sélectionnée ?
+    if(ui->comboBoxListeRencontres->currentIndex() == -1)
+        return;
+    qDebug() << Q_FUNC_INFO << ui->comboBoxListeRencontres->currentText();
+    // aucune partie simple OU double sélectionnée ?
+    /**
+     * @todo Compléter le test de vérification
+     */
+    if(ui->comboBoxListePartiesSimples->currentIndex() == -1)
+        return;
+    qDebug() << Q_FUNC_INFO << ui->comboBoxListePartiesSimples->currentText();
+    /**
+     * @todo Afficher les informations de la partie dans l'écran Partie
+     */
+    afficherEcran(IHMArbitre::Partie);

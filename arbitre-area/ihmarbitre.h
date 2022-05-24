@@ -11,6 +11,7 @@
  */
 
 #include <QtWidgets>
+#include "basededonnees.h"
 
 /**
  * @def TEST_IHMARBITRE
@@ -24,12 +25,28 @@
  */
 #define PLEIN_ECRAN
 
-QT_BEGIN_NAMESPACE
+// Numéro de champs pour les requête SQL
+#define COLONNE_idRencontre        0
+#define COLONNE_idClubA            1
+#define COLONNE_idClubW            2
+#define COLONNE_nbPartiesGagnantes 3
+#define COLONNE_estFinie           4
+#define COLONNE_horodatage         5
+#define COLONNE_nomClubA           6
+#define COLONNE_nomClubW           7
+#define COLONNE_nomClub            1
+/**
+ * @todo Définir les noms de colonnes pour les parties
+ */
+
+// QT_BEGIN_NAMESPACE
 namespace Ui
 {
 class IHMArbitre;
 }
-QT_END_NAMESPACE
+// QT_END_NAMESPACE
+
+class CommunicationBluetooth;
 
 /**
  * @class IHMArbitre
@@ -46,19 +63,46 @@ class IHMArbitre : public QMainWindow
 
   private:
     Ui::IHMArbitre* ui; //!< la fenêtre graphique associée à cette classe
+    CommunicationBluetooth*
+                         communicationBluetooth; //!< la communication avec les modules
+    BaseDeDonnees*       bdd;        //!< la relation vers la base de données
+    QVector<QStringList> rencontres; //!< Les rencontres
+    QVector<QStringList> joueursEquipeA; //!< Les joueurs du club A
+    QVector<QStringList> joueursEquipeW; //!< Les joueurs du club W
+
+    QVector<QStringList> clubs; //!< Les clubs
 
     /**
      * @enum Ecran
      * @brief Définit les différents écrans de l'IHM
-     *
      */
     enum Ecran
     {
-        AccueilRencontre = 0,
-        CreationRencontre,
-        CreationTournoi,
+        Accueil,
+        Rencontre,
+        Partie,
         NbEcrans
     };
+    /**
+     * @enum Ecran
+     * @brief Définit les différents écrans de l'IHM
+     */
+    enum EtatModule
+    {
+        Absent,   // 0
+        Trouve,   // 1
+        Connecte, // 2
+        NbEtats
+    };
+
+    void initialiserCommunicationBluetooth();
+    void installerGestionEvenements();
+    void initialiserPageAccueil();
+    void initialiserBDD();
+    void afficherEtatBluetooth(QLabel* module, EtatModule etat);
+    void chargerRencontres();
+    void chargerClubs();
+    void chargerJoueurs();
 
 #ifdef TEST_IHMARBITRE
     void creerRaccourcisClavier();
@@ -69,6 +113,21 @@ class IHMArbitre : public QMainWindow
     void afficherEcranPrecedent();
     void afficherEcranSuivant();
     void fermerApplication();
+    void demarrer();
+    void afficherNetTrouve();
+    void afficherEcranTrouve();
+    void afficherScoreTrouve();
+    void afficherConnexionNet();
+    void afficherConnexionEcran();
+    void afficherConnexionScore();
+    void afficherDeconnexionNet();
+    void afficherDeconnexionEcran();
+    void afficherDeconnexionScore();
+    void detecter();
+    void declencherNet(int nbNets);
+    void chargerPartiesSimples();
+    void chargerPartiesDoubles();
+    void demarrerRencontre();
 };
 
 #endif // IHMARBITRE_H

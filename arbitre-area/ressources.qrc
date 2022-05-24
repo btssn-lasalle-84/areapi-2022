@@ -1,5 +1,8 @@
 <RCC>
     <qresource prefix="/">
         <file alias="icone-area.png">images/icone-area.png</file>
+        <file>images/rouge.png</file>
+        <file>images/orange.png</file>
+        <file>images/vert.png</file>
     </qresource>
 </RCC>

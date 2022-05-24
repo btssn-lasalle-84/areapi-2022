@@ -1,0 +1,55 @@
+class Rencontre
+!!!145943.cpp!!!	Rencontre()
+    qDebug() << Q_FUNC_INFO;
+    equipes.push_back(new Equipe());
+    equipes.push_back(new Equipe());
+!!!146071.cpp!!!	Rencontre(in nomEquipeA : QString, in nomEquipeW : QString)
+    qDebug() << Q_FUNC_INFO << nomEquipeA << nomEquipeW;
+    equipes.push_back(new Equipe(nomEquipeA));
+    equipes.push_back(new Equipe(nomEquipeW));
+!!!146199.cpp!!!	~Rencontre()
+    for(int i = 0; i < equipes.size(); i++)
+    {
+        if(equipes[i] != nullptr)
+            delete equipes[i];
+    }
+    qDebug() << Q_FUNC_INFO;
+!!!146327.cpp!!!	getEquipeA() : Equipe
+    if(equipes.size() == Rencontre::NbEquipes)
+    {
+        qDebug() << Q_FUNC_INFO << equipes[NomEquipe::EquipeA]
+                 << equipes[NomEquipe::EquipeA]->getNom();
+        return equipes[NomEquipe::EquipeA];
+    }
+    return nullptr;
+!!!146455.cpp!!!	getEquipeW() : Equipe
+    if(equipes.size() == Rencontre::NbEquipes)
+    {
+        qDebug() << Q_FUNC_INFO << equipes[NomEquipe::EquipeW]
+                 << equipes[NomEquipe::EquipeW]->getNom();
+        return equipes[NomEquipe::EquipeW];
+    }
+    return nullptr;
+!!!146583.cpp!!!	getParties() : QVector<Partie>
+    return this->parties;
+!!!129282.cpp!!!	getPartie(in cases : uint) : Partie
+    return parties[cases];
+!!!129410.cpp!!!	setPartiesSimple(in nomJoueurA1 : QString, in prenomJoueurA1 : QString, in nomJoueurW1 : QString, in prenomJoueurW2 : QString) : void
+    parties.push_back(Partie(0, nomJoueurA1, prenomJoueurA1,
+                                 nomJoueurW1, prenomJoueurW2));
+!!!129538.cpp!!!	setPartiesDouble(in nomJoueurA1 : QString, in prenomJoueurA1 : QString, in nomJoueurA2 : QString, in prenomJoueurA2 : QString, in nomJoueurW1 : QString, in prenomJoueurW1 : QString, in nomJoueurW2 : QString, in prenomJoueurW2 : QString) : void
+    parties.push_back(Partie(1, nomJoueurA1, prenomJoueurA1,
+                                    nomJoueurA2, prenomJoueurA2,
+                                    nomJoueurW1, prenomJoueurW1,
+                                    nomJoueurW2, prenomJoueurW2));
+!!!129666.cpp!!!	actualiserPartie(in idPartieScore : QByteArray, in scoreJG : QByteArray, in scoreJD : QByteArray, in nbSetJG : QByteArray, in nbSetJD : QByteArray, in net : QByteArray) : void
+    qDebug() << Q_FUNC_INFO;
+    parties[idPartieScore.toUInt()].setSetJoueurG(nbSetJG.toUInt());
+    parties[idPartieScore.toUInt()].setSetJoueurD(nbSetJD.toUInt());
+    parties[idPartieScore.toUInt()].setScoreJoueurG(scoreJG.toUInt());
+    parties[idPartieScore.toUInt()].setScoreJoueurG(scoreJD.toUInt());
+    if(net.toUInt() == 1)
+    {
+        parties[idPartieScore.toUInt()].setNombreNET((parties[idPartieScore.toUInt()].getNombreNET() + 1));
+    }
+

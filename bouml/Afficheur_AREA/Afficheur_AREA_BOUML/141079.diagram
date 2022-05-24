@@ -1,0 +1,56 @@
+format 224
+
+classinstance 128023 class_ref 135063 // ReceptionTrame
+  name ""   xyz 667 4.6 2000 life_line_z 2000
+classinstance 128151 class_ref 134807 // IHMAfficheur
+  name ""   xyz 18 4.6 2000 life_line_z 2000
+fragment 128279 "ref"
+  refer sequencediagram_ref 147842 // ds Initialiser une rencontre
+  xyzwh 277 354.6 2000 377 105
+end
+note 128663 "La socket QBluetoothSocket émet un signal readyRead() à la réception de trames"
+  xyzwh 252.8 16.6 2000 391 133
+fragment 128919 "alt"
+  xyzwh 17.4 164.6 1995 1015 744
+end
+textcanvas 129047 "[trameValide]"
+  xyzwh 121.6 174.4 2010 179 32
+fragment 129175 "alt"
+  xyzwh 66.1 272.5 1995 761 614
+  separator 6936
+  separator 3583
+end
+textcanvas 129303 "[type = ProtocoleArea::RENCONTRE]"
+  xyzwh 154.9 285.7 2020 505 42
+textcanvas 129687 "[type = ProtocoleArea::SIMPLE OU type = ProtocoleArea::DOUBLE]"
+  xyzwh 153.9 496.8 2020 606 64
+textcanvas 129943 "[type = ProtocoleArea::SCORE]"
+  xyzwh 154.9 713 2020 505 42
+fragment 130071 "ref"
+  refer sequencediagram_ref 141207 // ds Visualiser le déroulement d'une partie
+  xyzwh 183.4 753.8 2000 563 105
+end
+fragment 130199 "ref"
+  refer sequencediagram_ref 141335 // ds Initialiser une partie
+  xyzwh 301.2 573.2 2000 327 105
+end
+durationcanvas 128407 classinstance_ref 128023 // :ReceptionTrame
+  xyzwh 777 80.2 2010 11 348
+  overlappingdurationcanvas 129431
+    xyzwh 783 219.6 2020 11 25
+  end
+end
+reflexivemsg 128535 asynchronous
+  to durationcanvas_ref 128407
+  yz 111 2015 msg operation_ref 145047 // "lireSocket() : void"
+  stereotype "<<slot>>" xyz 811 81 3000
+  show_full_operations_definition default show_class_of_operation default drawing_language default show_context_mode default
+  label_xy 789 53
+reflexivemsg 129559 synchronous
+  to durationcanvas_ref 129431
+  yz 219 2025 msg operation_ref 153111 // "decouperTrame() : QList<QByteArray>"
+  show_full_operations_definition default show_class_of_operation default drawing_language default show_context_mode default
+  label_xy 794 192
+line 128791 -_-_ decenter_begin 978 decenter_end 78
+  from ref 128663 z 2011 to ref 128407
+end

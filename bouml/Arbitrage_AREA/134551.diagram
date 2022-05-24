@@ -1,0 +1,49 @@
+format 224
+
+classcanvas 128023 class_ref 135319 // IHMArbitre
+  classdiagramsettings member_max_width 0 end
+  xyz 226 60.7 2000
+end
+classcanvas 128151 class_ref 134935 // CommunicationBluetooth
+  classdiagramsettings member_max_width 0 end
+  xyz 1629 26 3005
+end
+classcanvas 128535 class_ref 135959 // Rencontre
+  classdiagramsettings member_max_width 0 end
+  xyz 9 1496.8 2000
+end
+classcanvas 128663 class_ref 135831 // Joueur
+  classdiagramsettings member_max_width 0 end
+  xyz 1518 2171 2000
+end
+classcanvas 128791 class_ref 134807 // Club
+  classdiagramsettings member_max_width 0 end
+  xyz 1789 1690.5 2000
+end
+classcanvas 128919 class_ref 134551 // BaseDeDonnees
+  classdiagramsettings member_max_width 0 end
+  xyz 1564 1034.5 2010
+end
+relationcanvas 128279 relation_ref 134935 // <unidirectional association>
+  from ref 128151 z 3006 to ref 128023
+  role_a_pos 1211 621 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 128407 relation_ref 135191 // <unidirectional association>
+  from ref 128023 z 3006 to ref 128151
+  role_a_pos 1288 684 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 129047 relation_ref 134679 // <unidirectional association>
+  from ref 128919 z 2011 to point 1510.2 1030.8
+  line 129175 z 2011 to point 1510.2 1068.6
+  line 129303 z 2011 to ref 128919
+  role_a_pos 1326 1053 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 129431 relation_ref 141719 // <unidirectional association>
+  from ref 128023 z 2011 to ref 128919
+  role_a_pos 1513 1003 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+end

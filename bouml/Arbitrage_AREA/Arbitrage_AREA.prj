@@ -1,7 +1,8 @@
 format 224
 "Arbitrage_AREA"
-  revision 5
-  modified_by 12 "bert"
+  revision 7
+  modified_by 23 "tv"
+  cpp_root_dir "../../arbitre-area/"
 
 
   
@@ -399,6 +400,16 @@ format 224
 	  on usecase_ref 128012 // Démarrer une rencontre
       end
     end
+
+    sequencediagram 141079 "ds Démarrer une rencontre"
+      sequencediagramsettings end
+      overlapping_bars size A0
+    end
+
+    sequencediagram 141207 "ds Démarrer l'application"
+      sequencediagramsettings end
+      overlapping_bars size A0
+    end
   end
 
   classview 128012 "Vue de Classe"
@@ -596,4 +607,6 @@ format 224
       
     end
   end
+
+  package_ref 134551 // arbitre-area
 end

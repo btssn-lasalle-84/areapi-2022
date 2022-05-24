@@ -11,6 +11,10 @@
  */
 
 #include <QString>
+#include <QVector>
+
+class ReceptionTrame;
+class Joueur;
 
 /**
  * @class Partie
@@ -20,20 +24,26 @@
 class Partie
 {
   private:
-    unsigned int nombreSet;             //!<
-    unsigned int scoreJoueurG;          //!<
-    unsigned int scoreJoueurD;          //!<
-    unsigned int setJoueurG;            //!<
-    unsigned int setJoueurD;            //!<
-    unsigned int nombreNET;             //!<
-    unsigned int pointConsecutif;       //!<
-    QString      joueurPointConsecutif; //!<
+    bool             estDouble;             //!<
+    unsigned int     nombreSet;             //!<
+    unsigned int     scoreJoueurG;          //!<
+    unsigned int     scoreJoueurD;          //!<
+    unsigned int     setJoueurG;            //!<
+    unsigned int     setJoueurD;            //!<
+    unsigned int     nombreNET;             //!<
+    unsigned int     pointConsecutif;       //!<
+    QString          joueurPointConsecutif; //!<
+    QVector<Joueur*> joueurs;               //!<
+
 
   public:
     Partie();
+    Partie(bool estDouble, QString nomJoueurA1, QString prenomJoueurA1,
+           QString nomJoueurW1, QString prenomJoueurW1,
+           QString nomJoueurA2 = "", QString prenomJoueurA2 ="",
+           QString nomJoueurW2 = "", QString prenomJoueurW2 = "");
     Partie(const Partie& partie);
     ~Partie();
-
     Partie& operator=(const Partie& partie);
 
     bool aGagne() const;
@@ -45,15 +55,17 @@ class Partie
     void ajouterNET();
     void rajouterPointConsecutif();
 
-    unsigned int getNombreSet() const;
-    unsigned int getScoreJoueurG() const;
-    unsigned int getScoreJoueurD() const;
-    unsigned int getSetJoueurG() const;
-    unsigned int getSetJoueurD() const;
-    unsigned int getNombreNET() const;
-    unsigned int getPointConsecutif() const;
-    QString      getJoueurPointConsecutif() const;
+    bool           getEstDouble() const;
+    unsigned int   getNombreSet() const;
+    unsigned int   getScoreJoueurG() const;
+    unsigned int   getScoreJoueurD() const;
+    unsigned int   getSetJoueurG() const;
+    unsigned int   getSetJoueurD() const;
+    unsigned int   getNombreNET() const;
+    unsigned int   getPointConsecutif() const;
+    QString        getJoueurPointConsecutif() const;
 
+    void setEstDouble(const bool& estDouble);
     void setNombreSet(const unsigned int& nombreSet);
     void setScoreJoueurG(const unsigned int& scoreJoueurG);
     void setScoreJoueurD(const unsigned int& scoreJoueurD);

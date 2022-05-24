@@ -1,0 +1,128 @@
+format 224
+
+classinstance 128151 class_ref 135319 // IHMArbitre
+  name ""   xyz 17.5 4.2 2000 life_line_z 2000
+classinstance 128279 class_ref 134551 // BaseDeDonnees
+  name ""   xyz 644.9 4.2 2000 life_line_z 2000
+note 132503 "requete = \"SELECT * FROM Club;\""
+  xyzwh 185 812 2000 484 53
+durationcanvas 128791 classinstance_ref 128151 // :IHMArbitre
+  xyzwh 91 85 2010 11 40
+end
+durationcanvas 129047 classinstance_ref 128151 // :IHMArbitre
+  xyzwh 91 160 2010 11 40
+end
+durationcanvas 129303 classinstance_ref 128151 // :IHMArbitre
+  xyzwh 91 233 2010 11 40
+end
+durationcanvas 129559 classinstance_ref 128151 // :IHMArbitre
+  xyzwh 91 311 2010 11 51
+end
+durationcanvas 129815 classinstance_ref 128279 // :BaseDeDonnees
+  xyzwh 759 344 2010 11 26
+end
+durationcanvas 130071 classinstance_ref 128151 // :IHMArbitre
+  xyzwh 91 406 2010 11 533
+  overlappingdurationcanvas 130967
+    xyzwh 97 508 2020 11 80
+  end
+  overlappingdurationcanvas 131479
+    xyzwh 97 641 2020 11 64
+  end
+  overlappingdurationcanvas 131991
+    xyzwh 97 736 2020 11 68
+  end
+  overlappingdurationcanvas 132759
+    xyzwh 97 907 2020 11 25
+  end
+end
+durationcanvas 130327 classinstance_ref 128279 // :BaseDeDonnees
+  xyzwh 759 450 2010 11 25
+end
+durationcanvas 131223 classinstance_ref 128279 // :BaseDeDonnees
+  xyzwh 759 565 2010 11 26
+end
+durationcanvas 131735 classinstance_ref 128279 // :BaseDeDonnees
+  xyzwh 759 682 2010 11 25
+end
+durationcanvas 132247 classinstance_ref 128279 // :BaseDeDonnees
+  xyzwh 759 769 2010 11 26
+end
+reflexivemsg 128919 synchronous
+  to durationcanvas_ref 128791
+  yz 85 2015 msg operation_ref 139799 // "initialiserPageAccueil() : void"
+  show_full_operations_definition default show_class_of_operation default drawing_language default show_context_mode default
+  label_xy 103 61
+reflexivemsg 129175 synchronous
+  to durationcanvas_ref 129047
+  yz 160 2015 msg operation_ref 139543 // "initialiserCommunicationBluetooth() : void"
+  show_full_operations_definition default show_class_of_operation default drawing_language default show_context_mode default
+  label_xy 103 133
+reflexivemsg 129431 synchronous
+  to durationcanvas_ref 129303
+  yz 233 2015 msg operation_ref 139671 // "installerGestionEvenements() : void"
+  show_full_operations_definition default show_class_of_operation default drawing_language default show_context_mode default
+  label_xy 101 207
+reflexivemsg 129687 synchronous
+  to durationcanvas_ref 129559
+  yz 311 2015 msg operation_ref 153239 // "initialiserBDD() : void"
+  show_full_operations_definition default show_class_of_operation default drawing_language default show_context_mode default
+  label_xy 103 287
+msg 129943 synchronous
+  from durationcanvas_ref 129559
+  to durationcanvas_ref 129815
+  yz 344 2020 explicitmsg "ouvrir(\"areapi.sqlite\")"
+  show_full_operations_definition default show_class_of_operation default drawing_language default show_context_mode default
+  label_xy 295 314
+reflexivemsg 130199 synchronous
+  to durationcanvas_ref 130071
+  yz 406 2015 msg operation_ref 153367 // "chargerRencontres() : void"
+  show_full_operations_definition default show_class_of_operation default drawing_language default show_context_mode default
+  label_xy 102 381
+msg 130455 synchronous
+  from durationcanvas_ref 130071
+  to durationcanvas_ref 130327
+  yz 452 2020 explicitmsg "recuperer(requete, rencontres)"
+  show_full_operations_definition default show_class_of_operation default drawing_language default show_context_mode default
+  label_xy 232 422
+reflexivemsg 131095 synchronous
+  to durationcanvas_ref 130967
+  yz 508 2025 msg operation_ref 153751 // "chargerPartiesSimples() : void"
+  show_full_operations_definition default show_class_of_operation default drawing_language default show_context_mode default
+  label_xy 108 484
+msg 131351 synchronous
+  from durationcanvas_ref 130967
+  to durationcanvas_ref 131223
+  yz 565 2025 explicitmsg "recuperer(requete, partiesSimples)"
+  show_full_operations_definition default show_class_of_operation default drawing_language default show_context_mode default
+  label_xy 208 536
+reflexivemsg 131607 synchronous
+  to durationcanvas_ref 131479
+  yz 641 2025 explicitmsg "chargerPartiesDoubles()"
+  show_full_operations_definition default show_class_of_operation default drawing_language default show_context_mode default
+  label_xy 107 611
+msg 131863 synchronous
+  from durationcanvas_ref 131479
+  to durationcanvas_ref 131735
+  yz 682 2025 explicitmsg "recuperer(requete, partiesDoubles)"
+  show_full_operations_definition default show_class_of_operation default drawing_language default show_context_mode default
+  label_xy 206 653
+reflexivemsg 132119 synchronous
+  to durationcanvas_ref 131991
+  yz 736 2025 msg operation_ref 153495 // "chargerClubs() : void"
+  show_full_operations_definition default show_class_of_operation default drawing_language default show_context_mode default
+  label_xy 110 710
+msg 132375 synchronous
+  from durationcanvas_ref 131991
+  to durationcanvas_ref 132247
+  yz 769 2025 explicitmsg "recuperer(requete, clubs)"
+  show_full_operations_definition default show_class_of_operation default drawing_language default show_context_mode default
+  label_xy 270 740
+reflexivemsg 132887 synchronous
+  to durationcanvas_ref 132759
+  yz 907 2025 explicitmsg "afficherEcran(IHMArbitre::Accueil)"
+  show_full_operations_definition default show_class_of_operation default drawing_language default show_context_mode default
+  label_xy 111 882
+line 132631 -_-_
+  from ref 132503 z 2026 to ref 132375
+end
