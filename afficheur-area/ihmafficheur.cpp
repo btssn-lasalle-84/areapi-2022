@@ -268,8 +268,8 @@ void IHMAfficheur::initialiserIHM()
 #endif // ECRAN_VEILLE
 
 #ifdef PLEIN_ECRAN
+    showMaximized();
     showFullScreen();
-    //showMaximized();
 #endif // PLEIN_ECRAN   
 }
 
