@@ -20,7 +20,7 @@ int main(int argc, char* argv[])
     QApplication a(argc, argv);
     IHMAfficheur w;
 
-    a.setStyleSheet("QLabel { color: white; font: 75 20pt \"Ubuntu Condensed\"; }");
+    a.setStyleSheet("QLabel { color: white; font: 75 15pt \"Ubuntu Condensed\"; }");
 
     w.show();
 
