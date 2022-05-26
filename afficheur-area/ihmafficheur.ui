@@ -6,14 +6,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1024</width>
-    <height>640</height>
+    <width>1868</width>
+    <height>961</height>
    </rect>
   </property>
   <property name="maximumSize">
    <size>
-    <width>16777215</width>
-    <height>16777215</height>
+    <width>1920</width>
+    <height>1080</height>
    </size>
   </property>
   <property name="focusPolicy">
@@ -23,6 +23,12 @@
    <string>AREA-Afficheur</string>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="maximumSize">
+    <size>
+     <width>1920</width>
+     <height>1080</height>
+    </size>
+   </property>
    <layout class="QVBoxLayout" name="verticalLayout_2">
     <property name="spacing">
      <number>0</number>
@@ -41,8 +47,14 @@
     </property>
     <item>
      <widget class="QStackedWidget" name="Application">
+      <property name="maximumSize">
+       <size>
+        <width>1920</width>
+        <height>1080</height>
+       </size>
+      </property>
       <property name="frameShape">
-       <enum>QFrame::Box</enum>
+       <enum>QFrame::NoFrame</enum>
       </property>
       <property name="frameShadow">
        <enum>QFrame::Plain</enum>
@@ -54,7 +66,7 @@
        <number>0</number>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="EcranVeille">
        <property name="enabled">
@@ -62,8 +74,8 @@
        </property>
        <property name="maximumSize">
         <size>
-         <width>1024</width>
-         <height>640</height>
+         <width>1920</width>
+         <height>1080</height>
         </size>
        </property>
        <layout class="QHBoxLayout" name="horizontalLayout">
@@ -135,11 +147,26 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="EcranRencontre" native="true">
+      <widget class="QWidget" name="EcranRencontre">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>1920</width>
+         <height>1080</height>
+        </size>
+       </property>
        <property name="styleSheet">
         <string notr="true">background-color: qlineargradient(spread:reflect, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(28, 46, 218, 255), stop:1 rgba(255, 70, 70, 255));</string>
        </property>
        <layout class="QHBoxLayout" name="layoutPrincipal">
+        <property name="sizeConstraint">
+         <enum>QLayout::SetMaximumSize</enum>
+        </property>
         <property name="rightMargin">
          <number>1</number>
         </property>
@@ -177,12 +204,17 @@
                 </property>
                 <property name="font">
                  <font>
-                  <weight>75</weight>
-                  <bold>true</bold>
+                  <family>Lato Black</family>
+                  <pointsize>18</pointsize>
+                  <weight>10</weight>
+                  <italic>false</italic>
+                  <bold>false</bold>
                  </font>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:0.991968, y2:1, stop:0 rgba(60, 72, 156, 255), stop:1 rgba(111, 145, 239, 255));</string>
+                 <string notr="true">background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:0.991968, y2:1, stop:0 rgba(60, 72, 156, 255), stop:1 rgba(111, 145, 239, 255));
+color: rgb(238, 238, 236);
+font: 87 18pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -211,12 +243,17 @@
                 </property>
                 <property name="font">
                  <font>
-                  <weight>75</weight>
-                  <bold>true</bold>
+                  <family>Lato Black</family>
+                  <pointsize>18</pointsize>
+                  <weight>10</weight>
+                  <italic>false</italic>
+                  <bold>false</bold>
                  </font>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:0.991968, y2:1, stop:0 rgba(60, 72, 156, 255), stop:1 rgba(111, 145, 239, 255));</string>
+                 <string notr="true">background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:0.991968, y2:1, stop:0 rgba(60, 72, 156, 255), stop:1 rgba(111, 145, 239, 255));
+color: rgb(238, 238, 236);
+font: 87 18pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -252,15 +289,20 @@
                 </property>
                 <property name="font">
                  <font>
-                  <weight>75</weight>
-                  <bold>true</bold>
+                  <family>Lato Black</family>
+                  <pointsize>18</pointsize>
+                  <weight>10</weight>
+                  <italic>false</italic>
+                  <bold>false</bold>
                  </font>
                 </property>
                 <property name="layoutDirection">
                  <enum>Qt::RightToLeft</enum>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:0.991968, y2:1, stop:0 rgba(60, 72, 156, 255), stop:1 rgba(111, 145, 239, 255));</string>
+                 <string notr="true">background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:0.991968, y2:1, stop:0 rgba(60, 72, 156, 255), stop:1 rgba(111, 145, 239, 255));
+color: rgb(238, 238, 236);
+font: 87 18pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -283,15 +325,20 @@
                 </property>
                 <property name="font">
                  <font>
-                  <weight>75</weight>
-                  <bold>true</bold>
+                  <family>Lato Black</family>
+                  <pointsize>18</pointsize>
+                  <weight>10</weight>
+                  <italic>false</italic>
+                  <bold>false</bold>
                  </font>
                 </property>
                 <property name="layoutDirection">
                  <enum>Qt::RightToLeft</enum>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:0.991968, y2:1, stop:0 rgba(60, 72, 156, 255), stop:1 rgba(111, 145, 239, 255));</string>
+                 <string notr="true">background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:0.991968, y2:1, stop:0 rgba(60, 72, 156, 255), stop:1 rgba(111, 145, 239, 255));
+color: rgb(238, 238, 236);
+font: 87 18pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -316,15 +363,20 @@
               </property>
               <property name="font">
                <font>
-                <weight>75</weight>
-                <bold>true</bold>
+                <family>Lato Black</family>
+                <pointsize>14</pointsize>
+                <weight>10</weight>
+                <italic>false</italic>
+                <bold>false</bold>
                </font>
               </property>
               <property name="layoutDirection">
                <enum>Qt::RightToLeft</enum>
               </property>
               <property name="styleSheet">
-               <string notr="true">background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:0.991968, y2:1, stop:0 rgba(60, 72, 156, 255), stop:1 rgba(111, 145, 239, 255));</string>
+               <string notr="true">background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:0.991968, y2:1, stop:0 rgba(60, 72, 156, 255), stop:1 rgba(111, 145, 239, 255));
+color: rgb(238, 238, 236);
+font: 87 14pt &quot;Lato Black&quot;;</string>
               </property>
               <property name="frameShape">
                <enum>QFrame::Box</enum>
@@ -353,12 +405,17 @@
               </property>
               <property name="font">
                <font>
-                <weight>75</weight>
-                <bold>true</bold>
+                <family>Lato Black</family>
+                <pointsize>14</pointsize>
+                <weight>10</weight>
+                <italic>false</italic>
+                <bold>false</bold>
                </font>
               </property>
               <property name="styleSheet">
-               <string notr="true">background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:0.991968, y2:1, stop:0 rgba(60, 72, 156, 255), stop:1 rgba(111, 145, 239, 255));</string>
+               <string notr="true">background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:0.991968, y2:1, stop:0 rgba(60, 72, 156, 255), stop:1 rgba(111, 145, 239, 255));
+color: rgb(238, 238, 236);
+font: 87 14pt &quot;Lato Black&quot;;</string>
               </property>
               <property name="frameShape">
                <enum>QFrame::Box</enum>
@@ -387,8 +444,11 @@
               </property>
               <property name="font">
                <font>
-                <weight>75</weight>
-                <bold>true</bold>
+                <family>Lato Black</family>
+                <pointsize>18</pointsize>
+                <weight>10</weight>
+                <italic>false</italic>
+                <bold>false</bold>
                </font>
               </property>
               <property name="layoutDirection">
@@ -396,7 +456,8 @@
               </property>
               <property name="styleSheet">
                <string notr="true">background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:0.991968, y2:1, stop:0 rgba(60, 72, 156, 255), stop:1 rgba(111, 145, 239, 255));
-color: rgb(238, 238, 236);</string>
+color: rgb(238, 238, 236);
+font: 87 18pt &quot;Lato Black&quot;;</string>
               </property>
               <property name="frameShape">
                <enum>QFrame::Box</enum>
@@ -438,12 +499,17 @@ color: rgb(238, 238, 236);</string>
                 </property>
                 <property name="font">
                  <font>
-                  <weight>75</weight>
-                  <bold>true</bold>
+                  <family>Lato Black</family>
+                  <pointsize>18</pointsize>
+                  <weight>10</weight>
+                  <italic>false</italic>
+                  <bold>false</bold>
                  </font>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:0.991968, y2:1, stop:0 rgba(60, 72, 156, 255), stop:1 rgba(111, 145, 239, 255));</string>
+                 <string notr="true">background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:0.991968, y2:1, stop:0 rgba(60, 72, 156, 255), stop:1 rgba(111, 145, 239, 255));
+color: rgb(238, 238, 236);
+font: 87 18pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -482,12 +548,17 @@ color: rgb(238, 238, 236);</string>
                 </property>
                 <property name="font">
                  <font>
-                  <weight>75</weight>
-                  <bold>true</bold>
+                  <family>Lato Black</family>
+                  <pointsize>18</pointsize>
+                  <weight>10</weight>
+                  <italic>false</italic>
+                  <bold>false</bold>
                  </font>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:0.991968, y2:1, stop:0 rgba(60, 72, 156, 255), stop:1 rgba(111, 145, 239, 255));</string>
+                 <string notr="true">background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:0.991968, y2:1, stop:0 rgba(60, 72, 156, 255), stop:1 rgba(111, 145, 239, 255));
+color: rgb(238, 238, 236);
+font: 87 18pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -526,12 +597,17 @@ color: rgb(238, 238, 236);</string>
                 </property>
                 <property name="font">
                  <font>
-                  <weight>75</weight>
-                  <bold>true</bold>
+                  <family>Lato Black</family>
+                  <pointsize>18</pointsize>
+                  <weight>10</weight>
+                  <italic>false</italic>
+                  <bold>false</bold>
                  </font>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:0.991968, y2:1, stop:0 rgba(60, 72, 156, 255), stop:1 rgba(111, 145, 239, 255));</string>
+                 <string notr="true">background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:0.991968, y2:1, stop:0 rgba(60, 72, 156, 255), stop:1 rgba(111, 145, 239, 255));
+color: rgb(238, 238, 236);
+font: 87 18pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -571,12 +647,17 @@ color: rgb(238, 238, 236);</string>
                 </property>
                 <property name="font">
                  <font>
-                  <weight>75</weight>
-                  <bold>true</bold>
+                  <family>Lato Black</family>
+                  <pointsize>18</pointsize>
+                  <weight>10</weight>
+                  <italic>false</italic>
+                  <bold>false</bold>
                  </font>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:0.991968, y2:1, stop:0 rgba(60, 72, 156, 255), stop:1 rgba(111, 145, 239, 255));</string>
+                 <string notr="true">background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:0.991968, y2:1, stop:0 rgba(60, 72, 156, 255), stop:1 rgba(111, 145, 239, 255));
+color: rgb(238, 238, 236);
+font: 87 18pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -615,12 +696,17 @@ color: rgb(238, 238, 236);</string>
                 </property>
                 <property name="font">
                  <font>
-                  <weight>75</weight>
-                  <bold>true</bold>
+                  <family>Lato Black</family>
+                  <pointsize>18</pointsize>
+                  <weight>10</weight>
+                  <italic>false</italic>
+                  <bold>false</bold>
                  </font>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:0.991968, y2:1, stop:0 rgba(60, 72, 156, 255), stop:1 rgba(111, 145, 239, 255));</string>
+                 <string notr="true">background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:0.991968, y2:1, stop:0 rgba(60, 72, 156, 255), stop:1 rgba(111, 145, 239, 255));
+color: rgb(238, 238, 236);
+font: 87 18pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -659,12 +745,17 @@ color: rgb(238, 238, 236);</string>
                 </property>
                 <property name="font">
                  <font>
-                  <weight>75</weight>
-                  <bold>true</bold>
+                  <family>Lato Black</family>
+                  <pointsize>18</pointsize>
+                  <weight>10</weight>
+                  <italic>false</italic>
+                  <bold>false</bold>
                  </font>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:0.991968, y2:1, stop:0 rgba(60, 72, 156, 255), stop:1 rgba(111, 145, 239, 255));</string>
+                 <string notr="true">background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:0.991968, y2:1, stop:0 rgba(60, 72, 156, 255), stop:1 rgba(111, 145, 239, 255));
+color: rgb(238, 238, 236);
+font: 87 18pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -704,12 +795,17 @@ color: rgb(238, 238, 236);</string>
                 </property>
                 <property name="font">
                  <font>
-                  <weight>75</weight>
-                  <bold>true</bold>
+                  <family>Lato Black</family>
+                  <pointsize>18</pointsize>
+                  <weight>10</weight>
+                  <italic>false</italic>
+                  <bold>false</bold>
                  </font>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:0.991968, y2:1, stop:0 rgba(60, 72, 156, 255), stop:1 rgba(111, 145, 239, 255));</string>
+                 <string notr="true">background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:0.991968, y2:1, stop:0 rgba(60, 72, 156, 255), stop:1 rgba(111, 145, 239, 255));
+color: rgb(238, 238, 236);
+font: 87 18pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -748,12 +844,17 @@ color: rgb(238, 238, 236);</string>
                 </property>
                 <property name="font">
                  <font>
-                  <weight>75</weight>
-                  <bold>true</bold>
+                  <family>Lato Black</family>
+                  <pointsize>18</pointsize>
+                  <weight>10</weight>
+                  <italic>false</italic>
+                  <bold>false</bold>
                  </font>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:0.991968, y2:1, stop:0 rgba(60, 72, 156, 255), stop:1 rgba(111, 145, 239, 255));</string>
+                 <string notr="true">background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:0.991968, y2:1, stop:0 rgba(60, 72, 156, 255), stop:1 rgba(111, 145, 239, 255));
+color: rgb(238, 238, 236);
+font: 87 18pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -792,12 +893,17 @@ color: rgb(238, 238, 236);</string>
                 </property>
                 <property name="font">
                  <font>
-                  <weight>75</weight>
-                  <bold>true</bold>
+                  <family>Lato Black</family>
+                  <pointsize>18</pointsize>
+                  <weight>10</weight>
+                  <italic>false</italic>
+                  <bold>false</bold>
                  </font>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:0.991968, y2:1, stop:0 rgba(60, 72, 156, 255), stop:1 rgba(111, 145, 239, 255));</string>
+                 <string notr="true">background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:0.991968, y2:1, stop:0 rgba(60, 72, 156, 255), stop:1 rgba(111, 145, 239, 255));
+color: rgb(238, 238, 236);
+font: 87 18pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -837,12 +943,17 @@ color: rgb(238, 238, 236);</string>
                 </property>
                 <property name="font">
                  <font>
-                  <weight>75</weight>
-                  <bold>true</bold>
+                  <family>Lato Black</family>
+                  <pointsize>18</pointsize>
+                  <weight>10</weight>
+                  <italic>false</italic>
+                  <bold>false</bold>
                  </font>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:0.991968, y2:1, stop:0 rgba(60, 72, 156, 255), stop:1 rgba(111, 145, 239, 255));</string>
+                 <string notr="true">background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:0.991968, y2:1, stop:0 rgba(60, 72, 156, 255), stop:1 rgba(111, 145, 239, 255));
+color: rgb(238, 238, 236);
+font: 87 18pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -881,12 +992,17 @@ color: rgb(238, 238, 236);</string>
                 </property>
                 <property name="font">
                  <font>
-                  <weight>75</weight>
-                  <bold>true</bold>
+                  <family>Lato Black</family>
+                  <pointsize>18</pointsize>
+                  <weight>10</weight>
+                  <italic>false</italic>
+                  <bold>false</bold>
                  </font>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:0.991968, y2:1, stop:0 rgba(60, 72, 156, 255), stop:1 rgba(111, 145, 239, 255));</string>
+                 <string notr="true">background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:0.991968, y2:1, stop:0 rgba(60, 72, 156, 255), stop:1 rgba(111, 145, 239, 255));
+color: rgb(238, 238, 236);
+font: 87 18pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -925,12 +1041,17 @@ color: rgb(238, 238, 236);</string>
                 </property>
                 <property name="font">
                  <font>
-                  <weight>75</weight>
-                  <bold>true</bold>
+                  <family>Lato Black</family>
+                  <pointsize>18</pointsize>
+                  <weight>10</weight>
+                  <italic>false</italic>
+                  <bold>false</bold>
                  </font>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:0.991968, y2:1, stop:0 rgba(60, 72, 156, 255), stop:1 rgba(111, 145, 239, 255));</string>
+                 <string notr="true">background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:0.991968, y2:1, stop:0 rgba(60, 72, 156, 255), stop:1 rgba(111, 145, 239, 255));
+color: rgb(238, 238, 236);
+font: 87 18pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -969,7 +1090,9 @@ color: rgb(238, 238, 236);</string>
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:0.991968, y2:1, stop:0 rgba(60, 72, 156, 255), stop:1 rgba(111, 145, 239, 255));</string>
+                 <string notr="true">background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:0.991968, y2:1, stop:0 rgba(60, 72, 156, 255), stop:1 rgba(111, 145, 239, 255));
+color: rgb(238, 238, 236);
+font: 87 18pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -1008,12 +1131,17 @@ color: rgb(238, 238, 236);</string>
                 </property>
                 <property name="font">
                  <font>
-                  <weight>75</weight>
-                  <bold>true</bold>
+                  <family>Lato Black</family>
+                  <pointsize>18</pointsize>
+                  <weight>10</weight>
+                  <italic>false</italic>
+                  <bold>false</bold>
                  </font>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:0.991968, y2:1, stop:0 rgba(60, 72, 156, 255), stop:1 rgba(111, 145, 239, 255));</string>
+                 <string notr="true">background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:0.991968, y2:1, stop:0 rgba(60, 72, 156, 255), stop:1 rgba(111, 145, 239, 255));
+color: rgb(238, 238, 236);
+font: 87 18pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -1049,12 +1177,17 @@ color: rgb(238, 238, 236);</string>
                 </property>
                 <property name="font">
                  <font>
-                  <weight>75</weight>
-                  <bold>true</bold>
+                  <family>Lato Black</family>
+                  <pointsize>18</pointsize>
+                  <weight>10</weight>
+                  <italic>false</italic>
+                  <bold>false</bold>
                  </font>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:0.991968, y2:1, stop:0 rgba(60, 72, 156, 255), stop:1 rgba(111, 145, 239, 255));</string>
+                 <string notr="true">background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:0.991968, y2:1, stop:0 rgba(60, 72, 156, 255), stop:1 rgba(111, 145, 239, 255));
+color: rgb(238, 238, 236);
+font: 87 18pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -1134,7 +1267,9 @@ color: rgb(238, 238, 236);</string>
             <item>
              <widget class="QLabel" name="clubA">
               <property name="styleSheet">
-               <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:1 rgba(87, 141, 254, 255));</string>
+               <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 0);
+font: 87 16pt &quot;Lato Black&quot;;</string>
               </property>
               <property name="frameShape">
                <enum>QFrame::Box</enum>
@@ -1175,7 +1310,12 @@ color: rgb(238, 238, 236);</string>
                </size>
               </property>
               <property name="styleSheet">
-               <string notr="true">background-color: rgb(92, 53, 102);</string>
+               <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 0);
+font: 87 16pt &quot;Lato Black&quot;;</string>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::Box</enum>
               </property>
               <property name="text">
                <string>VS</string>
@@ -1204,8 +1344,9 @@ color: rgb(238, 238, 236);</string>
             <item>
              <widget class="QLabel" name="clubW">
               <property name="styleSheet">
-               <string notr="true">font-size:25px;
-background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgba(178, 56, 56, 255));</string>
+               <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 0);
+font: 87 16pt &quot;Lato Black&quot;;</string>
               </property>
               <property name="frameShape">
                <enum>QFrame::Box</enum>
@@ -1241,18 +1382,20 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
                <widget class="QLabel" name="joueurPartie1CoteG">
                 <property name="minimumSize">
                  <size>
-                  <width>150</width>
+                  <width>200</width>
                   <height>40</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>150</width>
+                  <width>200</width>
                   <height>40</height>
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:1 rgba(87, 141, 254, 255));</string>
+                 <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 0);
+font: 87 16pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -1266,25 +1409,11 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
                </widget>
               </item>
               <item>
-               <spacer name="horizontalSpacer_25">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeType">
-                 <enum>QSizePolicy::Maximum</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
                <widget class="QLabel" name="setGagnePartie1JoueurG">
                 <property name="styleSheet">
-                 <string notr="true">background-color: rgb(92, 53, 102);</string>
+                 <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 0);
+font: 87 16pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -1300,7 +1429,7 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
                  <enum>Qt::Horizontal</enum>
                 </property>
                 <property name="sizeType">
-                 <enum>QSizePolicy::Maximum</enum>
+                 <enum>QSizePolicy::Expanding</enum>
                 </property>
                 <property name="sizeHint" stdset="0">
                  <size>
@@ -1313,7 +1442,9 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
               <item>
                <widget class="QLabel" name="setGagnePartie1JoueurD">
                 <property name="styleSheet">
-                 <string notr="true">background-color: rgb(92, 53, 102);</string>
+                 <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 0);
+font: 87 16pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -1327,37 +1458,23 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
                </widget>
               </item>
               <item>
-               <spacer name="horizontalSpacer_26">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeType">
-                 <enum>QSizePolicy::Maximum</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
                <widget class="QLabel" name="joueurPartie1CoteD">
                 <property name="minimumSize">
                  <size>
-                  <width>150</width>
-                  <height>20</height>
+                  <width>200</width>
+                  <height>40</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>150</width>
-                  <height>20</height>
+                  <width>200</width>
+                  <height>40</height>
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgba(178, 56, 56, 255));</string>
+                 <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 0);
+font: 87 16pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -1391,24 +1508,35 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
                <widget class="QLabel" name="joueurPartie2CoteG">
                 <property name="minimumSize">
                  <size>
-                  <width>150</width>
+                  <width>200</width>
                   <height>40</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>150</width>
+                  <width>200</width>
                   <height>40</height>
                  </size>
                 </property>
+                <property name="font">
+                 <font>
+                  <family>Lato Black</family>
+                  <pointsize>16</pointsize>
+                  <weight>10</weight>
+                  <italic>false</italic>
+                  <bold>false</bold>
+                 </font>
+                </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:1 rgba(87, 141, 254, 255));</string>
+                 <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 0);
+font: 87 16pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
                 </property>
                 <property name="text">
-                 <string/>
+                 <string>Beaumont Jerome</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignCenter</set>
@@ -1416,22 +1544,11 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
                </widget>
               </item>
               <item>
-               <spacer name="horizontalSpacer_27">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
                <widget class="QLabel" name="setGagnePartie2JoueurG">
                 <property name="styleSheet">
-                 <string notr="true">background-color: rgb(92, 53, 102);</string>
+                 <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 0);
+font: 87 16pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -1457,7 +1574,9 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
               <item>
                <widget class="QLabel" name="setGagnePartie2JoueurD">
                 <property name="styleSheet">
-                 <string notr="true">background-color: rgb(92, 53, 102);</string>
+                 <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 0);
+font: 87 16pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -1471,34 +1590,23 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
                </widget>
               </item>
               <item>
-               <spacer name="horizontalSpacer_28">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
                <widget class="QLabel" name="joueurPartie2CoteD">
                 <property name="minimumSize">
                  <size>
-                  <width>150</width>
-                  <height>20</height>
+                  <width>200</width>
+                  <height>40</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>150</width>
-                  <height>20</height>
+                  <width>200</width>
+                  <height>40</height>
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgba(178, 56, 56, 255));</string>
+                 <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 0);
+font: 87 16pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -1532,18 +1640,20 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
                <widget class="QLabel" name="joueurPartie3CoteG">
                 <property name="minimumSize">
                  <size>
-                  <width>150</width>
+                  <width>200</width>
                   <height>40</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>150</width>
+                  <width>200</width>
                   <height>40</height>
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:1 rgba(87, 141, 254, 255));</string>
+                 <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 0);
+font: 87 16pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -1557,22 +1667,11 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
                </widget>
               </item>
               <item>
-               <spacer name="horizontalSpacer_29">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
                <widget class="QLabel" name="setGagnePartie3JoueurG">
                 <property name="styleSheet">
-                 <string notr="true">background-color: rgb(92, 53, 102);</string>
+                 <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 0);
+font: 87 16pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -1598,7 +1697,9 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
               <item>
                <widget class="QLabel" name="setGagnePartie3JoueurD">
                 <property name="styleSheet">
-                 <string notr="true">background-color: rgb(92, 53, 102);</string>
+                 <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 0);
+font: 87 16pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -1612,34 +1713,23 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
                </widget>
               </item>
               <item>
-               <spacer name="horizontalSpacer_30">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
                <widget class="QLabel" name="joueurPartie3CoteD">
                 <property name="minimumSize">
                  <size>
-                  <width>150</width>
-                  <height>20</height>
+                  <width>200</width>
+                  <height>40</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>150</width>
-                  <height>20</height>
+                  <width>200</width>
+                  <height>40</height>
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgba(178, 56, 56, 255));</string>
+                 <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 0);
+font: 87 16pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -1673,18 +1763,20 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
                <widget class="QLabel" name="joueurPartie4CoteG">
                 <property name="minimumSize">
                  <size>
-                  <width>150</width>
+                  <width>200</width>
                   <height>40</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>150</width>
+                  <width>200</width>
                   <height>40</height>
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:1 rgba(87, 141, 254, 255));</string>
+                 <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 0);
+font: 87 16pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -1698,22 +1790,11 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
                </widget>
               </item>
               <item>
-               <spacer name="horizontalSpacer_31">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
                <widget class="QLabel" name="setGagnePartie4JoueurG">
                 <property name="styleSheet">
-                 <string notr="true">background-color: rgb(92, 53, 102);</string>
+                 <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 0);
+font: 87 16pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -1739,7 +1820,9 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
               <item>
                <widget class="QLabel" name="setGagnePartie4JoueurD">
                 <property name="styleSheet">
-                 <string notr="true">background-color: rgb(92, 53, 102);</string>
+                 <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 0);
+font: 87 16pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -1753,34 +1836,25 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
                </widget>
               </item>
               <item>
-               <spacer name="horizontalSpacer_32">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
                <widget class="QLabel" name="joueurPartie4CoteD">
                 <property name="minimumSize">
                  <size>
-                  <width>150</width>
-                  <height>20</height>
+                  <width>200</width>
+                  <height>40</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>150</width>
-                  <height>20</height>
+                  <width>200</width>
+                  <height>40</height>
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgba(178, 56, 56, 255));</string>
+                 <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 0);
+font: 87 16pt &quot;Lato Black&quot;;background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 0);
+font: 87 16pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -1814,18 +1888,20 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
                <widget class="QLabel" name="joueurPartie5CoteG">
                 <property name="minimumSize">
                  <size>
-                  <width>150</width>
+                  <width>200</width>
                   <height>40</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>150</width>
+                  <width>200</width>
                   <height>40</height>
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:1 rgba(87, 141, 254, 255));</string>
+                 <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 0);
+font: 87 16pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -1839,22 +1915,11 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
                </widget>
               </item>
               <item>
-               <spacer name="horizontalSpacer_33">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
                <widget class="QLabel" name="setGagnePartie5JoueurG">
                 <property name="styleSheet">
-                 <string notr="true">background-color: rgb(92, 53, 102);</string>
+                 <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 0);
+font: 87 16pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -1880,7 +1945,9 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
               <item>
                <widget class="QLabel" name="setGagnePartie5JoueurD">
                 <property name="styleSheet">
-                 <string notr="true">background-color: rgb(92, 53, 102);</string>
+                 <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 0);
+font: 87 16pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -1894,34 +1961,23 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
                </widget>
               </item>
               <item>
-               <spacer name="horizontalSpacer_34">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
                <widget class="QLabel" name="joueurPartie5CoteD">
                 <property name="minimumSize">
                  <size>
-                  <width>150</width>
-                  <height>20</height>
+                  <width>200</width>
+                  <height>40</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>150</width>
-                  <height>20</height>
+                  <width>200</width>
+                  <height>40</height>
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgba(178, 56, 56, 255));</string>
+                 <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 0);
+font: 87 16pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -1955,18 +2011,20 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
                <widget class="QLabel" name="joueurPartie6CoteG">
                 <property name="minimumSize">
                  <size>
-                  <width>150</width>
+                  <width>200</width>
                   <height>40</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>150</width>
+                  <width>200</width>
                   <height>40</height>
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:1 rgba(87, 141, 254, 255));</string>
+                 <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 0);
+font: 87 16pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -1980,22 +2038,11 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
                </widget>
               </item>
               <item>
-               <spacer name="horizontalSpacer_35">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
                <widget class="QLabel" name="setGagnePartie6JoueurG">
                 <property name="styleSheet">
-                 <string notr="true">background-color: rgb(92, 53, 102);</string>
+                 <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 0);
+font: 87 16pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -2021,7 +2068,9 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
               <item>
                <widget class="QLabel" name="setGagnePartie6JoueurD">
                 <property name="styleSheet">
-                 <string notr="true">background-color: rgb(92, 53, 102);</string>
+                 <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 0);
+font: 87 16pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -2035,34 +2084,23 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
                </widget>
               </item>
               <item>
-               <spacer name="horizontalSpacer_36">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
                <widget class="QLabel" name="joueurPartie6CoteD">
                 <property name="minimumSize">
                  <size>
-                  <width>150</width>
-                  <height>20</height>
+                  <width>200</width>
+                  <height>40</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>150</width>
-                  <height>20</height>
+                  <width>200</width>
+                  <height>40</height>
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgba(178, 56, 56, 255));</string>
+                 <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 0);
+font: 87 16pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -2096,18 +2134,20 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
                <widget class="QLabel" name="joueurPartie7CoteG">
                 <property name="minimumSize">
                  <size>
-                  <width>150</width>
+                  <width>200</width>
                   <height>40</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>150</width>
+                  <width>200</width>
                   <height>40</height>
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:1 rgba(87, 141, 254, 255));</string>
+                 <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 0);
+font: 87 16pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -2121,22 +2161,11 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
                </widget>
               </item>
               <item>
-               <spacer name="horizontalSpacer_37">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
                <widget class="QLabel" name="setGagnePartie7JoueurG">
                 <property name="styleSheet">
-                 <string notr="true">background-color: rgb(92, 53, 102);</string>
+                 <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 0);
+font: 87 16pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -2162,7 +2191,9 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
               <item>
                <widget class="QLabel" name="setGagnePartie7JoueurD">
                 <property name="styleSheet">
-                 <string notr="true">background-color: rgb(92, 53, 102);</string>
+                 <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 0);
+font: 87 16pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -2176,34 +2207,23 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
                </widget>
               </item>
               <item>
-               <spacer name="horizontalSpacer_38">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
                <widget class="QLabel" name="joueurPartie7CoteD">
                 <property name="minimumSize">
                  <size>
-                  <width>150</width>
-                  <height>20</height>
+                  <width>200</width>
+                  <height>40</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>150</width>
-                  <height>20</height>
+                  <width>200</width>
+                  <height>40</height>
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgba(178, 56, 56, 255));</string>
+                 <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 0);
+font: 87 16pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -2237,18 +2257,20 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
                <widget class="QLabel" name="joueurPartie8CoteG">
                 <property name="minimumSize">
                  <size>
-                  <width>150</width>
+                  <width>200</width>
                   <height>40</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>150</width>
+                  <width>200</width>
                   <height>40</height>
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:1 rgba(87, 141, 254, 255));</string>
+                 <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 0);
+font: 87 16pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -2262,22 +2284,11 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
                </widget>
               </item>
               <item>
-               <spacer name="horizontalSpacer_39">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
                <widget class="QLabel" name="setGagnePartie8JoueurG">
                 <property name="styleSheet">
-                 <string notr="true">background-color: rgb(92, 53, 102);</string>
+                 <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 0);
+font: 87 16pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -2303,7 +2314,9 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
               <item>
                <widget class="QLabel" name="setGagnePartie8JoueurD">
                 <property name="styleSheet">
-                 <string notr="true">background-color: rgb(92, 53, 102);</string>
+                 <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 0);
+font: 87 16pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -2317,34 +2330,23 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
                </widget>
               </item>
               <item>
-               <spacer name="horizontalSpacer_40">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
                <widget class="QLabel" name="joueurPartie8CoteD">
                 <property name="minimumSize">
                  <size>
-                  <width>150</width>
-                  <height>20</height>
+                  <width>200</width>
+                  <height>40</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>150</width>
-                  <height>20</height>
+                  <width>200</width>
+                  <height>40</height>
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgba(178, 56, 56, 255));</string>
+                 <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 0);
+font: 87 16pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -2378,18 +2380,20 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
                <widget class="QLabel" name="joueursPartieDouble1coteG">
                 <property name="minimumSize">
                  <size>
-                  <width>150</width>
+                  <width>200</width>
                   <height>40</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>150</width>
+                  <width>200</width>
                   <height>40</height>
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:1 rgba(87, 141, 254, 255));</string>
+                 <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 0);
+font: 87 16pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -2403,22 +2407,11 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
                </widget>
               </item>
               <item>
-               <spacer name="horizontalSpacer_41">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
                <widget class="QLabel" name="setGagnePartieDouble1JoueurG">
                 <property name="styleSheet">
-                 <string notr="true">background-color: rgb(92, 53, 102);</string>
+                 <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 0);
+font: 87 16pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -2444,7 +2437,9 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
               <item>
                <widget class="QLabel" name="setGagnePartieDouble1JoueurD">
                 <property name="styleSheet">
-                 <string notr="true">background-color: rgb(92, 53, 102);</string>
+                 <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 0);
+font: 87 16pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -2458,34 +2453,23 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
                </widget>
               </item>
               <item>
-               <spacer name="horizontalSpacer_43">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
                <widget class="QLabel" name="joueursPartieDouble1coteG_2">
                 <property name="minimumSize">
                  <size>
-                  <width>150</width>
-                  <height>20</height>
+                  <width>200</width>
+                  <height>40</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>150</width>
-                  <height>20</height>
+                  <width>200</width>
+                  <height>40</height>
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgba(178, 56, 56, 255));</string>
+                 <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 0);
+font: 87 16pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -2519,18 +2503,22 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
                <widget class="QLabel" name="joueursPartieDouble2coteG">
                 <property name="minimumSize">
                  <size>
-                  <width>150</width>
+                  <width>200</width>
                   <height>40</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>150</width>
+                  <width>200</width>
                   <height>40</height>
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:1 rgba(87, 141, 254, 255));</string>
+                 <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 0);
+font: 87 16pt &quot;Lato Black&quot;;background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 0);
+font: 87 16pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -2544,22 +2532,11 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
                </widget>
               </item>
               <item>
-               <spacer name="horizontalSpacer_42">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
                <widget class="QLabel" name="setGagnePartieDouble2JoueurG">
                 <property name="styleSheet">
-                 <string notr="true">background-color: rgb(92, 53, 102);</string>
+                 <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 0);
+font: 87 16pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -2585,7 +2562,9 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
               <item>
                <widget class="QLabel" name="setGagnePartieDouble2JoueurD">
                 <property name="styleSheet">
-                 <string notr="true">background-color: rgb(92, 53, 102);</string>
+                 <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 0);
+font: 87 16pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -2599,34 +2578,23 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
                </widget>
               </item>
               <item>
-               <spacer name="horizontalSpacer_44">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
                <widget class="QLabel" name="joueursPartieDouble1coteD">
                 <property name="minimumSize">
                  <size>
-                  <width>150</width>
-                  <height>20</height>
+                  <width>200</width>
+                  <height>40</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>150</width>
-                  <height>20</height>
+                  <width>200</width>
+                  <height>40</height>
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgba(178, 56, 56, 255));</string>
+                 <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 0);
+font: 87 16pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -2660,18 +2628,20 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
                <widget class="QLabel" name="joueurPartie11CoteG">
                 <property name="minimumSize">
                  <size>
-                  <width>150</width>
+                  <width>200</width>
                   <height>40</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>150</width>
+                  <width>200</width>
                   <height>40</height>
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:1 rgba(87, 141, 254, 255));</string>
+                 <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 0);
+font: 87 16pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -2685,22 +2655,11 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
                </widget>
               </item>
               <item>
-               <spacer name="horizontalSpacer_45">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
                <widget class="QLabel" name="setGagnePartie11JoueurG">
                 <property name="styleSheet">
-                 <string notr="true">background-color: rgb(92, 53, 102);</string>
+                 <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 0);
+font: 87 16pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -2726,7 +2685,9 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
               <item>
                <widget class="QLabel" name="setGagnePartie11JoueurD">
                 <property name="styleSheet">
-                 <string notr="true">background-color: rgb(92, 53, 102);</string>
+                 <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 0);
+font: 87 16pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -2740,34 +2701,23 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
                </widget>
               </item>
               <item>
-               <spacer name="horizontalSpacer_46">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
                <widget class="QLabel" name="joueurPartie11CoteD">
                 <property name="minimumSize">
                  <size>
-                  <width>150</width>
-                  <height>20</height>
+                  <width>200</width>
+                  <height>40</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>150</width>
-                  <height>20</height>
+                  <width>200</width>
+                  <height>40</height>
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgba(178, 56, 56, 255));</string>
+                 <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 0);
+font: 87 16pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -2801,18 +2751,20 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
                <widget class="QLabel" name="joueurPartie12CoteG">
                 <property name="minimumSize">
                  <size>
-                  <width>150</width>
+                  <width>200</width>
                   <height>40</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>150</width>
+                  <width>200</width>
                   <height>40</height>
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:1 rgba(87, 141, 254, 255));</string>
+                 <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 0);
+font: 87 16pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -2826,22 +2778,11 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
                </widget>
               </item>
               <item>
-               <spacer name="horizontalSpacer_47">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
                <widget class="QLabel" name="setGagnePartie12JoueurG">
                 <property name="styleSheet">
-                 <string notr="true">background-color: rgb(92, 53, 102);</string>
+                 <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 0);
+font: 87 16pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -2867,7 +2808,9 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
               <item>
                <widget class="QLabel" name="setGagnePartie12JoueurD">
                 <property name="styleSheet">
-                 <string notr="true">background-color: rgb(92, 53, 102);</string>
+                 <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 0);
+font: 87 16pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -2881,34 +2824,23 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
                </widget>
               </item>
               <item>
-               <spacer name="horizontalSpacer_48">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
                <widget class="QLabel" name="joueurPartie12CoteD">
                 <property name="minimumSize">
                  <size>
-                  <width>150</width>
-                  <height>20</height>
+                  <width>200</width>
+                  <height>40</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>150</width>
-                  <height>20</height>
+                  <width>200</width>
+                  <height>40</height>
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgba(178, 56, 56, 255));</string>
+                 <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 0);
+font: 87 16pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -2942,18 +2874,20 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
                <widget class="QLabel" name="joueurPartie13CoteG">
                 <property name="minimumSize">
                  <size>
-                  <width>150</width>
+                  <width>200</width>
                   <height>40</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>150</width>
+                  <width>200</width>
                   <height>40</height>
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:1 rgba(87, 141, 254, 255));</string>
+                 <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 0);
+font: 87 16pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -2967,22 +2901,11 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
                </widget>
               </item>
               <item>
-               <spacer name="horizontalSpacer_49">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
                <widget class="QLabel" name="setGagnePartie13JoueurG">
                 <property name="styleSheet">
-                 <string notr="true">background-color: rgb(92, 53, 102);</string>
+                 <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 0);
+font: 87 16pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -3008,7 +2931,9 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
               <item>
                <widget class="QLabel" name="setGagnePartie13JoueurD">
                 <property name="styleSheet">
-                 <string notr="true">background-color: rgb(92, 53, 102);</string>
+                 <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 0);
+font: 87 16pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -3022,34 +2947,23 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
                </widget>
               </item>
               <item>
-               <spacer name="horizontalSpacer_50">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
                <widget class="QLabel" name="joueurPartie13CoteD">
                 <property name="minimumSize">
                  <size>
-                  <width>150</width>
-                  <height>20</height>
+                  <width>200</width>
+                  <height>40</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>150</width>
-                  <height>20</height>
+                  <width>200</width>
+                  <height>40</height>
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgba(178, 56, 56, 255));v</string>
+                 <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 0);
+font: 87 16pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -3083,18 +2997,20 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
                <widget class="QLabel" name="joueurPartie14CoteG">
                 <property name="minimumSize">
                  <size>
-                  <width>150</width>
+                  <width>200</width>
                   <height>40</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>150</width>
+                  <width>200</width>
                   <height>40</height>
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:1 rgba(87, 141, 254, 255));</string>
+                 <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 0);
+font: 87 16pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -3108,22 +3024,11 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
                </widget>
               </item>
               <item>
-               <spacer name="horizontalSpacer_51">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
                <widget class="QLabel" name="setGagnePartie14JoueurG">
                 <property name="styleSheet">
-                 <string notr="true">background-color: rgb(92, 53, 102);</string>
+                 <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 0);
+font: 87 16pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -3152,7 +3057,9 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
               <item>
                <widget class="QLabel" name="setGagnePartie14JoueurD">
                 <property name="styleSheet">
-                 <string notr="true">background-color: rgb(92, 53, 102);</string>
+                 <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 0);
+font: 87 16pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -3166,34 +3073,23 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
                </widget>
               </item>
               <item>
-               <spacer name="horizontalSpacer_52">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
                <widget class="QLabel" name="joueurPartie14CoteD">
                 <property name="minimumSize">
                  <size>
-                  <width>150</width>
-                  <height>20</height>
+                  <width>200</width>
+                  <height>40</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>150</width>
-                  <height>20</height>
+                  <width>200</width>
+                  <height>40</height>
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgba(178, 56, 56, 255));</string>
+                 <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 0);
+font: 87 16pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -3240,7 +3136,9 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
                </size>
               </property>
               <property name="styleSheet">
-               <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:1 rgba(87, 141, 254, 255));</string>
+               <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 0);
+font: 87 36pt &quot;Lato Black&quot;;</string>
               </property>
               <property name="frameShape">
                <enum>QFrame::Box</enum>
@@ -3256,7 +3154,9 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
             <item>
              <widget class="QLabel" name="pointsTotalEquipeW">
               <property name="styleSheet">
-               <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgba(178, 56, 56, 255));</string>
+               <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 0);
+font: 87 36pt &quot;Lato Black&quot;;</string>
               </property>
               <property name="frameShape">
                <enum>QFrame::Box</enum>
@@ -3320,12 +3220,17 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
                 </property>
                 <property name="font">
                  <font>
-                  <weight>75</weight>
-                  <bold>true</bold>
+                  <family>Lato Black</family>
+                  <pointsize>18</pointsize>
+                  <weight>10</weight>
+                  <italic>false</italic>
+                  <bold>false</bold>
                  </font>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0.125, x2:1, y2:1, stop:0 rgba(167, 7, 7, 255), stop:1 rgba(255, 101, 101, 255));</string>
+                 <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0.125, x2:1, y2:1, stop:0 rgba(167, 7, 7, 255), stop:1 rgba(255, 101, 101, 255));
+color: rgb(238, 238, 236);
+font: 87 18pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -3351,12 +3256,17 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
                 </property>
                 <property name="font">
                  <font>
-                  <weight>75</weight>
-                  <bold>true</bold>
+                  <family>Lato Black</family>
+                  <pointsize>18</pointsize>
+                  <weight>10</weight>
+                  <italic>false</italic>
+                  <bold>false</bold>
                  </font>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0.125, x2:1, y2:1, stop:0 rgba(167, 7, 7, 255), stop:1 rgba(255, 101, 101, 255));</string>
+                 <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0.125, x2:1, y2:1, stop:0 rgba(167, 7, 7, 255), stop:1 rgba(255, 101, 101, 255));
+color: rgb(238, 238, 236);
+font: 87 18pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -3389,15 +3299,20 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
                 </property>
                 <property name="font">
                  <font>
-                  <weight>75</weight>
-                  <bold>true</bold>
+                  <family>Lato Black</family>
+                  <pointsize>18</pointsize>
+                  <weight>10</weight>
+                  <italic>false</italic>
+                  <bold>false</bold>
                  </font>
                 </property>
                 <property name="layoutDirection">
                  <enum>Qt::RightToLeft</enum>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0.125, x2:1, y2:1, stop:0 rgba(167, 7, 7, 255), stop:1 rgba(255, 101, 101, 255));</string>
+                 <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0.125, x2:1, y2:1, stop:0 rgba(167, 7, 7, 255), stop:1 rgba(255, 101, 101, 255));
+color: rgb(238, 238, 236);
+font: 87 18pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -3420,15 +3335,20 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
                 </property>
                 <property name="font">
                  <font>
-                  <weight>75</weight>
-                  <bold>true</bold>
+                  <family>Lato Black</family>
+                  <pointsize>18</pointsize>
+                  <weight>10</weight>
+                  <italic>false</italic>
+                  <bold>false</bold>
                  </font>
                 </property>
                 <property name="layoutDirection">
                  <enum>Qt::RightToLeft</enum>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0.125, x2:1, y2:1, stop:0 rgba(167, 7, 7, 255), stop:1 rgba(255, 101, 101, 255));</string>
+                 <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0.125, x2:1, y2:1, stop:0 rgba(167, 7, 7, 255), stop:1 rgba(255, 101, 101, 255));
+color: rgb(238, 238, 236);
+font: 87 18pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -3459,15 +3379,20 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
               </property>
               <property name="font">
                <font>
-                <weight>75</weight>
-                <bold>true</bold>
+                <family>Lato Black</family>
+                <pointsize>18</pointsize>
+                <weight>10</weight>
+                <italic>false</italic>
+                <bold>false</bold>
                </font>
               </property>
               <property name="layoutDirection">
                <enum>Qt::LeftToRight</enum>
               </property>
               <property name="styleSheet">
-               <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0.125, x2:1, y2:1, stop:0 rgba(167, 7, 7, 255), stop:1 rgba(255, 101, 101, 255));</string>
+               <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0.125, x2:1, y2:1, stop:0 rgba(167, 7, 7, 255), stop:1 rgba(255, 101, 101, 255));
+color: rgb(238, 238, 236);
+font: 87 18pt &quot;Lato Black&quot;;</string>
               </property>
               <property name="frameShape">
                <enum>QFrame::Box</enum>
@@ -3490,12 +3415,17 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
               </property>
               <property name="font">
                <font>
-                <weight>75</weight>
-                <bold>true</bold>
+                <family>Lato Black</family>
+                <pointsize>14</pointsize>
+                <weight>10</weight>
+                <italic>false</italic>
+                <bold>false</bold>
                </font>
               </property>
               <property name="styleSheet">
-               <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0.125, x2:1, y2:1, stop:0 rgba(167, 7, 7, 255), stop:1 rgba(255, 101, 101, 255));</string>
+               <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0.125, x2:1, y2:1, stop:0 rgba(167, 7, 7, 255), stop:1 rgba(255, 101, 101, 255));
+color: rgb(238, 238, 236);
+font: 87 14pt &quot;Lato Black&quot;;</string>
               </property>
               <property name="frameShape">
                <enum>QFrame::Box</enum>
@@ -3515,12 +3445,17 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
               </property>
               <property name="font">
                <font>
-                <weight>75</weight>
-                <bold>true</bold>
+                <family>Lato Black</family>
+                <pointsize>14</pointsize>
+                <weight>10</weight>
+                <italic>false</italic>
+                <bold>false</bold>
                </font>
               </property>
               <property name="styleSheet">
-               <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0.125, x2:1, y2:1, stop:0 rgba(167, 7, 7, 255), stop:1 rgba(255, 101, 101, 255));</string>
+               <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0.125, x2:1, y2:1, stop:0 rgba(167, 7, 7, 255), stop:1 rgba(255, 101, 101, 255));
+color: rgb(238, 238, 236);
+font: 87 14pt &quot;Lato Black&quot;;</string>
               </property>
               <property name="frameShape">
                <enum>QFrame::Box</enum>
@@ -3561,7 +3496,9 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0.125, x2:1, y2:1, stop:0 rgba(167, 7, 7, 255), stop:1 rgba(255, 101, 101, 255));</string>
+                 <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0.125, x2:1, y2:1, stop:0 rgba(167, 7, 7, 255), stop:1 rgba(255, 101, 101, 255));
+color: rgb(238, 238, 236);
+font: 87 18pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -3599,7 +3536,9 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0.125, x2:1, y2:1, stop:0 rgba(167, 7, 7, 255), stop:1 rgba(255, 101, 101, 255));</string>
+                 <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0.125, x2:1, y2:1, stop:0 rgba(167, 7, 7, 255), stop:1 rgba(255, 101, 101, 255));
+color: rgb(238, 238, 236);
+font: 87 18pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -3637,7 +3576,9 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0.125, x2:1, y2:1, stop:0 rgba(167, 7, 7, 255), stop:1 rgba(255, 101, 101, 255));</string>
+                 <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0.125, x2:1, y2:1, stop:0 rgba(167, 7, 7, 255), stop:1 rgba(255, 101, 101, 255));
+color: rgb(238, 238, 236);
+font: 87 18pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -3673,7 +3614,9 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0.125, x2:1, y2:1, stop:0 rgba(167, 7, 7, 255), stop:1 rgba(255, 101, 101, 255));</string>
+                 <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0.125, x2:1, y2:1, stop:0 rgba(167, 7, 7, 255), stop:1 rgba(255, 101, 101, 255));
+color: rgb(238, 238, 236);
+font: 87 18pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -3708,7 +3651,9 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0.125, x2:1, y2:1, stop:0 rgba(167, 7, 7, 255), stop:1 rgba(255, 101, 101, 255));</string>
+                 <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0.125, x2:1, y2:1, stop:0 rgba(167, 7, 7, 255), stop:1 rgba(255, 101, 101, 255));
+color: rgb(238, 238, 236);
+font: 87 18pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -3743,7 +3688,9 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0.125, x2:1, y2:1, stop:0 rgba(167, 7, 7, 255), stop:1 rgba(255, 101, 101, 255));</string>
+                 <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0.125, x2:1, y2:1, stop:0 rgba(167, 7, 7, 255), stop:1 rgba(255, 101, 101, 255));
+color: rgb(238, 238, 236);
+font: 87 18pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -3779,7 +3726,9 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0.125, x2:1, y2:1, stop:0 rgba(167, 7, 7, 255), stop:1 rgba(255, 101, 101, 255));</string>
+                 <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0.125, x2:1, y2:1, stop:0 rgba(167, 7, 7, 255), stop:1 rgba(255, 101, 101, 255));
+color: rgb(238, 238, 236);
+font: 87 18pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -3814,7 +3763,9 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0.125, x2:1, y2:1, stop:0 rgba(167, 7, 7, 255), stop:1 rgba(255, 101, 101, 255));</string>
+                 <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0.125, x2:1, y2:1, stop:0 rgba(167, 7, 7, 255), stop:1 rgba(255, 101, 101, 255));
+color: rgb(238, 238, 236);
+font: 87 18pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -3849,7 +3800,9 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0.125, x2:1, y2:1, stop:0 rgba(167, 7, 7, 255), stop:1 rgba(255, 101, 101, 255));</string>
+                 <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0.125, x2:1, y2:1, stop:0 rgba(167, 7, 7, 255), stop:1 rgba(255, 101, 101, 255));
+color: rgb(238, 238, 236);
+font: 87 18pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -3885,7 +3838,9 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0.125, x2:1, y2:1, stop:0 rgba(167, 7, 7, 255), stop:1 rgba(255, 101, 101, 255));</string>
+                 <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0.125, x2:1, y2:1, stop:0 rgba(167, 7, 7, 255), stop:1 rgba(255, 101, 101, 255));
+color: rgb(238, 238, 236);
+font: 87 18pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -3920,7 +3875,9 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0.125, x2:1, y2:1, stop:0 rgba(167, 7, 7, 255), stop:1 rgba(255, 101, 101, 255));</string>
+                 <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0.125, x2:1, y2:1, stop:0 rgba(167, 7, 7, 255), stop:1 rgba(255, 101, 101, 255));
+color: rgb(238, 238, 236);
+font: 87 18pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -3955,7 +3912,9 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0.125, x2:1, y2:1, stop:0 rgba(167, 7, 7, 255), stop:1 rgba(255, 101, 101, 255));</string>
+                 <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0.125, x2:1, y2:1, stop:0 rgba(167, 7, 7, 255), stop:1 rgba(255, 101, 101, 255));
+color: rgb(238, 238, 236);
+font: 87 18pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -3991,7 +3950,9 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0.125, x2:1, y2:1, stop:0 rgba(167, 7, 7, 255), stop:1 rgba(255, 101, 101, 255));</string>
+                 <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0.125, x2:1, y2:1, stop:0 rgba(167, 7, 7, 255), stop:1 rgba(255, 101, 101, 255));
+color: rgb(238, 238, 236);
+font: 87 18pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -4026,7 +3987,9 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0.125, x2:1, y2:1, stop:0 rgba(167, 7, 7, 255), stop:1 rgba(255, 101, 101, 255));</string>
+                 <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0.125, x2:1, y2:1, stop:0 rgba(167, 7, 7, 255), stop:1 rgba(255, 101, 101, 255));
+color: rgb(238, 238, 236);
+font: 87 18pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -4061,7 +4024,9 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:1 rgb
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0.125, x2:1, y2:1, stop:0 rgba(167, 7, 7, 255), stop:1 rgba(255, 101, 101, 255));</string>
+                 <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0.125, x2:1, y2:1, stop:0 rgba(167, 7, 7, 255), stop:1 rgba(255, 101, 101, 255));
+color: rgb(238, 238, 236);
+font: 87 18pt &quot;Lato Black&quot;;</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>

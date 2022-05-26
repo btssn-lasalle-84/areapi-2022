@@ -21,6 +21,10 @@ Système d’assistance à l’arbitrage lors d’une partie de tennis de table 
 
 [areapi-2022](https://github.com/btssn-lasalle-84/areapi-2022/projects/1)
 
+## Documentation du code
+
+https://btssn-lasalle-84.github.io/areapi-2022/
+
 ## Base de données
 
 ![](images/schema-bdd-areapi-v0.2.png)
