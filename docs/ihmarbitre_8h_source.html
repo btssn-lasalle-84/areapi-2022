@@ -1,0 +1,255 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>areapi:  Fichier source de /home/tv/Documents/git/projets-2022/areapi-2022/arbitre-area/ihmarbitre.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="customdoxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="areapi.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">areapi
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+   <div id="projectbrief">BTS SNIR LaSalle Avignon 2022</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('ihmarbitre_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">ihmarbitre.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="ihmarbitre_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef IHMARBITRE_H</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define IHMARBITRE_H</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;QtWidgets&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="basededonnees_8h.html">basededonnees.h</a>&quot;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="ihmarbitre_8h.html#addd0d3024d44a2fc97d64022e48959d6">   20</a></span>&#160;<span class="preprocessor">#define TEST_IHMARBITRE</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="ihmarbitre_8h.html#a13ff9d8f0c9371d77867e51dc1eb7e2a">   26</a></span>&#160;<span class="preprocessor">#define PLEIN_ECRAN</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">// Numéro de champs pour les requête SQL</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="ihmarbitre_8h.html#a60cadcc2d3dd70588a6c9a4052f5e69d">   29</a></span>&#160;<span class="preprocessor">#define COLONNE_idRencontre        0</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="ihmarbitre_8h.html#a8aced1d7a942bcb1a361478069be4d70">   30</a></span>&#160;<span class="preprocessor">#define COLONNE_idClubA            1</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="ihmarbitre_8h.html#ab7327c490cda7013730f37c6d21e67ee">   31</a></span>&#160;<span class="preprocessor">#define COLONNE_idClubW            2</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="ihmarbitre_8h.html#a8f5b722851db2f187087d1983ec45acb">   32</a></span>&#160;<span class="preprocessor">#define COLONNE_nbPartiesGagnantes 3</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="ihmarbitre_8h.html#ad38a34dbe5bea5072f44ea53dd0cfa8d">   33</a></span>&#160;<span class="preprocessor">#define COLONNE_estFinie           4</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="ihmarbitre_8h.html#a6098a0a904c7bcdb8c59b0d1bad4e22d">   34</a></span>&#160;<span class="preprocessor">#define COLONNE_horodatage         5</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="ihmarbitre_8h.html#a53ec2d96e7f12305080b3f5dfd228d0c">   35</a></span>&#160;<span class="preprocessor">#define COLONNE_nomClubA           6</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="ihmarbitre_8h.html#aef8ff64be6fd79e7acf72429dbc87b9a">   36</a></span>&#160;<span class="preprocessor">#define COLONNE_nomClubW           7</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="ihmarbitre_8h.html#a0ec89cdf4819f7bc076f76f07c7aaa0c">   37</a></span>&#160;<span class="preprocessor">#define COLONNE_nomClub            1</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">// QT_BEGIN_NAMESPACE</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_ui.html">Ui</a></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;{</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">class </span><a class="code" href="class_i_h_m_arbitre.html">IHMArbitre</a>;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;}</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">// QT_END_NAMESPACE</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keyword">class </span><a class="code" href="class_communication_bluetooth.html">CommunicationBluetooth</a>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="class_i_h_m_arbitre.html">   56</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_i_h_m_arbitre.html">IHMArbitre</a> : <span class="keyword">public</span> <a class="code" href="class_q_main_window.html">QMainWindow</a></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;{</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    Q_OBJECT</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <a class="code" href="class_i_h_m_arbitre.html#a69e3ee8bf3f7ba1173aaf220f30c6b84">IHMArbitre</a>(QWidget* parent = <span class="keyword">nullptr</span>);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <a class="code" href="class_i_h_m_arbitre.html#acca3a686632fb22467f58b6d0f7c4ec7">~IHMArbitre</a>();</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="class_i_h_m_arbitre.html#a9f2fc514bb60a2f87a0d10cf68f17deb">   65</a></span>&#160;    Ui::IHMArbitre* <a class="code" href="class_i_h_m_arbitre.html#a9f2fc514bb60a2f87a0d10cf68f17deb">ui</a>; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <a class="code" href="class_communication_bluetooth.html">CommunicationBluetooth</a>*</div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="class_i_h_m_arbitre.html#a449f41bb7db4afac8b4c9df9dabbce7e">   67</a></span>&#160;                         <a class="code" href="class_i_h_m_arbitre.html#a449f41bb7db4afac8b4c9df9dabbce7e">communicationBluetooth</a>; </div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="class_i_h_m_arbitre.html#a26c7241621cf63132e48d96f92bc56a8">   68</a></span>&#160;    <a class="code" href="class_base_de_donnees.html">BaseDeDonnees</a>*       <a class="code" href="class_i_h_m_arbitre.html#a26c7241621cf63132e48d96f92bc56a8">bdd</a>;        </div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="class_i_h_m_arbitre.html#ad1a250f00b2a6f5db7846510506648ee">   69</a></span>&#160;    QVector&lt;QStringList&gt; <a class="code" href="class_i_h_m_arbitre.html#ad1a250f00b2a6f5db7846510506648ee">rencontres</a>; </div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="class_i_h_m_arbitre.html#a68220a263ae0d7cfcf9e751601f46a21">   70</a></span>&#160;    QVector&lt;QStringList&gt; <a class="code" href="class_i_h_m_arbitre.html#a68220a263ae0d7cfcf9e751601f46a21">joueursEquipeA</a>; </div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="class_i_h_m_arbitre.html#a3af18becf8693b4bc0a52607936e6847">   71</a></span>&#160;    QVector&lt;QStringList&gt; <a class="code" href="class_i_h_m_arbitre.html#a3af18becf8693b4bc0a52607936e6847">joueursEquipeW</a>; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="class_i_h_m_arbitre.html#a6841935146a4d1023e769b3218b5476a">   73</a></span>&#160;    QVector&lt;QStringList&gt; <a class="code" href="class_i_h_m_arbitre.html#a6841935146a4d1023e769b3218b5476a">clubs</a>; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno"><a class="line" href="class_i_h_m_arbitre.html#a3e66cc41a34bb4221a6e0d5591e11e31">   79</a></span>&#160;    <span class="keyword">enum</span> <a class="code" href="class_i_h_m_arbitre.html#a3e66cc41a34bb4221a6e0d5591e11e31">Ecran</a></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    {</div>
+<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="class_i_h_m_arbitre.html#a3e66cc41a34bb4221a6e0d5591e11e31aed86750831989909e2ac94b665b68be0">   81</a></span>&#160;        <a class="code" href="class_i_h_m_arbitre.html#a3e66cc41a34bb4221a6e0d5591e11e31aed86750831989909e2ac94b665b68be0">Accueil</a>,</div>
+<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="class_i_h_m_arbitre.html#a3e66cc41a34bb4221a6e0d5591e11e31a7f41dab09aa5ed1c858f324c530eec27">   82</a></span>&#160;        <a class="code" href="class_i_h_m_arbitre.html#a3e66cc41a34bb4221a6e0d5591e11e31a7f41dab09aa5ed1c858f324c530eec27">Rencontre</a>,</div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="class_i_h_m_arbitre.html#a3e66cc41a34bb4221a6e0d5591e11e31a80eee83ba6099bb99b078a3ad3a0d706">   83</a></span>&#160;        <a class="code" href="class_i_h_m_arbitre.html#a3e66cc41a34bb4221a6e0d5591e11e31a80eee83ba6099bb99b078a3ad3a0d706">Partie</a>,</div>
+<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="class_i_h_m_arbitre.html#a3e66cc41a34bb4221a6e0d5591e11e31a95a05ef9b40dff0d0604a4335b7d593d">   84</a></span>&#160;        <a class="code" href="class_i_h_m_arbitre.html#a3e66cc41a34bb4221a6e0d5591e11e31a95a05ef9b40dff0d0604a4335b7d593d">NbEcrans</a></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    };</div>
+<div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="class_i_h_m_arbitre.html#ab77f58eb6f5e9fd65ea2f62ada099116">   90</a></span>&#160;    <span class="keyword">enum</span> <a class="code" href="class_i_h_m_arbitre.html#ab77f58eb6f5e9fd65ea2f62ada099116">EtatModule</a></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    {</div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="class_i_h_m_arbitre.html#ab77f58eb6f5e9fd65ea2f62ada099116a28ee1f389b6fa79a74bc1d686a64966f">   92</a></span>&#160;        <a class="code" href="class_i_h_m_arbitre.html#ab77f58eb6f5e9fd65ea2f62ada099116a28ee1f389b6fa79a74bc1d686a64966f">Absent</a>,   <span class="comment">// 0</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="class_i_h_m_arbitre.html#ab77f58eb6f5e9fd65ea2f62ada099116a45e7c653bae57a89f96d6e7c03a1e352">   93</a></span>&#160;        <a class="code" href="class_i_h_m_arbitre.html#ab77f58eb6f5e9fd65ea2f62ada099116a45e7c653bae57a89f96d6e7c03a1e352">Trouve</a>,   <span class="comment">// 1</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="class_i_h_m_arbitre.html#ab77f58eb6f5e9fd65ea2f62ada099116aa75c08ab1d0e89e2efad500a27255925">   94</a></span>&#160;        <a class="code" href="class_i_h_m_arbitre.html#ab77f58eb6f5e9fd65ea2f62ada099116aa75c08ab1d0e89e2efad500a27255925">Connecte</a>, <span class="comment">// 2</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="class_i_h_m_arbitre.html#ab77f58eb6f5e9fd65ea2f62ada099116a247d1aaf93c6c752f9c7aa733891b0fa">   95</a></span>&#160;        <a class="code" href="class_i_h_m_arbitre.html#ab77f58eb6f5e9fd65ea2f62ada099116a247d1aaf93c6c752f9c7aa733891b0fa">NbEtats</a></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    };</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_i_h_m_arbitre.html#a4604be088808bf0f93564f5302f63379">initialiserCommunicationBluetooth</a>();</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_i_h_m_arbitre.html#af57bec573dacb5865a2812f1cce7b450">installerGestionEvenements</a>();</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_i_h_m_arbitre.html#ae4f92eda61723d3e033c82c2dbc8a0ae">initialiserPageAccueil</a>();</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_i_h_m_arbitre.html#a8afae00cb893509cd621663ab58d168c">initialiserBDD</a>();</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_i_h_m_arbitre.html#a6ab9eaea65ca7c8a1bc760b12306f184">afficherEtatBluetooth</a>(QLabel* module, <a class="code" href="class_i_h_m_arbitre.html#ab77f58eb6f5e9fd65ea2f62ada099116">EtatModule</a> etat);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_i_h_m_arbitre.html#aae6ce2a57dfbc82116000df017869b7c">chargerRencontres</a>();</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_i_h_m_arbitre.html#af3d1d18bc5115ffbdb8e10159ac465c4">chargerClubs</a>();</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_i_h_m_arbitre.html#a074b0253622905dae7942e5a5f1cc1b4">chargerJoueurs</a>();</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="preprocessor">#ifdef TEST_IHMARBITRE</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_i_h_m_arbitre.html#a07892d1d055bf3f98187dd87a6b7e611">creerRaccourcisClavier</a>();</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  <span class="keyword">public</span> slots:</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_i_h_m_arbitre.html#acfc25ecbe31b6c66379661f93a6d9897">afficherEcran</a>(<a class="code" href="class_i_h_m_arbitre.html#a3e66cc41a34bb4221a6e0d5591e11e31">IHMArbitre::Ecran</a> ecran);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_i_h_m_arbitre.html#af249740751ab36f619ee1127ebc2dca1">afficherEcranPrecedent</a>();</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_i_h_m_arbitre.html#a2fdd9c840c8cddb397458949099a4c54">afficherEcranSuivant</a>();</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_i_h_m_arbitre.html#a2c69a7af47a1fca231c87e9608dcb66c">fermerApplication</a>();</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_i_h_m_arbitre.html#a054f3422dc32851ae03fd47b4b74a138">demarrer</a>();</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_i_h_m_arbitre.html#a0139329b6e88668e4250d195707009fb">afficherNetTrouve</a>();</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_i_h_m_arbitre.html#a3e548a9e3c05f532b190811ee6972890">afficherEcranTrouve</a>();</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_i_h_m_arbitre.html#a96d2d14ea91d6fa908249318c9db4769">afficherScoreTrouve</a>();</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_i_h_m_arbitre.html#a6cae0937e5b7c086539722f7602372f0">afficherConnexionNet</a>();</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_i_h_m_arbitre.html#a030e0d6599eb1c314773665ab94e6035">afficherConnexionEcran</a>();</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_i_h_m_arbitre.html#abd0bde9818c1c4b4d5199d69acd190e0">afficherConnexionScore</a>();</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_i_h_m_arbitre.html#a612dedcf9e2e11959655b416836233ce">afficherDeconnexionNet</a>();</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_i_h_m_arbitre.html#afc1e260ed857fbde8042489af5c5c53e">afficherDeconnexionEcran</a>();</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_i_h_m_arbitre.html#abcdb30ccec714827d06827f256c5db9d">afficherDeconnexionScore</a>();</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_i_h_m_arbitre.html#ade21c08892966c4f23ae16524af7f45a">detecter</a>();</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_i_h_m_arbitre.html#a2e2a01279fd8e3c4832acc558fb3da1a">declencherNet</a>(<span class="keywordtype">int</span> nbNets);</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_i_h_m_arbitre.html#ab2890cf817c62422464199ef545e7292">chargerPartiesSimples</a>();</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_i_h_m_arbitre.html#a8c047c8aa50283a81a03946e65527423">chargerPartiesDoubles</a>();</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_i_h_m_arbitre.html#a22d5ed82dc01117a1ae1942bbed126bd">demarrerRencontre</a>();</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;};</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="preprocessor">#endif // IHMARBITRE_H</span></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclass_i_h_m_arbitre_html_a22d5ed82dc01117a1ae1942bbed126bd"><div class="ttname"><a href="class_i_h_m_arbitre.html#a22d5ed82dc01117a1ae1942bbed126bd">IHMArbitre::demarrerRencontre</a></div><div class="ttdeci">void demarrerRencontre()</div><div class="ttdef"><b>Definition:</b> <a href="ihmarbitre_8cpp_source.html#l00183">ihmarbitre.cpp:183</a></div></div>
+<div class="ttc" id="aclass_i_h_m_arbitre_html_afc1e260ed857fbde8042489af5c5c53e"><div class="ttname"><a href="class_i_h_m_arbitre.html#afc1e260ed857fbde8042489af5c5c53e">IHMArbitre::afficherDeconnexionEcran</a></div><div class="ttdeci">void afficherDeconnexionEcran()</div><div class="ttdef"><b>Definition:</b> <a href="ihmarbitre_8cpp_source.html#l00160">ihmarbitre.cpp:160</a></div></div>
+<div class="ttc" id="aclass_i_h_m_arbitre_html_af249740751ab36f619ee1127ebc2dca1"><div class="ttname"><a href="class_i_h_m_arbitre.html#af249740751ab36f619ee1127ebc2dca1">IHMArbitre::afficherEcranPrecedent</a></div><div class="ttdeci">void afficherEcranPrecedent()</div><div class="ttdoc">Méthode qui permet d'afficher l'écran précédent dans la pile QStackedWidget.</div><div class="ttdef"><b>Definition:</b> <a href="ihmarbitre_8cpp_source.html#l00097">ihmarbitre.cpp:97</a></div></div>
+<div class="ttc" id="aclass_i_h_m_arbitre_html_acfc25ecbe31b6c66379661f93a6d9897"><div class="ttname"><a href="class_i_h_m_arbitre.html#acfc25ecbe31b6c66379661f93a6d9897">IHMArbitre::afficherEcran</a></div><div class="ttdeci">void afficherEcran(IHMArbitre::Ecran ecran)</div><div class="ttdoc">Méthode qui permet d'afficher un numéro d'écran de la pile QStackedWidget.</div><div class="ttdef"><b>Definition:</b> <a href="ihmarbitre_8cpp_source.html#l00072">ihmarbitre.cpp:72</a></div></div>
+<div class="ttc" id="aclass_i_h_m_arbitre_html_abcdb30ccec714827d06827f256c5db9d"><div class="ttname"><a href="class_i_h_m_arbitre.html#abcdb30ccec714827d06827f256c5db9d">IHMArbitre::afficherDeconnexionScore</a></div><div class="ttdeci">void afficherDeconnexionScore()</div><div class="ttdef"><b>Definition:</b> <a href="ihmarbitre_8cpp_source.html#l00165">ihmarbitre.cpp:165</a></div></div>
+<div class="ttc" id="aclass_i_h_m_arbitre_html_a074b0253622905dae7942e5a5f1cc1b4"><div class="ttname"><a href="class_i_h_m_arbitre.html#a074b0253622905dae7942e5a5f1cc1b4">IHMArbitre::chargerJoueurs</a></div><div class="ttdeci">void chargerJoueurs()</div><div class="ttdef"><b>Definition:</b> <a href="ihmarbitre_8cpp_source.html#l00418">ihmarbitre.cpp:418</a></div></div>
+<div class="ttc" id="aclass_i_h_m_arbitre_html_af57bec573dacb5865a2812f1cce7b450"><div class="ttname"><a href="class_i_h_m_arbitre.html#af57bec573dacb5865a2812f1cce7b450">IHMArbitre::installerGestionEvenements</a></div><div class="ttdeci">void installerGestionEvenements()</div><div class="ttdef"><b>Definition:</b> <a href="ihmarbitre_8cpp_source.html#l00219">ihmarbitre.cpp:219</a></div></div>
+<div class="ttc" id="aclass_i_h_m_arbitre_html_a3e66cc41a34bb4221a6e0d5591e11e31a95a05ef9b40dff0d0604a4335b7d593d"><div class="ttname"><a href="class_i_h_m_arbitre.html#a3e66cc41a34bb4221a6e0d5591e11e31a95a05ef9b40dff0d0604a4335b7d593d">IHMArbitre::NbEcrans</a></div><div class="ttdeci">@ NbEcrans</div><div class="ttdef"><b>Definition:</b> <a href="ihmarbitre_8h_source.html#l00084">ihmarbitre.h:84</a></div></div>
+<div class="ttc" id="aclass_i_h_m_arbitre_html_a3e548a9e3c05f532b190811ee6972890"><div class="ttname"><a href="class_i_h_m_arbitre.html#a3e548a9e3c05f532b190811ee6972890">IHMArbitre::afficherEcranTrouve</a></div><div class="ttdeci">void afficherEcranTrouve()</div><div class="ttdef"><b>Definition:</b> <a href="ihmarbitre_8cpp_source.html#l00127">ihmarbitre.cpp:127</a></div></div>
+<div class="ttc" id="aclass_i_h_m_arbitre_html_a26c7241621cf63132e48d96f92bc56a8"><div class="ttname"><a href="class_i_h_m_arbitre.html#a26c7241621cf63132e48d96f92bc56a8">IHMArbitre::bdd</a></div><div class="ttdeci">BaseDeDonnees * bdd</div><div class="ttdoc">la relation vers la base de données</div><div class="ttdef"><b>Definition:</b> <a href="ihmarbitre_8h_source.html#l00068">ihmarbitre.h:68</a></div></div>
+<div class="ttc" id="aclass_i_h_m_arbitre_html_a9f2fc514bb60a2f87a0d10cf68f17deb"><div class="ttname"><a href="class_i_h_m_arbitre.html#a9f2fc514bb60a2f87a0d10cf68f17deb">IHMArbitre::ui</a></div><div class="ttdeci">Ui::IHMArbitre * ui</div><div class="ttdoc">la fenêtre graphique associée à cette classe</div><div class="ttdef"><b>Definition:</b> <a href="ihmarbitre_8h_source.html#l00065">ihmarbitre.h:65</a></div></div>
+<div class="ttc" id="aclass_i_h_m_arbitre_html_a8afae00cb893509cd621663ab58d168c"><div class="ttname"><a href="class_i_h_m_arbitre.html#a8afae00cb893509cd621663ab58d168c">IHMArbitre::initialiserBDD</a></div><div class="ttdeci">void initialiserBDD()</div><div class="ttdef"><b>Definition:</b> <a href="ihmarbitre_8cpp_source.html#l00209">ihmarbitre.cpp:209</a></div></div>
+<div class="ttc" id="aclass_i_h_m_arbitre_html_ae4f92eda61723d3e033c82c2dbc8a0ae"><div class="ttname"><a href="class_i_h_m_arbitre.html#ae4f92eda61723d3e033c82c2dbc8a0ae">IHMArbitre::initialiserPageAccueil</a></div><div class="ttdeci">void initialiserPageAccueil()</div><div class="ttdef"><b>Definition:</b> <a href="ihmarbitre_8cpp_source.html#l00283">ihmarbitre.cpp:283</a></div></div>
+<div class="ttc" id="aclass_i_h_m_arbitre_html_acca3a686632fb22467f58b6d0f7c4ec7"><div class="ttname"><a href="class_i_h_m_arbitre.html#acca3a686632fb22467f58b6d0f7c4ec7">IHMArbitre::~IHMArbitre</a></div><div class="ttdeci">~IHMArbitre()</div><div class="ttdoc">Destructeur de la classe IHMArbitre.</div><div class="ttdef"><b>Definition:</b> <a href="ihmarbitre_8cpp_source.html#l00059">ihmarbitre.cpp:59</a></div></div>
+<div class="ttc" id="aclass_q_main_window_html"><div class="ttname"><a href="class_q_main_window.html">QMainWindow</a></div></div>
+<div class="ttc" id="aclass_i_h_m_arbitre_html_a69e3ee8bf3f7ba1173aaf220f30c6b84"><div class="ttname"><a href="class_i_h_m_arbitre.html#a69e3ee8bf3f7ba1173aaf220f30c6b84">IHMArbitre::IHMArbitre</a></div><div class="ttdeci">IHMArbitre(QWidget *parent=nullptr)</div><div class="ttdoc">Constructeur de la classe IHMArbitre.</div><div class="ttdef"><b>Definition:</b> <a href="ihmarbitre_8cpp_source.html#l00022">ihmarbitre.cpp:22</a></div></div>
+<div class="ttc" id="aclass_i_h_m_arbitre_html"><div class="ttname"><a href="class_i_h_m_arbitre.html">IHMArbitre</a></div><div class="ttdoc">Déclaration de la classe IHMArbitre.</div><div class="ttdef"><b>Definition:</b> <a href="ihmarbitre_8h_source.html#l00056">ihmarbitre.h:56</a></div></div>
+<div class="ttc" id="aclass_i_h_m_arbitre_html_a3af18becf8693b4bc0a52607936e6847"><div class="ttname"><a href="class_i_h_m_arbitre.html#a3af18becf8693b4bc0a52607936e6847">IHMArbitre::joueursEquipeW</a></div><div class="ttdeci">QVector&lt; QStringList &gt; joueursEquipeW</div><div class="ttdoc">Les joueurs du club W.</div><div class="ttdef"><b>Definition:</b> <a href="ihmarbitre_8h_source.html#l00071">ihmarbitre.h:71</a></div></div>
+<div class="ttc" id="aclass_i_h_m_arbitre_html_a6841935146a4d1023e769b3218b5476a"><div class="ttname"><a href="class_i_h_m_arbitre.html#a6841935146a4d1023e769b3218b5476a">IHMArbitre::clubs</a></div><div class="ttdeci">QVector&lt; QStringList &gt; clubs</div><div class="ttdoc">Les clubs.</div><div class="ttdef"><b>Definition:</b> <a href="ihmarbitre_8h_source.html#l00073">ihmarbitre.h:73</a></div></div>
+<div class="ttc" id="aclass_i_h_m_arbitre_html_a3e66cc41a34bb4221a6e0d5591e11e31aed86750831989909e2ac94b665b68be0"><div class="ttname"><a href="class_i_h_m_arbitre.html#a3e66cc41a34bb4221a6e0d5591e11e31aed86750831989909e2ac94b665b68be0">IHMArbitre::Accueil</a></div><div class="ttdeci">@ Accueil</div><div class="ttdef"><b>Definition:</b> <a href="ihmarbitre_8h_source.html#l00081">ihmarbitre.h:81</a></div></div>
+<div class="ttc" id="aclass_i_h_m_arbitre_html_ab77f58eb6f5e9fd65ea2f62ada099116aa75c08ab1d0e89e2efad500a27255925"><div class="ttname"><a href="class_i_h_m_arbitre.html#ab77f58eb6f5e9fd65ea2f62ada099116aa75c08ab1d0e89e2efad500a27255925">IHMArbitre::Connecte</a></div><div class="ttdeci">@ Connecte</div><div class="ttdef"><b>Definition:</b> <a href="ihmarbitre_8h_source.html#l00094">ihmarbitre.h:94</a></div></div>
+<div class="ttc" id="aclass_i_h_m_arbitre_html_ade21c08892966c4f23ae16524af7f45a"><div class="ttname"><a href="class_i_h_m_arbitre.html#ade21c08892966c4f23ae16524af7f45a">IHMArbitre::detecter</a></div><div class="ttdeci">void detecter()</div><div class="ttdef"><b>Definition:</b> <a href="ihmarbitre_8cpp_source.html#l00170">ihmarbitre.cpp:170</a></div></div>
+<div class="ttc" id="aclass_i_h_m_arbitre_html_a8c047c8aa50283a81a03946e65527423"><div class="ttname"><a href="class_i_h_m_arbitre.html#a8c047c8aa50283a81a03946e65527423">IHMArbitre::chargerPartiesDoubles</a></div><div class="ttdeci">void chargerPartiesDoubles()</div><div class="ttdef"><b>Definition:</b> <a href="ihmarbitre_8cpp_source.html#l00362">ihmarbitre.cpp:362</a></div></div>
+<div class="ttc" id="aclass_i_h_m_arbitre_html_a2e2a01279fd8e3c4832acc558fb3da1a"><div class="ttname"><a href="class_i_h_m_arbitre.html#a2e2a01279fd8e3c4832acc558fb3da1a">IHMArbitre::declencherNet</a></div><div class="ttdeci">void declencherNet(int nbNets)</div><div class="ttdef"><b>Definition:</b> <a href="ihmarbitre_8cpp_source.html#l00178">ihmarbitre.cpp:178</a></div></div>
+<div class="ttc" id="aclass_i_h_m_arbitre_html_af3d1d18bc5115ffbdb8e10159ac465c4"><div class="ttname"><a href="class_i_h_m_arbitre.html#af3d1d18bc5115ffbdb8e10159ac465c4">IHMArbitre::chargerClubs</a></div><div class="ttdeci">void chargerClubs()</div><div class="ttdef"><b>Definition:</b> <a href="ihmarbitre_8cpp_source.html#l00400">ihmarbitre.cpp:400</a></div></div>
+<div class="ttc" id="aclass_i_h_m_arbitre_html_a6ab9eaea65ca7c8a1bc760b12306f184"><div class="ttname"><a href="class_i_h_m_arbitre.html#a6ab9eaea65ca7c8a1bc760b12306f184">IHMArbitre::afficherEtatBluetooth</a></div><div class="ttdeci">void afficherEtatBluetooth(QLabel *module, EtatModule etat)</div><div class="ttdef"><b>Definition:</b> <a href="ihmarbitre_8cpp_source.html#l00290">ihmarbitre.cpp:290</a></div></div>
+<div class="ttc" id="aclass_i_h_m_arbitre_html_a6cae0937e5b7c086539722f7602372f0"><div class="ttname"><a href="class_i_h_m_arbitre.html#a6cae0937e5b7c086539722f7602372f0">IHMArbitre::afficherConnexionNet</a></div><div class="ttdeci">void afficherConnexionNet()</div><div class="ttdef"><b>Definition:</b> <a href="ihmarbitre_8cpp_source.html#l00137">ihmarbitre.cpp:137</a></div></div>
+<div class="ttc" id="aclass_i_h_m_arbitre_html_a054f3422dc32851ae03fd47b4b74a138"><div class="ttname"><a href="class_i_h_m_arbitre.html#a054f3422dc32851ae03fd47b4b74a138">IHMArbitre::demarrer</a></div><div class="ttdeci">void demarrer()</div><div class="ttdef"><b>Definition:</b> <a href="ihmarbitre_8cpp_source.html#l00117">ihmarbitre.cpp:117</a></div></div>
+<div class="ttc" id="aclass_i_h_m_arbitre_html_ab2890cf817c62422464199ef545e7292"><div class="ttname"><a href="class_i_h_m_arbitre.html#ab2890cf817c62422464199ef545e7292">IHMArbitre::chargerPartiesSimples</a></div><div class="ttdeci">void chargerPartiesSimples()</div><div class="ttdef"><b>Definition:</b> <a href="ihmarbitre_8cpp_source.html#l00340">ihmarbitre.cpp:340</a></div></div>
+<div class="ttc" id="aclass_i_h_m_arbitre_html_a2c69a7af47a1fca231c87e9608dcb66c"><div class="ttname"><a href="class_i_h_m_arbitre.html#a2c69a7af47a1fca231c87e9608dcb66c">IHMArbitre::fermerApplication</a></div><div class="ttdeci">void fermerApplication()</div><div class="ttdoc">Méthode qui permet de fermer la fenêtre principale de l'application.</div><div class="ttdef"><b>Definition:</b> <a href="ihmarbitre_8cpp_source.html#l00111">ihmarbitre.cpp:111</a></div></div>
+<div class="ttc" id="aclass_i_h_m_arbitre_html_ab77f58eb6f5e9fd65ea2f62ada099116a247d1aaf93c6c752f9c7aa733891b0fa"><div class="ttname"><a href="class_i_h_m_arbitre.html#ab77f58eb6f5e9fd65ea2f62ada099116a247d1aaf93c6c752f9c7aa733891b0fa">IHMArbitre::NbEtats</a></div><div class="ttdeci">@ NbEtats</div><div class="ttdef"><b>Definition:</b> <a href="ihmarbitre_8h_source.html#l00095">ihmarbitre.h:95</a></div></div>
+<div class="ttc" id="aclass_i_h_m_arbitre_html_a612dedcf9e2e11959655b416836233ce"><div class="ttname"><a href="class_i_h_m_arbitre.html#a612dedcf9e2e11959655b416836233ce">IHMArbitre::afficherDeconnexionNet</a></div><div class="ttdeci">void afficherDeconnexionNet()</div><div class="ttdef"><b>Definition:</b> <a href="ihmarbitre_8cpp_source.html#l00155">ihmarbitre.cpp:155</a></div></div>
+<div class="ttc" id="aclass_i_h_m_arbitre_html_a96d2d14ea91d6fa908249318c9db4769"><div class="ttname"><a href="class_i_h_m_arbitre.html#a96d2d14ea91d6fa908249318c9db4769">IHMArbitre::afficherScoreTrouve</a></div><div class="ttdeci">void afficherScoreTrouve()</div><div class="ttdef"><b>Definition:</b> <a href="ihmarbitre_8cpp_source.html#l00132">ihmarbitre.cpp:132</a></div></div>
+<div class="ttc" id="aclass_i_h_m_arbitre_html_a3e66cc41a34bb4221a6e0d5591e11e31a80eee83ba6099bb99b078a3ad3a0d706"><div class="ttname"><a href="class_i_h_m_arbitre.html#a3e66cc41a34bb4221a6e0d5591e11e31a80eee83ba6099bb99b078a3ad3a0d706">IHMArbitre::Partie</a></div><div class="ttdeci">@ Partie</div><div class="ttdef"><b>Definition:</b> <a href="ihmarbitre_8h_source.html#l00083">ihmarbitre.h:83</a></div></div>
+<div class="ttc" id="anamespace_ui_html"><div class="ttname"><a href="namespace_ui.html">Ui</a></div><div class="ttdef"><b>Definition:</b> <a href="ihmafficheur_8h_source.html#l00025">ihmafficheur.h:25</a></div></div>
+<div class="ttc" id="aclass_i_h_m_arbitre_html_ab77f58eb6f5e9fd65ea2f62ada099116"><div class="ttname"><a href="class_i_h_m_arbitre.html#ab77f58eb6f5e9fd65ea2f62ada099116">IHMArbitre::EtatModule</a></div><div class="ttdeci">EtatModule</div><div class="ttdef"><b>Definition:</b> <a href="ihmarbitre_8h_source.html#l00090">ihmarbitre.h:90</a></div></div>
+<div class="ttc" id="aclass_i_h_m_arbitre_html_abd0bde9818c1c4b4d5199d69acd190e0"><div class="ttname"><a href="class_i_h_m_arbitre.html#abd0bde9818c1c4b4d5199d69acd190e0">IHMArbitre::afficherConnexionScore</a></div><div class="ttdeci">void afficherConnexionScore()</div><div class="ttdef"><b>Definition:</b> <a href="ihmarbitre_8cpp_source.html#l00149">ihmarbitre.cpp:149</a></div></div>
+<div class="ttc" id="aclass_i_h_m_arbitre_html_ab77f58eb6f5e9fd65ea2f62ada099116a28ee1f389b6fa79a74bc1d686a64966f"><div class="ttname"><a href="class_i_h_m_arbitre.html#ab77f58eb6f5e9fd65ea2f62ada099116a28ee1f389b6fa79a74bc1d686a64966f">IHMArbitre::Absent</a></div><div class="ttdeci">@ Absent</div><div class="ttdef"><b>Definition:</b> <a href="ihmarbitre_8h_source.html#l00092">ihmarbitre.h:92</a></div></div>
+<div class="ttc" id="aclass_i_h_m_arbitre_html_a3e66cc41a34bb4221a6e0d5591e11e31a7f41dab09aa5ed1c858f324c530eec27"><div class="ttname"><a href="class_i_h_m_arbitre.html#a3e66cc41a34bb4221a6e0d5591e11e31a7f41dab09aa5ed1c858f324c530eec27">IHMArbitre::Rencontre</a></div><div class="ttdeci">@ Rencontre</div><div class="ttdef"><b>Definition:</b> <a href="ihmarbitre_8h_source.html#l00082">ihmarbitre.h:82</a></div></div>
+<div class="ttc" id="aclass_i_h_m_arbitre_html_aae6ce2a57dfbc82116000df017869b7c"><div class="ttname"><a href="class_i_h_m_arbitre.html#aae6ce2a57dfbc82116000df017869b7c">IHMArbitre::chargerRencontres</a></div><div class="ttdeci">void chargerRencontres()</div><div class="ttdef"><b>Definition:</b> <a href="ihmarbitre_8cpp_source.html#l00317">ihmarbitre.cpp:317</a></div></div>
+<div class="ttc" id="aclass_i_h_m_arbitre_html_a07892d1d055bf3f98187dd87a6b7e611"><div class="ttname"><a href="class_i_h_m_arbitre.html#a07892d1d055bf3f98187dd87a6b7e611">IHMArbitre::creerRaccourcisClavier</a></div><div class="ttdeci">void creerRaccourcisClavier()</div><div class="ttdoc">Méthode qui initialise les raccourcis clavier.</div><div class="ttdef"><b>Definition:</b> <a href="ihmarbitre_8cpp_source.html#l00446">ihmarbitre.cpp:446</a></div></div>
+<div class="ttc" id="aclass_base_de_donnees_html"><div class="ttname"><a href="class_base_de_donnees.html">BaseDeDonnees</a></div><div class="ttdoc">Class permettant de s'interfacer avec la base de données.</div><div class="ttdef"><b>Definition:</b> <a href="basededonnees_8h_source.html#l00021">basededonnees.h:21</a></div></div>
+<div class="ttc" id="aclass_i_h_m_arbitre_html_a449f41bb7db4afac8b4c9df9dabbce7e"><div class="ttname"><a href="class_i_h_m_arbitre.html#a449f41bb7db4afac8b4c9df9dabbce7e">IHMArbitre::communicationBluetooth</a></div><div class="ttdeci">CommunicationBluetooth * communicationBluetooth</div><div class="ttdoc">la communication avec les modules</div><div class="ttdef"><b>Definition:</b> <a href="ihmarbitre_8h_source.html#l00067">ihmarbitre.h:67</a></div></div>
+<div class="ttc" id="aclass_i_h_m_arbitre_html_a3e66cc41a34bb4221a6e0d5591e11e31"><div class="ttname"><a href="class_i_h_m_arbitre.html#a3e66cc41a34bb4221a6e0d5591e11e31">IHMArbitre::Ecran</a></div><div class="ttdeci">Ecran</div><div class="ttdoc">Définit les différents écrans de l'IHM.</div><div class="ttdef"><b>Definition:</b> <a href="ihmarbitre_8h_source.html#l00079">ihmarbitre.h:79</a></div></div>
+<div class="ttc" id="abasededonnees_8h_html"><div class="ttname"><a href="basededonnees_8h.html">basededonnees.h</a></div><div class="ttdoc">Fichier qui contient la déclaration de la classe BaseDeDonnees.</div></div>
+<div class="ttc" id="aclass_i_h_m_arbitre_html_ab77f58eb6f5e9fd65ea2f62ada099116a45e7c653bae57a89f96d6e7c03a1e352"><div class="ttname"><a href="class_i_h_m_arbitre.html#ab77f58eb6f5e9fd65ea2f62ada099116a45e7c653bae57a89f96d6e7c03a1e352">IHMArbitre::Trouve</a></div><div class="ttdeci">@ Trouve</div><div class="ttdef"><b>Definition:</b> <a href="ihmarbitre_8h_source.html#l00093">ihmarbitre.h:93</a></div></div>
+<div class="ttc" id="aclass_i_h_m_arbitre_html_a68220a263ae0d7cfcf9e751601f46a21"><div class="ttname"><a href="class_i_h_m_arbitre.html#a68220a263ae0d7cfcf9e751601f46a21">IHMArbitre::joueursEquipeA</a></div><div class="ttdeci">QVector&lt; QStringList &gt; joueursEquipeA</div><div class="ttdoc">Les joueurs du club A.</div><div class="ttdef"><b>Definition:</b> <a href="ihmarbitre_8h_source.html#l00070">ihmarbitre.h:70</a></div></div>
+<div class="ttc" id="aclass_i_h_m_arbitre_html_a0139329b6e88668e4250d195707009fb"><div class="ttname"><a href="class_i_h_m_arbitre.html#a0139329b6e88668e4250d195707009fb">IHMArbitre::afficherNetTrouve</a></div><div class="ttdeci">void afficherNetTrouve()</div><div class="ttdef"><b>Definition:</b> <a href="ihmarbitre_8cpp_source.html#l00122">ihmarbitre.cpp:122</a></div></div>
+<div class="ttc" id="aclass_i_h_m_arbitre_html_a2fdd9c840c8cddb397458949099a4c54"><div class="ttname"><a href="class_i_h_m_arbitre.html#a2fdd9c840c8cddb397458949099a4c54">IHMArbitre::afficherEcranSuivant</a></div><div class="ttdeci">void afficherEcranSuivant()</div><div class="ttdoc">Méthode qui permet d'afficher l'écran suivant dans la pile QStackedWidget.</div><div class="ttdef"><b>Definition:</b> <a href="ihmarbitre_8cpp_source.html#l00084">ihmarbitre.cpp:84</a></div></div>
+<div class="ttc" id="aclass_i_h_m_arbitre_html_ad1a250f00b2a6f5db7846510506648ee"><div class="ttname"><a href="class_i_h_m_arbitre.html#ad1a250f00b2a6f5db7846510506648ee">IHMArbitre::rencontres</a></div><div class="ttdeci">QVector&lt; QStringList &gt; rencontres</div><div class="ttdoc">Les rencontres.</div><div class="ttdef"><b>Definition:</b> <a href="ihmarbitre_8h_source.html#l00069">ihmarbitre.h:69</a></div></div>
+<div class="ttc" id="aclass_i_h_m_arbitre_html_a4604be088808bf0f93564f5302f63379"><div class="ttname"><a href="class_i_h_m_arbitre.html#a4604be088808bf0f93564f5302f63379">IHMArbitre::initialiserCommunicationBluetooth</a></div><div class="ttdeci">void initialiserCommunicationBluetooth()</div><div class="ttdef"><b>Definition:</b> <a href="ihmarbitre_8cpp_source.html#l00204">ihmarbitre.cpp:204</a></div></div>
+<div class="ttc" id="aclass_i_h_m_arbitre_html_a030e0d6599eb1c314773665ab94e6035"><div class="ttname"><a href="class_i_h_m_arbitre.html#a030e0d6599eb1c314773665ab94e6035">IHMArbitre::afficherConnexionEcran</a></div><div class="ttdeci">void afficherConnexionEcran()</div><div class="ttdef"><b>Definition:</b> <a href="ihmarbitre_8cpp_source.html#l00143">ihmarbitre.cpp:143</a></div></div>
+<div class="ttc" id="aclass_communication_bluetooth_html"><div class="ttname"><a href="class_communication_bluetooth.html">CommunicationBluetooth</a></div><div class="ttdef"><b>Definition:</b> <a href="communicationbluetooth_8h_source.html#l00013">communicationbluetooth.h:13</a></div></div>
+<!-- HTML footer for doxygen 1.9.1-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_8d9a0882dab078fe9a3f53aee5e0f2a0.html">arbitre-area</a></li><li class="navelem"><a class="el" href="ihmarbitre_8h.html">ihmarbitre.h</a></li>
+    <li class="footer"><img class="footer" src="lasalle-logo.png" height="31" alt="La Salle Avignon"/>&nbsp;<b>Campus La Salle Avignon</b>&nbsp;-&nbsp;9 Rue Notre Dame des 7 douleurs&nbsp;-&nbsp;BP 50165&nbsp;-&nbsp;84008 Avignon&nbsp;-&nbsp;Généré le Jeudi 26 Mai 2022 08:56:54 pour areapi par&nbsp;<a href="https://www.doxygen.org/index.html">doxygen</a>&nbsp;1.8.17&nbsp;</li>
+  </ul>
+</div>
+</body>
+</html>
