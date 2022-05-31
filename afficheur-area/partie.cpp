@@ -68,13 +68,16 @@ Partie& Partie::operator=(const Partie& partie)
 
 bool Partie::aGagneSet() const
 {
-    if(getScoreJoueurG() >= POINT_GAGNANT || getScoreJoueurD() >= POINT_GAGNANT)
+    qDebug() << Q_FUNC_INFO << '\n' << "Score Joueur Gauche : " << getScoreJoueurG()
+                            << '\n' << "Score Joueur Droite : " << getScoreJoueurD();
+
+    if((getScoreJoueurG() >= POINT_GAGNANT) || (getScoreJoueurD() >= POINT_GAGNANT))
     {
-        if(getScoreJoueurG() >= getScoreJoueurD() && getScoreJoueurG() - getScoreJoueurD() >= POINT_DIFFERENCE)
+        if((getScoreJoueurG() >= getScoreJoueurD()) && ((getScoreJoueurG() - getScoreJoueurD()) >= POINT_DIFFERENCE))
         {
             return true;
         }
-        else if(getScoreJoueurD() >= getScoreJoueurG() && getScoreJoueurD() - getScoreJoueurG() >= POINT_DIFFERENCE)
+        else if((getScoreJoueurD() >= getScoreJoueurG()) && ((getScoreJoueurD() - getScoreJoueurG()) >= POINT_DIFFERENCE))
         {
             return true;
         }
@@ -115,6 +118,40 @@ void Partie::ajouterNET()
 void Partie::rajouterPointConsecutif()
 {
     ++this->pointConsecutif;
+}
+
+QString Partie::definirAffichageSets(unsigned int setGagne)
+{
+    qDebug() << Q_FUNC_INFO;
+
+    switch (setGagne) {
+    case 0:
+
+        return "0 | 0 | 0";
+
+        break;
+
+    case 1:
+
+        return "1 | 0 | 0";
+
+        break;
+
+    case 2:
+
+        return "1 | 1 | 0";
+
+        break;
+
+    case 3:
+
+        return "1 | 1 | 1";
+
+        break;
+
+    default:
+        break;
+    }
 }
 
 bool Partie::getEstDouble() const

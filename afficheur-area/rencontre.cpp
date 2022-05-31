@@ -96,11 +96,11 @@ void Rencontre::setPartiesDouble(QString nomJoueurA1, QString prenomJoueurA1,
 void Rencontre::actualiserPartie(QByteArray idPartieScore, QByteArray scoreJG, QByteArray scoreJD,
                                  QByteArray nbSetJG,QByteArray nbSetJD, QByteArray net)
 {
-    qDebug() << Q_FUNC_INFO;
+    qDebug() << Q_FUNC_INFO << "";
     parties[idPartieScore.toUInt()].setSetJoueurG(nbSetJG.toUInt());
     parties[idPartieScore.toUInt()].setSetJoueurD(nbSetJD.toUInt());
     parties[idPartieScore.toUInt()].setScoreJoueurG(scoreJG.toUInt());
-    parties[idPartieScore.toUInt()].setScoreJoueurG(scoreJD.toUInt());
+    parties[idPartieScore.toUInt()].setScoreJoueurD(scoreJD.toUInt());
     if(net.toUInt())
     {
         parties[idPartieScore.toUInt()].setNombreNET((parties[idPartieScore.toUInt()].getNombreNET() + 1));

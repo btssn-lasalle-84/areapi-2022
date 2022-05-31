@@ -19,6 +19,7 @@
  */
 #define PLEIN_ECRAN
 #define ECRAN_VEILLE
+#define NOMBRE_SET_GAGNANT 3
 
 //#define TEST_RELATIONS
 
@@ -51,6 +52,8 @@ class IHMAfficheur : public QMainWindow
     QVector<QLabel*>  labelsJoueurX;
     QVector<QLabel*>  labelsJoueurY;
     QVector<QLabel*>  labelsJoueurZ;
+    int               pointsTotalEquipeA;
+    int               pointsTotalEquipeW;
 
     void initialiserIHM();
     void initialiserReception();
@@ -93,7 +96,14 @@ class IHMAfficheur : public QMainWindow
                                   QString prenomJoueurW1,
                                   QString nomJoueurW2,
                                   QString prenomJoueurW2);
-    void initialiserJoueurs(QByteArray NomJoueurA, QByteArray NomJoueurD, QByteArray PrenomJoueurC, QByteArray NomJoueurC, QByteArray PrenomJoueurB, QByteArray NomJoueurB, QByteArray PrenomJoueurY, QByteArray NomJoueurY, QByteArray PrenomJoueurX, QByteArray NomJoueurX, QByteArray PrenomJoueurZ, QByteArray PrenomJoueurW, QByteArray NomJoueurZ, QByteArray NomJoueurW, QByteArray PrenomJoueurA, QByteArray PrenomJoueurD);
+    void initialiserJoueurs(QByteArray NomJoueurA, QByteArray NomJoueurD,
+                            QByteArray PrenomJoueurC, QByteArray NomJoueurC,
+                            QByteArray PrenomJoueurB, QByteArray NomJoueurB,
+                            QByteArray PrenomJoueurY, QByteArray NomJoueurY,
+                            QByteArray PrenomJoueurX, QByteArray NomJoueurX,
+                            QByteArray PrenomJoueurZ, QByteArray PrenomJoueurW,
+                            QByteArray NomJoueurZ, QByteArray NomJoueurW,
+                            QByteArray PrenomJoueurA, QByteArray PrenomJoueurD);
 
 public:
     IHMAfficheur(QWidget* parent = nullptr);
@@ -106,9 +116,10 @@ public:
     };
 
     void renitialiserScorePartieGauche();
-    void actualiserHistoriquePartie(int idPartie);
+    void actualiserHistoriqueRencontre(int idPartie);
+    void actualiserAffichageSetsPartieGauche(QByteArray idPartieScore);
 
-  public slots:
+public slots:
     void initialiserRencontre(QString    nomModule,
                               QByteArray NomClubA,
                               QByteArray NomClubW,
@@ -128,12 +139,14 @@ public:
                               QByteArray PrenomJoueurY,
                               QByteArray NomJoueurZ,
                               QByteArray PrenomJoueurZ);
+
     void initialiserPartieSimple(QString    nomModule,
                                  QByteArray idPartie,
                                  QByteArray JoueurA,
                                  QByteArray ClassementJoueurA,
                                  QByteArray JoueurB,
                                  QByteArray ClassementJoueurW);
+
     void initialiserPartieDouble(QString    nomModule,
                                  QByteArray idPartieDouble,
                                  QByteArray JoueurA1,
@@ -144,6 +157,7 @@ public:
                                  QByteArray ClassementW1,
                                  QByteArray JoueurW2,
                                  QByteArray ClassementW2);
+
     void initialiserScorePartie(QString    nomModule,
                                 QByteArray idPartieScore,
                                 QByteArray scoreJG,

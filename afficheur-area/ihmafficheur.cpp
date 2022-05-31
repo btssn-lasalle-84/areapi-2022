@@ -23,7 +23,7 @@
  */
 IHMAfficheur::IHMAfficheur(QWidget* parent) :
     QMainWindow(parent), ui(new Ui::IHMAfficheur), receptionTrame(nullptr),
-    rencontre(nullptr)
+    rencontre(nullptr), pointsTotalEquipeA(0), pointsTotalEquipeW(0)
 {
     ui->setupUi(this);
     qDebug() << Q_FUNC_INFO;
@@ -174,12 +174,27 @@ void IHMAfficheur::initialiserPartieDouble(QString    nomModule,
         ui->nomJoueurGPartieG->setText(JoueurA1 + " / " + JoueurA2);
         ui->nomJoueurDPartieG->setText(JoueurW1 + " / " + JoueurW2);
         QString sommeClassementA =
-          QString::number(ClassementA1.toInt() + ClassementA2.toInt());
+        QString::number(ClassementA1.toInt() + ClassementA2.toInt());
         QString sommeClassementW =
-          QString::number(ClassementW1.toInt() + ClassementW2.toInt());
+        QString::number(ClassementW1.toInt() + ClassementW2.toInt());
         ui->classementJoueurGPartieG->setText(sommeClassementA + "pts");
         ui->classementJoueurDPartieG->setText(sommeClassementW + "pts");
         rencontre->setIdentifiantPartieGauche(idPartieDouble.toUInt());
+    }
+}
+
+void IHMAfficheur::actualiserAffichageSetsPartieGauche(QByteArray idPartieScore)
+{
+    qDebug() << Q_FUNC_INFO << "Retour de aGagneSet() : " << rencontre->getPartie(idPartieScore.toUInt()).aGagneSet();
+
+    if(rencontre->getPartie(idPartieScore.toUInt()).aGagneSet())
+    {
+        ui->affichageSetJoueurGPartieG->setText(rencontre->getPartie(idPartieScore.toUInt())
+                                                .definirAffichageSets(rencontre->getPartie(idPartieScore.toUInt())
+                                                .getSetJoueurG()));
+        ui->affichageSetJoueurDPartieG->setText(rencontre->getPartie(idPartieScore.toUInt())
+                                                .definirAffichageSets(rencontre->getPartie(idPartieScore.toUInt())
+                                                .getSetJoueurD()));
     }
 }
 
@@ -205,12 +220,6 @@ void IHMAfficheur::initialiserScorePartie(QString    nomModule,
     }
     else
     {
-        rencontre->actualiserPartie(idPartieScore,
-                                    scoreJG,
-                                    scoreJD,
-                                    nbSetJG,
-                                    nbSetJD,
-                                    net);
 
         switch(rencontre->getPartie(idPartieScore.toUInt()).getNombreSet())
         {
@@ -255,13 +264,21 @@ void IHMAfficheur::initialiserScorePartie(QString    nomModule,
                                     .getNombreNET()));
                 break;
             default:
-                break;
+                break; 
         }
+        rencontre->actualiserPartie(idPartieScore,
+                                    scoreJG,
+                                    scoreJD,
+                                    nbSetJG,
+                                    nbSetJD,
+                                    net);
+        actualiserAffichageSetsPartieGauche(idPartieScore);
+
 
         if(!etatPartie.toUInt())
         {
             renitialiserScorePartieGauche();
-            actualiserHistoriquePartie(idPartieScore.toUInt());
+            actualiserHistoriqueRencontre(idPartieScore.toUInt());
         }
     }
 }
@@ -596,20 +613,20 @@ void IHMAfficheur::initialiserJoueurs(QByteArray NomJoueurA, QByteArray NomJoueu
 void IHMAfficheur::renitialiserScorePartieGauche()
 {
     qDebug() << Q_FUNC_INFO;
-    ui->scoreSet1JoueurGPartieG->setText("");
-    ui->scoreSet1JoueurDPartieG->setText("");
+    ui->scoreSet1JoueurGPartieG->setText("0");
+    ui->scoreSet1JoueurDPartieG->setText("0");
     ui->statistiquesSet1PartieG->setText("");
-    ui->scoreSet2JoueurGPartieG->setText("");
-    ui->scoreSet2JoueurDPartieG->setText("");
+    ui->scoreSet2JoueurGPartieG->setText("0");
+    ui->scoreSet2JoueurDPartieG->setText("0");
     ui->statistiquesSet2PartieG->setText("");
-    ui->scoreSet3JoueurGPartieG->setText("");
-    ui->scoreSet3JoueurDPartieG->setText("");
+    ui->scoreSet3JoueurGPartieG->setText("0");
+    ui->scoreSet3JoueurDPartieG->setText("0");
     ui->statistiquesSet3PartieG->setText("");
-    ui->scoreSet4JoueurGPartieG->setText("");
-    ui->scoreSet4JoueurDPartieG->setText("");
+    ui->scoreSet4JoueurGPartieG->setText("0");
+    ui->scoreSet4JoueurDPartieG->setText("0");
     ui->statistiquesSet4PartieG->setText("");
-    ui->scoreSet5JoueurGPartieG->setText("");
-    ui->scoreSet5JoueurDPartieG->setText("");
+    ui->scoreSet5JoueurGPartieG->setText("0");
+    ui->scoreSet5JoueurDPartieG->setText("0");
     ui->statistiquesSet5PartieG->setText("");
     ui->nomJoueurGPartieG->setText("");
     ui->nomJoueurDPartieG->setText("");
@@ -621,7 +638,7 @@ void IHMAfficheur::renitialiserScorePartieGauche()
     ui->affichageSetJoueurDPartieG->setText("0 | 0 | 0");
 }
 
-void IHMAfficheur::actualiserHistoriquePartie(int idPartie)
+void IHMAfficheur::actualiserHistoriqueRencontre(int idPartie)
 {
     QString stringSetJoueurGauche = QString::number(rencontre->getPartie(idPartie).getSetJoueurG());
     QString stringSetJoueurDroite = QString::number(rencontre->getPartie(idPartie).getSetJoueurD());
@@ -687,15 +704,15 @@ void IHMAfficheur::actualiserHistoriquePartie(int idPartie)
 
     case 8:
 
-        ui->joueursPartieDouble1coteG->setText(stringSetJoueurGauche);
-        ui->joueursPartieDouble1coteG->setText(stringSetJoueurDroite);
+        ui->setGagnePartieDouble1JoueurG->setText(stringSetJoueurGauche);
+        ui->setGagnePartieDouble1JoueurD->setText(stringSetJoueurDroite);
 
         break;
 
     case 9:
 
-        ui->joueursPartieDouble2coteG->setText(stringSetJoueurGauche);
-        ui->joueursPartieDouble2coteG->setText(stringSetJoueurDroite);
+        ui->setGagnePartieDouble2JoueurG->setText(stringSetJoueurGauche);
+        ui->setGagnePartieDouble2JoueurD->setText(stringSetJoueurDroite);
 
         break;
 
@@ -730,4 +747,18 @@ void IHMAfficheur::actualiserHistoriquePartie(int idPartie)
         break;
     }
 
+        if(rencontre->getPartie(idPartie).getSetJoueurG() == NOMBRE_SET_GAGNANT)
+        {
+            ++pointsTotalEquipeA;
+        }
+        else if(rencontre->getPartie(idPartie).getSetJoueurD() == NOMBRE_SET_GAGNANT)
+        {
+            ++pointsTotalEquipeW;
+        }
+
+        QString stringPointsTotalEquipeA = QString::number(pointsTotalEquipeA);
+        QString stringPointsTotalEquipeW = QString::number(pointsTotalEquipeW);
+
+        ui->pointsTotalEquipeA->setText(stringPointsTotalEquipeA);
+        ui->pointsTotalEquipeW->setText(stringPointsTotalEquipeW);
 }

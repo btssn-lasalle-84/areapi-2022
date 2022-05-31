@@ -49,24 +49,26 @@ class Partie
     ~Partie();
     Partie& operator=(const Partie& partie);
 
-    bool aGagneSet() const;
-    bool estPointConsecutif() const;
-    void ajouterPointJoueurG();
-    void ajouterPointJoueurD();
-    void gagneSetJoueurG();
-    void gagneSetJoueurD();
-    void ajouterNET();
-    void rajouterPointConsecutif();
+    bool    aGagneSet() const;
+    bool    estPointConsecutif() const;
+    void    ajouterPointJoueurG();
+    void    ajouterPointJoueurD();
+    void    gagneSetJoueurG();
+    void    gagneSetJoueurD();
+    void    ajouterNET();
+    void    rajouterPointConsecutif();
+    QString definirAffichageSets(unsigned int setGagne);
 
-    bool           getEstDouble() const;
-    unsigned int   getNombreSet() const;
-    unsigned int   getScoreJoueurG() const;
-    unsigned int   getScoreJoueurD() const;
-    unsigned int   getSetJoueurG() const;
-    unsigned int   getSetJoueurD() const;
-    unsigned int   getNombreNET() const;
-    unsigned int   getPointConsecutif() const;
-    QString        getJoueurPointConsecutif() const;
+    bool            getEstDouble() const;
+    unsigned int    getNombreSet() const;
+    unsigned int    getScoreJoueurG() const;
+    unsigned int    getScoreJoueurD() const;
+    unsigned int    getSetJoueurG() const;
+    unsigned int    getSetJoueurD() const;
+    unsigned int    getNombreNET() const;
+    unsigned int    getPointConsecutif() const;
+    QString         getJoueurPointConsecutif() const;
+    QVector<Partie> getJoueurs() const;
 
     void setEstDouble(const bool& estDouble);
     void setNombreSet(const unsigned int& nombreSet);
