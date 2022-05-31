@@ -66,8 +66,19 @@ Partie& Partie::operator=(const Partie& partie)
     return *this;
 }
 
-bool Partie::aGagne() const
+bool Partie::aGagneSet() const
 {
+    if(getScoreJoueurG() >= POINT_GAGNANT || getScoreJoueurD() >= POINT_GAGNANT)
+    {
+        if(getScoreJoueurG() >= getScoreJoueurD() && getScoreJoueurG() - getScoreJoueurD() >= POINT_DIFFERENCE)
+        {
+            return true;
+        }
+        else if(getScoreJoueurD() >= getScoreJoueurG() && getScoreJoueurD() - getScoreJoueurG() >= POINT_DIFFERENCE)
+        {
+            return true;
+        }
+    }
     return false;
 }
 

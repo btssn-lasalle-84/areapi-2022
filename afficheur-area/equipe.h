@@ -34,13 +34,13 @@ class Equipe
     Equipe& operator=(const Equipe& equipe);
 
     QString getNom() const;
+    Joueur* getJoueur(QString lettre);
+    int     getNbJoueurs() const;
     void    setNom(const QString& nom);
     void    ajouterJoueur(QString nom,
                           QString prenom,
                           QString lettre,
                           int     classement);
-    Joueur* getJoueur(QString lettre);
-    int     getNbJoueurs() const;
 };
 
 #endif // EQUIPE_H

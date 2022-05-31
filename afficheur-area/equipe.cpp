@@ -46,19 +46,6 @@ QString Equipe::getNom() const
     return this->nom;
 }
 
-void Equipe::setNom(const QString& nom)
-{
-    this->nom = nom;
-}
-
-void Equipe::ajouterJoueur(QString nom,
-                           QString prenom,
-                           QString lettre,
-                           int     classement)
-{
-    joueurs.push_back(Joueur(nom, prenom, lettre, classement));
-}
-
 Joueur* Equipe::getJoueur(QString lettre)
 {
     qDebug() << Q_FUNC_INFO << "lettre" << lettre;
@@ -78,3 +65,19 @@ int Equipe::getNbJoueurs() const
 {
     return joueurs.size();
 }
+
+void Equipe::setNom(const QString& nom)
+{
+    this->nom = nom;
+}
+
+void Equipe::ajouterJoueur(QString nom,
+                           QString prenom,
+                           QString lettre,
+                           int     classement)
+{
+    joueurs.push_back(Joueur(nom, prenom, lettre, classement));
+}
+
+
+

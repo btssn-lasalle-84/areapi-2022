@@ -13,6 +13,9 @@
 #include <QString>
 #include <QVector>
 
+#define POINT_GAGNANT 11
+#define POINT_DIFFERENCE 2
+
 class ReceptionTrame;
 class Joueur;
 
@@ -46,7 +49,7 @@ class Partie
     ~Partie();
     Partie& operator=(const Partie& partie);
 
-    bool aGagne() const;
+    bool aGagneSet() const;
     bool estPointConsecutif() const;
     void ajouterPointJoueurG();
     void ajouterPointJoueurD();

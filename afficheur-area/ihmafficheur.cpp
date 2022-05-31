@@ -145,6 +145,7 @@ void IHMAfficheur::initialiserPartieSimple(QString    nomModule,
         ui->nomJoueurDPartieG->setText(JoueurB);
         ui->classementJoueurGPartieG->setText(ClassementJoueurA + " pts");
         ui->classementJoueurDPartieG->setText(ClassementJoueurW + " pts");
+        rencontre->setIdentifiantPartieGauche(idPartie.toUInt());
     }
 }
 
@@ -178,6 +179,7 @@ void IHMAfficheur::initialiserPartieDouble(QString    nomModule,
           QString::number(ClassementW1.toInt() + ClassementW2.toInt());
         ui->classementJoueurGPartieG->setText(sommeClassementA + "pts");
         ui->classementJoueurDPartieG->setText(sommeClassementW + "pts");
+        rencontre->setIdentifiantPartieGauche(idPartieDouble.toUInt());
     }
 }
 
@@ -254,6 +256,12 @@ void IHMAfficheur::initialiserScorePartie(QString    nomModule,
                 break;
             default:
                 break;
+        }
+
+        if(!etatPartie.toUInt())
+        {
+            renitialiserScorePartieGauche();
+            actualiserHistoriquePartie(idPartieScore.toUInt());
         }
     }
 }
@@ -585,3 +593,141 @@ void IHMAfficheur::initialiserJoueurs(QByteArray NomJoueurA, QByteArray NomJoueu
     initialiserJoueurZ(QString(NomJoueurZ.data()), QString(PrenomJoueurZ.data()));
 }
 
+void IHMAfficheur::renitialiserScorePartieGauche()
+{
+    qDebug() << Q_FUNC_INFO;
+    ui->scoreSet1JoueurGPartieG->setText("");
+    ui->scoreSet1JoueurDPartieG->setText("");
+    ui->statistiquesSet1PartieG->setText("");
+    ui->scoreSet2JoueurGPartieG->setText("");
+    ui->scoreSet2JoueurDPartieG->setText("");
+    ui->statistiquesSet2PartieG->setText("");
+    ui->scoreSet3JoueurGPartieG->setText("");
+    ui->scoreSet3JoueurDPartieG->setText("");
+    ui->statistiquesSet3PartieG->setText("");
+    ui->scoreSet4JoueurGPartieG->setText("");
+    ui->scoreSet4JoueurDPartieG->setText("");
+    ui->statistiquesSet4PartieG->setText("");
+    ui->scoreSet5JoueurGPartieG->setText("");
+    ui->scoreSet5JoueurDPartieG->setText("");
+    ui->statistiquesSet5PartieG->setText("");
+    ui->nomJoueurGPartieG->setText("");
+    ui->nomJoueurDPartieG->setText("");
+    ui->classementJoueurGPartieG->setText("");
+    ui->classementJoueurDPartieG->setText("");
+    rencontre->setIdentifiantPartieGauche(-1);
+    ui->tempsPartieGauche->setText("00:00");
+    ui->affichageSetJoueurGPartieG->setText("0 | 0 | 0");
+    ui->affichageSetJoueurDPartieG->setText("0 | 0 | 0");
+}
+
+void IHMAfficheur::actualiserHistoriquePartie(int idPartie)
+{
+    QString stringSetJoueurGauche = QString::number(rencontre->getPartie(idPartie).getSetJoueurG());
+    QString stringSetJoueurDroite = QString::number(rencontre->getPartie(idPartie).getSetJoueurD());
+
+    switch (idPartie)
+    {
+
+    case 0:
+
+        ui->setGagnePartie1JoueurG->setText(stringSetJoueurGauche);
+        ui->setGagnePartie1JoueurD->setText(stringSetJoueurDroite);
+
+        break;
+
+    case 1:
+
+        ui->setGagnePartie2JoueurG->setText(stringSetJoueurGauche);
+        ui->setGagnePartie2JoueurD->setText(stringSetJoueurDroite);
+
+        break;
+
+    case 2:
+
+        ui->setGagnePartie3JoueurG->setText(stringSetJoueurGauche);
+        ui->setGagnePartie3JoueurD->setText(stringSetJoueurDroite);
+
+        break;
+
+    case 3:
+
+        ui->setGagnePartie4JoueurG->setText(stringSetJoueurGauche);
+        ui->setGagnePartie4JoueurD->setText(stringSetJoueurDroite);
+
+        break;
+
+    case 4:
+
+        ui->setGagnePartie5JoueurG->setText(stringSetJoueurGauche);
+        ui->setGagnePartie5JoueurD->setText(stringSetJoueurDroite);
+
+        break;
+
+    case 5:
+
+        ui->setGagnePartie6JoueurG->setText(stringSetJoueurGauche);
+        ui->setGagnePartie6JoueurD->setText(stringSetJoueurDroite);
+
+        break;
+
+    case 6:
+
+        ui->setGagnePartie7JoueurG->setText(stringSetJoueurGauche);
+        ui->setGagnePartie7JoueurD->setText(stringSetJoueurDroite);
+
+        break;
+
+    case 7:
+
+        ui->setGagnePartie8JoueurG->setText(stringSetJoueurGauche);
+        ui->setGagnePartie8JoueurD->setText(stringSetJoueurDroite);
+
+        break;
+
+    case 8:
+
+        ui->joueursPartieDouble1coteG->setText(stringSetJoueurGauche);
+        ui->joueursPartieDouble1coteG->setText(stringSetJoueurDroite);
+
+        break;
+
+    case 9:
+
+        ui->joueursPartieDouble2coteG->setText(stringSetJoueurGauche);
+        ui->joueursPartieDouble2coteG->setText(stringSetJoueurDroite);
+
+        break;
+
+    case 10:
+
+        ui->setGagnePartie11JoueurG->setText(stringSetJoueurGauche);
+        ui->setGagnePartie11JoueurD->setText(stringSetJoueurDroite);
+
+        break;
+
+    case 11:
+
+        ui->setGagnePartie12JoueurG->setText(stringSetJoueurGauche);
+        ui->setGagnePartie12JoueurD->setText(stringSetJoueurDroite);
+
+        break;
+
+    case 12:
+
+        ui->setGagnePartie13JoueurG->setText(stringSetJoueurGauche);
+        ui->setGagnePartie13JoueurD->setText(stringSetJoueurDroite);
+
+        break;
+
+    case 13:
+
+        ui->setGagnePartie14JoueurG->setText(stringSetJoueurGauche);
+        ui->setGagnePartie14JoueurD->setText(stringSetJoueurDroite);
+
+        break;
+    default:
+        break;
+    }
+
+}

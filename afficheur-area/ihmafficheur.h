@@ -105,6 +105,9 @@ public:
         EcranRencontre
     };
 
+    void renitialiserScorePartieGauche();
+    void actualiserHistoriquePartie(int idPartie);
+
   public slots:
     void initialiserRencontre(QString    nomModule,
                               QByteArray NomClubA,

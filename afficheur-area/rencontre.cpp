@@ -65,6 +65,16 @@ Partie Rencontre::getPartie(unsigned int cases) const
     return parties[cases];
 }
 
+int  Rencontre::getIdentifiantPartieGauche()
+{
+    return identifiantPartieGauche;
+}
+
+void  Rencontre::setIdentifiantPartieGauche(int identifiantPartieGauche)
+{
+    identifiantPartieGauche = identifiantPartieGauche;
+}
+
 void Rencontre::setPartiesSimple(QString nomJoueurA1, QString prenomJoueurA1,
                                  QString nomJoueurW1, QString prenomJoueurW2)
 {
@@ -91,10 +101,16 @@ void Rencontre::actualiserPartie(QByteArray idPartieScore, QByteArray scoreJG, Q
     parties[idPartieScore.toUInt()].setSetJoueurD(nbSetJD.toUInt());
     parties[idPartieScore.toUInt()].setScoreJoueurG(scoreJG.toUInt());
     parties[idPartieScore.toUInt()].setScoreJoueurG(scoreJD.toUInt());
-    if(net.toUInt() == 1)
+    if(net.toUInt())
     {
         parties[idPartieScore.toUInt()].setNombreNET((parties[idPartieScore.toUInt()].getNombreNET() + 1));
     }
+    if((nbSetJG.toUInt() + nbSetJD.toUInt()) != parties[idPartieScore.toUInt()].getNombreSet())
+    {
+        parties[idPartieScore.toUInt()].setNombreSet(nbSetJG.toUInt() + nbSetJD.toUInt());
+        parties[idPartieScore.toUInt()].setNombreNET(0);
+    }
+
 
 }
 
