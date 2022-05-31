@@ -69,8 +69,7 @@ class IHMArbitre : public QMainWindow
     QVector<QStringList> rencontres; //!< Les rencontres
     QVector<QStringList> joueursEquipeA; //!< Les joueurs du club A
     QVector<QStringList> joueursEquipeW; //!< Les joueurs du club W
-
-    QVector<QStringList> clubs; //!< Les clubs
+    QVector<QStringList> clubs;          //!< Les clubs
 
     /**
      * @enum Ecran
@@ -127,7 +126,11 @@ class IHMArbitre : public QMainWindow
     void declencherNet(int nbNets);
     void chargerPartiesSimples();
     void chargerPartiesDoubles();
+    void demarrerRencontreSimple();
+    void demarrerRencontreDouble();
     void demarrerRencontre();
+    void echangerJoueur();
+    void demarrerPartie();
 };
 
 #endif // IHMARBITRE_H

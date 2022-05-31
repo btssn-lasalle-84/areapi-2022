@@ -150,8 +150,8 @@ void CommunicationBluetooth::arreterRechercheService()
 
 void CommunicationBluetooth::chercherModule(QBluetoothDeviceInfo device)
 {
-    //qDebug() << Q_FUNC_INFO << device.name() << device.address() <<
-    //device.rssi();
+    // qDebug() << Q_FUNC_INFO << device.name() << device.address() <<
+    // device.rssi();
 
     if(device.name().startsWith(PREFIXE_MODULE_AREA))
     {

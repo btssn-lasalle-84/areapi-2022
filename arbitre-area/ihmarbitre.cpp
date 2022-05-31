@@ -180,22 +180,61 @@ void IHMArbitre::declencherNet(int nbNets)
     qDebug() << Q_FUNC_INFO << "NET" << nbNets;
 }
 
-void IHMArbitre::demarrerRencontre()
+void IHMArbitre::demarrerRencontreSimple()
 {
     // aucune rencontre sélectionnée ?
     if(ui->comboBoxListeRencontres->currentIndex() == -1)
         return;
     qDebug() << Q_FUNC_INFO << ui->comboBoxListeRencontres->currentText();
-    // aucune partie simple OU double sélectionnée ?
+    // aucune partie simple sélectionnée ?
     /**
      * @todo Compléter le test de vérification
      */
     if(ui->comboBoxListePartiesSimples->currentIndex() == -1)
         return;
     qDebug() << Q_FUNC_INFO << ui->comboBoxListePartiesSimples->currentText();
+    QVector<int> sequenceJoueursEquipeA({ 0, 1, 2, 3, 0, 1, 3, 2, 0, 2, 3, 1 });
+    QVector<int> sequenceJoueursEquipeW({ 0, 1, 2, 3, 1, 0, 2, 3, 2, 0, 1, 3 });
+
+    ui->labelJoueurGauche->setText(
+      joueursEquipeA
+        .at(sequenceJoueursEquipeA.at(
+          ui->comboBoxListePartiesSimples->currentIndex()))
+        .at(0) +
+      " " +
+      joueursEquipeA
+        .at(sequenceJoueursEquipeA.at(
+          ui->comboBoxListePartiesSimples->currentIndex()))
+        .at(1));
+
+    ui->labelJoueurDroite->setText(
+      joueursEquipeW
+        .at(sequenceJoueursEquipeW.at(
+          ui->comboBoxListePartiesSimples->currentIndex()))
+        .at(0) +
+      " " +
+      joueursEquipeW
+        .at(sequenceJoueursEquipeW.at(
+          ui->comboBoxListePartiesSimples->currentIndex()))
+        .at(1));
+    afficherEcran(IHMArbitre::Partie);
+}
+
+void IHMArbitre::demarrerRencontreDouble()
+{
+    if(ui->comboBoxListeRencontres->currentIndex() == -1)
+        return;
+    qDebug() << Q_FUNC_INFO << ui->comboBoxListeRencontres->currentText();
     /**
-     * @todo Afficher les informations de la partie dans l'écran Partie
+     * @todo Compléter le test de vérification
      */
+    ui->labelJoueurGauche->setText(ui->comboBoxListeJoueurA->currentText() +
+                                   " / " +
+                                   ui->comboBoxListeJoueurB->currentText());
+
+    ui->labelJoueurDroite->setText(ui->comboBoxListeJoueurW->currentText() +
+                                   " / " +
+                                   ui->comboBoxListeJoueurX->currentText());
     afficherEcran(IHMArbitre::Partie);
 }
 
@@ -266,10 +305,14 @@ void IHMArbitre::installerGestionEvenements()
             SIGNAL(netDetecte(int)),
             this,
             SLOT(declencherNet(int)));
-    connect(ui->buttonSelectionnerRencontre,
+    connect(ui->buttonSelectionnerRencontreSimple,
             SIGNAL(clicked(bool)),
             this,
-            SLOT(demarrerRencontre()));
+            SLOT(demarrerRencontreSimple()));
+    connect(ui->buttonSelectionnerRencontreDouble,
+            SIGNAL(clicked(bool)),
+            this,
+            SLOT(demarrerRencontreDouble()));
     connect(ui->comboBoxListeRencontres,
             SIGNAL(currentIndexChanged(int)),
             this,
@@ -278,6 +321,18 @@ void IHMArbitre::installerGestionEvenements()
             SIGNAL(currentIndexChanged(int)),
             this,
             SLOT(chargerPartiesDoubles()));
+    connect(ui->buttonSelectionnerRencontre,
+            SIGNAL(clicked(bool)),
+            this,
+            SLOT(demarrerRencontre()));
+    connect(ui->ButtonEchangerJoueur,
+            SIGNAL(clicked(bool)),
+            this,
+            SLOT(echangerJoueur()));
+    connect(ui->buttonDebutFinPartie,
+            SIGNAL(clicked(bool)),
+            this,
+            SLOT(demarrerPartie()));
 }
 
 void IHMArbitre::initialiserPageAccueil()
@@ -369,9 +424,6 @@ void IHMArbitre::chargerPartiesDoubles()
     chargerJoueurs();
     ui->comboBoxListeJoueurA->clear();
     ui->comboBoxListeJoueurB->clear();
-    /**
-     * @todo Définir les parties de double
-     */
     for(int i = 0; i < joueursEquipeA.size(); ++i)
     {
         /**
@@ -437,12 +489,54 @@ void IHMArbitre::chargerJoueurs()
     qDebug() << Q_FUNC_INFO << joueursEquipeW;
 }
 
+void IHMArbitre::demarrerRencontre()
+{
+    qDebug() << Q_FUNC_INFO << "La rencontre est choisie";
+    QString trame =
+      DEBUT_TRAME ";RENCONTRE;" +
+      rencontres.at(ui->comboBoxListeRencontres->currentIndex())
+        .at(COLONNE_nomClubA) +
+      ";" +
+      rencontres.at(ui->comboBoxListeRencontres->currentIndex())
+        .at(COLONNE_nomClubW) +
+      ";" + joueursEquipeA.at(0).at(0) + ";" + joueursEquipeA.at(0).at(1) +
+      ";" + joueursEquipeA.at(1).at(0) + ";" + joueursEquipeA.at(1).at(1) +
+      ";" + joueursEquipeA.at(2).at(0) + ";" + joueursEquipeA.at(2).at(1) +
+      ";" + joueursEquipeA.at(3).at(0) + ";" + joueursEquipeA.at(3).at(1) +
+      ";" + joueursEquipeA.at(4).at(0) + ";" + joueursEquipeA.at(4).at(1) +
+      ";" + joueursEquipeW.at(0).at(0) + ";" + joueursEquipeW.at(0).at(1) +
+      ";" + joueursEquipeW.at(1).at(0) + ";" + joueursEquipeW.at(1).at(1) +
+      ";" + joueursEquipeW.at(2).at(0) + ";" + joueursEquipeW.at(2).at(1) +
+      ";" + joueursEquipeW.at(3).at(0) + ";" + joueursEquipeW.at(3).at(1) +
+      ";" + joueursEquipeW.at(4).at(0) + ";" + joueursEquipeW.at(4).at(1);
+
+    qDebug() << Q_FUNC_INFO << trame;
+    communicationBluetooth->envoyer(communicationBluetooth->Ecran, trame);
+}
+
+void IHMArbitre::echangerJoueur()
+{
+    qDebug() << Q_FUNC_INFO << "changement de côté";
+    /**
+     * @todo Echanger les emplacements des joueurs et les scores
+     */
+}
+
+void IHMArbitre::demarrerPartie()
+{
+    qDebug() << Q_FUNC_INFO << "Demarrage de la partie";
+    /**
+     * @todo Lancer une partie
+     */
+}
+
 #ifdef TEST_IHMARBITRE
 /**
  * @brief Méthode qui initialise les raccourcis clavier
  *
  * @fn IHMArbitre::creerRaccourcisClavier
  */
+
 void IHMArbitre::creerRaccourcisClavier()
 {
     // Ctrl-Q pour quitter
