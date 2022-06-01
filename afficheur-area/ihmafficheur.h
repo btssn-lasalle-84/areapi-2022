@@ -120,9 +120,12 @@ public:
     void renitialiserScorePartieGauche();
     void actualiserHistoriqueRencontre(int idPartie);
     void actualiserAffichageSetsPartieGauche(QByteArray idPartieScore);
-
     void cacherPartiesDoubles();
-    
+    void ReafficherPartiesDouble(QByteArray JoueurW1, QByteArray JoueurW2,
+                                 QByteArray idPartieDouble,
+                                 QByteArray JoueurA2, QByteArray JoueurA1);
+    void associerSignalSlotRencontre();
+
 public slots:
     void initialiserRencontre(QString    nomModule,
                               QByteArray NomClubA,
