@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1920</width>
-    <height>961</height>
+    <height>1008</height>
    </rect>
   </property>
   <property name="maximumSize">
@@ -183,6 +183,133 @@
             <property name="sizeConstraint">
              <enum>QLayout::SetMaximumSize</enum>
             </property>
+            <item row="1" column="5">
+             <layout class="QVBoxLayout" name="layoutCadreGaucheJoueurD">
+              <property name="sizeConstraint">
+               <enum>QLayout::SetMaximumSize</enum>
+              </property>
+              <item>
+               <widget class="QLabel" name="classementJoueurDPartieG">
+                <property name="minimumSize">
+                 <size>
+                  <width>110</width>
+                  <height>50</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>110</width>
+                  <height>50</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <family>Lato Black</family>
+                  <pointsize>18</pointsize>
+                  <weight>10</weight>
+                  <italic>false</italic>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::RightToLeft</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:0.991968, y2:1, stop:0 rgba(60, 72, 156, 255), stop:1 rgba(111, 145, 239, 255));
+color: rgb(238, 238, 236);
+font: 87 18pt &quot;Lato Black&quot;;</string>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::Box</enum>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="affichageSetJoueurDPartieG">
+                <property name="maximumSize">
+                 <size>
+                  <width>110</width>
+                  <height>50</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <family>Lato Black</family>
+                  <pointsize>18</pointsize>
+                  <weight>10</weight>
+                  <italic>false</italic>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::RightToLeft</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:0.991968, y2:1, stop:0 rgba(60, 72, 156, 255), stop:1 rgba(111, 145, 239, 255));
+color: rgb(238, 238, 236);
+font: 87 18pt &quot;Lato Black&quot;;</string>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::Box</enum>
+                </property>
+                <property name="text">
+                 <string>0 | 0 | 0</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item row="1" column="2">
+             <widget class="QLabel" name="tempsPartieGauche">
+              <property name="minimumSize">
+               <size>
+                <width>110</width>
+                <height>50</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>110</width>
+                <height>50</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>Lato Black</family>
+                <pointsize>18</pointsize>
+                <weight>10</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="layoutDirection">
+               <enum>Qt::LeftToRight</enum>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:0.991968, y2:1, stop:0 rgba(60, 72, 156, 255), stop:1 rgba(111, 145, 239, 255));
+color: rgb(238, 238, 236);
+font: 87 18pt &quot;Lato Black&quot;;</string>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::Box</enum>
+              </property>
+              <property name="text">
+               <string>7:32</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
             <item row="1" column="0">
              <layout class="QVBoxLayout" name="layoutCadreGaucheJoueurG">
               <property name="sizeConstraint">
@@ -268,92 +395,7 @@ font: 87 18pt &quot;Lato Black&quot;;</string>
               </item>
              </layout>
             </item>
-            <item row="1" column="3">
-             <layout class="QVBoxLayout" name="layoutCadreGaucheJoueurD">
-              <property name="sizeConstraint">
-               <enum>QLayout::SetMaximumSize</enum>
-              </property>
-              <item>
-               <widget class="QLabel" name="classementJoueurDPartieG">
-                <property name="minimumSize">
-                 <size>
-                  <width>110</width>
-                  <height>50</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>110</width>
-                  <height>50</height>
-                 </size>
-                </property>
-                <property name="font">
-                 <font>
-                  <family>Lato Black</family>
-                  <pointsize>18</pointsize>
-                  <weight>10</weight>
-                  <italic>false</italic>
-                  <bold>false</bold>
-                 </font>
-                </property>
-                <property name="layoutDirection">
-                 <enum>Qt::RightToLeft</enum>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:0.991968, y2:1, stop:0 rgba(60, 72, 156, 255), stop:1 rgba(111, 145, 239, 255));
-color: rgb(238, 238, 236);
-font: 87 18pt &quot;Lato Black&quot;;</string>
-                </property>
-                <property name="frameShape">
-                 <enum>QFrame::Box</enum>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLabel" name="affichageSetJoueurDPartieG">
-                <property name="maximumSize">
-                 <size>
-                  <width>110</width>
-                  <height>50</height>
-                 </size>
-                </property>
-                <property name="font">
-                 <font>
-                  <family>Lato Black</family>
-                  <pointsize>18</pointsize>
-                  <weight>10</weight>
-                  <italic>false</italic>
-                  <bold>false</bold>
-                 </font>
-                </property>
-                <property name="layoutDirection">
-                 <enum>Qt::RightToLeft</enum>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:0.991968, y2:1, stop:0 rgba(60, 72, 156, 255), stop:1 rgba(111, 145, 239, 255));
-color: rgb(238, 238, 236);
-font: 87 18pt &quot;Lato Black&quot;;</string>
-                </property>
-                <property name="frameShape">
-                 <enum>QFrame::Box</enum>
-                </property>
-                <property name="text">
-                 <string>0 | 0 | 0</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
-            <item row="0" column="3">
+            <item row="0" column="5">
              <widget class="QLabel" name="nomJoueurDPartieG">
               <property name="minimumSize">
                <size>
@@ -428,45 +470,55 @@ font: 87 14pt &quot;Lato Black&quot;;</string>
               </property>
              </widget>
             </item>
-            <item row="1" column="2">
-             <widget class="QLabel" name="tempsPartieGauche">
+            <item row="1" column="1">
+             <widget class="QLabel" name="serviceJoueurGPartieG">
               <property name="minimumSize">
                <size>
-                <width>110</width>
-                <height>50</height>
+                <width>75</width>
+                <height>100</height>
                </size>
               </property>
               <property name="maximumSize">
                <size>
-                <width>110</width>
-                <height>50</height>
+                <width>75</width>
+                <height>100</height>
                </size>
-              </property>
-              <property name="font">
-               <font>
-                <family>Lato Black</family>
-                <pointsize>18</pointsize>
-                <weight>10</weight>
-                <italic>false</italic>
-                <bold>false</bold>
-               </font>
-              </property>
-              <property name="layoutDirection">
-               <enum>Qt::LeftToRight</enum>
               </property>
               <property name="styleSheet">
                <string notr="true">background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:0.991968, y2:1, stop:0 rgba(60, 72, 156, 255), stop:1 rgba(111, 145, 239, 255));
-color: rgb(238, 238, 236);
-font: 87 18pt &quot;Lato Black&quot;;</string>
+color: rgb(238, 238, 236);</string>
               </property>
               <property name="frameShape">
                <enum>QFrame::Box</enum>
               </property>
               <property name="text">
-               <string>7:32</string>
+               <string/>
               </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
+             </widget>
+            </item>
+            <item row="1" column="3">
+             <widget class="QLabel" name="serviceJoueurDPartieG">
+              <property name="minimumSize">
+               <size>
+                <width>75</width>
+                <height>100</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>75</width>
+                <height>100</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:0.991968, y2:1, stop:0 rgba(60, 72, 156, 255), stop:1 rgba(111, 145, 239, 255));
+color: rgb(238, 238, 236);</string>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::Box</enum>
+              </property>
+              <property name="text">
+               <string/>
               </property>
              </widget>
             </item>

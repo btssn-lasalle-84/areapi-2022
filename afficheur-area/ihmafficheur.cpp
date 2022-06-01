@@ -567,6 +567,28 @@ void IHMAfficheur::initialiserScorePartie(QString    nomModule,
                                     net);
         actualiserAffichageSetsPartieGauche(idPartieScore);
 
+        if(tourService.toUInt()) //(Gauche=0 ou Droite=1)
+        {
+            ui->serviceJoueurDPartieG->setStyleSheet("background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:0.991968, y2:1, "
+                                                     "stop:0 rgba(60, 72, 156, 255), stop:1 rgba(111, 145, 239, 255));"
+                                                     "color: rgb(238, 238, 236);");
+            ui->serviceJoueurGPartieG->setStyleSheet("background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:0.991968, y2:1, "
+                                                     "stop:0 rgba(60, 72, 156, 255), stop:1 rgba(111, 145, 239, 255));"
+                                                     "color: rgb(238, 238, 236);"
+                                                     "image: url(:/images/mainLevee.png)");
+        }
+        else
+        {
+            ui->serviceJoueurGPartieG->setStyleSheet("background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:0.991968, y2:1, "
+                                                     "stop:0 rgba(60, 72, 156, 255), stop:1 rgba(111, 145, 239, 255));"
+                                                     "color: rgb(238, 238, 236);");
+
+            ui->serviceJoueurDPartieG->setStyleSheet("background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:0.991968, y2:1, "
+                                                     "stop:0 rgba(60, 72, 156, 255), stop:1 rgba(111, 145, 239, 255));"
+                                                     "color: rgb(238, 238, 236);"
+                                                     "image: url(:/images/mainLevee.png)");
+        }
+
 
         if(!etatPartie.toUInt())
         {
