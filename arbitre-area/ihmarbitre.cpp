@@ -217,6 +217,11 @@ void IHMArbitre::demarrerRencontreSimple()
         .at(sequenceJoueursEquipeW.at(
           ui->comboBoxListePartiesSimples->currentIndex()))
         .at(1));
+    ui->buttonAjoutPointJG->hide();
+    ui->buttonAjoutPointJD->hide();
+    ui->buttonRetraitPointJG->hide();
+    ui->buttonRetraitPointJD->hide();
+    ui->buttonDebutFinPartie->setText("Démarrer la partie");
     afficherEcran(IHMArbitre::Partie);
 }
 
@@ -235,6 +240,11 @@ void IHMArbitre::demarrerRencontreDouble()
     ui->labelJoueurDroite->setText(ui->comboBoxListeJoueurW->currentText() +
                                    " / " +
                                    ui->comboBoxListeJoueurX->currentText());
+    ui->buttonAjoutPointJG->hide();
+    ui->buttonAjoutPointJD->hide();
+    ui->buttonRetraitPointJG->hide();
+    ui->buttonRetraitPointJD->hide();
+    ui->buttonDebutFinPartie->setText("Démarrer la partie");
     afficherEcran(IHMArbitre::Partie);
 }
 
@@ -539,18 +549,52 @@ void IHMArbitre::echangerJoueur()
 
 void IHMArbitre::demarrerPartie()
 {
-    qDebug() << Q_FUNC_INFO << "Demarrage de la partie";
-    /**
-     * @todo Lancer une partie
-     */
+    if(!partieEnCours)
+    {
+        qDebug() << Q_FUNC_INFO << "Demarrage de la partie";
+        ui->ButtonEchangerJoueur->hide();
+        ui->buttonAjoutPointJG->show();
+        ui->buttonAjoutPointJD->show();
+        ui->buttonRetraitPointJG->show();
+        ui->buttonRetraitPointJD->show();
+        ui->buttonDebutFinPartie->hide();
+        ui->buttonDebutFinPartie->setText("Fin de partie");
+        partieEnCours = true;
+    }
+    else
+    {
+        afficherEcran(IHMArbitre::Rencontre);
+        ui->ButtonEchangerJoueur->show();
+        ui->labelScoreJD->setText("0");
+        ui->labelScoreJG->setText("0");
+        partieEnCours = false;
+    }
 }
 
 void IHMArbitre::AjoutPointG()
 {
     qDebug() << Q_FUNC_INFO << "Ajout d'un point gauche";
     QString AffichagePointG = ui->labelScoreJG->text();
+    QString AffichagePointD = ui->labelScoreJD->text();
     int     pointG          = AffichagePointG.toInt();
+    int     pointD          = AffichagePointD.toInt();
     pointG++;
+    qDebug() << Q_FUNC_INFO << pointG << pointD;
+    if((pointG >= 11) || (pointD >= 11))
+    {
+        if((pointG >= pointD) && ((pointG - pointD) >= 2))
+        {
+            ui->buttonAjoutPointJD->hide();
+            ui->buttonAjoutPointJG->hide();
+            ui->buttonDebutFinPartie->show();
+        }
+        else if((pointD >= pointG) && ((pointD - pointG) >= 2))
+        {
+            ui->buttonAjoutPointJD->hide();
+            ui->buttonAjoutPointJG->hide();
+            ui->buttonDebutFinPartie->show();
+        }
+    }
     ui->labelScoreJG->setText(QString::number(pointG));
 }
 
@@ -558,8 +602,25 @@ void IHMArbitre::AjoutPointD()
 {
     qDebug() << Q_FUNC_INFO << "Ajout d'un point droite";
     QString AffichagePointD = ui->labelScoreJD->text();
+    QString AffichagePointG = ui->labelScoreJG->text();
     int     pointD          = AffichagePointD.toInt();
+    int     pointG          = AffichagePointG.toInt();
     pointD++;
+    if((pointG >= 11) || (pointD >= 11))
+    {
+        if((pointG >= pointD) && ((pointG - pointD) >= 2))
+        {
+            ui->buttonAjoutPointJD->hide();
+            ui->buttonAjoutPointJG->hide();
+            ui->buttonDebutFinPartie->show();
+        }
+        else if((pointD >= pointG) && ((pointD - pointG) >= 2))
+        {
+            ui->buttonAjoutPointJD->hide();
+            ui->buttonAjoutPointJG->hide();
+            ui->buttonDebutFinPartie->show();
+        }
+    }
     ui->labelScoreJD->setText(QString::number(pointD));
 }
 
@@ -577,6 +638,9 @@ void IHMArbitre::RetraitPointG()
     {
         ui->labelScoreJG->setText(QString::number(pointG));
     }
+    ui->buttonAjoutPointJG->show();
+    ui->buttonAjoutPointJD->show();
+    ui->buttonDebutFinPartie->hide();
 }
 
 void IHMArbitre::RetraitPointD()
@@ -593,6 +657,9 @@ void IHMArbitre::RetraitPointD()
     {
         ui->labelScoreJD->setText(QString::number(pointD));
     }
+    ui->buttonAjoutPointJG->show();
+    ui->buttonAjoutPointJD->show();
+    ui->buttonDebutFinPartie->hide();
 }
 
 #ifdef TEST_IHMARBITRE
