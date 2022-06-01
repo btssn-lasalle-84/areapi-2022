@@ -333,6 +333,22 @@ void IHMArbitre::installerGestionEvenements()
             SIGNAL(clicked(bool)),
             this,
             SLOT(demarrerPartie()));
+    connect(ui->buttonAjoutPointJG,
+            SIGNAL(clicked(bool)),
+            this,
+            SLOT(AjoutPointG()));
+    connect(ui->buttonAjoutPointJD,
+            SIGNAL(clicked(bool)),
+            this,
+            SLOT(AjoutPointD()));
+    connect(ui->buttonRetraitPointJG,
+            SIGNAL(clicked(bool)),
+            this,
+            SLOT(RetraitPointG()));
+    connect(ui->buttonRetraitPointJD,
+            SIGNAL(clicked(bool)),
+            this,
+            SLOT(RetraitPointD()));
 }
 
 void IHMArbitre::initialiserPageAccueil()
@@ -503,12 +519,11 @@ void IHMArbitre::demarrerRencontre()
       ";" + joueursEquipeA.at(1).at(0) + ";" + joueursEquipeA.at(1).at(1) +
       ";" + joueursEquipeA.at(2).at(0) + ";" + joueursEquipeA.at(2).at(1) +
       ";" + joueursEquipeA.at(3).at(0) + ";" + joueursEquipeA.at(3).at(1) +
-      ";" + joueursEquipeA.at(4).at(0) + ";" + joueursEquipeA.at(4).at(1) +
       ";" + joueursEquipeW.at(0).at(0) + ";" + joueursEquipeW.at(0).at(1) +
       ";" + joueursEquipeW.at(1).at(0) + ";" + joueursEquipeW.at(1).at(1) +
       ";" + joueursEquipeW.at(2).at(0) + ";" + joueursEquipeW.at(2).at(1) +
       ";" + joueursEquipeW.at(3).at(0) + ";" + joueursEquipeW.at(3).at(1) +
-      ";" + joueursEquipeW.at(4).at(0) + ";" + joueursEquipeW.at(4).at(1);
+      ";\r\n";
 
     qDebug() << Q_FUNC_INFO << trame;
     communicationBluetooth->envoyer(communicationBluetooth->Ecran, trame);
@@ -528,6 +543,56 @@ void IHMArbitre::demarrerPartie()
     /**
      * @todo Lancer une partie
      */
+}
+
+void IHMArbitre::AjoutPointG()
+{
+    qDebug() << Q_FUNC_INFO << "Ajout d'un point gauche";
+    QString AffichagePointG = ui->labelScoreJG->text();
+    int     pointG          = AffichagePointG.toInt();
+    pointG++;
+    ui->labelScoreJG->setText(QString::number(pointG));
+}
+
+void IHMArbitre::AjoutPointD()
+{
+    qDebug() << Q_FUNC_INFO << "Ajout d'un point droite";
+    QString AffichagePointD = ui->labelScoreJD->text();
+    int     pointD          = AffichagePointD.toInt();
+    pointD++;
+    ui->labelScoreJD->setText(QString::number(pointD));
+}
+
+void IHMArbitre::RetraitPointG()
+{
+    qDebug() << Q_FUNC_INFO << "Retrait d'un point gauche";
+    QString AffichagePointG = ui->labelScoreJG->text();
+    int     pointG          = AffichagePointG.toInt();
+    pointG--;
+    if(pointG < 0)
+    {
+        ui->labelScoreJG->setText("0");
+    }
+    else
+    {
+        ui->labelScoreJG->setText(QString::number(pointG));
+    }
+}
+
+void IHMArbitre::RetraitPointD()
+{
+    qDebug() << Q_FUNC_INFO << "Retrait d'un point droite";
+    QString AffichagePointD = ui->labelScoreJD->text();
+    int     pointD          = AffichagePointD.toInt();
+    pointD--;
+    if(pointD < 0)
+    {
+        ui->labelScoreJD->setText("0");
+    }
+    else
+    {
+        ui->labelScoreJD->setText(QString::number(pointD));
+    }
 }
 
 #ifdef TEST_IHMARBITRE

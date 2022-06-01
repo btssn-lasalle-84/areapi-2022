@@ -51,7 +51,7 @@
     <item>
      <widget class="QStackedWidget" name="ecrans">
       <property name="currentIndex">
-       <number>1</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="ecranAccueil">
        <property name="styleSheet">
@@ -779,9 +779,9 @@
           <item>
            <layout class="QHBoxLayout" name="layoutEnteteAccueil">
             <item>
-             <layout class="QHBoxLayout" name="layoutJoueur1">
+             <layout class="QHBoxLayout" name="layoutJoueurGauche">
               <item>
-               <layout class="QVBoxLayout" name="layoutScoreJ1">
+               <layout class="QVBoxLayout" name="layoutScoreJG">
                 <item>
                  <spacer name="verticalSpacer_11">
                   <property name="orientation">
@@ -811,7 +811,7 @@
                    </spacer>
                   </item>
                   <item>
-                   <widget class="QPushButton" name="buttonTempsMortJ1">
+                   <widget class="QPushButton" name="buttonTempsMortJG">
                     <property name="sizePolicy">
                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                       <horstretch>0</horstretch>
@@ -963,7 +963,7 @@
                    </spacer>
                   </item>
                   <item>
-                   <widget class="QLabel" name="labelScoreJ1">
+                   <widget class="QLabel" name="labelScoreJG">
                     <property name="enabled">
                      <bool>true</bool>
                     </property>
@@ -1045,7 +1045,7 @@
                  </spacer>
                 </item>
                 <item>
-                 <layout class="QHBoxLayout" name="layoutButtonJ1">
+                 <layout class="QHBoxLayout" name="layoutButtonJG">
                   <item>
                    <spacer name="horizontalSpacer_2">
                     <property name="orientation">
@@ -1060,7 +1060,7 @@
                    </spacer>
                   </item>
                   <item>
-                   <widget class="QPushButton" name="buttonAjoutPointJ1">
+                   <widget class="QPushButton" name="buttonAjoutPointJG">
                     <property name="sizePolicy">
                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                       <horstretch>0</horstretch>
@@ -1112,7 +1112,7 @@
                    </spacer>
                   </item>
                   <item>
-                   <widget class="QPushButton" name="buttonRetraitPointJ1">
+                   <widget class="QPushButton" name="buttonRetraitPointJG">
                     <property name="sizePolicy">
                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                       <horstretch>0</horstretch>
@@ -1265,9 +1265,9 @@
              </layout>
             </item>
             <item>
-             <layout class="QHBoxLayout" name="layoutJoueur2">
+             <layout class="QHBoxLayout" name="layoutJoueurDroite">
               <item>
-               <layout class="QVBoxLayout" name="layoutScoreJ2">
+               <layout class="QVBoxLayout" name="layoutScoreJD">
                 <item>
                  <spacer name="verticalSpacer_12">
                   <property name="orientation">
@@ -1297,7 +1297,7 @@
                    </spacer>
                   </item>
                   <item>
-                   <widget class="QPushButton" name="buttonTempsMortJ2">
+                   <widget class="QPushButton" name="buttonTempsMortJD">
                     <property name="sizePolicy">
                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                       <horstretch>0</horstretch>
@@ -1428,7 +1428,7 @@
                    </spacer>
                   </item>
                   <item>
-                   <widget class="QLabel" name="labelScoreJ2">
+                   <widget class="QLabel" name="labelScoreJD">
                     <property name="sizePolicy">
                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                       <horstretch>0</horstretch>
@@ -1495,7 +1495,7 @@
                  </spacer>
                 </item>
                 <item>
-                 <layout class="QHBoxLayout" name="layoutButtonJ2">
+                 <layout class="QHBoxLayout" name="layoutButtonJD">
                   <item>
                    <spacer name="horizontalSpacer_5">
                     <property name="orientation">
@@ -1510,7 +1510,7 @@
                    </spacer>
                   </item>
                   <item>
-                   <widget class="QPushButton" name="buttonAjoutPointJ2">
+                   <widget class="QPushButton" name="buttonAjoutPointJD">
                     <property name="sizePolicy">
                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                       <horstretch>0</horstretch>
@@ -1553,7 +1553,7 @@
                    </spacer>
                   </item>
                   <item>
-                   <widget class="QPushButton" name="buttonRetraitPointJ2">
+                   <widget class="QPushButton" name="buttonRetraitPointJD">
                     <property name="sizePolicy">
                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                       <horstretch>0</horstretch>

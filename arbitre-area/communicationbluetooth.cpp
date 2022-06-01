@@ -358,7 +358,7 @@ void CommunicationBluetooth::gererEtatSocket(QBluetoothSocket::SocketState etat)
     QBluetoothSocket* socket = qobject_cast<QBluetoothSocket*>(sender());
     qDebug() << Q_FUNC_INFO << socket << socket->peerName()
              << socket->peerAddress().toString() << socket->state() << etat;
-    // qDebug() << Q_FUNC_INFO << etat;
+    qDebug() << Q_FUNC_INFO << etat;
 }
 
 void CommunicationBluetooth::enregistrerModule(
@@ -489,7 +489,7 @@ void CommunicationBluetooth::initialiserSocketEcran(
     }
 
     qDebug() << Q_FUNC_INFO << device.name() << device.address()
-             << socketEcran->state();
+             << socketEcran->state() << "!!!!!!!!!!!";
 
     if(socketEcran->state() == QBluetoothSocket::ConnectingState)
     {
@@ -549,7 +549,6 @@ void CommunicationBluetooth::initialiserSocketScore(
         qDebug() << Q_FUNC_INFO << "disconnectFromService";
         socketScore->disconnectFromService();
     }
-
     if(socketScore->state() != QBluetoothSocket::ConnectedState)
     {
         QBluetoothAddress adresse =

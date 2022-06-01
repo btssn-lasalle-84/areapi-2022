@@ -131,6 +131,10 @@ class IHMArbitre : public QMainWindow
     void demarrerRencontre();
     void echangerJoueur();
     void demarrerPartie();
+    void AjoutPointG();
+    void AjoutPointD();
+    void RetraitPointG();
+    void RetraitPointD();
 };
 
 #endif // IHMARBITRE_H
