@@ -2384,13 +2384,13 @@ font: 87 16pt &quot;Lato Black&quot;;</string>
                 <property name="minimumSize">
                  <size>
                   <width>200</width>
-                  <height>40</height>
+                  <height>60</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
                   <width>200</width>
-                  <height>40</height>
+                  <height>60</height>
                  </size>
                 </property>
                 <property name="styleSheet">
@@ -2456,17 +2456,17 @@ font: 87 16pt &quot;Lato Black&quot;;</string>
                </widget>
               </item>
               <item>
-               <widget class="QLabel" name="joueursPartieDouble1coteG_2">
+               <widget class="QLabel" name="joueursPartieDouble1coteD">
                 <property name="minimumSize">
                  <size>
                   <width>200</width>
-                  <height>40</height>
+                  <height>60</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
                   <width>200</width>
-                  <height>40</height>
+                  <height>60</height>
                  </size>
                 </property>
                 <property name="styleSheet">
@@ -2507,13 +2507,13 @@ font: 87 16pt &quot;Lato Black&quot;;</string>
                 <property name="minimumSize">
                  <size>
                   <width>200</width>
-                  <height>40</height>
+                  <height>60</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
                   <width>200</width>
-                  <height>40</height>
+                  <height>60</height>
                  </size>
                 </property>
                 <property name="styleSheet">
@@ -2581,17 +2581,17 @@ font: 87 16pt &quot;Lato Black&quot;;</string>
                </widget>
               </item>
               <item>
-               <widget class="QLabel" name="joueursPartieDouble1coteD">
+               <widget class="QLabel" name="joueursPartieDouble2coteD">
                 <property name="minimumSize">
                  <size>
                   <width>200</width>
-                  <height>40</height>
+                  <height>60</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
                   <width>200</width>
-                  <height>40</height>
+                  <height>60</height>
                  </size>
                 </property>
                 <property name="styleSheet">
@@ -3106,6 +3106,32 @@ font: 87 16pt &quot;Lato Black&quot;;</string>
                </widget>
               </item>
              </layout>
+            </item>
+            <item>
+             <spacer name="verticalSpacer_29">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <spacer name="verticalSpacer_25">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
             </item>
            </layout>
           </item>

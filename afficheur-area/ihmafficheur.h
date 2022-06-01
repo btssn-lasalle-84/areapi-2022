@@ -20,6 +20,8 @@
 #define PLEIN_ECRAN
 #define ECRAN_VEILLE
 #define NOMBRE_SET_GAGNANT 3
+#define ID_PARTIE_DOUBLE_1 0
+#define ID_PARTIE_DOUBLE_2 1
 
 //#define TEST_RELATIONS
 
@@ -119,6 +121,8 @@ public:
     void actualiserHistoriqueRencontre(int idPartie);
     void actualiserAffichageSetsPartieGauche(QByteArray idPartieScore);
 
+    void cacherPartiesDoubles();
+    
 public slots:
     void initialiserRencontre(QString    nomModule,
                               QByteArray NomClubA,

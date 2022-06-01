@@ -46,6 +46,18 @@ IHMAfficheur::~IHMAfficheur()
     qDebug() << Q_FUNC_INFO;
 }
 
+void IHMAfficheur::cacherPartiesDoubles()
+{
+    ui->joueursPartieDouble1coteG->hide();
+    ui->joueursPartieDouble1coteD->hide();
+    ui->joueursPartieDouble2coteG->hide();
+    ui->joueursPartieDouble2coteD->hide();
+    ui->setGagnePartieDouble1JoueurG->hide();
+    ui->setGagnePartieDouble1JoueurD->hide();
+    ui->setGagnePartieDouble2JoueurG->hide();
+    ui->setGagnePartieDouble2JoueurD->hide();
+}
+
 void IHMAfficheur::initialiserRencontre(QString    nomModule,
                                         QByteArray NomClubA,
                                         QByteArray NomClubW,
@@ -73,6 +85,8 @@ void IHMAfficheur::initialiserRencontre(QString    nomModule,
         ui->Application->setCurrentIndex(IHMAfficheur::Ecran::EcranRencontre);
         rencontre =
           new Rencontre(QString(NomClubA.data()), QString(NomClubW.data()));
+
+        cacherPartiesDoubles();
 
         // ajoute les joueurs dans les équipes
         initialiserEquipeA(nomModule, NomJoueurA, PrenomJoueurA, NomJoueurB, PrenomJoueurB, NomJoueurC, PrenomJoueurC, NomJoueurD, PrenomJoueurD);
@@ -171,8 +185,8 @@ void IHMAfficheur::initialiserPartieDouble(QString    nomModule,
     }
     else
     {
-        ui->nomJoueurGPartieG->setText(JoueurA1 + " / " + JoueurA2);
-        ui->nomJoueurDPartieG->setText(JoueurW1 + " / " + JoueurW2);
+        ui->nomJoueurGPartieG->setText(JoueurA1 + '\n' + JoueurA2);
+        ui->nomJoueurDPartieG->setText(JoueurW1 + '\n' + JoueurW2);
         QString sommeClassementA =
         QString::number(ClassementA1.toInt() + ClassementA2.toInt());
         QString sommeClassementW =
@@ -180,6 +194,26 @@ void IHMAfficheur::initialiserPartieDouble(QString    nomModule,
         ui->classementJoueurGPartieG->setText(sommeClassementA + "pts");
         ui->classementJoueurDPartieG->setText(sommeClassementW + "pts");
         rencontre->setIdentifiantPartieGauche(idPartieDouble.toUInt());
+
+        if(idPartieDouble.toUInt() == ID_PARTIE_DOUBLE_1)
+        {
+            ui->joueursPartieDouble1coteG->show();
+            ui->joueursPartieDouble1coteG->setText(JoueurA1 + '\n' + JoueurA2);
+            ui->joueursPartieDouble1coteD->show();
+            ui->joueursPartieDouble1coteD->setText(JoueurW1 + '\n' + JoueurW2);
+            ui->setGagnePartieDouble1JoueurG->show();
+            ui->setGagnePartieDouble1JoueurD->show();
+
+        }
+        else if(idPartieDouble.toUInt() == ID_PARTIE_DOUBLE_2)
+        {
+            ui->joueursPartieDouble2coteG->show();
+            ui->joueursPartieDouble2coteG->setText(JoueurA1 + '\n' + JoueurA2);
+            ui->joueursPartieDouble2coteD->show();
+            ui->joueursPartieDouble2coteD->setText(JoueurW1 + '\n' + JoueurW2);
+            ui->setGagnePartieDouble2JoueurG->show();
+            ui->setGagnePartieDouble2JoueurD->show();
+        }
     }
 }
 
