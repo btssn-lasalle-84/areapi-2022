@@ -25,6 +25,8 @@
  */
 #define PLEIN_ECRAN
 
+#define NB_SET_GAGNANTS 3
+
 // Numéro de champs pour les requête SQL
 #define COLONNE_idRencontre        0
 #define COLONNE_idClubA            1
@@ -70,7 +72,7 @@ class IHMArbitre : public QMainWindow
     QVector<QStringList> joueursEquipeA; //!< Les joueurs du club A
     QVector<QStringList> joueursEquipeW; //!< Les joueurs du club W
     QVector<QStringList> clubs;          //!< Les clubs
-    bool partieEnCours = false;
+    bool                 partieEnCours = false;
 
     /**
      * @enum Ecran
@@ -101,6 +103,7 @@ class IHMArbitre : public QMainWindow
     void initialiserBDD();
     void afficherEtatBluetooth(QLabel* module, EtatModule etat);
     void chargerRencontres();
+    void chargerRencontresASuppr();
     void chargerClubs();
     void chargerJoueurs();
 
@@ -127,15 +130,17 @@ class IHMArbitre : public QMainWindow
     void declencherNet(int nbNets);
     void chargerPartiesSimples();
     void chargerPartiesDoubles();
-    void demarrerRencontreSimple();
-    void demarrerRencontreDouble();
+    void demarrerPartieSimple();
+    void demarrerPartieDouble();
     void demarrerRencontre();
+    void creerRencontre();
+    void supprimerRencontre();
     void echangerJoueur();
     void demarrerPartie();
-    void AjoutPointG();
-    void AjoutPointD();
-    void RetraitPointG();
-    void RetraitPointD();
+    void ajoutPointG();
+    void ajoutPointD();
+    void retraitPointG();
+    void retraitPointD();
 };
 
 #endif // IHMARBITRE_H

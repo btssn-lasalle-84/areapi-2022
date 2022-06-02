@@ -34,6 +34,7 @@ IHMArbitre::IHMArbitre(QWidget* parent) :
     installerGestionEvenements();
     initialiserBDD();
     chargerRencontres();
+    chargerRencontresASuppr();
     chargerClubs();
 
     // Pour les tests
@@ -180,74 +181,6 @@ void IHMArbitre::declencherNet(int nbNets)
     qDebug() << Q_FUNC_INFO << "NET" << nbNets;
 }
 
-void IHMArbitre::demarrerRencontreSimple()
-{
-    // aucune rencontre sélectionnée ?
-    if(ui->comboBoxListeRencontres->currentIndex() == -1)
-        return;
-    qDebug() << Q_FUNC_INFO << ui->comboBoxListeRencontres->currentText();
-    // aucune partie simple sélectionnée ?
-    /**
-     * @todo Compléter le test de vérification
-     */
-    if(ui->comboBoxListePartiesSimples->currentIndex() == -1)
-        return;
-    qDebug() << Q_FUNC_INFO << ui->comboBoxListePartiesSimples->currentText();
-    QVector<int> sequenceJoueursEquipeA({ 0, 1, 2, 3, 0, 1, 3, 2, 0, 2, 3, 1 });
-    QVector<int> sequenceJoueursEquipeW({ 0, 1, 2, 3, 1, 0, 2, 3, 2, 0, 1, 3 });
-
-    ui->labelJoueurGauche->setText(
-      joueursEquipeA
-        .at(sequenceJoueursEquipeA.at(
-          ui->comboBoxListePartiesSimples->currentIndex()))
-        .at(0) +
-      " " +
-      joueursEquipeA
-        .at(sequenceJoueursEquipeA.at(
-          ui->comboBoxListePartiesSimples->currentIndex()))
-        .at(1));
-
-    ui->labelJoueurDroite->setText(
-      joueursEquipeW
-        .at(sequenceJoueursEquipeW.at(
-          ui->comboBoxListePartiesSimples->currentIndex()))
-        .at(0) +
-      " " +
-      joueursEquipeW
-        .at(sequenceJoueursEquipeW.at(
-          ui->comboBoxListePartiesSimples->currentIndex()))
-        .at(1));
-    ui->buttonAjoutPointJG->hide();
-    ui->buttonAjoutPointJD->hide();
-    ui->buttonRetraitPointJG->hide();
-    ui->buttonRetraitPointJD->hide();
-    ui->buttonDebutFinPartie->setText("Démarrer la partie");
-    afficherEcran(IHMArbitre::Partie);
-}
-
-void IHMArbitre::demarrerRencontreDouble()
-{
-    if(ui->comboBoxListeRencontres->currentIndex() == -1)
-        return;
-    qDebug() << Q_FUNC_INFO << ui->comboBoxListeRencontres->currentText();
-    /**
-     * @todo Compléter le test de vérification
-     */
-    ui->labelJoueurGauche->setText(ui->comboBoxListeJoueurA->currentText() +
-                                   " / " +
-                                   ui->comboBoxListeJoueurB->currentText());
-
-    ui->labelJoueurDroite->setText(ui->comboBoxListeJoueurW->currentText() +
-                                   " / " +
-                                   ui->comboBoxListeJoueurX->currentText());
-    ui->buttonAjoutPointJG->hide();
-    ui->buttonAjoutPointJD->hide();
-    ui->buttonRetraitPointJG->hide();
-    ui->buttonRetraitPointJD->hide();
-    ui->buttonDebutFinPartie->setText("Démarrer la partie");
-    afficherEcran(IHMArbitre::Partie);
-}
-
 // Méthodes privées
 
 void IHMArbitre::initialiserCommunicationBluetooth()
@@ -318,11 +251,15 @@ void IHMArbitre::installerGestionEvenements()
     connect(ui->buttonSelectionnerRencontreSimple,
             SIGNAL(clicked(bool)),
             this,
-            SLOT(demarrerRencontreSimple()));
+            SLOT(demarrerPartieSimple()));
     connect(ui->buttonSelectionnerRencontreDouble,
             SIGNAL(clicked(bool)),
             this,
-            SLOT(demarrerRencontreDouble()));
+            SLOT(demarrerPartieDouble()));
+    connect(ui->buttonSupprimerRencontre,
+            SIGNAL(clicked(bool)),
+            this,
+            SLOT(supprimerRencontre()));
     connect(ui->comboBoxListeRencontres,
             SIGNAL(currentIndexChanged(int)),
             this,
@@ -346,19 +283,23 @@ void IHMArbitre::installerGestionEvenements()
     connect(ui->buttonAjoutPointJG,
             SIGNAL(clicked(bool)),
             this,
-            SLOT(AjoutPointG()));
+            SLOT(ajoutPointG()));
     connect(ui->buttonAjoutPointJD,
             SIGNAL(clicked(bool)),
             this,
-            SLOT(AjoutPointD()));
+            SLOT(ajoutPointD()));
     connect(ui->buttonRetraitPointJG,
             SIGNAL(clicked(bool)),
             this,
-            SLOT(RetraitPointG()));
+            SLOT(retraitPointG()));
     connect(ui->buttonRetraitPointJD,
             SIGNAL(clicked(bool)),
             this,
-            SLOT(RetraitPointD()));
+            SLOT(retraitPointD()));
+    connect(ui->buttonCreerRencontre,
+            SIGNAL(clicked(bool)),
+            this,
+            SLOT(creerRencontre()));
 }
 
 void IHMArbitre::initialiserPageAccueil()
@@ -403,6 +344,7 @@ void IHMArbitre::chargerRencontres()
     bool retour;
 
     rencontres.clear();
+    ui->comboBoxListeRencontres->clear();
     retour = bdd->recuperer(requete, rencontres);
     qDebug() << Q_FUNC_INFO << rencontres;
     if(retour)
@@ -418,60 +360,95 @@ void IHMArbitre::chargerRencontres()
     }
 }
 
+void IHMArbitre::chargerRencontresASuppr()
+{
+    QString requete = "SELECT Rencontre.*, a.nomClub, b.nomClub FROM Rencontre "
+                      "INNER JOIN Club a ON (a.idClub = Rencontre.idClubA) "
+                      "INNER JOIN Club b ON (b.idClub = Rencontre.idClubW);";
+    bool retour;
+
+    rencontres.clear();
+    ui->comboBoxListeRencontresASupprimer->clear();
+    retour = bdd->recuperer(requete, rencontres);
+    qDebug() << Q_FUNC_INFO << rencontres;
+    if(retour)
+    {
+        for(int i = 0; i < rencontres.size(); ++i)
+        {
+            ui->comboBoxListeRencontresASupprimer->addItem(
+              rencontres.at(i).at(COLONNE_nomClubA) + " vs " +
+              rencontres.at(i).at(COLONNE_nomClubW));
+        }
+    }
+}
+
 void IHMArbitre::chargerPartiesSimples()
 {
     if(ui->comboBoxListeRencontres->currentIndex() == -1)
-        return;
-
-    qDebug() << Q_FUNC_INFO << ui->comboBoxListeRencontres->currentIndex();
-
-    chargerJoueurs();
-    ui->comboBoxListePartiesSimples->clear();
-    QVector<int> sequenceJoueursEquipeA({ 0, 1, 2, 3, 0, 1, 3, 2, 0, 2, 3, 1 });
-    QVector<int> sequenceJoueursEquipeW({ 0, 1, 2, 3, 1, 0, 2, 3, 2, 0, 1, 3 });
-    for(int i = 0; i < sequenceJoueursEquipeA.size(); ++i)
     {
-        /**
-         * @todo Définir les noms de colonnes et intégrer les prénoms
-         */
-        ui->comboBoxListePartiesSimples->addItem(
-          joueursEquipeA.at(sequenceJoueursEquipeA.at(i)).at(0) + " vs " +
-          joueursEquipeW.at(sequenceJoueursEquipeW.at(i)).at(0));
+        ui->comboBoxListePartiesSimples->setCurrentIndex(-1);
+    }
+    else
+    {
+        qDebug() << Q_FUNC_INFO << ui->comboBoxListeRencontres->currentIndex();
+
+        chargerJoueurs();
+        ui->comboBoxListePartiesSimples->clear();
+        QVector<int> sequenceJoueursEquipeA(
+          { 0, 1, 2, 3, 0, 1, 3, 2, 0, 2, 3, 1 });
+        QVector<int> sequenceJoueursEquipeW(
+          { 0, 1, 2, 3, 1, 0, 2, 3, 2, 0, 1, 3 });
+        for(int i = 0; i < sequenceJoueursEquipeA.size(); ++i)
+        {
+            /**
+             * @todo Définir les noms de colonnes et intégrer les prénoms
+             */
+            ui->comboBoxListePartiesSimples->addItem(
+              joueursEquipeA.at(sequenceJoueursEquipeA.at(i)).at(0) + " vs " +
+              joueursEquipeW.at(sequenceJoueursEquipeW.at(i)).at(0));
+        }
     }
 }
 
 void IHMArbitre::chargerPartiesDoubles()
 {
     if(ui->comboBoxListeRencontres->currentIndex() == -1)
-        return;
-
-    qDebug() << Q_FUNC_INFO << ui->comboBoxListeRencontres->currentIndex();
-
-    chargerJoueurs();
-    ui->comboBoxListeJoueurA->clear();
-    ui->comboBoxListeJoueurB->clear();
-    for(int i = 0; i < joueursEquipeA.size(); ++i)
     {
-        /**
-         * @todo Définir les noms de colonnes
-         */
-        ui->comboBoxListeJoueurA->addItem(joueursEquipeA.at(i).at(0) + " " +
-                                          joueursEquipeA.at(i).at(1));
-        ui->comboBoxListeJoueurB->addItem(joueursEquipeA.at(i).at(0) + " " +
-                                          joueursEquipeA.at(i).at(1));
+        ui->comboBoxListeJoueurA->setCurrentIndex(-1);
+        ui->comboBoxListeJoueurB->setCurrentIndex(-1);
+        ui->comboBoxListeJoueurW->setCurrentIndex(-1);
+        ui->comboBoxListeJoueurX->setCurrentIndex(-1);
     }
-
-    ui->comboBoxListeJoueurW->clear();
-    ui->comboBoxListeJoueurX->clear();
-    for(int i = 0; i < joueursEquipeW.size(); ++i)
+    else
     {
-        /**
-         * @todo Définir les noms de colonnes
-         */
-        ui->comboBoxListeJoueurW->addItem(joueursEquipeW.at(i).at(0) + " " +
-                                          joueursEquipeW.at(i).at(1));
-        ui->comboBoxListeJoueurX->addItem(joueursEquipeW.at(i).at(0) + " " +
-                                          joueursEquipeW.at(i).at(1));
+        qDebug() << Q_FUNC_INFO << ui->comboBoxListeRencontres->currentIndex();
+
+        chargerJoueurs();
+        ui->comboBoxListeJoueurA->clear();
+        ui->comboBoxListeJoueurB->clear();
+        for(int i = 0; i < joueursEquipeA.size(); ++i)
+        {
+            /**
+             * @todo Définir les noms de colonnes
+             */
+            ui->comboBoxListeJoueurA->addItem(joueursEquipeA.at(i).at(0) + " " +
+                                              joueursEquipeA.at(i).at(1));
+            ui->comboBoxListeJoueurB->addItem(joueursEquipeA.at(i).at(0) + " " +
+                                              joueursEquipeA.at(i).at(1));
+        }
+
+        ui->comboBoxListeJoueurW->clear();
+        ui->comboBoxListeJoueurX->clear();
+        for(int i = 0; i < joueursEquipeW.size(); ++i)
+        {
+            /**
+             * @todo Définir les noms de colonnes
+             */
+            ui->comboBoxListeJoueurW->addItem(joueursEquipeW.at(i).at(0) + " " +
+                                              joueursEquipeW.at(i).at(1));
+            ui->comboBoxListeJoueurX->addItem(joueursEquipeW.at(i).at(0) + " " +
+                                              joueursEquipeW.at(i).at(1));
+        }
     }
 }
 
@@ -517,6 +494,8 @@ void IHMArbitre::chargerJoueurs()
 
 void IHMArbitre::demarrerRencontre()
 {
+    if(ui->comboBoxListeRencontres->currentIndex() == -1)
+        return;
     qDebug() << Q_FUNC_INFO << "La rencontre est choisie";
     QString trame =
       DEBUT_TRAME ";RENCONTRE;" +
@@ -539,16 +518,142 @@ void IHMArbitre::demarrerRencontre()
     communicationBluetooth->envoyer(communicationBluetooth->Ecran, trame);
 }
 
+void IHMArbitre::demarrerPartieSimple()
+{
+    // aucune rencontre sélectionnée ?
+    if(ui->comboBoxListeRencontres->currentIndex() == -1)
+        return;
+    qDebug() << Q_FUNC_INFO << ui->comboBoxListeRencontres->currentText();
+    // aucune partie simple sélectionnée ?
+    /**
+     * @todo Compléter le test de vérification
+     */
+    if(ui->comboBoxListePartiesSimples->currentIndex() == -1)
+        return;
+    qDebug() << Q_FUNC_INFO << ui->comboBoxListePartiesSimples->currentText();
+    QVector<int> sequenceJoueursEquipeA({ 0, 1, 2, 3, 0, 1, 3, 2, 0, 2, 3, 1 });
+    QVector<int> sequenceJoueursEquipeW({ 0, 1, 2, 3, 1, 0, 2, 3, 2, 0, 1, 3 });
+
+    ui->labelJoueurGauche->setText(
+      joueursEquipeA
+        .at(sequenceJoueursEquipeA.at(
+          ui->comboBoxListePartiesSimples->currentIndex()))
+        .at(0) +
+      " " +
+      joueursEquipeA
+        .at(sequenceJoueursEquipeA.at(
+          ui->comboBoxListePartiesSimples->currentIndex()))
+        .at(1));
+
+    ui->labelJoueurDroite->setText(
+      joueursEquipeW
+        .at(sequenceJoueursEquipeW.at(
+          ui->comboBoxListePartiesSimples->currentIndex()))
+        .at(0) +
+      " " +
+      joueursEquipeW
+        .at(sequenceJoueursEquipeW.at(
+          ui->comboBoxListePartiesSimples->currentIndex()))
+        .at(1));
+    ui->buttonAjoutPointJG->hide();
+    ui->buttonAjoutPointJD->hide();
+    ui->buttonRetraitPointJG->hide();
+    ui->buttonRetraitPointJD->hide();
+    ui->buttonDebutFinPartie->setText("Démarrer la partie");
+    afficherEcran(IHMArbitre::Partie);
+}
+
+void IHMArbitre::demarrerPartieDouble()
+{
+    if(ui->comboBoxListeRencontres->currentIndex() == -1)
+        return;
+    qDebug() << Q_FUNC_INFO << ui->comboBoxListeRencontres->currentText();
+    /**
+     * @todo Compléter le test de vérification
+     */
+    ui->labelJoueurGauche->setText(ui->comboBoxListeJoueurA->currentText() +
+                                   " / " +
+                                   ui->comboBoxListeJoueurB->currentText());
+
+    ui->labelJoueurDroite->setText(ui->comboBoxListeJoueurW->currentText() +
+                                   " / " +
+                                   ui->comboBoxListeJoueurX->currentText());
+    ui->buttonAjoutPointJG->hide();
+    ui->buttonAjoutPointJD->hide();
+    ui->buttonRetraitPointJG->hide();
+    ui->buttonRetraitPointJD->hide();
+    ui->buttonDebutFinPartie->setText("Démarrer la partie");
+    afficherEcran(IHMArbitre::Partie);
+}
+
+void IHMArbitre::supprimerRencontre()
+{
+    QVector<QStringList> idClub;
+
+    QStringList club =
+      ui->comboBoxListeRencontresASupprimer->currentText().split(" vs ");
+    if(ui->comboBoxListeRencontresASupprimer->currentText() != "")
+    {
+        QString requeteRechercheRencontre =
+          "SELECT Rencontre.idRencontre FROM Rencontre "
+          "INNER JOIN Club a ON (a.idClub = Rencontre.idClubA) "
+          "INNER JOIN Club b ON (b.idClub = Rencontre.idClubW)"
+          "WHERE a.nomClub = '" +
+          club.at(0) + "' AND b.nomClub = '" + club.at(1) + "';";
+        bool retourIdClub = bdd->recuperer(requeteRechercheRencontre, idClub);
+        qDebug() << Q_FUNC_INFO << "retourIdClub =" << retourIdClub;
+        if(retourIdClub)
+        {
+            QString requeteSupprRencontre =
+              "DELETE FROM Rencontre WHERE idRencontre = '" +
+              (idClub.at(0).at(0)) + "';";
+            bool retourSuppressionRencontre =
+              bdd->executer(requeteSupprRencontre);
+            qDebug() << Q_FUNC_INFO << "retourSuppressionRencontre ="
+                     << retourSuppressionRencontre;
+            chargerRencontres();
+            chargerRencontresASuppr();
+            chargerPartiesSimples();
+            chargerPartiesDoubles();
+        }
+    }
+}
+
+void IHMArbitre::creerRencontre()
+{
+    qDebug() << Q_FUNC_INFO << "Créer une rencontre";
+    QStringList date = ui->dateEdit->text().split("/");
+
+    QString requeteCreerRencontre =
+      "INSERT INTO Rencontre"
+      "(idClubA, idClubW, nbPartiesGagnantes, estFinie, horodatage)"
+      "VALUES ('" +
+      QString::number(ui->comboBoxChoixClubA->currentIndex() + 1) + "', '" +
+      QString::number(ui->comboBoxChoixClubW->currentIndex() + 1) + "', '" +
+      QString::number(NB_SET_GAGNANTS) + "', '0', '" + date.at(2) + "/" +
+      date.at(1) + "/" + date.at(0) + " " + ui->timeEdit->text() + ":00')";
+    qDebug() << Q_FUNC_INFO << requeteCreerRencontre;
+    bdd->executer(requeteCreerRencontre);
+    chargerRencontres();
+    chargerRencontresASuppr();
+}
+
 void IHMArbitre::echangerJoueur()
 {
     qDebug() << Q_FUNC_INFO << "changement de côté";
-    /**
-     * @todo Echanger les emplacements des joueurs et les scores
-     */
+    QString stockageString = ui->labelScoreJD->text();
+    ui->labelScoreJD->setText(ui->labelScoreJG->text());
+    ui->labelScoreJG->setText(stockageString);
+    stockageString = ui->labelJoueurDroite->text();
+    ui->labelJoueurDroite->setText(ui->labelJoueurGauche->text());
+    ui->labelJoueurGauche->setText(stockageString);
 }
 
 void IHMArbitre::demarrerPartie()
 {
+    /**
+     * @todo Modifier pour ajouter les 3 set gagnant
+     */
     if(!partieEnCours)
     {
         qDebug() << Q_FUNC_INFO << "Demarrage de la partie";
@@ -571,7 +676,7 @@ void IHMArbitre::demarrerPartie()
     }
 }
 
-void IHMArbitre::AjoutPointG()
+void IHMArbitre::ajoutPointG()
 {
     qDebug() << Q_FUNC_INFO << "Ajout d'un point gauche";
     QString AffichagePointG = ui->labelScoreJG->text();
@@ -598,7 +703,7 @@ void IHMArbitre::AjoutPointG()
     ui->labelScoreJG->setText(QString::number(pointG));
 }
 
-void IHMArbitre::AjoutPointD()
+void IHMArbitre::ajoutPointD()
 {
     qDebug() << Q_FUNC_INFO << "Ajout d'un point droite";
     QString AffichagePointD = ui->labelScoreJD->text();
@@ -624,7 +729,7 @@ void IHMArbitre::AjoutPointD()
     ui->labelScoreJD->setText(QString::number(pointD));
 }
 
-void IHMArbitre::RetraitPointG()
+void IHMArbitre::retraitPointG()
 {
     qDebug() << Q_FUNC_INFO << "Retrait d'un point gauche";
     QString AffichagePointG = ui->labelScoreJG->text();
@@ -643,7 +748,7 @@ void IHMArbitre::RetraitPointG()
     ui->buttonDebutFinPartie->hide();
 }
 
-void IHMArbitre::RetraitPointD()
+void IHMArbitre::retraitPointD()
 {
     qDebug() << Q_FUNC_INFO << "Retrait d'un point droite";
     QString AffichagePointD = ui->labelScoreJD->text();
