@@ -23,7 +23,7 @@
  */
 IHMAfficheur::IHMAfficheur(QWidget* parent) :
     QMainWindow(parent), ui(new Ui::IHMAfficheur), receptionTrame(nullptr),
-    rencontre(nullptr), pointsTotalEquipeA(0), pointsTotalEquipeW(0)
+    rencontre(nullptr), pointsTotalEquipeA(0), pointsTotalEquipeW(0), connecteurMinuteurActive(false)
 {
     ui->setupUi(this);
     qDebug() << Q_FUNC_INFO;
@@ -400,6 +400,21 @@ void IHMAfficheur::actualiserSetPartie(QByteArray scoreJG, QByteArray idPartieSc
     }
 }
 
+void IHMAfficheur::connecterMinuteurPartieEtIHM(QByteArray idPartieScore)
+{
+    qDebug() << Q_FUNC_INFO;
+    connect(rencontre->getPointeurPartie(idPartieScore.toUInt())->getMinuteur(),
+            SIGNAL(timeout()),
+            rencontre->getPointeurPartie(idPartieScore.toUInt()),
+            SLOT(incrementerTempsPartieCadreGauche()));
+
+    connect(rencontre->getPointeurPartie(idPartieScore.toUInt()),
+            SIGNAL(tempsPartieCadreGauche(int)),
+            this,
+            SLOT(actualiserTempsCadreGauche(int)));
+    this->connecteurMinuteurActive = true;
+}
+
 void IHMAfficheur::demmarerMinuteur(QByteArray etatPartie, QByteArray idPartieScore)
 {
     if(etatPartie.toUInt())
@@ -408,18 +423,13 @@ void IHMAfficheur::demmarerMinuteur(QByteArray etatPartie, QByteArray idPartieSc
         if(!rencontre->getPointeurPartie(idPartieScore.toUInt())->estMinuteurDemarrer())
         {
             qDebug() << Q_FUNC_INFO << "Demarage du Chronometre : ";
-            rencontre->getPointeurPartie(idPartieScore.toUInt())->getMinuteur()->start(1000);
+            rencontre->getPointeurPartie(idPartieScore.toUInt())->getMinuteur()->start(SECONDE_EN_MILLISECONDE);
             //actualiserTempsCadreGauche(idPartieScore);
             qDebug() << Q_FUNC_INFO << "Temps en cours ? : " << rencontre->getPointeurPartie(idPartieScore.toUInt())->estMinuteurDemarrer();
-            connect(rencontre->getPointeurPartie(idPartieScore.toUInt())->getMinuteur(),
-                    SIGNAL(timeout()),
-                    rencontre->getPointeurPartie(idPartieScore.toUInt()),
-                    SLOT(incrementerTempsPartieCadreGauche()));
-
-            connect(rencontre->getPointeurPartie(idPartieScore.toUInt()),
-                    SIGNAL(tempsPartieCadreGauche(int)),
-                    this,
-                    SLOT(actualiserTempsCadreGauche(int)));
+            if(!estConnecteurMinuteurActive())
+            {
+                connecterMinuteurPartieEtIHM(idPartieScore);
+            }
         }
     }
 }
@@ -427,6 +437,11 @@ void IHMAfficheur::demmarerMinuteur(QByteArray etatPartie, QByteArray idPartieSc
 void IHMAfficheur::arreterMinuteur(unsigned int id)
 {
     rencontre->getPointeurPartie(id)->getMinuteur()->stop();
+}
+
+bool IHMAfficheur::estConnecteurMinuteurActive()
+{
+    return connecteurMinuteurActive;
 }
 
 void IHMAfficheur::actualiserTempsCadreGauche(int idPartieScore)
@@ -598,7 +613,15 @@ void IHMAfficheur::initialiserScorePartie(QString    nomModule,
         actualiserSetPartie(scoreJG, idPartieScore, scoreJD);
         rencontre->actualiserPartie(idPartieScore, scoreJG, scoreJD, nbSetJG, nbSetJD, net);
         actualiserAffichageSetsPartieGauche(idPartieScore);
-        demmarerMinuteur(etatPartie, idPartieScore);
+
+        if(tempsMort.toUInt())
+        {
+            arreterMinuteur(idPartieScore.toUInt());
+        }
+        else
+        {
+            demmarerMinuteur(etatPartie, idPartieScore);
+        }
 
         if(tourService.toUInt()) //(Gauche=0 ou Droite=1)
         {

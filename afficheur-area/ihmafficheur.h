@@ -19,9 +19,10 @@
  */
 #define PLEIN_ECRAN
 #define ECRAN_VEILLE
-#define NOMBRE_SET_GAGNANT 3
-#define ID_PARTIE_DOUBLE_1 0
-#define ID_PARTIE_DOUBLE_2 1
+#define NOMBRE_SET_GAGNANT      3
+#define ID_PARTIE_DOUBLE_1      0
+#define ID_PARTIE_DOUBLE_2      1
+#define SECONDE_EN_MILLISECONDE 1000
 
 //#define TEST_RELATIONS
 
@@ -56,6 +57,7 @@ class IHMAfficheur : public QMainWindow
     QVector<QLabel*>  labelsJoueurZ;
     int               pointsTotalEquipeA;
     int               pointsTotalEquipeW;
+    bool              connecteurMinuteurActive;
 
     void initialiserIHM();
     void initialiserReception();
@@ -119,6 +121,9 @@ class IHMAfficheur : public QMainWindow
     void actualiserSetPartie(QByteArray scoreJG, QByteArray idPartieScore, QByteArray scoreJD);
     void demmarerMinuteur(QByteArray etatPartie, QByteArray idPartieScore);
     void arreterMinuteur(unsigned int id);
+    bool estConnecteurMinuteurActive();
+
+    void connecterMinuteurPartieEtIHM(QByteArray idPartieScore);
 
   public slots:
     void initialiserRencontre(QString    nomModule,
