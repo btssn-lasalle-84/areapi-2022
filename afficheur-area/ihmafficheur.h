@@ -98,16 +98,9 @@ class IHMAfficheur : public QMainWindow
                                   QString prenomJoueurW1,
                                   QString nomJoueurW2,
                                   QString prenomJoueurW2);
-    void initialiserJoueurs(QByteArray NomJoueurA, QByteArray NomJoueurD,
-                            QByteArray PrenomJoueurC, QByteArray NomJoueurC,
-                            QByteArray PrenomJoueurB, QByteArray NomJoueurB,
-                            QByteArray PrenomJoueurY, QByteArray NomJoueurY,
-                            QByteArray PrenomJoueurX, QByteArray NomJoueurX,
-                            QByteArray PrenomJoueurZ, QByteArray PrenomJoueurW,
-                            QByteArray NomJoueurZ, QByteArray NomJoueurW,
-                            QByteArray PrenomJoueurA, QByteArray PrenomJoueurD);
+    void initialiserJoueurs(QByteArray NomJoueurA, QByteArray NomJoueurD, QByteArray PrenomJoueurC, QByteArray NomJoueurC, QByteArray PrenomJoueurB, QByteArray NomJoueurB, QByteArray PrenomJoueurY, QByteArray NomJoueurY, QByteArray PrenomJoueurX, QByteArray NomJoueurX, QByteArray PrenomJoueurZ, QByteArray PrenomJoueurW, QByteArray NomJoueurZ, QByteArray NomJoueurW, QByteArray PrenomJoueurA, QByteArray PrenomJoueurD);
 
-public:
+  public:
     IHMAfficheur(QWidget* parent = nullptr);
     ~IHMAfficheur();
 
@@ -121,12 +114,13 @@ public:
     void actualiserHistoriqueRencontre(int idPartie);
     void actualiserAffichageSetsPartieGauche(QByteArray idPartieScore);
     void cacherPartiesDoubles();
-    void ReafficherPartiesDouble(QByteArray JoueurW1, QByteArray JoueurW2,
-                                 QByteArray idPartieDouble,
-                                 QByteArray JoueurA2, QByteArray JoueurA1);
+    void ReafficherPartiesDouble(QByteArray JoueurW1, QByteArray JoueurW2, QByteArray idPartieDouble, QByteArray JoueurA2, QByteArray JoueurA1);
     void associerSignalSlotRencontre();
+    void actualiserSetPartie(QByteArray scoreJG, QByteArray idPartieScore, QByteArray scoreJD);
+    void demmarerMinuteur(QByteArray etatPartie, QByteArray idPartieScore);
+    void arreterMinuteur(unsigned int id);
 
-public slots:
+  public slots:
     void initialiserRencontre(QString    nomModule,
                               QByteArray NomClubA,
                               QByteArray NomClubW,
@@ -175,6 +169,7 @@ public slots:
                                 QByteArray nbSetJD,
                                 QByteArray tourService,
                                 QByteArray net);
+    void actualiserTempsCadreGauche(int idPartieScore);
 };
 
 #endif // IHMAFFICHEUR_H

@@ -34,7 +34,8 @@ class Rencontre
     Equipe*         getEquipeA() const;
     Equipe*         getEquipeW() const;
     QVector<Partie> getParties() const;
-    Partie          getPartie(unsigned int cases)  const;
+    Partie          getPartie(unsigned int cases) const;
+    Partie*          getPointeurPartie(unsigned int cases);
     int             getIdentifiantPartieGauche();
     void            setIdentifiantPartieGauche(int identifiantPartieGauche);
     void            setPartiesSimple(QString nomJoueurA1, QString prenomJoueurA1,
