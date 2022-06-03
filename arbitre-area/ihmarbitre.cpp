@@ -663,16 +663,46 @@ void IHMArbitre::demarrerPartie()
         ui->buttonRetraitPointJG->show();
         ui->buttonRetraitPointJD->show();
         ui->buttonDebutFinPartie->hide();
-        ui->buttonDebutFinPartie->setText("Fin de partie");
+        ui->buttonDebutFinPartie->setText("Fin de set");
         partieEnCours = true;
+        aDejaEchanger = false;
+        nbSetJouer++;
     }
     else
     {
-        afficherEcran(IHMArbitre::Rencontre);
-        ui->ButtonEchangerJoueur->show();
-        ui->labelScoreJD->setText("0");
-        ui->labelScoreJG->setText("0");
-        partieEnCours = false;
+        if(nbSetJouer == 5)
+        {
+            qDebug() << Q_FUNC_INFO << "Fin de la partie  " << nbSetJouer;
+            afficherEcran(IHMArbitre::Rencontre);
+            ui->ButtonEchangerJoueur->show();
+            ui->labelScoreJD->setText("0");
+            ui->labelScoreJG->setText("0");
+            partieEnCours = false;
+            nbSetJouer    = 0;
+            ui->buttonDebutFinPartie->setText("Début de Partie");
+        }
+        else if(nbSetJouer == 4)
+        {
+            qDebug() << Q_FUNC_INFO << "Partie : " << nbSetJouer;
+            ui->labelScoreJD->setText("0");
+            ui->labelScoreJG->setText("0");
+            ui->buttonAjoutPointJG->show();
+            ui->buttonAjoutPointJD->show();
+            ui->buttonDebutFinPartie->hide();
+            ui->buttonDebutFinPartie->setText("Fin de Partie");
+            nbSetJouer++;
+        }
+        else
+        {
+            qDebug() << Q_FUNC_INFO << "Partie : " << nbSetJouer;
+            ui->labelScoreJD->setText("0");
+            ui->labelScoreJG->setText("0");
+            ui->buttonAjoutPointJG->show();
+            ui->buttonAjoutPointJD->show();
+            ui->buttonDebutFinPartie->hide();
+            echangerJoueur();
+            nbSetJouer++;
+        }
     }
 }
 
@@ -701,6 +731,11 @@ void IHMArbitre::ajoutPointG()
         }
     }
     ui->labelScoreJG->setText(QString::number(pointG));
+    if(nbSetJouer == 5 && !aDejaEchanger && pointG == 5)
+    {
+        echangerJoueur();
+        aDejaEchanger = true;
+    }
 }
 
 void IHMArbitre::ajoutPointD()
@@ -727,6 +762,11 @@ void IHMArbitre::ajoutPointD()
         }
     }
     ui->labelScoreJD->setText(QString::number(pointD));
+    if(nbSetJouer == 5 && !aDejaEchanger && pointD == 5)
+    {
+        echangerJoueur();
+        aDejaEchanger = true;
+    }
 }
 
 void IHMArbitre::retraitPointG()
@@ -746,6 +786,11 @@ void IHMArbitre::retraitPointG()
     ui->buttonAjoutPointJG->show();
     ui->buttonAjoutPointJD->show();
     ui->buttonDebutFinPartie->hide();
+    if(nbSetJouer == 5 && aDejaEchanger && pointG == 4)
+    {
+        echangerJoueur();
+        aDejaEchanger = false;
+    }
 }
 
 void IHMArbitre::retraitPointD()
@@ -757,6 +802,7 @@ void IHMArbitre::retraitPointD()
     if(pointD < 0)
     {
         ui->labelScoreJD->setText("0");
+        pointD = 0;
     }
     else
     {
@@ -765,6 +811,11 @@ void IHMArbitre::retraitPointD()
     ui->buttonAjoutPointJG->show();
     ui->buttonAjoutPointJD->show();
     ui->buttonDebutFinPartie->hide();
+    if(nbSetJouer == 5 && aDejaEchanger && pointD == 4)
+    {
+        echangerJoueur();
+        aDejaEchanger = false;
+    }
 }
 
 #ifdef TEST_IHMARBITRE

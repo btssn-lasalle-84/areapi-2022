@@ -72,7 +72,10 @@ class IHMArbitre : public QMainWindow
     QVector<QStringList> joueursEquipeA; //!< Les joueurs du club A
     QVector<QStringList> joueursEquipeW; //!< Les joueurs du club W
     QVector<QStringList> clubs;          //!< Les clubs
+    int                  nbSetJouer    = 0;
     bool                 partieEnCours = false;
+    bool                 estGagnee     = false;
+    bool                 aDejaEchanger = false;
 
     /**
      * @enum Ecran
