@@ -179,6 +179,9 @@ void IHMArbitre::detecter()
 void IHMArbitre::declencherNet(int nbNets)
 {
     qDebug() << Q_FUNC_INFO << "NET" << nbNets;
+    /**
+     * @todo Afficher un net
+     */
 }
 
 // Méthodes privées
@@ -426,7 +429,7 @@ void IHMArbitre::chargerPartiesDoubles()
         chargerJoueurs();
         ui->comboBoxListeJoueurA->clear();
         ui->comboBoxListeJoueurB->clear();
-        for(int i = 0; i < joueursEquipeA.size(); ++i)
+        for(int i = 0; i < 4; ++i)
         {
             /**
              * @todo Définir les noms de colonnes
@@ -439,7 +442,7 @@ void IHMArbitre::chargerPartiesDoubles()
 
         ui->comboBoxListeJoueurW->clear();
         ui->comboBoxListeJoueurX->clear();
-        for(int i = 0; i < joueursEquipeW.size(); ++i)
+        for(int i = 0; i < 4; ++i)
         {
             /**
              * @todo Définir les noms de colonnes
@@ -494,6 +497,7 @@ void IHMArbitre::chargerJoueurs()
 
 void IHMArbitre::demarrerRencontre()
 {
+    communicationBluetooth->connecter(communicationBluetooth->Ecran);
     if(ui->comboBoxListeRencontres->currentIndex() == -1)
         return;
     qDebug() << Q_FUNC_INFO << "La rencontre est choisie";
@@ -667,6 +671,7 @@ void IHMArbitre::demarrerPartie()
         partieEnCours = true;
         aDejaEchanger = false;
         nbSetJouer++;
+        communicationBluetooth->connecter(communicationBluetooth->Net);
     }
     else
     {

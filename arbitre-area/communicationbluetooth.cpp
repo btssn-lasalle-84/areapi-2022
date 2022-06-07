@@ -214,7 +214,7 @@ void CommunicationBluetooth::gererConnexionNet()
     }
     else
     {
-        emit moduleEcranDeconnecte();
+        emit moduleNetDeconnecte();
     }
 }
 
@@ -235,7 +235,7 @@ void CommunicationBluetooth::gererConnexionScore()
     }
     else
     {
-        emit moduleEcranDeconnecte();
+        emit moduleScoreDeconnecte();
     }
 }
 
@@ -490,7 +490,6 @@ void CommunicationBluetooth::initialiserSocketEcran(
 
     qDebug() << Q_FUNC_INFO << device.name() << device.address()
              << socketEcran->state() << "!!!!!!!!!!!";
-
     if(socketEcran->state() == QBluetoothSocket::ConnectingState)
     {
         socketEcran->disconnectFromService();
