@@ -45,7 +45,7 @@ class ReceptionTrame : public QObject
     QList<QByteArray> decouperTrame();
 
   public:
-    ReceptionTrame(QObject* parent = 0);
+    ReceptionTrame(QObject* parent = nullptr);
     ~ReceptionTrame();
     void    activerBluetooth();
     void    desactiverBluetooth();

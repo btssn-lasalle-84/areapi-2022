@@ -9,14 +9,16 @@
  * @author
  */
 
-Rencontre::Rencontre() : parties()
+Rencontre::Rencontre() :
+    parties()
 {
     qDebug() << Q_FUNC_INFO;
     equipes.push_back(new Equipe());
     equipes.push_back(new Equipe());
 }
 
-Rencontre::Rencontre(QString nomEquipeA, QString nomEquipeW) : parties()
+Rencontre::Rencontre(QString nomEquipeA, QString nomEquipeW) :
+    parties()
 {
     qDebug() << Q_FUNC_INFO << nomEquipeA << nomEquipeW;
     equipes.push_back(new Equipe(nomEquipeA));
@@ -65,36 +67,32 @@ Partie Rencontre::getPartie(unsigned int cases) const
     return parties[cases];
 }
 
-int  Rencontre::getIdentifiantPartieGauche()
+Partie* Rencontre::getPointeurPartie(unsigned int cases)
+{
+    return &(parties[cases]);
+}
+
+int Rencontre::getIdentifiantPartieGauche()
 {
     return identifiantPartieGauche;
 }
 
-void  Rencontre::setIdentifiantPartieGauche(int identifiantPartieGauche)
+void Rencontre::setIdentifiantPartieGauche(int identifiantPartieGauche)
 {
     identifiantPartieGauche = identifiantPartieGauche;
 }
 
-void Rencontre::setPartiesSimple(QString nomJoueurA1, QString prenomJoueurA1,
-                                 QString nomJoueurW1, QString prenomJoueurW2)
+void Rencontre::setPartiesSimple(QString nomJoueurA1, QString prenomJoueurA1, QString nomJoueurW1, QString prenomJoueurW2)
 {
-    parties.push_back(Partie(0, nomJoueurA1, prenomJoueurA1,
-                                 nomJoueurW1, prenomJoueurW2));
+    parties.push_back(Partie(parties.size(), false, nomJoueurA1, prenomJoueurA1, nomJoueurW1, prenomJoueurW2));
 }
 
-void Rencontre::setPartiesDouble(QString nomJoueurA1, QString prenomJoueurA1,
-                                 QString nomJoueurA2, QString prenomJoueurA2,
-                                 QString nomJoueurW1, QString prenomJoueurW1,
-                                 QString nomJoueurW2, QString prenomJoueurW2)
+void Rencontre::setPartiesDouble(QString nomJoueurA1, QString prenomJoueurA1, QString nomJoueurA2, QString prenomJoueurA2, QString nomJoueurW1, QString prenomJoueurW1, QString nomJoueurW2, QString prenomJoueurW2)
 {
-    parties.push_back(Partie(1, nomJoueurA1, prenomJoueurA1,
-                                    nomJoueurA2, prenomJoueurA2,
-                                    nomJoueurW1, prenomJoueurW1,
-                                    nomJoueurW2, prenomJoueurW2));
+    parties.push_back(Partie(parties.size(), true, nomJoueurA1, prenomJoueurA1, nomJoueurA2, prenomJoueurA2, nomJoueurW1, prenomJoueurW1, nomJoueurW2, prenomJoueurW2));
 }
 
-void Rencontre::actualiserPartie(QByteArray idPartieScore, QByteArray scoreJG, QByteArray scoreJD,
-                                 QByteArray nbSetJG,QByteArray nbSetJD, QByteArray net)
+void Rencontre::actualiserPartie(QByteArray idPartieScore, QByteArray scoreJG, QByteArray scoreJD, QByteArray nbSetJG, QByteArray nbSetJD, QByteArray net)
 {
     qDebug() << Q_FUNC_INFO << "";
     parties[idPartieScore.toUInt()].setSetJoueurG(nbSetJG.toUInt());
@@ -110,8 +108,4 @@ void Rencontre::actualiserPartie(QByteArray idPartieScore, QByteArray scoreJG, Q
         parties[idPartieScore.toUInt()].setNombreSet(nbSetJG.toUInt() + nbSetJD.toUInt());
         parties[idPartieScore.toUInt()].setNombreNET(0);
     }
-
-
 }
-
-
