@@ -661,6 +661,9 @@ void IHMAfficheur::initialiserIHM()
     qDebug() << Q_FUNC_INFO;
 #ifdef ECRAN_VEILLE
     ui->Application->setCurrentIndex(IHMAfficheur::Ecran::EcranVeille);
+    player.setMedia(QUrl::fromLocalFile(QCoreApplication::applicationDirPath() + QString("/TitleTheme.mp3")));
+    qDebug() << "Le fichier audio est valable ? : " << player.isAudioAvailable();
+    player.play();
 #endif // ECRAN_VEILLE
 
 #ifdef PLEIN_ECRAN

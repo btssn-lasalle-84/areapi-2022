@@ -12,6 +12,7 @@
 
 #include <QtWidgets>
 #include <QVector>
+#include <QMediaPlayer>
 
 /**
  * @def PLEIN_ECRAN
@@ -58,6 +59,7 @@ class IHMAfficheur : public QMainWindow
     int               pointsTotalEquipeA;
     int               pointsTotalEquipeW;
     bool              connecteurMinuteurActive;
+    QMediaPlayer      player;
 
     void initialiserIHM();
     void initialiserReception();

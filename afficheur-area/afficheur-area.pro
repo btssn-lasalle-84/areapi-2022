@@ -1,6 +1,7 @@
 QT       += core
 QT       += gui widgets
 QT       += bluetooth
+QT       += multimedia multimediawidgets
 
 CONFIG += c++11
 

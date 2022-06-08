@@ -10,17 +10,20 @@
  *
  */
 
-Equipe::Equipe() : nom(""), joueurs()
+Equipe::Equipe() :
+    nom(""), joueurs()
 {
     qDebug() << Q_FUNC_INFO;
 }
 
-Equipe::Equipe(QString nom) : nom(nom), joueurs()
+Equipe::Equipe(QString nom) :
+    nom(nom), joueurs()
 {
     qDebug() << Q_FUNC_INFO << this << nom;
 }
 
-Equipe::Equipe(const Equipe& equipe) : nom(equipe.nom)
+Equipe::Equipe(const Equipe& equipe) :
+    nom(equipe.nom)
 {
     qDebug() << Q_FUNC_INFO << nom;
 }
@@ -78,6 +81,3 @@ void Equipe::ajouterJoueur(QString nom,
 {
     joueurs.push_back(Joueur(nom, prenom, lettre, classement));
 }
-
-
-
