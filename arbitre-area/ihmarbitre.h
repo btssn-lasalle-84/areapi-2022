@@ -109,6 +109,7 @@ class IHMArbitre : public QMainWindow
     void chargerRencontresASuppr();
     void chargerClubs();
     void chargerJoueurs();
+    void envoiTrameScore();
 
 #ifdef TEST_IHMARBITRE
     void creerRaccourcisClavier();

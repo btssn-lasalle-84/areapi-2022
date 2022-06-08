@@ -182,6 +182,8 @@ void IHMArbitre::declencherNet(int nbNets)
     /**
      * @todo Afficher un net
      */
+    ui->buttonValiderNet->show();
+    ui->labelNet->show();
 }
 
 // Méthodes privées
@@ -495,9 +497,28 @@ void IHMArbitre::chargerJoueurs()
     qDebug() << Q_FUNC_INFO << joueursEquipeW;
 }
 
+void IHMArbitre::envoiTrameScore()
+{
+    int idPartie = 1;
+    int etatPartie = 1;
+    int tempsMort = 1;
+    int nbSetGagnesJG = 1;
+    int nbSetGagnesJD = 2;
+    int tourService = 0;
+    int nbNet = 5;
+
+    QString trameScore = DEBUT_TRAME ";SCORE;" + QString::number(idPartie) + ";" + ui->labelScoreJD->text() + ";"
+            + ui->labelScoreJG->text() + ";" + QString::number(etatPartie) + ";" + QString::number(tempsMort) + ";" + QString::number(nbSetGagnesJG) + ";"
+            + QString::number(nbSetGagnesJD) + ";" + QString::number(tourService) + ";" + QString::number(nbNet) + ";\r\n";
+
+    qDebug() << trameScore;
+
+    communicationBluetooth->envoyer(communicationBluetooth->Score, trameScore);
+    //communicationBluetooth->envoyer(communicationBluetooth->Ecran, trameScore);
+}
+
 void IHMArbitre::demarrerRencontre()
 {
-    communicationBluetooth->connecter(communicationBluetooth->Ecran);
     if(ui->comboBoxListeRencontres->currentIndex() == -1)
         return;
     qDebug() << Q_FUNC_INFO << "La rencontre est choisie";
@@ -668,9 +689,12 @@ void IHMArbitre::demarrerPartie()
         ui->buttonRetraitPointJD->show();
         ui->buttonDebutFinPartie->hide();
         ui->buttonDebutFinPartie->setText("Fin de set");
+        ui->buttonValiderNet->hide();
+        ui->labelNet->hide();
         partieEnCours = true;
         aDejaEchanger = false;
         nbSetJouer++;
+        envoiTrameScore();
         communicationBluetooth->connecter(communicationBluetooth->Net);
     }
     else
@@ -741,6 +765,7 @@ void IHMArbitre::ajoutPointG()
         echangerJoueur();
         aDejaEchanger = true;
     }
+    envoiTrameScore();
 }
 
 void IHMArbitre::ajoutPointD()
@@ -772,6 +797,7 @@ void IHMArbitre::ajoutPointD()
         echangerJoueur();
         aDejaEchanger = true;
     }
+    envoiTrameScore();
 }
 
 void IHMArbitre::retraitPointG()
@@ -796,6 +822,7 @@ void IHMArbitre::retraitPointG()
         echangerJoueur();
         aDejaEchanger = false;
     }
+    envoiTrameScore();
 }
 
 void IHMArbitre::retraitPointD()
@@ -821,6 +848,7 @@ void IHMArbitre::retraitPointD()
         echangerJoueur();
         aDejaEchanger = false;
     }
+    envoiTrameScore();
 }
 
 #ifdef TEST_IHMARBITRE
