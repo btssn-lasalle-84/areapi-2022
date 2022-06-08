@@ -72,10 +72,12 @@ class IHMArbitre : public QMainWindow
     QVector<QStringList> joueursEquipeA; //!< Les joueurs du club A
     QVector<QStringList> joueursEquipeW; //!< Les joueurs du club W
     QVector<QStringList> clubs;          //!< Les clubs
-    int                  nbSetJouer    = 0;
-    bool                 partieEnCours = false;
-    bool                 estGagnee     = false;
-    bool                 aDejaEchanger = false;
+    int                  nbSetJouer        = 0;
+    int                  nbSetGagneJoueurG = 0;
+    int                  nbSetGagneJoueurD = 0;
+    bool                 partieEnCours     = false;
+    bool                 estGagnee         = false;
+    bool aDejaEchanger = false; // Utile seulement en cas de 5 ème set
 
     /**
      * @enum Ecran
@@ -114,6 +116,10 @@ class IHMArbitre : public QMainWindow
 #ifdef TEST_IHMARBITRE
     void creerRaccourcisClavier();
 #endif
+
+    void initialisationNouvellePartie();
+
+    void initialisationFinPartie();
 
   public slots:
     void afficherEcran(IHMArbitre::Ecran ecran);

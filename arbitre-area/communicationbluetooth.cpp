@@ -172,6 +172,7 @@ void CommunicationBluetooth::chercherService(QBluetoothServiceInfo service)
                  << service.serviceName() << service.serviceUuid()
                  << service.device().name() << service.device().address()
                  << service.device().rssi();
+        // if(service.serviceName() == "Serial Port Profile")
         enregistrerModule(service.device());
     }
 }
@@ -358,7 +359,6 @@ void CommunicationBluetooth::gererEtatSocket(QBluetoothSocket::SocketState etat)
     QBluetoothSocket* socket = qobject_cast<QBluetoothSocket*>(sender());
     qDebug() << Q_FUNC_INFO << socket << socket->peerName()
              << socket->peerAddress().toString() << socket->state() << etat;
-    qDebug() << Q_FUNC_INFO << etat;
 }
 
 void CommunicationBluetooth::enregistrerModule(
@@ -489,7 +489,7 @@ void CommunicationBluetooth::initialiserSocketEcran(
     }
 
     qDebug() << Q_FUNC_INFO << device.name() << device.address()
-             << socketEcran->state() << "!!!!!!!!!!!";
+             << socketEcran->state();
     if(socketEcran->state() == QBluetoothSocket::ConnectingState)
     {
         socketEcran->disconnectFromService();
@@ -499,6 +499,7 @@ void CommunicationBluetooth::initialiserSocketEcran(
     {
         QBluetoothAddress adresse =
           QBluetoothAddress(modulesAREA[Module::Ecran].address());
+        // QBluetoothUuid uuid = QBluetoothUuid(serviceUuid);
         QBluetoothUuid uuid = QBluetoothUuid(QBluetoothUuid::SerialPort);
         qDebug() << Q_FUNC_INFO << uuid;
         socketEcran->connectToService(adresse, uuid);

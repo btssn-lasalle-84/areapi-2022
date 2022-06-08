@@ -499,22 +499,26 @@ void IHMArbitre::chargerJoueurs()
 
 void IHMArbitre::envoiTrameScore()
 {
-    int idPartie = 1;
-    int etatPartie = 1;
-    int tempsMort = 1;
+    int idPartie      = 1;
+    int etatPartie    = 1;
+    int tempsMort     = 1;
     int nbSetGagnesJG = 1;
     int nbSetGagnesJD = 2;
-    int tourService = 0;
-    int nbNet = 5;
+    int tourService   = 0;
+    int nbNet         = 5;
 
-    QString trameScore = DEBUT_TRAME ";SCORE;" + QString::number(idPartie) + ";" + ui->labelScoreJD->text() + ";"
-            + ui->labelScoreJG->text() + ";" + QString::number(etatPartie) + ";" + QString::number(tempsMort) + ";" + QString::number(nbSetGagnesJG) + ";"
-            + QString::number(nbSetGagnesJD) + ";" + QString::number(tourService) + ";" + QString::number(nbNet) + ";\r\n";
+    QString trameScore =
+      DEBUT_TRAME ";SCORE;" + QString::number(idPartie) + ";" +
+      ui->labelScoreJD->text() + ";" + ui->labelScoreJG->text() + ";" +
+      QString::number(etatPartie) + ";" + QString::number(tempsMort) + ";" +
+      QString::number(nbSetGagnesJG) + ";" + QString::number(nbSetGagnesJD) +
+      ";" + QString::number(tourService) + ";" + QString::number(nbNet) +
+      ";\r\n";
 
     qDebug() << trameScore;
 
     communicationBluetooth->envoyer(communicationBluetooth->Score, trameScore);
-    //communicationBluetooth->envoyer(communicationBluetooth->Ecran, trameScore);
+    communicationBluetooth->envoyer(communicationBluetooth->Ecran, trameScore);
 }
 
 void IHMArbitre::demarrerRencontre()
@@ -538,7 +542,6 @@ void IHMArbitre::demarrerRencontre()
       ";" + joueursEquipeW.at(2).at(0) + ";" + joueursEquipeW.at(2).at(1) +
       ";" + joueursEquipeW.at(3).at(0) + ";" + joueursEquipeW.at(3).at(1) +
       ";\r\n";
-
     qDebug() << Q_FUNC_INFO << trame;
     communicationBluetooth->envoyer(communicationBluetooth->Ecran, trame);
 }
@@ -672,6 +675,39 @@ void IHMArbitre::echangerJoueur()
     stockageString = ui->labelJoueurDroite->text();
     ui->labelJoueurDroite->setText(ui->labelJoueurGauche->text());
     ui->labelJoueurGauche->setText(stockageString);
+    int stockageSet   = nbSetGagneJoueurG;
+    nbSetGagneJoueurG = nbSetGagneJoueurD;
+    nbSetGagneJoueurD = stockageSet;
+}
+
+void IHMArbitre::initialisationNouvellePartie()
+{
+    nbSetGagneJoueurG = 0;
+    nbSetGagneJoueurD = 0;
+    ui->ButtonEchangerJoueur->hide();
+    ui->buttonAjoutPointJG->show();
+    ui->buttonAjoutPointJD->show();
+    ui->buttonRetraitPointJG->show();
+    ui->buttonRetraitPointJD->show();
+    ui->buttonDebutFinPartie->hide();
+    ui->buttonDebutFinPartie->setText("Fin de set");
+    ui->buttonValiderNet->hide();
+    ui->labelNet->hide();
+    partieEnCours = true;
+    aDejaEchanger = false;
+    nbSetJouer++;
+}
+
+void IHMArbitre::initialisationFinPartie()
+{
+    afficherEcran(IHMArbitre::Rencontre);
+    ui->ButtonEchangerJoueur->show();
+    ui->labelScoreJD->setText("0");
+    ui->labelScoreJG->setText("0");
+    partieEnCours = false;
+    nbSetJouer    = 0;
+    ui->buttonDebutFinPartie->setText("Début de Partie");
+    envoiTrameScore();
 }
 
 void IHMArbitre::demarrerPartie()
@@ -679,40 +715,44 @@ void IHMArbitre::demarrerPartie()
     /**
      * @todo Modifier pour ajouter les 3 set gagnant
      */
+    QString AffichagePointD = ui->labelScoreJD->text();
+    QString AffichagePointG = ui->labelScoreJG->text();
+    int     pointD          = AffichagePointD.toInt();
+    int     pointG          = AffichagePointG.toInt();
     if(!partieEnCours)
     {
         qDebug() << Q_FUNC_INFO << "Demarrage de la partie";
-        ui->ButtonEchangerJoueur->hide();
-        ui->buttonAjoutPointJG->show();
-        ui->buttonAjoutPointJD->show();
-        ui->buttonRetraitPointJG->show();
-        ui->buttonRetraitPointJD->show();
-        ui->buttonDebutFinPartie->hide();
-        ui->buttonDebutFinPartie->setText("Fin de set");
-        ui->buttonValiderNet->hide();
-        ui->labelNet->hide();
-        partieEnCours = true;
-        aDejaEchanger = false;
-        nbSetJouer++;
+        initialisationNouvellePartie();
         envoiTrameScore();
-        communicationBluetooth->connecter(communicationBluetooth->Net);
+        // communicationBluetooth->connecter(communicationBluetooth->Net);
     }
     else
     {
-        if(nbSetJouer == 5)
+        if(pointD == 3 || pointG == 3)
         {
             qDebug() << Q_FUNC_INFO << "Fin de la partie  " << nbSetJouer;
-            afficherEcran(IHMArbitre::Rencontre);
-            ui->ButtonEchangerJoueur->show();
-            ui->labelScoreJD->setText("0");
-            ui->labelScoreJG->setText("0");
-            partieEnCours = false;
-            nbSetJouer    = 0;
-            ui->buttonDebutFinPartie->setText("Début de Partie");
+            qDebug() << Q_FUNC_INFO << "Partie : " << nbSetJouer;
+            if(pointD > pointG)
+            {
+                nbSetGagneJoueurD++;
+            }
+            else
+            {
+                nbSetGagneJoueurG++;
+            }
+            initialisationFinPartie();
         }
         else if(nbSetJouer == 4)
         {
             qDebug() << Q_FUNC_INFO << "Partie : " << nbSetJouer;
+            if(pointD > pointG)
+            {
+                nbSetGagneJoueurD++;
+            }
+            else
+            {
+                nbSetGagneJoueurG++;
+            }
             ui->labelScoreJD->setText("0");
             ui->labelScoreJG->setText("0");
             ui->buttonAjoutPointJG->show();
@@ -720,10 +760,19 @@ void IHMArbitre::demarrerPartie()
             ui->buttonDebutFinPartie->hide();
             ui->buttonDebutFinPartie->setText("Fin de Partie");
             nbSetJouer++;
+            envoiTrameScore();
         }
         else
         {
             qDebug() << Q_FUNC_INFO << "Partie : " << nbSetJouer;
+            if(pointD > pointG)
+            {
+                nbSetGagneJoueurD++;
+            }
+            else
+            {
+                nbSetGagneJoueurG++;
+            }
             ui->labelScoreJD->setText("0");
             ui->labelScoreJG->setText("0");
             ui->buttonAjoutPointJG->show();
@@ -731,8 +780,11 @@ void IHMArbitre::demarrerPartie()
             ui->buttonDebutFinPartie->hide();
             echangerJoueur();
             nbSetJouer++;
+            envoiTrameScore();
         }
     }
+    qDebug() << Q_FUNC_INFO << "G :" << nbSetGagneJoueurG
+             << "D :" << nbSetGagneJoueurD;
 }
 
 void IHMArbitre::ajoutPointG()
