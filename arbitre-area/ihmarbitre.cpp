@@ -122,6 +122,7 @@ void IHMArbitre::demarrer()
     tempsBluetoothEcran.setSingleShot(true);
     tempsBluetoothScore.setSingleShot(true);
     tempsBluetoothNet.setSingleShot(true);
+    tempsAffichageBoutons.setSingleShot(true);
 }
 
 void IHMArbitre::afficherNetTrouve()
@@ -183,11 +184,8 @@ void IHMArbitre::detecter()
 void IHMArbitre::declencherNet(int nbNets)
 {
     qDebug() << Q_FUNC_INFO << "NET" << nbNets;
-    /**
-     * @todo Afficher un net
-     */
-    ui->buttonValiderNet->show();
     ui->labelNet->show();
+    tempsAffichageNet.start(TEMPS_AFFICHAGE_NET);
 }
 
 // Méthodes privées
@@ -309,22 +307,17 @@ void IHMArbitre::installerGestionEvenements()
             SIGNAL(clicked(bool)),
             this,
             SLOT(creerRencontre()));
-    connect(ui->buttonValiderNet,
-            SIGNAL(clicked(bool)),
-            this,
-            SLOT(validerNet()));
-    qDebug() << Q_FUNC_INFO << "connect 1";
     connect(&tempsBluetoothEcran,
             SIGNAL(timeout()),
             this,
             SLOT(envoyerTrameEcran()));
-    qDebug() << Q_FUNC_INFO << "connect 2";
     connect(&tempsBluetoothScore,
             SIGNAL(timeout()),
             this,
             SLOT(envoyerTrameScore()));
-    qDebug() << Q_FUNC_INFO << "connect 3";
     connect(&tempsBluetoothNet, SIGNAL(timeout()), this, SLOT(connecterNet()));
+    connect(&tempsAffichageBoutons, SIGNAL(timeout()), this, SLOT(afficherBoutons()));
+        connect(&tempsAffichageNet, SIGNAL(timeout()), this, SLOT(retirerAffichageNet()));
 }
 
 void IHMArbitre::initialiserPageAccueil()
@@ -536,6 +529,11 @@ void IHMArbitre::creationTrameScore()
 
     qDebug() << trameScore;
     communicationBluetooth->deconnecter(communicationBluetooth->Net);
+    ui->buttonAjoutPointJD->setEnabled(false);
+    ui->buttonAjoutPointJG->setEnabled(false);
+    ui->buttonRetraitPointJD->setEnabled(false);
+    ui->buttonRetraitPointJG->setEnabled(false);
+    ui->buttonDebutFinPartie->setEnabled(false);
     tempsBluetoothScore.start(TIME_OUT);
 }
 
@@ -557,6 +555,21 @@ void IHMArbitre::connecterNet()
 {
     qDebug() << Q_FUNC_INFO;
     communicationBluetooth->connecter(communicationBluetooth->Net);
+    tempsAffichageBoutons.start(TIME_OUT);
+}
+
+void IHMArbitre::afficherBoutons()
+{
+    ui->buttonAjoutPointJD->setEnabled(true);
+    ui->buttonAjoutPointJG->setEnabled(true);
+    ui->buttonRetraitPointJD->setEnabled(true);
+    ui->buttonRetraitPointJG->setEnabled(true);
+    ui->buttonDebutFinPartie->setEnabled(true);
+}
+
+void IHMArbitre::retirerAffichageNet()
+{
+    ui->labelNet->hide();
 }
 
 void IHMArbitre::demarrerRencontre()
@@ -591,9 +604,6 @@ void IHMArbitre::demarrerPartieSimple()
         return;
     qDebug() << Q_FUNC_INFO << ui->comboBoxListeRencontres->currentText();
     // aucune partie simple sélectionnée ?
-    /**
-     * @todo Compléter le test de vérification
-     */
     if(ui->comboBoxListePartiesSimples->currentIndex() == -1)
         return;
     qDebug() << Q_FUNC_INFO << ui->comboBoxListePartiesSimples->currentText();
@@ -626,6 +636,7 @@ void IHMArbitre::demarrerPartieSimple()
     ui->buttonRetraitPointJG->hide();
     ui->buttonRetraitPointJD->hide();
     ui->buttonDebutFinPartie->setText("Démarrer la partie");
+    //creationRequeteNouvellePartie();
     afficherEcran(IHMArbitre::Partie);
 }
 
@@ -729,7 +740,6 @@ void IHMArbitre::initialisationNouvellePartie()
     ui->buttonRetraitPointJD->show();
     ui->buttonDebutFinPartie->hide();
     ui->buttonDebutFinPartie->setText("Fin de set");
-    ui->buttonValiderNet->hide();
     ui->labelNet->hide();
     partieEnCours = true;
     aDejaEchanger = false;
@@ -795,12 +805,6 @@ void IHMArbitre::demarrerPartie()
     }
     qDebug() << Q_FUNC_INFO << "G :" << nbSetGagneJoueurG
              << "D :" << nbSetGagneJoueurD;
-}
-
-void IHMArbitre::validerNet()
-{
-    ui->labelNet->hide();
-    ui->buttonValiderNet->hide();
 }
 
 void IHMArbitre::ajoutPointG()

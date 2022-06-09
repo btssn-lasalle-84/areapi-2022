@@ -689,10 +689,40 @@
                   <height>100</height>
                  </size>
                 </property>
+                <property name="sizeIncrement">
+                 <size>
+                  <width>0</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="baseSize">
+                 <size>
+                  <width>0</width>
+                  <height>0</height>
+                 </size>
+                </property>
                 <property name="font">
                  <font>
                   <pointsize>20</pointsize>
+                  <weight>75</weight>
+                  <bold>true</bold>
                  </font>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::WheelFocus</enum>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::UpDownArrows</enum>
+                </property>
+                <property name="dateTime">
+                 <datetime>
+                  <hour>0</hour>
+                  <minute>0</minute>
+                  <second>0</second>
+                  <year>2022</year>
+                  <month>1</month>
+                  <day>1</day>
+                 </datetime>
                 </property>
                </widget>
               </item>
@@ -707,6 +737,8 @@
                 <property name="font">
                  <font>
                   <pointsize>20</pointsize>
+                  <weight>75</weight>
+                  <bold>true</bold>
                  </font>
                 </property>
                </widget>
@@ -1262,24 +1294,6 @@
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignCenter</set>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QPushButton" name="buttonValiderNet">
-                  <property name="minimumSize">
-                   <size>
-                    <width>100</width>
-                    <height>100</height>
-                   </size>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <pointsize>20</pointsize>
-                   </font>
-                  </property>
-                  <property name="text">
-                   <string>✓</string>
                   </property>
                  </widget>
                 </item>
