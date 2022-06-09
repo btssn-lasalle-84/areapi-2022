@@ -12,6 +12,7 @@
 
 #include <QtWidgets>
 #include "basededonnees.h"
+#include <QTimer>
 
 /**
  * @def TEST_IHMARBITRE
@@ -26,6 +27,7 @@
 #define PLEIN_ECRAN
 
 #define NB_SET_GAGNANTS 3
+#define TIME_OUT        2000
 
 // Numéro de champs pour les requête SQL
 #define COLONNE_idRencontre        0
@@ -77,7 +79,12 @@ class IHMArbitre : public QMainWindow
     int                  nbSetGagneJoueurD = 0;
     bool                 partieEnCours     = false;
     bool                 estGagnee         = false;
-    bool aDejaEchanger = false; // Utile seulement en cas de 5 ème set
+    bool    aDejaEchanger = false; // Utile seulement en cas de 5 ème set
+    QTimer  tempsBluetoothEcran;
+    QTimer  tempsBluetoothScore;
+    QTimer  tempsBluetoothNet;
+    QString trameScore;
+    QString trameEcran;
 
     /**
      * @enum Ecran
@@ -111,7 +118,7 @@ class IHMArbitre : public QMainWindow
     void chargerRencontresASuppr();
     void chargerClubs();
     void chargerJoueurs();
-    void envoiTrameScore();
+    void creationTrameScore();
 
 #ifdef TEST_IHMARBITRE
     void creerRaccourcisClavier();
@@ -119,7 +126,7 @@ class IHMArbitre : public QMainWindow
 
     void initialisationNouvellePartie();
 
-    void initialisationFinPartie();
+    void initialisationFinSet();
 
   public slots:
     void afficherEcran(IHMArbitre::Ecran ecran);
@@ -147,6 +154,10 @@ class IHMArbitre : public QMainWindow
     void supprimerRencontre();
     void echangerJoueur();
     void demarrerPartie();
+    void envoyerTrameScore();
+    void envoyerTrameEcran();
+    void connecterNet();
+    void validerNet();
     void ajoutPointG();
     void ajoutPointD();
     void retraitPointG();
