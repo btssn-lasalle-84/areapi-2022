@@ -1285,20 +1285,59 @@ font: 87 18pt &quot;Lato Black&quot;;</string>
            </layout>
           </item>
           <item>
-           <widget class="QLabel" name="iconeArea">
-            <property name="styleSheet">
-             <string notr="true">background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:0.991968, y2:1, stop:0 rgba(60, 72, 156, 255), stop:1 rgba(111, 145, 239, 255));</string>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-            <property name="pixmap">
-             <pixmap resource="ressources.qrc">:/icone-area.png</pixmap>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-           </widget>
+           <layout class="QHBoxLayout" name="layoutSponsors">
+            <item>
+             <widget class="QLabel" name="sponsor1">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>190</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:0.991968, y2:1, stop:0 rgba(60, 72, 156, 255), stop:1 rgba(111, 145, 239, 255));\ncolor: rgb(238, 238, 236);\nfont: 87 18pt &quot;Lato Black&quot;;</string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="pixmap">
+               <pixmap resource="ressources.qrc">:/images/Sponsors1.png</pixmap>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="sponsor2">
+              <property name="text">
+               <string>Sponsor 2</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="sponsor3">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true"/>
+              </property>
+              <property name="text">
+               <string>Sponsor 3</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </item>
          </layout>
         </item>
