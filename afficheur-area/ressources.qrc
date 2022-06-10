@@ -1,7 +1,7 @@
 <RCC>
     <qresource prefix="/">
         <file alias="icone-area.png">images/icone-area.png</file>
-        <file>../doxygen/mainLevee.png</file>
         <file>images/mainLevee.png</file>
+        <file>images/Sponsors1.png</file>
     </qresource>
 </RCC>

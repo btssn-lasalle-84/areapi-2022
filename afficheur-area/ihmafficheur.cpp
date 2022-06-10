@@ -451,6 +451,41 @@ void IHMAfficheur::actualiserTempsCadreGauche(int idPartieScore)
     ui->tempsPartieGauche->setText(tempsPartiesActuelle);
 }
 
+void IHMAfficheur::afficherSponsors(int i)
+{
+    labelsSponsors[i]->show();
+    labelsSponsors[i]->setMinimumHeight(190);
+    labelsSponsors[i]->setStyleSheet("background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:0.991968, y2:1, "
+                                     "stop:0 rgba(60, 72, 156, 255), "
+                                     "stop:1 rgba(111, 145, 239, 255));\n"
+                                     "color: rgb(238, 238, 236);\nf"
+                                     "ont: 87 18pt \"Lato Black\";");
+}
+
+void IHMAfficheur::activerDeroulementSponsors()
+{
+    qDebug() << Q_FUNC_INFO;
+    for(int i = 0; i < labelsSponsors.size(); ++i)
+    {
+        qDebug() << i << "est caché ?" << labelsSponsors[i]->isHidden();
+        if(!(labelsSponsors[i]->isHidden()))
+        {
+            labelsSponsors[i]->hide();
+            if((i + 1) == labelsSponsors.size())
+            {
+                i = 0;
+            }
+            else
+            {
+                i++;
+            }
+
+            afficherSponsors(i);
+            i = labelsSponsors.size();
+        }
+    }
+}
+
 void IHMAfficheur::initialiserRencontre(QString    nomModule,
                                         QByteArray NomClubA,
                                         QByteArray NomClubW,
@@ -479,6 +514,7 @@ void IHMAfficheur::initialiserRencontre(QString    nomModule,
         rencontre = new Rencontre(QString(NomClubA.data()), QString(NomClubW.data()));
 
         cacherPartiesDoubles();
+        initialiserSponsors();
 
         // ajoute les joueurs dans les équipes
         initialiserEquipeA(nomModule, NomJoueurA, PrenomJoueurA, NomJoueurB, PrenomJoueurB, NomJoueurC, PrenomJoueurC, NomJoueurD, PrenomJoueurD);
@@ -661,6 +697,9 @@ void IHMAfficheur::initialiserIHM()
     qDebug() << Q_FUNC_INFO;
 #ifdef ECRAN_VEILLE
     ui->Application->setCurrentIndex(IHMAfficheur::Ecran::EcranVeille);
+    player.setMedia(QUrl::fromLocalFile(QCoreApplication::applicationDirPath() + QString("/TitleTheme.mp3")));
+    qDebug() << "Le fichier audio est valable ? : " << player.isAudioAvailable();
+    player.play();
 #endif // ECRAN_VEILLE
 
 #ifdef PLEIN_ECRAN
@@ -880,4 +919,19 @@ void IHMAfficheur::initialiserJoueurs(QByteArray NomJoueurA, QByteArray NomJoueu
     initialiserJoueurX(QString(NomJoueurX.data()), QString(PrenomJoueurX.data()));
     initialiserJoueurY(QString(NomJoueurY.data()), QString(PrenomJoueurY.data()));
     initialiserJoueurZ(QString(NomJoueurZ.data()), QString(PrenomJoueurZ.data()));
+}
+
+void IHMAfficheur::initialiserSponsors()
+{
+    qDebug() << Q_FUNC_INFO;
+    labelsSponsors.push_back(ui->sponsor1);
+    labelsSponsors.push_back(ui->sponsor2);
+    labelsSponsors.push_back(ui->sponsor3);
+    ui->sponsor2->hide();
+    ui->sponsor3->hide();
+    connect(&minuteurSponsors,
+            SIGNAL(timeout()),
+            this,
+            SLOT(activerDeroulementSponsors()));
+    minuteurSponsors.start(10000);
 }

@@ -12,6 +12,8 @@
 
 #include <QtWidgets>
 #include <QVector>
+#include <QMediaPlayer>
+#include <QTimer>
 
 /**
  * @def PLEIN_ECRAN
@@ -58,8 +60,12 @@ class IHMAfficheur : public QMainWindow
     int               pointsTotalEquipeA;
     int               pointsTotalEquipeW;
     bool              connecteurMinuteurActive;
+    QMediaPlayer      player;
+    QTimer            minuteurSponsors;
+    QVector<QLabel*>  labelsSponsors;
 
-    void initialiserIHM();
+    void
+    initialiserIHM();
     void initialiserReception();
     void initialiserEquipes(QString clubA, QString clubW);
     void initialiserEquipeA(QString    nomModule,
@@ -101,6 +107,7 @@ class IHMAfficheur : public QMainWindow
                                   QString nomJoueurW2,
                                   QString prenomJoueurW2);
     void initialiserJoueurs(QByteArray NomJoueurA, QByteArray NomJoueurD, QByteArray PrenomJoueurC, QByteArray NomJoueurC, QByteArray PrenomJoueurB, QByteArray NomJoueurB, QByteArray PrenomJoueurY, QByteArray NomJoueurY, QByteArray PrenomJoueurX, QByteArray NomJoueurX, QByteArray PrenomJoueurZ, QByteArray PrenomJoueurW, QByteArray NomJoueurZ, QByteArray NomJoueurW, QByteArray PrenomJoueurA, QByteArray PrenomJoueurD);
+    void initialiserSponsors();
 
   public:
     IHMAfficheur(QWidget* parent = nullptr);
@@ -122,10 +129,11 @@ class IHMAfficheur : public QMainWindow
     void demmarerMinuteur(QByteArray etatPartie, QByteArray idPartieScore);
     void arreterMinuteur(unsigned int id);
     bool estConnecteurMinuteurActive();
-
     void connecterMinuteurPartieEtIHM(QByteArray idPartieScore);
 
-  public slots:
+    void afficherSponsors(int i);
+    
+public slots:
     void initialiserRencontre(QString    nomModule,
                               QByteArray NomClubA,
                               QByteArray NomClubW,
@@ -175,6 +183,7 @@ class IHMAfficheur : public QMainWindow
                                 QByteArray tourService,
                                 QByteArray net);
     void actualiserTempsCadreGauche(int idPartieScore);
+    void activerDeroulementSponsors();
 };
 
 #endif // IHMAFFICHEUR_H
