@@ -35,7 +35,7 @@ IHMArbitre::IHMArbitre(QWidget* parent) :
     installerGestionEvenements();
     initialiserBDD();
     chargerRencontres();
-    chargerRencontresASuppr();
+    chargerRencontresASupprimer();
     chargerClubs();
 
     // Pour les tests
@@ -316,8 +316,14 @@ void IHMArbitre::installerGestionEvenements()
             this,
             SLOT(envoyerTrameScore()));
     connect(&tempsBluetoothNet, SIGNAL(timeout()), this, SLOT(connecterNet()));
-    connect(&tempsAffichageBoutons, SIGNAL(timeout()), this, SLOT(afficherBoutons()));
-        connect(&tempsAffichageNet, SIGNAL(timeout()), this, SLOT(retirerAffichageNet()));
+    connect(&tempsAffichageBoutons,
+            SIGNAL(timeout()),
+            this,
+            SLOT(afficherBoutons()));
+    connect(&tempsAffichageNet,
+            SIGNAL(timeout()),
+            this,
+            SLOT(retirerAffichageNet()));
 }
 
 void IHMArbitre::initialiserPageAccueil()
@@ -378,7 +384,7 @@ void IHMArbitre::chargerRencontres()
     }
 }
 
-void IHMArbitre::chargerRencontresASuppr()
+void IHMArbitre::chargerRencontresASupprimer()
 {
     QString requete = "SELECT Rencontre.*, a.nomClub, b.nomClub FROM Rencontre "
                       "INNER JOIN Club a ON (a.idClub = Rencontre.idClubA) "
@@ -509,7 +515,7 @@ void IHMArbitre::chargerJoueurs()
     qDebug() << Q_FUNC_INFO << joueursEquipeW;
 }
 
-void IHMArbitre::creationTrameScore()
+void IHMArbitre::creerTrameScore()
 {
     int idPartie      = 1;
     int etatPartie    = 1;
@@ -521,7 +527,7 @@ void IHMArbitre::creationTrameScore()
 
     trameScore =
       DEBUT_TRAME ";SCORE;" + QString::number(idPartie) + ";" +
-      ui->labelScoreJD->text() + ";" + ui->labelScoreJG->text() + ";" +
+      ui->labelScoreJG->text() + ";" + ui->labelScoreJD->text() + ";" +
       QString::number(etatPartie) + ";" + QString::number(tempsMort) + ";" +
       QString::number(nbSetGagnesJG) + ";" + QString::number(nbSetGagnesJD) +
       ";" + QString::number(tourService) + ";" + QString::number(nbNet) +
@@ -547,7 +553,8 @@ void IHMArbitre::envoyerTrameScore()
 void IHMArbitre::envoyerTrameEcran()
 {
     qDebug() << Q_FUNC_INFO;
-    communicationBluetooth->envoyer(communicationBluetooth->Score, trameScore);
+    // communicationBluetooth->envoyer(communicationBluetooth->Ecran,
+    // trameScore);
     tempsBluetoothNet.start(TIME_OUT);
 }
 
@@ -636,7 +643,7 @@ void IHMArbitre::demarrerPartieSimple()
     ui->buttonRetraitPointJG->hide();
     ui->buttonRetraitPointJD->hide();
     ui->buttonDebutFinPartie->setText("Démarrer la partie");
-    //creationRequeteNouvellePartie();
+    // creationRequeteNouvellePartie();
     afficherEcran(IHMArbitre::Partie);
 }
 
@@ -689,7 +696,7 @@ void IHMArbitre::supprimerRencontre()
             qDebug() << Q_FUNC_INFO << "retourSuppressionRencontre ="
                      << retourSuppressionRencontre;
             chargerRencontres();
-            chargerRencontresASuppr();
+            chargerRencontresASupprimer();
             chargerPartiesSimples();
             chargerPartiesDoubles();
         }
@@ -712,7 +719,7 @@ void IHMArbitre::creerRencontre()
     qDebug() << Q_FUNC_INFO << requeteCreerRencontre;
     bdd->executer(requeteCreerRencontre);
     chargerRencontres();
-    chargerRencontresASuppr();
+    chargerRencontresASupprimer();
 }
 
 void IHMArbitre::echangerJoueur()
@@ -760,7 +767,7 @@ void IHMArbitre::initialisationFinSet()
         ui->ButtonEchangerJoueur->show();
         nbSetJouer = 0;
     }
-    creationTrameScore();
+    creerTrameScore();
 }
 
 void IHMArbitre::demarrerPartie()
@@ -783,7 +790,7 @@ void IHMArbitre::demarrerPartie()
     {
         qDebug() << Q_FUNC_INFO << "Demarrage de la partie";
         initialisationNouvellePartie();
-        creationTrameScore();
+        creerTrameScore();
     }
     else
     {
@@ -800,7 +807,7 @@ void IHMArbitre::demarrerPartie()
         {
             qDebug() << Q_FUNC_INFO << "Partie : " << nbSetJouer;
             initialisationFinSet();
-            creationTrameScore();
+            creerTrameScore();
         }
     }
     qDebug() << Q_FUNC_INFO << "G :" << nbSetGagneJoueurG
@@ -837,7 +844,7 @@ void IHMArbitre::ajoutPointG()
         echangerJoueur();
         aDejaEchanger = true;
     }
-    creationTrameScore();
+    creerTrameScore();
 }
 
 void IHMArbitre::ajoutPointD()
@@ -869,7 +876,7 @@ void IHMArbitre::ajoutPointD()
         echangerJoueur();
         aDejaEchanger = true;
     }
-    creationTrameScore();
+    creerTrameScore();
 }
 
 void IHMArbitre::retraitPointG()
@@ -894,7 +901,7 @@ void IHMArbitre::retraitPointG()
         echangerJoueur();
         aDejaEchanger = false;
     }
-    creationTrameScore();
+    creerTrameScore();
 }
 
 void IHMArbitre::retraitPointD()
@@ -920,7 +927,7 @@ void IHMArbitre::retraitPointD()
         echangerJoueur();
         aDejaEchanger = false;
     }
-    creationTrameScore();
+    creerTrameScore();
 }
 
 #ifdef TEST_IHMARBITRE

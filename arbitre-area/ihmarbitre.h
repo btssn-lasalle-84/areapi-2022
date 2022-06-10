@@ -26,8 +26,8 @@
  */
 #define PLEIN_ECRAN
 
-#define NB_SET_GAGNANTS 3
-#define TIME_OUT        1500
+#define NB_SET_GAGNANTS     3
+#define TIME_OUT            1500
 #define TEMPS_AFFICHAGE_NET 5000
 
 // Numéro de champs pour les requête SQL
@@ -84,8 +84,8 @@ class IHMArbitre : public QMainWindow
     QTimer  tempsBluetoothEcran;
     QTimer  tempsBluetoothScore;
     QTimer  tempsBluetoothNet;
-    QTimer tempsAffichageBoutons;
-    QTimer tempsAffichageNet;
+    QTimer  tempsAffichageBoutons;
+    QTimer  tempsAffichageNet;
     QString trameScore;
     QString trameEcran;
 
@@ -118,10 +118,10 @@ class IHMArbitre : public QMainWindow
     void initialiserBDD();
     void afficherEtatBluetooth(QLabel* module, EtatModule etat);
     void chargerRencontres();
-    void chargerRencontresASuppr();
+    void chargerRencontresASupprimer();
     void chargerClubs();
     void chargerJoueurs();
-    void creationTrameScore();
+    void creerTrameScore();
 
 #ifdef TEST_IHMARBITRE
     void creerRaccourcisClavier();
