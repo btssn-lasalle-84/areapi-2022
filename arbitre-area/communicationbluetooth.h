@@ -8,6 +8,10 @@
 #define DEBUT_TRAME         "$AREA"
 #define FIN_TRAME           "\r\n"
 
+static const QString serviceUuid(
+  QStringLiteral("0000110a-0000-1000-8000-00805f9b34fb"));
+static const QString serviceNom(QStringLiteral("AREA-Afficheur"));
+
 class IHMArbitre;
 
 class CommunicationBluetooth : public QObject

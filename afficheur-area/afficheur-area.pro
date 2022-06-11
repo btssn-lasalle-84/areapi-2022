@@ -1,5 +1,7 @@
-QT       += core gui widgets
+QT       += core
+QT       += gui widgets
 QT       += bluetooth
+QT       += multimedia multimediawidgets
 
 CONFIG += c++11
 
@@ -32,3 +34,5 @@ RESOURCES += \
     ressources.qrc
 
 CONFIG(release, debug|release):DEFINES+=QT_NO_DEBUG_OUTPUT
+
+DISTFILES +=

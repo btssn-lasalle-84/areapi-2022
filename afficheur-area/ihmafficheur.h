@@ -12,6 +12,8 @@
 
 #include <QtWidgets>
 #include <QVector>
+#include <QMediaPlayer>
+#include <QTimer>
 
 /**
  * @def PLEIN_ECRAN
@@ -19,6 +21,10 @@
  */
 #define PLEIN_ECRAN
 #define ECRAN_VEILLE
+#define NOMBRE_SET_GAGNANT      3
+#define ID_PARTIE_DOUBLE_1      0
+#define ID_PARTIE_DOUBLE_2      1
+#define SECONDE_EN_MILLISECONDE 1000
 
 //#define TEST_RELATIONS
 
@@ -51,8 +57,15 @@ class IHMAfficheur : public QMainWindow
     QVector<QLabel*>  labelsJoueurX;
     QVector<QLabel*>  labelsJoueurY;
     QVector<QLabel*>  labelsJoueurZ;
+    int               pointsTotalEquipeA;
+    int               pointsTotalEquipeW;
+    bool              connecteurMinuteurActive;
+    QMediaPlayer      player;
+    QTimer            minuteurSponsors;
+    QVector<QLabel*>  labelsSponsors;
 
-    void initialiserIHM();
+    void
+    initialiserIHM();
     void initialiserReception();
     void initialiserEquipes(QString clubA, QString clubW);
     void initialiserEquipeA(QString    nomModule,
@@ -94,8 +107,9 @@ class IHMAfficheur : public QMainWindow
                                   QString nomJoueurW2,
                                   QString prenomJoueurW2);
     void initialiserJoueurs(QByteArray NomJoueurA, QByteArray NomJoueurD, QByteArray PrenomJoueurC, QByteArray NomJoueurC, QByteArray PrenomJoueurB, QByteArray NomJoueurB, QByteArray PrenomJoueurY, QByteArray NomJoueurY, QByteArray PrenomJoueurX, QByteArray NomJoueurX, QByteArray PrenomJoueurZ, QByteArray PrenomJoueurW, QByteArray NomJoueurZ, QByteArray NomJoueurW, QByteArray PrenomJoueurA, QByteArray PrenomJoueurD);
+    void initialiserSponsors();
 
-public:
+  public:
     IHMAfficheur(QWidget* parent = nullptr);
     ~IHMAfficheur();
 
@@ -105,7 +119,21 @@ public:
         EcranRencontre
     };
 
-  public slots:
+    void renitialiserScorePartieGauche();
+    void actualiserHistoriqueRencontre(int idPartie);
+    void actualiserAffichageSetsPartieGauche(QByteArray idPartieScore);
+    void cacherPartiesDoubles();
+    void ReafficherPartiesDouble(QByteArray JoueurW1, QByteArray JoueurW2, QByteArray idPartieDouble, QByteArray JoueurA2, QByteArray JoueurA1);
+    void associerSignalSlotRencontre();
+    void actualiserSetPartie(QByteArray scoreJG, QByteArray idPartieScore, QByteArray scoreJD);
+    void demmarerMinuteur(QByteArray etatPartie, QByteArray idPartieScore);
+    void arreterMinuteur(unsigned int id);
+    bool estConnecteurMinuteurActive();
+    void connecterMinuteurPartieEtIHM(QByteArray idPartieScore);
+
+    void afficherSponsors(int i);
+    
+public slots:
     void initialiserRencontre(QString    nomModule,
                               QByteArray NomClubA,
                               QByteArray NomClubW,
@@ -125,12 +153,14 @@ public:
                               QByteArray PrenomJoueurY,
                               QByteArray NomJoueurZ,
                               QByteArray PrenomJoueurZ);
+
     void initialiserPartieSimple(QString    nomModule,
                                  QByteArray idPartie,
                                  QByteArray JoueurA,
                                  QByteArray ClassementJoueurA,
                                  QByteArray JoueurB,
                                  QByteArray ClassementJoueurW);
+
     void initialiserPartieDouble(QString    nomModule,
                                  QByteArray idPartieDouble,
                                  QByteArray JoueurA1,
@@ -141,6 +171,7 @@ public:
                                  QByteArray ClassementW1,
                                  QByteArray JoueurW2,
                                  QByteArray ClassementW2);
+
     void initialiserScorePartie(QString    nomModule,
                                 QByteArray idPartieScore,
                                 QByteArray scoreJG,
@@ -151,6 +182,8 @@ public:
                                 QByteArray nbSetJD,
                                 QByteArray tourService,
                                 QByteArray net);
+    void actualiserTempsCadreGauche(int idPartieScore);
+    void activerDeroulementSponsors();
 };
 
 #endif // IHMAFFICHEUR_H

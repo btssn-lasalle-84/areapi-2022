@@ -12,19 +12,17 @@
  */
 
 Partie::Partie() :
+    QObject(), id(ID_INDEFINI),
     estDouble(0), nombreSet(0), scoreJoueurG(0), scoreJoueurD(0), setJoueurG(0),
     setJoueurD(0), nombreNET(0), pointConsecutif(0), joueurPointConsecutif(""),
-    joueurs()
+    joueurs(), tempsPartie(QTime(0, 0, 0)), minuteur()
 {
 }
 
-Partie::Partie(bool estDouble, QString nomJoueurA1, QString prenomJoueurA1,
-                               QString nomJoueurW1, QString prenomJoueurW1,
-                               QString nomJoueurA2, QString prenomJoueurA2,
-                               QString nomJoueurW2, QString prenomJoueurW2) :
-    estDouble(0), nombreSet(0), scoreJoueurG(0), scoreJoueurD(0), setJoueurG(0),
+Partie::Partie(int id, bool estDouble, QString nomJoueurA1, QString prenomJoueurA1, QString nomJoueurW1, QString prenomJoueurW1, QString nomJoueurA2, QString prenomJoueurA2, QString nomJoueurW2, QString prenomJoueurW2) :
+    QObject(), id(id), estDouble(estDouble), nombreSet(0), scoreJoueurG(0), scoreJoueurD(0), setJoueurG(0),
     setJoueurD(0), nombreNET(0), pointConsecutif(0), joueurPointConsecutif(""),
-    joueurs()
+    joueurs(), tempsPartie(QTime(0, 0, 0)), minuteur()
 {
     joueurs.push_back(new Joueur(nomJoueurA1, prenomJoueurA1));
     joueurs.push_back(new Joueur(nomJoueurW1, prenomJoueurW1));
@@ -36,11 +34,13 @@ Partie::Partie(bool estDouble, QString nomJoueurA1, QString prenomJoueurA1,
 }
 
 Partie::Partie(const Partie& partie) :
+    QObject(partie.parent()), id(partie.id),
     nombreSet(partie.nombreSet), scoreJoueurG(partie.scoreJoueurG),
     scoreJoueurD(partie.scoreJoueurD), setJoueurG(partie.setJoueurG),
     setJoueurD(partie.setJoueurD), nombreNET(partie.nombreNET),
     pointConsecutif(partie.pointConsecutif),
-    joueurPointConsecutif(partie.joueurPointConsecutif), joueurs(partie.joueurs)
+    joueurPointConsecutif(partie.joueurPointConsecutif), joueurs(partie.joueurs),
+    tempsPartie(partie.tempsPartie)
 {
 }
 
@@ -52,6 +52,7 @@ Partie& Partie::operator=(const Partie& partie)
 {
     if(this != &partie)
     {
+        this->id                    = partie.id;
         this->nombreSet             = partie.nombreSet;
         this->scoreJoueurG          = partie.scoreJoueurG;
         this->scoreJoueurD          = partie.scoreJoueurD;
@@ -61,13 +62,30 @@ Partie& Partie::operator=(const Partie& partie)
         this->pointConsecutif       = partie.pointConsecutif;
         this->joueurPointConsecutif = partie.joueurPointConsecutif;
         this->joueurs               = partie.joueurs;
+        this->tempsPartie           = partie.tempsPartie;
     }
 
     return *this;
 }
 
-bool Partie::aGagne() const
+bool Partie::aGagneSet() const
 {
+    qDebug() << Q_FUNC_INFO << '\n'
+             << "Score Joueur Gauche : " << getScoreJoueurG()
+             << '\n'
+             << "Score Joueur Droite : " << getScoreJoueurD();
+
+    if((getScoreJoueurG() >= POINT_GAGNANT) || (getScoreJoueurD() >= POINT_GAGNANT))
+    {
+        if((getScoreJoueurG() >= getScoreJoueurD()) && ((getScoreJoueurG() - getScoreJoueurD()) >= POINT_DIFFERENCE))
+        {
+            return true;
+        }
+        else if((getScoreJoueurD() >= getScoreJoueurG()) && ((getScoreJoueurD() - getScoreJoueurG()) >= POINT_DIFFERENCE))
+        {
+            return true;
+        }
+    }
     return false;
 }
 
@@ -104,6 +122,52 @@ void Partie::ajouterNET()
 void Partie::rajouterPointConsecutif()
 {
     ++this->pointConsecutif;
+}
+
+QString Partie::definirAffichageSets(unsigned int setGagne)
+{
+    qDebug() << Q_FUNC_INFO;
+
+    switch(setGagne)
+    {
+        case 0:
+
+            return "0 | 0 | 0";
+
+            break;
+
+        case 1:
+
+            return "1 | 0 | 0";
+
+            break;
+
+        case 2:
+
+            return "1 | 1 | 0";
+
+            break;
+
+        case 3:
+
+            return "1 | 1 | 1";
+
+            break;
+
+        default:
+            break;
+    }
+    return "";
+}
+
+void Partie::incrementeTemps()
+{
+    this->tempsPartie = this->tempsPartie.addSecs(1);
+}
+
+bool Partie::estMinuteurDemarrer()
+{
+    return this->minuteur.isActive();
 }
 
 bool Partie::getEstDouble() const
@@ -151,6 +215,16 @@ QString Partie::getJoueurPointConsecutif() const
     return this->joueurPointConsecutif;
 }
 
+QTime* Partie::getTempsPartie()
+{
+    return &tempsPartie;
+}
+
+QTimer* Partie::getMinuteur()
+{
+    return &minuteur;
+}
+
 void Partie::setEstDouble(const bool& estDouble)
 {
     this->estDouble = estDouble;
@@ -196,3 +270,12 @@ void Partie::setJoueurPointConsecutif(const QString& joueurPointConsecutif)
     this->joueurPointConsecutif = joueurPointConsecutif;
 }
 
+void Partie::incrementerTempsPartieCadreGauche()
+{
+    qDebug() << Q_FUNC_INFO;
+    incrementeTemps();
+    if(id != ID_INDEFINI)
+    {
+        emit tempsPartieCadreGauche(id);
+    }
+}

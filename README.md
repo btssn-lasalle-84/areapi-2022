@@ -5,12 +5,16 @@ Système d’assistance à l’arbitrage lors d’une partie de tennis de table 
 - Module de gestion de partie (**Arbitre-AREA IR**) ​: l’arbitre gère le score de la partie à partir d’une application sur un écran tactile
 - Module de détection de “net” (Net-AREA EC) : le module détecte la validité d’un “net” de la balle lors d’un service et le signale
 - Module d'affichage de score (Score-AREA EC) : les joueurs, les arbitres et le public peuvent visualiser en “temps réel” le score d’une partie
-- Module d'affichage de la partie (**Afficheur-AREA IR**) ​: les joueurs, les arbitres et le public peuvent visualiser en “temps réel” le déroulement des parties sur un écran de télévision
+- Module d'affichage (**Afficheur-AREA IR**) ​: les joueurs, les arbitres et le public peuvent visualiser en “temps réel” le déroulement des parties sur un écran de télévision
 
 ## Historique des versions
 
-- Version 0.2 : 24/05/2022
-- Version 0.1 : 02/04/2022
+- [Version 1.1](https://github.com/btssn-lasalle-84/areapi-2022/releases/tag/1.1) : 11/06/2022
+- [Version 1.0](https://github.com/btssn-lasalle-84/areapi-2022/releases/tag/1.0) : 27/05/2022
+- [Version 0.2](https://github.com/btssn-lasalle-84/areapi-2022/releases/tag/0.2) : 24/05/2022
+- [Version 0.1](https://github.com/btssn-lasalle-84/areapi-2022/releases/tag/0.1) : 02/04/2022
+
+![](images/jira-versions-areapi.png)
 
 ## Auteurs
 
@@ -29,11 +33,8 @@ https://btssn-lasalle-84.github.io/areapi-2022/
 
 ![](images/schema-bdd-areapi-v0.2.png)
 
-## Module de gestion de partie Arbitre-AREA
+## Modules Arbitre-AREA et Afficheur-AREA
 
-![](images/areapi-arbitre-accueil.png)
+![](images/areapi.gif)
 
-![](images/areapi-arbitre-rencontre.png)
-
-![](images/areapi-arbitre-partie.png)
-
+©️ LaSalle Avignon 2022

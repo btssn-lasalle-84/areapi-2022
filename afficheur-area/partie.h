@@ -10,8 +10,16 @@
  *
  */
 
+#include <QObject>
 #include <QString>
 #include <QVector>
+#include <QTimer>
+#include <QTime>
+
+#define POINT_GAGNANT    11
+#define POINT_DIFFERENCE 2
+
+#define ID_INDEFINI -1
 
 class ReceptionTrame;
 class Joueur;
@@ -21,9 +29,11 @@ class Joueur;
  * @brief Déclaration de la classe Partie
  * @details
  */
-class Partie
+class Partie : public QObject
 {
+    Q_OBJECT
   private:
+    int              id;
     bool             estDouble;             //!<
     unsigned int     nombreSet;             //!<
     unsigned int     scoreJoueurG;          //!<
@@ -34,36 +44,39 @@ class Partie
     unsigned int     pointConsecutif;       //!<
     QString          joueurPointConsecutif; //!<
     QVector<Joueur*> joueurs;               //!<
-
+    QTime            tempsPartie;           //!<
+    QTimer           minuteur;              //!<
 
   public:
     Partie();
-    Partie(bool estDouble, QString nomJoueurA1, QString prenomJoueurA1,
-           QString nomJoueurW1, QString prenomJoueurW1,
-           QString nomJoueurA2 = "", QString prenomJoueurA2 ="",
-           QString nomJoueurW2 = "", QString prenomJoueurW2 = "");
+    Partie(int id, bool estDouble, QString nomJoueurA1, QString prenomJoueurA1, QString nomJoueurW1, QString prenomJoueurW1, QString nomJoueurA2 = "", QString prenomJoueurA2 = "", QString nomJoueurW2 = "", QString prenomJoueurW2 = "");
     Partie(const Partie& partie);
     ~Partie();
     Partie& operator=(const Partie& partie);
 
-    bool aGagne() const;
-    bool estPointConsecutif() const;
-    void ajouterPointJoueurG();
-    void ajouterPointJoueurD();
-    void gagneSetJoueurG();
-    void gagneSetJoueurD();
-    void ajouterNET();
-    void rajouterPointConsecutif();
+    bool    aGagneSet() const;
+    bool    estPointConsecutif() const;
+    void    ajouterPointJoueurG();
+    void    ajouterPointJoueurD();
+    void    gagneSetJoueurG();
+    void    gagneSetJoueurD();
+    void    ajouterNET();
+    void    rajouterPointConsecutif();
+    QString definirAffichageSets(unsigned int setGagne);
+    void    incrementeTemps();
+    bool    estMinuteurDemarrer();
 
-    bool           getEstDouble() const;
-    unsigned int   getNombreSet() const;
-    unsigned int   getScoreJoueurG() const;
-    unsigned int   getScoreJoueurD() const;
-    unsigned int   getSetJoueurG() const;
-    unsigned int   getSetJoueurD() const;
-    unsigned int   getNombreNET() const;
-    unsigned int   getPointConsecutif() const;
-    QString        getJoueurPointConsecutif() const;
+    bool         getEstDouble() const;
+    unsigned int getNombreSet() const;
+    unsigned int getScoreJoueurG() const;
+    unsigned int getScoreJoueurD() const;
+    unsigned int getSetJoueurG() const;
+    unsigned int getSetJoueurD() const;
+    unsigned int getNombreNET() const;
+    unsigned int getPointConsecutif() const;
+    QString      getJoueurPointConsecutif() const;
+    QTime*       getTempsPartie();
+    QTimer*      getMinuteur();
 
     void setEstDouble(const bool& estDouble);
     void setNombreSet(const unsigned int& nombreSet);
@@ -74,6 +87,12 @@ class Partie
     void setNombreNET(const unsigned int& nombreNET);
     void setPointConsecutif(const unsigned int& pointConsecutif);
     void setJoueurPointConsecutif(const QString& joueurPointConsecutif);
+
+  public slots:
+    void incrementerTempsPartieCadreGauche();
+
+  signals:
+    void tempsPartieCadreGauche(int id);
 };
 
 #endif // PARTIE_H

@@ -27,7 +27,7 @@
   <td id="projectlogo"><img alt="Logo" src="areapi.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">areapi
-   &#160;<span id="projectnumber">1.0</span>
+   &#160;<span id="projectnumber">1.1</span>
    </div>
    <div id="projectbrief">BTS SNIR LaSalle Avignon 2022</div>
   </td>
@@ -96,11 +96,32 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <li>activerBluetooth()
 : <a class="el" href="class_reception_trame.html#abd19f0fd71e969044fe22de3077e8ff3">ReceptionTrame</a>
 </li>
+<li>activerDeroulementSponsors()
+: <a class="el" href="class_i_h_m_afficheur.html#ac923fee55951f1289915229241c065e2">IHMAfficheur</a>
+</li>
+<li>actualiserAffichageSetsPartieGauche()
+: <a class="el" href="class_i_h_m_afficheur.html#aaf37a828a273c0c3dad455447c1bef9e">IHMAfficheur</a>
+</li>
+<li>actualiserHistoriqueRencontre()
+: <a class="el" href="class_i_h_m_afficheur.html#ac3df198a08acd21d77457052f6fd0d46">IHMAfficheur</a>
+</li>
 <li>actualiserPartie()
 : <a class="el" href="class_rencontre.html#aad166715e737d94ca2417fbbf37eaf04">Rencontre</a>
 </li>
+<li>actualiserSetPartie()
+: <a class="el" href="class_i_h_m_afficheur.html#ae2aca720b4355a1dab4bc76fb4f45f0f">IHMAfficheur</a>
+</li>
+<li>actualiserTempsCadreGauche()
+: <a class="el" href="class_i_h_m_afficheur.html#a95a9adcb48c7875c62d168ea67fa93ef">IHMAfficheur</a>
+</li>
+<li>aDejaEchanger
+: <a class="el" href="class_i_h_m_arbitre.html#a8d3e8d3438f951437b67cce2deaf3b6a">IHMArbitre</a>
+</li>
 <li>adressePeripheriqueLocal
 : <a class="el" href="class_reception_trame.html#a13d154b690ae766805c7d80d88a27e92">ReceptionTrame</a>
+</li>
+<li>afficherBoutons()
+: <a class="el" href="class_i_h_m_arbitre.html#a1ed78682b7bbc5d354f4c0819217d1b8">IHMArbitre</a>
 </li>
 <li>afficherConnexionEcran()
 : <a class="el" href="class_i_h_m_arbitre.html#a030e0d6599eb1c314773665ab94e6035">IHMArbitre</a>
@@ -141,8 +162,11 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <li>afficherScoreTrouve()
 : <a class="el" href="class_i_h_m_arbitre.html#a96d2d14ea91d6fa908249318c9db4769">IHMArbitre</a>
 </li>
-<li>aGagne()
-: <a class="el" href="class_partie.html#ad158258dfe12576c01d4c82114ea07dc">Partie</a>
+<li>afficherSponsors()
+: <a class="el" href="class_i_h_m_afficheur.html#a2d8b79a875130f7da0ac30f529ac17c4">IHMAfficheur</a>
+</li>
+<li>aGagneSet()
+: <a class="el" href="class_partie.html#a03473646bdc8df0800b930b953778a10">Partie</a>
 </li>
 <li>ajouterJoueur()
 : <a class="el" href="class_equipe.html#a81ad939e6d63ca79bc5170669abc7a93">Equipe</a>
@@ -156,6 +180,15 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <li>ajouterPointJoueurG()
 : <a class="el" href="class_partie.html#a196a61247355399965d9fb46a508e358">Partie</a>
 </li>
+<li>ajoutPointD()
+: <a class="el" href="class_i_h_m_arbitre.html#a7f3ae19458d00bcafdbae1d4ac708d0d">IHMArbitre</a>
+</li>
+<li>ajoutPointG()
+: <a class="el" href="class_i_h_m_arbitre.html#a7caec7ca3f3746b4ae277fe1a4491941">IHMArbitre</a>
+</li>
+<li>arreterMinuteur()
+: <a class="el" href="class_i_h_m_afficheur.html#accf05e6e88a0b803f9803ee1dd6ce579">IHMAfficheur</a>
+</li>
 <li>arreterRecherche()
 : <a class="el" href="class_communication_bluetooth.html#ab9993bd24a2f0c8254564a36cdf16069">CommunicationBluetooth</a>
 </li>
@@ -165,6 +198,9 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <li>arreterServeur()
 : <a class="el" href="class_reception_trame.html#a03bba1149afa25725c72cde50f1e593a">ReceptionTrame</a>
 </li>
+<li>associerSignalSlotRencontre()
+: <a class="el" href="class_i_h_m_afficheur.html#a3acc263f57ed4615811da3d31acd9ace">IHMAfficheur</a>
+</li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -172,7 +208,7 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer"><img class="footer" src="lasalle-logo.png" height="31" alt="La Salle Avignon"/>&nbsp;<b>Campus La Salle Avignon</b>&nbsp;-&nbsp;9 Rue Notre Dame des 7 douleurs&nbsp;-&nbsp;BP 50165&nbsp;-&nbsp;84008 Avignon&nbsp;-&nbsp;Généré le Jeudi 26 Mai 2022 08:56:54 pour areapi par&nbsp;<a href="https://www.doxygen.org/index.html">doxygen</a>&nbsp;1.8.17&nbsp;</li>
+    <li class="footer"><img class="footer" src="lasalle-logo.png" height="31" alt="La Salle Avignon"/>&nbsp;<b>Campus La Salle Avignon</b>&nbsp;-&nbsp;9 Rue Notre Dame des 7 douleurs&nbsp;-&nbsp;BP 50165&nbsp;-&nbsp;84008 Avignon&nbsp;-&nbsp;Généré le Samedi 11 Juin 2022 08:15:11 pour areapi par&nbsp;<a href="https://www.doxygen.org/index.html">doxygen</a>&nbsp;1.8.17&nbsp;</li>
   </ul>
 </div>
 </body>

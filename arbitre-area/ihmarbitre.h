@@ -12,6 +12,7 @@
 
 #include <QtWidgets>
 #include "basededonnees.h"
+#include <QTimer>
 
 /**
  * @def TEST_IHMARBITRE
@@ -24,6 +25,10 @@
  * @brief Pour le mode kiosque Raspberry Pi
  */
 #define PLEIN_ECRAN
+
+#define NB_SET_GAGNANTS     3
+#define TIME_OUT            1500
+#define TEMPS_AFFICHAGE_NET 5000
 
 // Numéro de champs pour les requête SQL
 #define COLONNE_idRencontre        0
@@ -69,8 +74,20 @@ class IHMArbitre : public QMainWindow
     QVector<QStringList> rencontres; //!< Les rencontres
     QVector<QStringList> joueursEquipeA; //!< Les joueurs du club A
     QVector<QStringList> joueursEquipeW; //!< Les joueurs du club W
-
-    QVector<QStringList> clubs; //!< Les clubs
+    QVector<QStringList> clubs;          //!< Les clubs
+    int                  nbSetJouer        = 0;
+    int                  nbSetGagneJoueurG = 0;
+    int                  nbSetGagneJoueurD = 0;
+    bool                 partieEnCours     = false;
+    bool                 estGagnee         = false;
+    bool    aDejaEchanger = false; // Utile seulement en cas de 5 ème set
+    QTimer  tempsBluetoothEcran;
+    QTimer  tempsBluetoothScore;
+    QTimer  tempsBluetoothNet;
+    QTimer  tempsAffichageBoutons;
+    QTimer  tempsAffichageNet;
+    QString trameScore;
+    QString trameEcran;
 
     /**
      * @enum Ecran
@@ -101,12 +118,18 @@ class IHMArbitre : public QMainWindow
     void initialiserBDD();
     void afficherEtatBluetooth(QLabel* module, EtatModule etat);
     void chargerRencontres();
+    void chargerRencontresASupprimer();
     void chargerClubs();
     void chargerJoueurs();
+    void creerTrameScore();
 
 #ifdef TEST_IHMARBITRE
     void creerRaccourcisClavier();
 #endif
+
+    void initialisationNouvellePartie();
+
+    void initialisationFinSet();
 
   public slots:
     void afficherEcran(IHMArbitre::Ecran ecran);
@@ -127,7 +150,22 @@ class IHMArbitre : public QMainWindow
     void declencherNet(int nbNets);
     void chargerPartiesSimples();
     void chargerPartiesDoubles();
+    void demarrerPartieSimple();
+    void demarrerPartieDouble();
     void demarrerRencontre();
+    void creerRencontre();
+    void supprimerRencontre();
+    void echangerJoueur();
+    void demarrerPartie();
+    void envoyerTrameScore();
+    void envoyerTrameEcran();
+    void connecterNet();
+    void retirerAffichageNet();
+    void afficherBoutons();
+    void ajoutPointG();
+    void ajoutPointD();
+    void retraitPointG();
+    void retraitPointD();
 };
 
 #endif // IHMARBITRE_H
