@@ -27,7 +27,7 @@
   <td id="projectlogo"><img alt="Logo" src="areapi.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">areapi
-   &#160;<span id="projectnumber">1.0</span>
+   &#160;<span id="projectnumber">1.1</span>
    </div>
    <div id="projectbrief">BTS SNIR LaSalle Avignon 2022</div>
   </td>
@@ -97,6 +97,7 @@ $(document).ready(function(){initNavTree('ihmarbitre_8h.html',''); initResizable
 <a href="#details">Plus de détails...</a></p>
 <div class="textblock"><code>#include &lt;QtWidgets&gt;</code><br />
 <code>#include &quot;<a class="el" href="basededonnees_8h_source.html">basededonnees.h</a>&quot;</code><br />
+<code>#include &lt;QTimer&gt;</code><br />
 </div>
 <p><a href="ihmarbitre_8h_source.html">Aller au code source de ce fichier.</a></p>
 <table class="memberdecls">
@@ -131,12 +132,18 @@ Macros</h2></td></tr>
 <tr class="separator:a53ec2d96e7f12305080b3f5dfd228d0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aef8ff64be6fd79e7acf72429dbc87b9a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ihmarbitre_8h.html#aef8ff64be6fd79e7acf72429dbc87b9a">COLONNE_nomClubW</a>&#160;&#160;&#160;7</td></tr>
 <tr class="separator:aef8ff64be6fd79e7acf72429dbc87b9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f5322f812f73f2c90d4d119c8f82f24"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ihmarbitre_8h.html#a5f5322f812f73f2c90d4d119c8f82f24">NB_SET_GAGNANTS</a>&#160;&#160;&#160;3</td></tr>
+<tr class="separator:a5f5322f812f73f2c90d4d119c8f82f24"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a13ff9d8f0c9371d77867e51dc1eb7e2a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ihmarbitre_8h.html#a13ff9d8f0c9371d77867e51dc1eb7e2a">PLEIN_ECRAN</a></td></tr>
 <tr class="memdesc:a13ff9d8f0c9371d77867e51dc1eb7e2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pour le mode kiosque Raspberry Pi.  <a href="ihmarbitre_8h.html#a13ff9d8f0c9371d77867e51dc1eb7e2a">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a13ff9d8f0c9371d77867e51dc1eb7e2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68b62322bb6dc273efdccd9537e60b1d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ihmarbitre_8h.html#a68b62322bb6dc273efdccd9537e60b1d">TEMPS_AFFICHAGE_NET</a>&#160;&#160;&#160;5000</td></tr>
+<tr class="separator:a68b62322bb6dc273efdccd9537e60b1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:addd0d3024d44a2fc97d64022e48959d6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ihmarbitre_8h.html#addd0d3024d44a2fc97d64022e48959d6">TEST_IHMARBITRE</a></td></tr>
 <tr class="memdesc:addd0d3024d44a2fc97d64022e48959d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pour le mode test (raccourcis clavier)  <a href="ihmarbitre_8h.html#addd0d3024d44a2fc97d64022e48959d6">Plus de détails...</a><br /></td></tr>
 <tr class="separator:addd0d3024d44a2fc97d64022e48959d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a799517031a8334a42807b119bb456c53"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ihmarbitre_8h.html#a799517031a8334a42807b119bb456c53">TIME_OUT</a>&#160;&#160;&#160;1500</td></tr>
+<tr class="separator:a799517031a8334a42807b119bb456c53"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><p>Déclaration de la classe <a class="el" href="class_i_h_m_arbitre.html" title="Déclaration de la classe IHMArbitre.">IHMArbitre</a>. </p>
@@ -157,7 +164,7 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="ihmarbitre_8h_source.html#l00033">33</a> du fichier <a class="el" href="ihmarbitre_8h_source.html">ihmarbitre.h</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="ihmarbitre_8h_source.html#l00038">38</a> du fichier <a class="el" href="ihmarbitre_8h_source.html">ihmarbitre.h</a>.</p>
 
 </div>
 </div>
@@ -173,7 +180,7 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="ihmarbitre_8h_source.html#l00034">34</a> du fichier <a class="el" href="ihmarbitre_8h_source.html">ihmarbitre.h</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="ihmarbitre_8h_source.html#l00039">39</a> du fichier <a class="el" href="ihmarbitre_8h_source.html">ihmarbitre.h</a>.</p>
 
 </div>
 </div>
@@ -189,7 +196,7 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="ihmarbitre_8h_source.html#l00030">30</a> du fichier <a class="el" href="ihmarbitre_8h_source.html">ihmarbitre.h</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="ihmarbitre_8h_source.html#l00035">35</a> du fichier <a class="el" href="ihmarbitre_8h_source.html">ihmarbitre.h</a>.</p>
 
 </div>
 </div>
@@ -205,7 +212,7 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="ihmarbitre_8h_source.html#l00031">31</a> du fichier <a class="el" href="ihmarbitre_8h_source.html">ihmarbitre.h</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="ihmarbitre_8h_source.html#l00036">36</a> du fichier <a class="el" href="ihmarbitre_8h_source.html">ihmarbitre.h</a>.</p>
 
 </div>
 </div>
@@ -221,7 +228,7 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="ihmarbitre_8h_source.html#l00029">29</a> du fichier <a class="el" href="ihmarbitre_8h_source.html">ihmarbitre.h</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="ihmarbitre_8h_source.html#l00034">34</a> du fichier <a class="el" href="ihmarbitre_8h_source.html">ihmarbitre.h</a>.</p>
 
 </div>
 </div>
@@ -237,7 +244,7 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="ihmarbitre_8h_source.html#l00032">32</a> du fichier <a class="el" href="ihmarbitre_8h_source.html">ihmarbitre.h</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="ihmarbitre_8h_source.html#l00037">37</a> du fichier <a class="el" href="ihmarbitre_8h_source.html">ihmarbitre.h</a>.</p>
 
 </div>
 </div>
@@ -253,7 +260,7 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="ihmarbitre_8h_source.html#l00037">37</a> du fichier <a class="el" href="ihmarbitre_8h_source.html">ihmarbitre.h</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="ihmarbitre_8h_source.html#l00042">42</a> du fichier <a class="el" href="ihmarbitre_8h_source.html">ihmarbitre.h</a>.</p>
 
 </div>
 </div>
@@ -269,7 +276,7 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="ihmarbitre_8h_source.html#l00035">35</a> du fichier <a class="el" href="ihmarbitre_8h_source.html">ihmarbitre.h</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="ihmarbitre_8h_source.html#l00040">40</a> du fichier <a class="el" href="ihmarbitre_8h_source.html">ihmarbitre.h</a>.</p>
 
 </div>
 </div>
@@ -285,7 +292,23 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="ihmarbitre_8h_source.html#l00036">36</a> du fichier <a class="el" href="ihmarbitre_8h_source.html">ihmarbitre.h</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="ihmarbitre_8h_source.html#l00041">41</a> du fichier <a class="el" href="ihmarbitre_8h_source.html">ihmarbitre.h</a>.</p>
+
+</div>
+</div>
+<a id="a5f5322f812f73f2c90d4d119c8f82f24"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f5322f812f73f2c90d4d119c8f82f24">&#9670;&nbsp;</a></span>NB_SET_GAGNANTS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define NB_SET_GAGNANTS&#160;&#160;&#160;3</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="ihmarbitre_8h_source.html#l00029">29</a> du fichier <a class="el" href="ihmarbitre_8h_source.html">ihmarbitre.h</a>.</p>
 
 </div>
 </div>
@@ -303,7 +326,23 @@ Macros</h2></td></tr>
 
 <p>Pour le mode kiosque Raspberry Pi. </p>
 
-<p class="definition">Définition à la ligne <a class="el" href="ihmarbitre_8h_source.html#l00026">26</a> du fichier <a class="el" href="ihmarbitre_8h_source.html">ihmarbitre.h</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="ihmarbitre_8h_source.html#l00027">27</a> du fichier <a class="el" href="ihmarbitre_8h_source.html">ihmarbitre.h</a>.</p>
+
+</div>
+</div>
+<a id="a68b62322bb6dc273efdccd9537e60b1d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68b62322bb6dc273efdccd9537e60b1d">&#9670;&nbsp;</a></span>TEMPS_AFFICHAGE_NET</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TEMPS_AFFICHAGE_NET&#160;&#160;&#160;5000</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="ihmarbitre_8h_source.html#l00031">31</a> du fichier <a class="el" href="ihmarbitre_8h_source.html">ihmarbitre.h</a>.</p>
 
 </div>
 </div>
@@ -321,7 +360,23 @@ Macros</h2></td></tr>
 
 <p>Pour le mode test (raccourcis clavier) </p>
 
-<p class="definition">Définition à la ligne <a class="el" href="ihmarbitre_8h_source.html#l00020">20</a> du fichier <a class="el" href="ihmarbitre_8h_source.html">ihmarbitre.h</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="ihmarbitre_8h_source.html#l00021">21</a> du fichier <a class="el" href="ihmarbitre_8h_source.html">ihmarbitre.h</a>.</p>
+
+</div>
+</div>
+<a id="a799517031a8334a42807b119bb456c53"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a799517031a8334a42807b119bb456c53">&#9670;&nbsp;</a></span>TIME_OUT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TIME_OUT&#160;&#160;&#160;1500</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="ihmarbitre_8h_source.html#l00030">30</a> du fichier <a class="el" href="ihmarbitre_8h_source.html">ihmarbitre.h</a>.</p>
 
 </div>
 </div>
@@ -332,7 +387,7 @@ Macros</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_8d9a0882dab078fe9a3f53aee5e0f2a0.html">arbitre-area</a></li><li class="navelem"><a class="el" href="ihmarbitre_8h.html">ihmarbitre.h</a></li>
-    <li class="footer"><img class="footer" src="lasalle-logo.png" height="31" alt="La Salle Avignon"/>&nbsp;<b>Campus La Salle Avignon</b>&nbsp;-&nbsp;9 Rue Notre Dame des 7 douleurs&nbsp;-&nbsp;BP 50165&nbsp;-&nbsp;84008 Avignon&nbsp;-&nbsp;Généré le Jeudi 26 Mai 2022 08:56:54 pour areapi par&nbsp;<a href="https://www.doxygen.org/index.html">doxygen</a>&nbsp;1.8.17&nbsp;</li>
+    <li class="footer"><img class="footer" src="lasalle-logo.png" height="31" alt="La Salle Avignon"/>&nbsp;<b>Campus La Salle Avignon</b>&nbsp;-&nbsp;9 Rue Notre Dame des 7 douleurs&nbsp;-&nbsp;BP 50165&nbsp;-&nbsp;84008 Avignon&nbsp;-&nbsp;Généré le Samedi 11 Juin 2022 08:15:11 pour areapi par&nbsp;<a href="https://www.doxygen.org/index.html">doxygen</a>&nbsp;1.8.17&nbsp;</li>
   </ul>
 </div>
 </body>

@@ -12,7 +12,7 @@
 \author Arbitre-AREA : Mathéo Bert <<bert.matheo2521@gmail.com>>
 \author Afficheur-AREA : Enzo Ladriere <<enzo.ladriere.pro@gmail.com>>
 \date 2022
-\version 1.0
+\version 1.1
 \see https://github.com/btssn-lasalle-84/areapi-2022
 
 
@@ -31,7 +31,7 @@ Système d’assistance à l’arbitrage lors d’une partie de tennis de table 
 \author Arbitre-AREA : Mathéo Bert <<bert.matheo2521@gmail.com>>
 \author Afficheur-AREA : Enzo Ladriere <<enzo.ladriere.pro@gmail.com>>
 \date 2022
-\version 1.0
+\version 1.1
 \see https://github.com/btssn-lasalle-84/areapi-2022
 
 
@@ -40,7 +40,7 @@ Système d’assistance à l’arbitrage lors d’une partie de tennis de table 
 \author Arbitre-AREA : Mathéo Bert <<bert.matheo2521@gmail.com>>
 \author Afficheur-AREA : Enzo Ladriere <<enzo.ladriere.pro@gmail.com>>
 \date 2022
-\version 1.0
+\version 1.1
 \see https://github.com/btssn-lasalle-84/areapi-2022
 
 

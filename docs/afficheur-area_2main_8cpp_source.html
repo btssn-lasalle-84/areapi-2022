@@ -27,7 +27,7 @@
   <td id="projectlogo"><img alt="Logo" src="areapi.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">areapi
-   &#160;<span id="projectnumber">1.0</span>
+   &#160;<span id="projectnumber">1.1</span>
    </div>
    <div id="projectbrief">BTS SNIR LaSalle Avignon 2022</div>
   </td>
@@ -96,23 +96,30 @@ $(document).ready(function(){initNavTree('afficheur-area_2main_8cpp_source.html'
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    QApplication a(argc, argv);</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <a class="code" href="class_i_h_m_afficheur.html">IHMAfficheur</a> w;</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    a.setStyleSheet(<span class="stringliteral">&quot;QLabel { color: white; font: 75 20pt \&quot;Ubuntu Condensed\&quot;; }&quot;</span>);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    w.show();</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="comment">//a.setStyleSheet(&quot;QLabel { background-color: rgb(0, 0, 0); \</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">                              color: rgb(255, 255, 0); \</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">                              font: 87 16pt \&quot;Lato Black\&quot; }&quot;);</span></div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordflow">return</span> a.exec();</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;}</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="comment">//background-color: rgb(0, 0, 0);</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="comment">//color: rgb(255, 255, 0);</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="comment">//font: 87 13pt &quot;Lato Black&quot;;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    w.show();</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordflow">return</span> a.exec();</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aafficheur-area_2main_8cpp_html_a0ddf1224851353fc92bfbff6f499fa97"><div class="ttname"><a href="afficheur-area_2main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97">main</a></div><div class="ttdeci">int main(int argc, char *argv[])</div><div class="ttdef"><b>Definition:</b> <a href="afficheur-area_2main_8cpp_source.html#l00018">main.cpp:18</a></div></div>
 <div class="ttc" id="aihmafficheur_8h_html"><div class="ttname"><a href="ihmafficheur_8h.html">ihmafficheur.h</a></div><div class="ttdoc">Déclaration de la classe IHMAfficheur.</div></div>
-<div class="ttc" id="aclass_i_h_m_afficheur_html"><div class="ttname"><a href="class_i_h_m_afficheur.html">IHMAfficheur</a></div><div class="ttdoc">Déclaration de la classe IHMAfficheur.</div><div class="ttdef"><b>Definition:</b> <a href="ihmafficheur_8h_source.html#l00038">ihmafficheur.h:38</a></div></div>
+<div class="ttc" id="aclass_i_h_m_afficheur_html"><div class="ttname"><a href="class_i_h_m_afficheur.html">IHMAfficheur</a></div><div class="ttdoc">Déclaration de la classe IHMAfficheur.</div><div class="ttdef"><b>Definition:</b> <a href="ihmafficheur_8h_source.html#l00044">ihmafficheur.h:44</a></div></div>
 <!-- HTML footer for doxygen 1.9.1-->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_db0b112240481db3590cbf7d67082dd0.html">afficheur-area</a></li><li class="navelem"><a class="el" href="afficheur-area_2main_8cpp.html">main.cpp</a></li>
-    <li class="footer"><img class="footer" src="lasalle-logo.png" height="31" alt="La Salle Avignon"/>&nbsp;<b>Campus La Salle Avignon</b>&nbsp;-&nbsp;9 Rue Notre Dame des 7 douleurs&nbsp;-&nbsp;BP 50165&nbsp;-&nbsp;84008 Avignon&nbsp;-&nbsp;Généré le Jeudi 26 Mai 2022 08:56:54 pour areapi par&nbsp;<a href="https://www.doxygen.org/index.html">doxygen</a>&nbsp;1.8.17&nbsp;</li>
+    <li class="footer"><img class="footer" src="lasalle-logo.png" height="31" alt="La Salle Avignon"/>&nbsp;<b>Campus La Salle Avignon</b>&nbsp;-&nbsp;9 Rue Notre Dame des 7 douleurs&nbsp;-&nbsp;BP 50165&nbsp;-&nbsp;84008 Avignon&nbsp;-&nbsp;Généré le Samedi 11 Juin 2022 08:15:10 pour areapi par&nbsp;<a href="https://www.doxygen.org/index.html">doxygen</a>&nbsp;1.8.17&nbsp;</li>
   </ul>
 </div>
 </body>

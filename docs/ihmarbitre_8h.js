@@ -10,6 +10,9 @@ var ihmarbitre_8h =
     [ "COLONNE_nomClub", "ihmarbitre_8h.html#a0ec89cdf4819f7bc076f76f07c7aaa0c", null ],
     [ "COLONNE_nomClubA", "ihmarbitre_8h.html#a53ec2d96e7f12305080b3f5dfd228d0c", null ],
     [ "COLONNE_nomClubW", "ihmarbitre_8h.html#aef8ff64be6fd79e7acf72429dbc87b9a", null ],
+    [ "NB_SET_GAGNANTS", "ihmarbitre_8h.html#a5f5322f812f73f2c90d4d119c8f82f24", null ],
     [ "PLEIN_ECRAN", "ihmarbitre_8h.html#a13ff9d8f0c9371d77867e51dc1eb7e2a", null ],
-    [ "TEST_IHMARBITRE", "ihmarbitre_8h.html#addd0d3024d44a2fc97d64022e48959d6", null ]
+    [ "TEMPS_AFFICHAGE_NET", "ihmarbitre_8h.html#a68b62322bb6dc273efdccd9537e60b1d", null ],
+    [ "TEST_IHMARBITRE", "ihmarbitre_8h.html#addd0d3024d44a2fc97d64022e48959d6", null ],
+    [ "TIME_OUT", "ihmarbitre_8h.html#a799517031a8334a42807b119bb456c53", null ]
 ];

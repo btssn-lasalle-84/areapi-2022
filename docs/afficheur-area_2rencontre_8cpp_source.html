@@ -27,7 +27,7 @@
   <td id="projectlogo"><img alt="Logo" src="areapi.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">areapi
-   &#160;<span id="projectnumber">1.0</span>
+   &#160;<span id="projectnumber">1.1</span>
    </div>
    <div id="projectbrief">BTS SNIR LaSalle Avignon 2022</div>
   </td>
@@ -92,120 +92,134 @@ $(document).ready(function(){initNavTree('afficheur-area_2rencontre_8cpp_source.
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="equipe_8h.html">equipe.h</a>&quot;</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;QDebug&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="class_rencontre.html#a339d300a2cbd1a136bf417454dea40ee">   12</a></span>&#160;<a class="code" href="class_rencontre.html#a339d300a2cbd1a136bf417454dea40ee">Rencontre::Rencontre</a>() : parties()</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;{</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    qDebug() &lt;&lt; Q_FUNC_INFO;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="class_rencontre.html#aa4076d6075bc362519e503375a25a4f9">equipes</a>.push_back(<span class="keyword">new</span> <a class="code" href="class_equipe.html">Equipe</a>());</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="class_rencontre.html#a339d300a2cbd1a136bf417454dea40ee">   12</a></span>&#160;<a class="code" href="class_rencontre.html#a339d300a2cbd1a136bf417454dea40ee">Rencontre::Rencontre</a>() :</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    parties()</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;{</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    qDebug() &lt;&lt; Q_FUNC_INFO;</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="class_rencontre.html#aa4076d6075bc362519e503375a25a4f9">equipes</a>.push_back(<span class="keyword">new</span> <a class="code" href="class_equipe.html">Equipe</a>());</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;}</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="class_rencontre.html#ab16f582352b6b84ce7684f9f82bc381b">   19</a></span>&#160;<a class="code" href="class_rencontre.html#a339d300a2cbd1a136bf417454dea40ee">Rencontre::Rencontre</a>(QString nomEquipeA, QString nomEquipeW) : parties()</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;{</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    qDebug() &lt;&lt; Q_FUNC_INFO &lt;&lt; nomEquipeA &lt;&lt; nomEquipeW;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <a class="code" href="class_rencontre.html#aa4076d6075bc362519e503375a25a4f9">equipes</a>.push_back(<span class="keyword">new</span> <a class="code" href="class_equipe.html">Equipe</a>(nomEquipeA));</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <a class="code" href="class_rencontre.html#aa4076d6075bc362519e503375a25a4f9">equipes</a>.push_back(<span class="keyword">new</span> <a class="code" href="class_equipe.html">Equipe</a>(nomEquipeW));</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;}</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="class_rencontre.html#a437de7d5f9adced5124dcfdd13e504d3">   26</a></span>&#160;<a class="code" href="class_rencontre.html#a437de7d5f9adced5124dcfdd13e504d3">Rencontre::~Rencontre</a>()</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;{</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="class_rencontre.html#aa4076d6075bc362519e503375a25a4f9">equipes</a>.size(); i++)</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    {</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keywordflow">if</span>(<a class="code" href="class_rencontre.html#aa4076d6075bc362519e503375a25a4f9">equipes</a>[i] != <span class="keyword">nullptr</span>)</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            <span class="keyword">delete</span> <a class="code" href="class_rencontre.html#aa4076d6075bc362519e503375a25a4f9">equipes</a>[i];</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    }</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    qDebug() &lt;&lt; Q_FUNC_INFO;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;}</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="class_rencontre.html#aa23f54538c67718053645a9b5a26727f">   36</a></span>&#160;<a class="code" href="class_equipe.html">Equipe</a>* <a class="code" href="class_rencontre.html#aa23f54538c67718053645a9b5a26727f">Rencontre::getEquipeA</a>()<span class="keyword"> const</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword"></span>{</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordflow">if</span>(<a class="code" href="class_rencontre.html#aa4076d6075bc362519e503375a25a4f9">equipes</a>.size() == <a class="code" href="class_rencontre.html#ab96079a963d0807c676b551272e037d7a3073cc166cfd425987d9cc6099dcfa04">Rencontre::NbEquipes</a>)</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    {</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        qDebug() &lt;&lt; Q_FUNC_INFO &lt;&lt; <a class="code" href="class_rencontre.html#aa4076d6075bc362519e503375a25a4f9">equipes</a>[NomEquipe::EquipeA]</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                 &lt;&lt; <a class="code" href="class_rencontre.html#aa4076d6075bc362519e503375a25a4f9">equipes</a>[NomEquipe::EquipeA]-&gt;getNom();</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="class_rencontre.html#aa4076d6075bc362519e503375a25a4f9">equipes</a>[NomEquipe::EquipeA];</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    }</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="class_rencontre.html#a660dd1350a93fe8eb7c93d3a0b4b7342">   47</a></span>&#160;<a class="code" href="class_equipe.html">Equipe</a>* <a class="code" href="class_rencontre.html#a660dd1350a93fe8eb7c93d3a0b4b7342">Rencontre::getEquipeW</a>()<span class="keyword"> const</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keyword"></span>{</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordflow">if</span>(<a class="code" href="class_rencontre.html#aa4076d6075bc362519e503375a25a4f9">equipes</a>.size() == <a class="code" href="class_rencontre.html#ab96079a963d0807c676b551272e037d7a3073cc166cfd425987d9cc6099dcfa04">Rencontre::NbEquipes</a>)</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    {</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        qDebug() &lt;&lt; Q_FUNC_INFO &lt;&lt; <a class="code" href="class_rencontre.html#aa4076d6075bc362519e503375a25a4f9">equipes</a>[NomEquipe::EquipeW]</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                 &lt;&lt; <a class="code" href="class_rencontre.html#aa4076d6075bc362519e503375a25a4f9">equipes</a>[NomEquipe::EquipeW]-&gt;getNom();</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="class_rencontre.html#aa4076d6075bc362519e503375a25a4f9">equipes</a>[NomEquipe::EquipeW];</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    }</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;}</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="class_rencontre.html#af98fa6ddbf860e56a43fe3818122559d">   58</a></span>&#160;QVector&lt;Partie&gt; <a class="code" href="class_rencontre.html#af98fa6ddbf860e56a43fe3818122559d">Rencontre::getParties</a>()<span class="keyword"> const</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="keyword"></span>{</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="class_rencontre.html#a6b52ccf9b5d083718928b207ae5316fe">parties</a>;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;}</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
-<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="class_rencontre.html#ac6c704afb33e7d7f95c6b407ae881d7f">   63</a></span>&#160;<a class="code" href="class_partie.html">Partie</a> <a class="code" href="class_rencontre.html#ac6c704afb33e7d7f95c6b407ae881d7f">Rencontre::getPartie</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> cases)<span class="keyword"> const</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keyword"></span>{</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="class_rencontre.html#a6b52ccf9b5d083718928b207ae5316fe">parties</a>[cases];</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;}</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
-<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="class_rencontre.html#a0ecb3dc76f3219cb237c04cb94fb015c">   68</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_rencontre.html#a0ecb3dc76f3219cb237c04cb94fb015c">Rencontre::setPartiesSimple</a>(QString nomJoueurA1, QString prenomJoueurA1,</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                                 QString nomJoueurW1, QString prenomJoueurW2)</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;{</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <a class="code" href="class_rencontre.html#a6b52ccf9b5d083718928b207ae5316fe">parties</a>.push_back(<a class="code" href="class_partie.html">Partie</a>(0, nomJoueurA1, prenomJoueurA1,</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                                 nomJoueurW1, prenomJoueurW2));</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="class_rencontre.html#aa4076d6075bc362519e503375a25a4f9">equipes</a>.push_back(<span class="keyword">new</span> <a class="code" href="class_equipe.html">Equipe</a>());</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;}</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_rencontre.html#ab16f582352b6b84ce7684f9f82bc381b">   20</a></span>&#160;<a class="code" href="class_rencontre.html#a339d300a2cbd1a136bf417454dea40ee">Rencontre::Rencontre</a>(QString nomEquipeA, QString nomEquipeW) :</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    parties()</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;{</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    qDebug() &lt;&lt; Q_FUNC_INFO &lt;&lt; nomEquipeA &lt;&lt; nomEquipeW;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <a class="code" href="class_rencontre.html#aa4076d6075bc362519e503375a25a4f9">equipes</a>.push_back(<span class="keyword">new</span> <a class="code" href="class_equipe.html">Equipe</a>(nomEquipeA));</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <a class="code" href="class_rencontre.html#aa4076d6075bc362519e503375a25a4f9">equipes</a>.push_back(<span class="keyword">new</span> <a class="code" href="class_equipe.html">Equipe</a>(nomEquipeW));</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;}</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="class_rencontre.html#a437de7d5f9adced5124dcfdd13e504d3">   28</a></span>&#160;<a class="code" href="class_rencontre.html#a437de7d5f9adced5124dcfdd13e504d3">Rencontre::~Rencontre</a>()</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;{</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="class_rencontre.html#aa4076d6075bc362519e503375a25a4f9">equipes</a>.size(); i++)</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    {</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keywordflow">if</span>(<a class="code" href="class_rencontre.html#aa4076d6075bc362519e503375a25a4f9">equipes</a>[i] != <span class="keyword">nullptr</span>)</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            <span class="keyword">delete</span> <a class="code" href="class_rencontre.html#aa4076d6075bc362519e503375a25a4f9">equipes</a>[i];</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    }</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    qDebug() &lt;&lt; Q_FUNC_INFO;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;}</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="class_rencontre.html#aa23f54538c67718053645a9b5a26727f">   38</a></span>&#160;<a class="code" href="class_equipe.html">Equipe</a>* <a class="code" href="class_rencontre.html#aa23f54538c67718053645a9b5a26727f">Rencontre::getEquipeA</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordflow">if</span>(<a class="code" href="class_rencontre.html#aa4076d6075bc362519e503375a25a4f9">equipes</a>.size() == <a class="code" href="class_rencontre.html#ab96079a963d0807c676b551272e037d7a3073cc166cfd425987d9cc6099dcfa04">Rencontre::NbEquipes</a>)</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        qDebug() &lt;&lt; Q_FUNC_INFO &lt;&lt; <a class="code" href="class_rencontre.html#aa4076d6075bc362519e503375a25a4f9">equipes</a>[NomEquipe::EquipeA]</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                 &lt;&lt; <a class="code" href="class_rencontre.html#aa4076d6075bc362519e503375a25a4f9">equipes</a>[NomEquipe::EquipeA]-&gt;getNom();</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="class_rencontre.html#aa4076d6075bc362519e503375a25a4f9">equipes</a>[NomEquipe::EquipeA];</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    }</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;}</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="class_rencontre.html#a660dd1350a93fe8eb7c93d3a0b4b7342">   49</a></span>&#160;<a class="code" href="class_equipe.html">Equipe</a>* <a class="code" href="class_rencontre.html#a660dd1350a93fe8eb7c93d3a0b4b7342">Rencontre::getEquipeW</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordflow">if</span>(<a class="code" href="class_rencontre.html#aa4076d6075bc362519e503375a25a4f9">equipes</a>.size() == <a class="code" href="class_rencontre.html#ab96079a963d0807c676b551272e037d7a3073cc166cfd425987d9cc6099dcfa04">Rencontre::NbEquipes</a>)</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        qDebug() &lt;&lt; Q_FUNC_INFO &lt;&lt; <a class="code" href="class_rencontre.html#aa4076d6075bc362519e503375a25a4f9">equipes</a>[NomEquipe::EquipeW]</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                 &lt;&lt; <a class="code" href="class_rencontre.html#aa4076d6075bc362519e503375a25a4f9">equipes</a>[NomEquipe::EquipeW]-&gt;getNom();</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="class_rencontre.html#aa4076d6075bc362519e503375a25a4f9">equipes</a>[NomEquipe::EquipeW];</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    }</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;}</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="class_rencontre.html#af98fa6ddbf860e56a43fe3818122559d">   60</a></span>&#160;QVector&lt;Partie&gt; <a class="code" href="class_rencontre.html#af98fa6ddbf860e56a43fe3818122559d">Rencontre::getParties</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="class_rencontre.html#a6b52ccf9b5d083718928b207ae5316fe">parties</a>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;}</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="class_rencontre.html#ac6c704afb33e7d7f95c6b407ae881d7f">   65</a></span>&#160;<a class="code" href="class_partie.html">Partie</a> <a class="code" href="class_rencontre.html#ac6c704afb33e7d7f95c6b407ae881d7f">Rencontre::getPartie</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> cases)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="class_rencontre.html#a6b52ccf9b5d083718928b207ae5316fe">parties</a>[cases];</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;}</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="class_rencontre.html#ab37806312f564c6d8022f7e2da983866">   70</a></span>&#160;<a class="code" href="class_partie.html">Partie</a>* <a class="code" href="class_rencontre.html#ab37806312f564c6d8022f7e2da983866">Rencontre::getPointeurPartie</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> cases)</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;{</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordflow">return</span> &amp;(<a class="code" href="class_rencontre.html#a6b52ccf9b5d083718928b207ae5316fe">parties</a>[cases]);</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="class_rencontre.html#a1601b8d9ad5337450cae63f831080e94">   75</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_rencontre.html#a1601b8d9ad5337450cae63f831080e94">Rencontre::setPartiesDouble</a>(QString nomJoueurA1, QString prenomJoueurA1,</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                                 QString nomJoueurA2, QString prenomJoueurA2,</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                                 QString nomJoueurW1, QString prenomJoueurW1,</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                                 QString nomJoueurW2, QString prenomJoueurW2)</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;{</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <a class="code" href="class_rencontre.html#a6b52ccf9b5d083718928b207ae5316fe">parties</a>.push_back(<a class="code" href="class_partie.html">Partie</a>(1, nomJoueurA1, prenomJoueurA1,</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                                    nomJoueurA2, prenomJoueurA2,</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                                    nomJoueurW1, prenomJoueurW1,</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                                    nomJoueurW2, prenomJoueurW2));</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;}</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
-<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="class_rencontre.html#aad166715e737d94ca2417fbbf37eaf04">   86</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_rencontre.html#aad166715e737d94ca2417fbbf37eaf04">Rencontre::actualiserPartie</a>(QByteArray idPartieScore, QByteArray scoreJG, QByteArray scoreJD,</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                                 QByteArray nbSetJG,QByteArray nbSetJD, QByteArray net)</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;{</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    qDebug() &lt;&lt; Q_FUNC_INFO;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <a class="code" href="class_rencontre.html#a6b52ccf9b5d083718928b207ae5316fe">parties</a>[idPartieScore.toUInt()].setSetJoueurG(nbSetJG.toUInt());</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <a class="code" href="class_rencontre.html#a6b52ccf9b5d083718928b207ae5316fe">parties</a>[idPartieScore.toUInt()].setSetJoueurD(nbSetJD.toUInt());</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <a class="code" href="class_rencontre.html#a6b52ccf9b5d083718928b207ae5316fe">parties</a>[idPartieScore.toUInt()].setScoreJoueurG(scoreJG.toUInt());</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <a class="code" href="class_rencontre.html#a6b52ccf9b5d083718928b207ae5316fe">parties</a>[idPartieScore.toUInt()].setScoreJoueurG(scoreJD.toUInt());</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordflow">if</span>(net.toUInt() == 1)</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    {</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <a class="code" href="class_rencontre.html#a6b52ccf9b5d083718928b207ae5316fe">parties</a>[idPartieScore.toUInt()].setNombreNET((<a class="code" href="class_rencontre.html#a6b52ccf9b5d083718928b207ae5316fe">parties</a>[idPartieScore.toUInt()].getNombreNET() + 1));</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    }</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;}</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="class_rencontre.html#a62a3322fd4419cc3b780a6f1b06e9b2a">   75</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="class_rencontre.html#a62a3322fd4419cc3b780a6f1b06e9b2a">Rencontre::getIdentifiantPartieGauche</a>()</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;{</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="class_rencontre.html#a83ea1e69d524b849be539ffc0b2ca38d">identifiantPartieGauche</a>;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;}</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="class_rencontre.html#a475ffdbebd5851ef5bf6ce6537c41ff0">   80</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_rencontre.html#a475ffdbebd5851ef5bf6ce6537c41ff0">Rencontre::setIdentifiantPartieGauche</a>(<span class="keywordtype">int</span> identifiantPartieGauche)</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;{</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <a class="code" href="class_rencontre.html#a83ea1e69d524b849be539ffc0b2ca38d">identifiantPartieGauche</a> = <a class="code" href="class_rencontre.html#a83ea1e69d524b849be539ffc0b2ca38d">identifiantPartieGauche</a>;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;}</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="class_rencontre.html#a0ecb3dc76f3219cb237c04cb94fb015c">   85</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_rencontre.html#a0ecb3dc76f3219cb237c04cb94fb015c">Rencontre::setPartiesSimple</a>(QString nomJoueurA1, QString prenomJoueurA1, QString nomJoueurW1, QString prenomJoueurW2)</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;{</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <a class="code" href="class_rencontre.html#a6b52ccf9b5d083718928b207ae5316fe">parties</a>.push_back(<a class="code" href="class_partie.html">Partie</a>(<a class="code" href="class_rencontre.html#a6b52ccf9b5d083718928b207ae5316fe">parties</a>.size(), <span class="keyword">false</span>, nomJoueurA1, prenomJoueurA1, nomJoueurW1, prenomJoueurW2));</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;}</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="class_rencontre.html#a1601b8d9ad5337450cae63f831080e94">   90</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_rencontre.html#a1601b8d9ad5337450cae63f831080e94">Rencontre::setPartiesDouble</a>(QString nomJoueurA1, QString prenomJoueurA1, QString nomJoueurA2, QString prenomJoueurA2, QString nomJoueurW1, QString prenomJoueurW1, QString nomJoueurW2, QString prenomJoueurW2)</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;{</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <a class="code" href="class_rencontre.html#a6b52ccf9b5d083718928b207ae5316fe">parties</a>.push_back(<a class="code" href="class_partie.html">Partie</a>(<a class="code" href="class_rencontre.html#a6b52ccf9b5d083718928b207ae5316fe">parties</a>.size(), <span class="keyword">true</span>, nomJoueurA1, prenomJoueurA1, nomJoueurA2, prenomJoueurA2, nomJoueurW1, prenomJoueurW1, nomJoueurW2, prenomJoueurW2));</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;}</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="class_rencontre.html#aad166715e737d94ca2417fbbf37eaf04">   95</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_rencontre.html#aad166715e737d94ca2417fbbf37eaf04">Rencontre::actualiserPartie</a>(QByteArray idPartieScore, QByteArray scoreJG, QByteArray scoreJD, QByteArray nbSetJG, QByteArray nbSetJD, QByteArray net)</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;{</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    qDebug() &lt;&lt; Q_FUNC_INFO &lt;&lt; <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <a class="code" href="class_rencontre.html#a6b52ccf9b5d083718928b207ae5316fe">parties</a>[idPartieScore.toUInt()].setSetJoueurG(nbSetJG.toUInt());</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <a class="code" href="class_rencontre.html#a6b52ccf9b5d083718928b207ae5316fe">parties</a>[idPartieScore.toUInt()].setSetJoueurD(nbSetJD.toUInt());</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <a class="code" href="class_rencontre.html#a6b52ccf9b5d083718928b207ae5316fe">parties</a>[idPartieScore.toUInt()].setScoreJoueurG(scoreJG.toUInt());</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <a class="code" href="class_rencontre.html#a6b52ccf9b5d083718928b207ae5316fe">parties</a>[idPartieScore.toUInt()].setScoreJoueurD(scoreJD.toUInt());</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keywordflow">if</span>(net.toUInt())</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    {</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <a class="code" href="class_rencontre.html#a6b52ccf9b5d083718928b207ae5316fe">parties</a>[idPartieScore.toUInt()].setNombreNET((<a class="code" href="class_rencontre.html#a6b52ccf9b5d083718928b207ae5316fe">parties</a>[idPartieScore.toUInt()].getNombreNET() + 1));</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    }</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keywordflow">if</span>((nbSetJG.toUInt() + nbSetJD.toUInt()) != <a class="code" href="class_rencontre.html#a6b52ccf9b5d083718928b207ae5316fe">parties</a>[idPartieScore.toUInt()].getNombreSet())</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    {</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        <a class="code" href="class_rencontre.html#a6b52ccf9b5d083718928b207ae5316fe">parties</a>[idPartieScore.toUInt()].setNombreSet(nbSetJG.toUInt() + nbSetJD.toUInt());</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <a class="code" href="class_rencontre.html#a6b52ccf9b5d083718928b207ae5316fe">parties</a>[idPartieScore.toUInt()].setNombreNET(0);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    }</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclass_equipe_html"><div class="ttname"><a href="class_equipe.html">Equipe</a></div><div class="ttdoc">Déclaration de la classe Equipe.</div><div class="ttdef"><b>Definition:</b> <a href="equipe_8h_source.html#l00022">equipe.h:22</a></div></div>
-<div class="ttc" id="aclass_rencontre_html_a1601b8d9ad5337450cae63f831080e94"><div class="ttname"><a href="class_rencontre.html#a1601b8d9ad5337450cae63f831080e94">Rencontre::setPartiesDouble</a></div><div class="ttdeci">void setPartiesDouble(QString nomJoueurA1, QString prenomJoueurA1, QString nomJoueurA2, QString prenomJoueurA2, QString nomJoueurW1, QString prenomJoueurW1, QString nomJoueurW2, QString prenomJoueurW2)</div><div class="ttdef"><b>Definition:</b> <a href="afficheur-area_2rencontre_8cpp_source.html#l00075">rencontre.cpp:75</a></div></div>
+<div class="ttc" id="aclass_rencontre_html_a1601b8d9ad5337450cae63f831080e94"><div class="ttname"><a href="class_rencontre.html#a1601b8d9ad5337450cae63f831080e94">Rencontre::setPartiesDouble</a></div><div class="ttdeci">void setPartiesDouble(QString nomJoueurA1, QString prenomJoueurA1, QString nomJoueurA2, QString prenomJoueurA2, QString nomJoueurW1, QString prenomJoueurW1, QString nomJoueurW2, QString prenomJoueurW2)</div><div class="ttdef"><b>Definition:</b> <a href="afficheur-area_2rencontre_8cpp_source.html#l00090">rencontre.cpp:90</a></div></div>
 <div class="ttc" id="aafficheur-area_2rencontre_8h_html"><div class="ttname"><a href="afficheur-area_2rencontre_8h.html">rencontre.h</a></div><div class="ttdoc">Déclaration de la classe Rencontre.</div></div>
-<div class="ttc" id="aclass_rencontre_html_af98fa6ddbf860e56a43fe3818122559d"><div class="ttname"><a href="class_rencontre.html#af98fa6ddbf860e56a43fe3818122559d">Rencontre::getParties</a></div><div class="ttdeci">QVector&lt; Partie &gt; getParties() const</div><div class="ttdef"><b>Definition:</b> <a href="afficheur-area_2rencontre_8cpp_source.html#l00058">rencontre.cpp:58</a></div></div>
-<div class="ttc" id="aclass_rencontre_html_ac6c704afb33e7d7f95c6b407ae881d7f"><div class="ttname"><a href="class_rencontre.html#ac6c704afb33e7d7f95c6b407ae881d7f">Rencontre::getPartie</a></div><div class="ttdeci">Partie getPartie(unsigned int cases) const</div><div class="ttdef"><b>Definition:</b> <a href="afficheur-area_2rencontre_8cpp_source.html#l00063">rencontre.cpp:63</a></div></div>
+<div class="ttc" id="aclass_rencontre_html_a475ffdbebd5851ef5bf6ce6537c41ff0"><div class="ttname"><a href="class_rencontre.html#a475ffdbebd5851ef5bf6ce6537c41ff0">Rencontre::setIdentifiantPartieGauche</a></div><div class="ttdeci">void setIdentifiantPartieGauche(int identifiantPartieGauche)</div><div class="ttdef"><b>Definition:</b> <a href="afficheur-area_2rencontre_8cpp_source.html#l00080">rencontre.cpp:80</a></div></div>
+<div class="ttc" id="aclass_rencontre_html_af98fa6ddbf860e56a43fe3818122559d"><div class="ttname"><a href="class_rencontre.html#af98fa6ddbf860e56a43fe3818122559d">Rencontre::getParties</a></div><div class="ttdeci">QVector&lt; Partie &gt; getParties() const</div><div class="ttdef"><b>Definition:</b> <a href="afficheur-area_2rencontre_8cpp_source.html#l00060">rencontre.cpp:60</a></div></div>
+<div class="ttc" id="aclass_rencontre_html_a62a3322fd4419cc3b780a6f1b06e9b2a"><div class="ttname"><a href="class_rencontre.html#a62a3322fd4419cc3b780a6f1b06e9b2a">Rencontre::getIdentifiantPartieGauche</a></div><div class="ttdeci">int getIdentifiantPartieGauche()</div><div class="ttdef"><b>Definition:</b> <a href="afficheur-area_2rencontre_8cpp_source.html#l00075">rencontre.cpp:75</a></div></div>
+<div class="ttc" id="aclass_rencontre_html_ac6c704afb33e7d7f95c6b407ae881d7f"><div class="ttname"><a href="class_rencontre.html#ac6c704afb33e7d7f95c6b407ae881d7f">Rencontre::getPartie</a></div><div class="ttdeci">Partie getPartie(unsigned int cases) const</div><div class="ttdef"><b>Definition:</b> <a href="afficheur-area_2rencontre_8cpp_source.html#l00065">rencontre.cpp:65</a></div></div>
+<div class="ttc" id="aclass_rencontre_html_a83ea1e69d524b849be539ffc0b2ca38d"><div class="ttname"><a href="class_rencontre.html#a83ea1e69d524b849be539ffc0b2ca38d">Rencontre::identifiantPartieGauche</a></div><div class="ttdeci">int identifiantPartieGauche</div><div class="ttdef"><b>Definition:</b> <a href="afficheur-area_2rencontre_8h_source.html#l00027">rencontre.h:27</a></div></div>
 <div class="ttc" id="aclass_rencontre_html_a6b52ccf9b5d083718928b207ae5316fe"><div class="ttname"><a href="class_rencontre.html#a6b52ccf9b5d083718928b207ae5316fe">Rencontre::parties</a></div><div class="ttdeci">QVector&lt; Partie &gt; parties</div><div class="ttdef"><b>Definition:</b> <a href="afficheur-area_2rencontre_8h_source.html#l00026">rencontre.h:26</a></div></div>
 <div class="ttc" id="aclass_rencontre_html_ab96079a963d0807c676b551272e037d7a3073cc166cfd425987d9cc6099dcfa04"><div class="ttname"><a href="class_rencontre.html#ab96079a963d0807c676b551272e037d7a3073cc166cfd425987d9cc6099dcfa04">Rencontre::NbEquipes</a></div><div class="ttdeci">@ NbEquipes</div><div class="ttdef"><b>Definition:</b> <a href="afficheur-area_2rencontre_8h_source.html#l00055">rencontre.h:55</a></div></div>
-<div class="ttc" id="aclass_rencontre_html_a0ecb3dc76f3219cb237c04cb94fb015c"><div class="ttname"><a href="class_rencontre.html#a0ecb3dc76f3219cb237c04cb94fb015c">Rencontre::setPartiesSimple</a></div><div class="ttdeci">void setPartiesSimple(QString nomJoueurA1, QString prenomJoueurA1, QString nomJoueurW1, QString prenomJoueurW2)</div><div class="ttdef"><b>Definition:</b> <a href="afficheur-area_2rencontre_8cpp_source.html#l00068">rencontre.cpp:68</a></div></div>
+<div class="ttc" id="aclass_rencontre_html_a0ecb3dc76f3219cb237c04cb94fb015c"><div class="ttname"><a href="class_rencontre.html#a0ecb3dc76f3219cb237c04cb94fb015c">Rencontre::setPartiesSimple</a></div><div class="ttdeci">void setPartiesSimple(QString nomJoueurA1, QString prenomJoueurA1, QString nomJoueurW1, QString prenomJoueurW2)</div><div class="ttdef"><b>Definition:</b> <a href="afficheur-area_2rencontre_8cpp_source.html#l00085">rencontre.cpp:85</a></div></div>
 <div class="ttc" id="aclass_rencontre_html_aa4076d6075bc362519e503375a25a4f9"><div class="ttname"><a href="class_rencontre.html#aa4076d6075bc362519e503375a25a4f9">Rencontre::equipes</a></div><div class="ttdeci">QVector&lt; Equipe * &gt; equipes</div><div class="ttdef"><b>Definition:</b> <a href="afficheur-area_2rencontre_8h_source.html#l00025">rencontre.h:25</a></div></div>
-<div class="ttc" id="aclass_partie_html"><div class="ttname"><a href="class_partie.html">Partie</a></div><div class="ttdoc">Déclaration de la classe Partie.</div><div class="ttdef"><b>Definition:</b> <a href="afficheur-area_2partie_8h_source.html#l00024">partie.h:24</a></div></div>
-<div class="ttc" id="aclass_rencontre_html_aad166715e737d94ca2417fbbf37eaf04"><div class="ttname"><a href="class_rencontre.html#aad166715e737d94ca2417fbbf37eaf04">Rencontre::actualiserPartie</a></div><div class="ttdeci">void actualiserPartie(QByteArray idPartieScore, QByteArray scoreJG, QByteArray scoreJD, QByteArray nbSetJG, QByteArray nbSetJD, QByteArray net)</div><div class="ttdef"><b>Definition:</b> <a href="afficheur-area_2rencontre_8cpp_source.html#l00086">rencontre.cpp:86</a></div></div>
+<div class="ttc" id="aclass_partie_html"><div class="ttname"><a href="class_partie.html">Partie</a></div><div class="ttdoc">Déclaration de la classe Partie.</div><div class="ttdef"><b>Definition:</b> <a href="afficheur-area_2partie_8h_source.html#l00032">partie.h:32</a></div></div>
+<div class="ttc" id="aclass_rencontre_html_ab37806312f564c6d8022f7e2da983866"><div class="ttname"><a href="class_rencontre.html#ab37806312f564c6d8022f7e2da983866">Rencontre::getPointeurPartie</a></div><div class="ttdeci">Partie * getPointeurPartie(unsigned int cases)</div><div class="ttdef"><b>Definition:</b> <a href="afficheur-area_2rencontre_8cpp_source.html#l00070">rencontre.cpp:70</a></div></div>
+<div class="ttc" id="aclass_rencontre_html_aad166715e737d94ca2417fbbf37eaf04"><div class="ttname"><a href="class_rencontre.html#aad166715e737d94ca2417fbbf37eaf04">Rencontre::actualiserPartie</a></div><div class="ttdeci">void actualiserPartie(QByteArray idPartieScore, QByteArray scoreJG, QByteArray scoreJD, QByteArray nbSetJG, QByteArray nbSetJD, QByteArray net)</div><div class="ttdef"><b>Definition:</b> <a href="afficheur-area_2rencontre_8cpp_source.html#l00095">rencontre.cpp:95</a></div></div>
 <div class="ttc" id="aequipe_8h_html"><div class="ttname"><a href="equipe_8h.html">equipe.h</a></div><div class="ttdoc">Déclaration de la classe Equipe.</div></div>
-<div class="ttc" id="aclass_rencontre_html_a660dd1350a93fe8eb7c93d3a0b4b7342"><div class="ttname"><a href="class_rencontre.html#a660dd1350a93fe8eb7c93d3a0b4b7342">Rencontre::getEquipeW</a></div><div class="ttdeci">Equipe * getEquipeW() const</div><div class="ttdef"><b>Definition:</b> <a href="afficheur-area_2rencontre_8cpp_source.html#l00047">rencontre.cpp:47</a></div></div>
-<div class="ttc" id="aclass_rencontre_html_aa23f54538c67718053645a9b5a26727f"><div class="ttname"><a href="class_rencontre.html#aa23f54538c67718053645a9b5a26727f">Rencontre::getEquipeA</a></div><div class="ttdeci">Equipe * getEquipeA() const</div><div class="ttdef"><b>Definition:</b> <a href="afficheur-area_2rencontre_8cpp_source.html#l00036">rencontre.cpp:36</a></div></div>
-<div class="ttc" id="aclass_rencontre_html_a437de7d5f9adced5124dcfdd13e504d3"><div class="ttname"><a href="class_rencontre.html#a437de7d5f9adced5124dcfdd13e504d3">Rencontre::~Rencontre</a></div><div class="ttdeci">~Rencontre()</div><div class="ttdef"><b>Definition:</b> <a href="afficheur-area_2rencontre_8cpp_source.html#l00026">rencontre.cpp:26</a></div></div>
+<div class="ttc" id="aclass_rencontre_html_a660dd1350a93fe8eb7c93d3a0b4b7342"><div class="ttname"><a href="class_rencontre.html#a660dd1350a93fe8eb7c93d3a0b4b7342">Rencontre::getEquipeW</a></div><div class="ttdeci">Equipe * getEquipeW() const</div><div class="ttdef"><b>Definition:</b> <a href="afficheur-area_2rencontre_8cpp_source.html#l00049">rencontre.cpp:49</a></div></div>
+<div class="ttc" id="aclass_rencontre_html_aa23f54538c67718053645a9b5a26727f"><div class="ttname"><a href="class_rencontre.html#aa23f54538c67718053645a9b5a26727f">Rencontre::getEquipeA</a></div><div class="ttdeci">Equipe * getEquipeA() const</div><div class="ttdef"><b>Definition:</b> <a href="afficheur-area_2rencontre_8cpp_source.html#l00038">rencontre.cpp:38</a></div></div>
+<div class="ttc" id="aclass_rencontre_html_a437de7d5f9adced5124dcfdd13e504d3"><div class="ttname"><a href="class_rencontre.html#a437de7d5f9adced5124dcfdd13e504d3">Rencontre::~Rencontre</a></div><div class="ttdeci">~Rencontre()</div><div class="ttdef"><b>Definition:</b> <a href="afficheur-area_2rencontre_8cpp_source.html#l00028">rencontre.cpp:28</a></div></div>
 <div class="ttc" id="aclass_rencontre_html_a339d300a2cbd1a136bf417454dea40ee"><div class="ttname"><a href="class_rencontre.html#a339d300a2cbd1a136bf417454dea40ee">Rencontre::Rencontre</a></div><div class="ttdeci">Rencontre()</div><div class="ttdef"><b>Definition:</b> <a href="afficheur-area_2rencontre_8cpp_source.html#l00012">rencontre.cpp:12</a></div></div>
 <!-- HTML footer for doxygen 1.9.1-->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_db0b112240481db3590cbf7d67082dd0.html">afficheur-area</a></li><li class="navelem"><a class="el" href="afficheur-area_2rencontre_8cpp.html">rencontre.cpp</a></li>
-    <li class="footer"><img class="footer" src="lasalle-logo.png" height="31" alt="La Salle Avignon"/>&nbsp;<b>Campus La Salle Avignon</b>&nbsp;-&nbsp;9 Rue Notre Dame des 7 douleurs&nbsp;-&nbsp;BP 50165&nbsp;-&nbsp;84008 Avignon&nbsp;-&nbsp;Généré le Jeudi 26 Mai 2022 08:56:54 pour areapi par&nbsp;<a href="https://www.doxygen.org/index.html">doxygen</a>&nbsp;1.8.17&nbsp;</li>
+    <li class="footer"><img class="footer" src="lasalle-logo.png" height="31" alt="La Salle Avignon"/>&nbsp;<b>Campus La Salle Avignon</b>&nbsp;-&nbsp;9 Rue Notre Dame des 7 douleurs&nbsp;-&nbsp;BP 50165&nbsp;-&nbsp;84008 Avignon&nbsp;-&nbsp;Généré le Samedi 11 Juin 2022 08:15:10 pour areapi par&nbsp;<a href="https://www.doxygen.org/index.html">doxygen</a>&nbsp;1.8.17&nbsp;</li>
   </ul>
 </div>
 </body>
