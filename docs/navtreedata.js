@@ -58,8 +58,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "afficheur-area_2joueur_8cpp.html",
-"class_partie.html#a0e9519b89dc8f92f32a670f05c59d10d",
-"functions_func_p.html"
+"class_i_h_m_arbitre.html#ab2890cf817c62422464199ef545e7292",
+"class_rencontre.html#ab37806312f564c6d8022f7e2da983866"
 ];
 
 var SYNCONMSG = 'cliquez pour désactiver la synchronisation du panel';

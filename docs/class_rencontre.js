@@ -18,11 +18,14 @@ var class_rencontre =
     [ "getHorodatage", "class_rencontre.html#a358cb8a27e01ee869798d593045d9e7c", null ],
     [ "getIdClubA", "class_rencontre.html#af84c0359686c2f0d66751743f87b5c95", null ],
     [ "getIdClubB", "class_rencontre.html#a2a5fcf413387d1d8065b31d900533ba2", null ],
+    [ "getIdentifiantPartieGauche", "class_rencontre.html#a62a3322fd4419cc3b780a6f1b06e9b2a", null ],
     [ "getIdRencontre", "class_rencontre.html#aa4bc2e1d96fe1ebde06c42577e486575", null ],
     [ "getPartie", "class_rencontre.html#ac6c704afb33e7d7f95c6b407ae881d7f", null ],
     [ "getParties", "class_rencontre.html#af98fa6ddbf860e56a43fe3818122559d", null ],
+    [ "getPointeurPartie", "class_rencontre.html#ab37806312f564c6d8022f7e2da983866", null ],
     [ "setFinie", "class_rencontre.html#a6b9436c1f87c917677272ad7a67a638b", null ],
     [ "setHorodatage", "class_rencontre.html#ab5584cf870f88dd62d98c046f978e755", null ],
+    [ "setIdentifiantPartieGauche", "class_rencontre.html#a475ffdbebd5851ef5bf6ce6537c41ff0", null ],
     [ "setPartiesDouble", "class_rencontre.html#a1601b8d9ad5337450cae63f831080e94", null ],
     [ "setPartiesSimple", "class_rencontre.html#a0ecb3dc76f3219cb237c04cb94fb015c", null ],
     [ "equipes", "class_rencontre.html#aa4076d6075bc362519e503375a25a4f9", null ],
@@ -30,6 +33,7 @@ var class_rencontre =
     [ "horodatage", "class_rencontre.html#a2aa98a4211579c4d54ed14289a51b982", null ],
     [ "idClubA", "class_rencontre.html#a1d86c8a70ab76a5ece685e761af1beba", null ],
     [ "idClubB", "class_rencontre.html#a6d8cb309c10c3320b8af7b82d5a3012b", null ],
+    [ "identifiantPartieGauche", "class_rencontre.html#a83ea1e69d524b849be539ffc0b2ca38d", null ],
     [ "idRencontre", "class_rencontre.html#a891179f0623a048f0e01c5f9e03ddd9b", null ],
     [ "parties", "class_rencontre.html#a6b52ccf9b5d083718928b207ae5316fe", null ]
 ];
