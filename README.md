@@ -7,6 +7,15 @@ Système d’assistance à l’arbitrage lors d’une partie de tennis de table 
 - Module d'affichage de score (Score-AREA EC) : les joueurs, les arbitres et le public peuvent visualiser en “temps réel” le score d’une partie
 - Module d'affichage (**Afficheur-AREA IR**) ​: les joueurs, les arbitres et le public peuvent visualiser en “temps réel” le déroulement des parties sur un écran de télévision
 
+## Protocole
+
+- [Protocole AREA.pdf](docs/Protocole%20AREA.pdf)
+
+## Diaporamas
+
+- Arbitre-AREA : [Revue Finale BERT Mathéo.pptx](docs/Revue%20Finale%20BERT%20Matheo.pptx)
+- Afficheur-AREA : [Diapo Revue Finale Enzo LADRIERE.pptx](docs/Diapo%20Revue%20Finale%20Enzo%20LADRIERE.pptx)
+
 ## Historique des versions
 
 - [Version 1.1](https://github.com/btssn-lasalle-84/areapi-2022/releases/tag/1.1) : 11/06/2022
