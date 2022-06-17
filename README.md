@@ -18,12 +18,27 @@ Système d’assistance à l’arbitrage lors d’une partie de tennis de table 
 
 ## Historique des versions
 
-- [Version 1.1](https://github.com/btssn-lasalle-84/areapi-2022/releases/tag/1.1) : 11/06/2022
-- [Version 1.0](https://github.com/btssn-lasalle-84/areapi-2022/releases/tag/1.0) : 27/05/2022
-- [Version 0.2](https://github.com/btssn-lasalle-84/areapi-2022/releases/tag/0.2) : 24/05/2022
-- [Version 0.1](https://github.com/btssn-lasalle-84/areapi-2022/releases/tag/0.1) : 02/04/2022
+Le projet a été géré avec [Jira Software](https://btssn-avignon.atlassian.net/) et la méthode Kanban.
 
 ![](images/jira-versions-areapi.png)
+
+- [Version 1.1](https://github.com/btssn-lasalle-84/areapi-2022/releases/tag/1.1) : 11/06/2022
+
+![](images/version-1.1.png)
+
+- [Version 1.0](https://github.com/btssn-lasalle-84/areapi-2022/releases/tag/1.0) : 27/05/2022
+
+![](images/version-1.0.png)
+
+- [Version 0.2](https://github.com/btssn-lasalle-84/areapi-2022/releases/tag/0.2) : 24/05/2022
+
+![](images/version-0.2.png)
+
+- [Version 0.1](https://github.com/btssn-lasalle-84/areapi-2022/releases/tag/0.1) : 02/04/2022
+
+![](images/version-0.1.png)
+
+
 
 ## Auteurs
 
